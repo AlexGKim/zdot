@@ -1,4 +1,9 @@
-*.eps
-*.fits
-*.gz
-*.txt
+*/*.eps
+*/*.fits
+*/*.gz
+*/*.txt
+*/*.aux
+*/*.bbl
+*/*.blg
+*/*.log
+*/*.dvi
