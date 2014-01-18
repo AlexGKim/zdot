@@ -12,6 +12,7 @@
 
 \title{Beating Out Redshift Drift}
 \section{Spatial Heterodyne Spectroscopy}
+\label{SHS:sec}
 \subsection{Measuring Redshift}
 The precision measurement of redshift from a spectral line is hampered by line broadening. 
 Redshift can also be measured through the sum and the difference of observed wavenumbers of two lines whose restframe wavenumbers are known:
@@ -35,7 +36,7 @@ Redshifts are measured from the relative shift of a single line profile common t
 
 We consider Spatial heterodyne spectroscopy (SHS) \citep{1990SPIE.1235..622H}
 as a means to get a direct measurement of  $\sigma_1\pm\sigma_2$.
-Conceptually, the SHS can be understood as a Michelson interferometer with the  mirrors replaced by diffraction gratings.
+Conceptually, the SHS can be understood as as interferometer with the  mirrors replaced by diffraction gratings.
 (Practically we assume an interferometer configuration that  avoids the 50\% light loss inherent to  Michelson interferometers.)
 The gratings have line-spacing $d$ and both are tilted
 by $\theta$ with respect to the optical axis.  The deflected light from each grating exits the interferometer as a plane wave
@@ -170,8 +171,8 @@ The baseline observation is for an 8-hour exposure on a 10-m telescope assuming 
 system transmission
 with 2048 pixel samples. 
 Blocking filters remove flux in wavelengths outside the regions
-of interest.
-A sky emission of $8.71 \times 10^{-18}$  erg\,s$^{-1}$cm$^{-2}$\AA$^{-1}$ is small compared to the galaxy continuum.
+of interest.  The new moon CTIO sky emission is included but
+is small compared to the galaxy continuum.
 A circular aperture of $1\arcsec$ diameter is assumed to cover the full line flux.  Detector noise is taken to be negligible.
 The precision is insensitive to the choice of $\sigma_0$, except
 for small deviations near $n=1$ and at integer ratios of the beat frequencies; we choose
@@ -197,17 +198,22 @@ is given in Table~\ref{dz:tab}.
 Future spectroscopic surveys targeting ELGs, such as eBOSS and DESI, will provide a large catalog
 from which to select galaxies with doublets that allow precision redshift measurement.
 \begin{deluxetable}{cccccc}
-\tablecaption{Redshift Uncertainties of Select SDSS Targets With
+\tablecaption{SHS Redshift Uncertainties of Select SDSS Targets With
 an 8 Hour Exposure on a 10-m Telescope. \label{dz:tab}}
 \tablehead{
-\colhead{Plate} &\colhead{Fiber} & $z$ &\colhead{$\sigma_z^{[OII]}$} & \colhead{$\sigma_z^{[OIII]}$} & \colhead{$\sigma_z^{[OII]\&[OIII]}$}
+\\colhead{Plate} &\colhead{Fiber} & $z$ &\colhead{$\sigma_z^{[OII]}$} & \colhead{$\sigma_z^{[OIII]}$} & \colhead{$\sigma_z^{[OII]\&[OIII]}$}
 }
 \startdata
-1935 & 204 & 0.09838755 & $1.7\times 10^{-8}$& $7.9\times 10^{-9}$ & $7.2\times 10^{-9}$ \\
-1268 &318 &0.1257486 & $2.5\times 10^{-8}$ & $1.1\times 10^{-8}$ & $1.0\times 10^{-8}$ \\
-1657 &483 &0.2213398 &$3.1\times 10^{-8}$ & $1.6\times 10^{-8}$ & $1.4\times 10^{-8}$ \\
-1514 &137 &0.318046 &$5.5\times 10^{-8}$ & $1.3\times 10^{-7}$ & $5.1\times 10^{-8}$\\
-4794 &757 &0.5601137 &$6.6\times 10^{-7}$ & $9.0\times 10^{-7}$ & $5.3\times 10^{-7}$
+1523 & 602 & 0.08933221 &\nodata & $2.4\times 10^{-8}$ &  $2.4\times 10^{-8}$ \\
+1935 & 204 & 0.09838755 & $1.7\times 10^{-8}$ & $7.9\times 10^{-9}$ & $7.2\times 10^{-9}$  \\
+1036 & 584 & 0.1078989 &  \nodata & $4.2\times 10^{-8}$ &  $4.2\times 10^{-8}$ \\
+2959 & 354 & 0.1199353 &  \nodata & $9.5\times 10^{-8}$ &  $9.5\times 10^{-8}$ \\
+1268 & 318 & 0.1257486 & $2.5\times 10^{-8}$ & $1.1\times 10^{-8}$ & $1.0\times 10^{-8}$  \\
+1657 & 483 & 0.2213398 & $3.1\times 10^{-8}$ & $1.6\times 10^{-8}$ & $1.4\times 10^{-8}$  \\
+1073 & 225 & 0.2716023 & $8.7\times 10^{-7}$ & $1.3\times 10^{-8}$ & $1.3\times 10^{-8}$  \\
+1514 & 137 & 0.318046 & $5.5\times 10^{-8}$ & $1.3\times 10^{-7}$ & $5.0\times 10^{-8}$  \\
+4794 & 757 & 0.5601137 & $6.6\times 10^{-7}$ & $9.0\times 10^{-7}$ & $5.3\times 10^{-7}$  \\
+1059 & 564 & 0.693329 &  $1.6\times 10^{-8}$ &  \nodata &  $1.6\times 10^{-8}$
 \enddata
 \end{deluxetable}
 
@@ -221,22 +227,86 @@ as a result the measurement  is less sensitive to
 detector miscalibration; with precisely known changes to $\theta$ or $1/d$, the absolute $\theta$ calibration can
 be fit out. 
 
+In the regime under consideration, the redshift precision goes inversely with the line width and the inverse square of line flux.
+
+\section{Externally Dispersed Interferometer}
+The Externally Dispersed Interferometer \citep[EDI;][]{2003PASP..115..255E} is a candidate instrument with which to measure precision redshifts.
+An EDI is the sequence of a Fourier transform spectrograph (FTS) and a dispersion spectrograph.  The FTS is an interferometer that shifts
+the phase of incoming coherent light, 
+by an amount dependent on wavelength and the relative arm lengths.
+The ensuing dispersion spectrograph takes the incoming light and separates them into fine wavelength bins.
+For an individual wavelength bin the output signal depends on the phase introduced by the interferometer; multiple
+measurements taken after adjusting the arm-lengths make apparent a modulation in the output signals.
+Therefore, in an EDI the wavelength can be measured using the calibration methods of a standard dispersion
+spectrograph {\it and} from the modulations of signal apparent when changing the FTS arm-lengths.
+
+An EDI produces measurements that can be related
+to a conventional spectrum
+\begin{equation}
+B(\nu) = S_0(\nu) \otimes \mbox{PSF}(\nu),
+\end{equation}
+and an independently measureable whirl
+\begin{equation}
+W(\nu) = \frac{1}{2}\left[e^{i2\pi\tau_d\nu}S_0(\nu)\right] \otimes \mbox{PSF}(\nu),
+\end{equation}
+where $S_0$ is the input spectrum, $\tau_d$ is the interferometer delay, and $\mbox{PSF}$  is the blurring
+response of a pure frequency.
+
+The heterodyning feature of the EDI is seen in the Fourier transforms of the above expressions:
+\begin{align}
+b(\rho) & =s_0(\rho) \, \mbox{psf}(\rho)\\
+w(\rho -\tau_d) & =\frac{1}{2} s_0(\rho) \, \mbox{psf}(\rho-\tau_d).
+\end{align}
+The EDI whirl has the instrumental frequency response shifted into a new $\rho$ range to allow
+spectral
+resolution on scales tuned by the choice of $\tau_d$.
+
+An EDI observation of image $i$ is actually a series of measurements
+\begin{equation}
+B(\nu)_{i,\Delta\phi} = \left[\left[S_i(\nu)\left(1+\cos{\left(2\pi\tau\nu+\phi_y+\Delta\phi \right)} \right)\right]\otimes \mbox{PSF}(\nu)\right]\Sha\left(\frac{\nu}{p}\right),
+\end{equation}
+where $p$ is the spacing of the frequency sampling, $\phi_y$ is the initial phase, $\Sha$ specifies the discrete sampling,
+and the phase shifts $\Delta\phi$ could be chosen as
+$0$, $\pi/2$, $\pi$, and $3/2\pi$ for later calculational simplicity.
+
+The redshift precisions on the galaxies considered in \S\ref{SHS:sec} are given in Table~\ref{dz_edi:tab}
+for four 2-hour exposures on a 10-m Telescope with 70\% throughput.  For the FTS we
+chose a value of $\tau=(3\Delta \sigma)^{-1}$, where 
+\begin{equation}
+\Delta \sigma = \frac{(\sigma_{10}+\sigma_{20})}{2}\left((1+z)^{-1}-(1+z+10^{-9})^{-1}\right)
+\end{equation}
+is the expected change in the average wavenumber of the two lines given a shift in redshift of $10^{-9}$,
+and the factor 3 is found to give good sensitivity.
+The dispersion spectrograph has a per-pixel $R=20000$.  The line-spread-function $\mbox{PSF}$ is a top-hat function defined by a wavelength
+resolution bin.  Each doublet is considered on its own, {\it Total} precision has contribution from the {\it Conventional} spectrum and the {\it Whirl}; each is
+is tabulated.  The last column shows the combined constraint from both doublets assuming multiplexing, either through one or two EDI's.
+Almost all the constraining power comes from the whirl and the total precisions are several factors better than with the SHS.
+
+\begin{deluxetable}{cccccccccc}
+\tabletypesize{\scriptsize}
+\tablecaption{EDI Redshift Uncertainties of Select SDSS Targets With
+an 8 Hour Exposure on a 10-m Telescope. \label{dz_edi:tab}}
+\tablehead{
+\colhead{} &\colhead{} &\multicolumn{3}{c}{[OII]}&\colhead{} &\multicolumn{3}{c}{[O|II]}&\colhead{[OII] \& [OIII]} \\
+\cline{3-5} \cline{7-9}\\
+\colhead{Plate} &\colhead{Fiber} & \colhead{Total} & \colhead{Conventional} & \colhead{Whirl} &\colhead{} &  \colhead{Total} & \colhead{Conventional} & \colhead{Whirl}  & \colhead{Total}
+}
+\startdata
+1523 &602 &\nodata&\nodata &\nodata && $6.6\times 10^{-9}$ & $6.8\times 10^{-8}$ & $6.6\times 10^{-9}$ & $6.6\times 10^{-9}$\\
+1935 &204 &$5.2\times 10^{-9}$ & $4.8\times 10^{-8}$ & $5.3\times 10^{-9}$ && $2.1\times 10^{-9}$ & $1.9\times 10^{-8}$ & $2.1\times 10^{-9}$ & $1.9\times 10^{-9}$\\
+1036 &584 &\nodata&\nodata &\nodata& & $8.7\times 10^{-9}$ & $1.0\times 10^{-7}$ & $8.8\times 10^{-9}$ & $8.7\times 10^{-9}$\\
+2959 &354 &\nodata&\nodata &\nodata& & $2.1\times 10^{-8}$ & $1.9\times 10^{-7}$ & $2.1\times 10^{-8}$ & $2.1\times 10^{-8}$\\
+1268 &318 &$7.3\times 10^{-9}$ & $6.7\times 10^{-8}$ & $7.4\times 10^{-9}$ & &$2.8\times 10^{-9}$ & $2.6\times 10^{-8}$ & $2.8\times 10^{-9}$ & $2.6\times 10^{-9}$\\
+1657 &483 &$8.8\times 10^{-9}$ & $8.1\times 10^{-8}$ & $8.8\times 10^{-9}$ & &$3.8\times 10^{-9}$ & $3.5\times 10^{-8}$ & $3.9\times 10^{-9}$ & $3.5\times 10^{-9}$\\
+1073 &225 &$2.3\times 10^{-7}$ & $2.3\times 10^{-6}$ & $2.4\times 10^{-7}$ & &$2.8\times 10^{-9}$ & $1.0\times 10^{-7}$ & $2.8\times 10^{-9}$ & $2.8\times 10^{-9}$\\
+1514 &137 &$1.5\times 10^{-8}$ & $1.4\times 10^{-7}$ & $1.5\times 10^{-8}$ & &$1.7\times 10^{-8}$ & $1.5\times 10^{-7}$ & $1.7\times 10^{-8}$ & $1.1\times 10^{-8}$\\
+4794 &757 &$1.8\times 10^{-7}$ & $1.8\times 10^{-6}$ & $1.8\times 10^{-7}$ & &$9.7\times 10^{-8}$ & $9.6\times 10^{-7}$ & $9.7\times 10^{-8}$ & $8.5\times 10^{-8}$\\
+1059 &564 &$5.4\times 10^{-9}$ & $4.9\times 10^{-8}$ & $5.4\times 10^{-9}$ & &\nodata  & \nodata & \nodata & $5.4\times 10^{-9}$\\
+\enddata
+\end{deluxetable}
 
 
-\subsection{Questions}
-\begin{enumerate}
-\item The input signal is effectively one line with a relative offset from a reference line.  The input signal is then mixed by the SHS.
-This is the equivalent of homodyne detection, which apparently is standard in optical communications.  They may have signal
-processing tools useful to us.
-\item There are questions about $\theta$.  How well can they be set to be the same on the two gratings?  How well is its value be known.
-Can the angle be changed in a known way?  Gratings on a rotating disk?
-\item Can a single SHS be used to span a range of redshifts?  I would think with different blocking filters and variable $\theta$ the answer is yes.
-\item People generally don't believe in sub-percent pixel-flux measurements  from an observation.  In the Fisher analysis used, this floor is evaded with each measurement of $\theta$ providing new independent information.  Is this fair and if so what is the floor?  Otherwise we could achieve any accuracy we want.
-arbitrary accuracy can be achieved with more measurements.
-\item Are VPH a viable alternative to gratings?
-\item Can this be done better in the radio or microwave?
-\item Are there better lines to consider?
-\end{enumerate}
+Euclid where to find sources.
 
 \bibliographystyle{apj}
 \bibliography{/Users/akim/Documents/alex.bib}

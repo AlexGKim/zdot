@@ -4,9 +4,17 @@ import numpy
 import copy
 import matplotlib.pyplot as plt
 from scipy.integrate import quad
+from scipy.interpolate import interp1d
 from astropy.cosmology import FlatLambdaCDM
 import pprint
 
+def skyflux(_in):
+  mag=numpy.array([22.08,22.81,21.79,21.19,19.85])
+  wavelength=numpy.array([3650,4450,5510,6580,8080])*1e-10
+  flux=numpy.array([6.36e-18,4.96e-18,6.75e-18,6.28e-18,1.16e-17])
+  fn=interp1d(wavelength,flux)
+  return fn(_in)
+  
 def sigmasinegamma_exact(_sigma0,_shs):
   #  try:
   sintheta=numpy.sin(_shs.theta)
@@ -109,15 +117,6 @@ class Lines(object):
         self.a2_0=551.777e-17
         self.a3_0=453.1056e-17
         self.gal=6.65e-17 
-        self.sky=8.71E-18 
-        #if (plate == 1349 and fiber == 175):
-        #self.z=0.124904
-        #self.deltav=24.32/3e5
-        #self.a1_0=5840.02e-17
-        #self.a2_0=2059.42e-17
-        #self.a3_0=1080.65356445e-17
-        #self.gal=13.2e-17
-        #self.sky=8.71E-18
       if (plate == 1349 and fiber == 175):
         self.z=0.124904
         self.deltav=10.0346/3e5
@@ -125,71 +124,88 @@ class Lines(object):
         self.a2_0=2059.42/5840.02 *3341.699e-17
         self.a3_0=1080.65356445e-17
         self.gal=17.2e-17
-        self.sky=8.71E-18
       elif (plate == 1424 and fiber == 515):
         self.z=0.103444
         self.deltav=205.888/3e5
         self.a1_0=10266.7e-17
         self.a2_0=3436.22e-17
         self.gal=29e-17
-        self.sky=8.71E-18
       elif (plate == 649 and fiber == 117):
         self.z=0.120763
         self.deltav=12.6515/3e5
         self.a1_0=1898.23e-17
         self.a2_0=639.61e-17
         self.gal=13.6E-17 
-        self.sky=8.71E-18
       elif (plate == 585 and fiber == 22):
         self.z=0.5483138
         self.deltav=58.42435/3e5
         self.a1_0=1611.298e-17
         self.a2_0=563.9542e-17
         self.gal=4.6E-17 
-        self.sky=8.71E-18 ##fix
       elif (plate == 1758 and fiber == 490):
         self.z=0.255127
         self.deltav=19.15351/3e5
         self.a1_0=1240.638e-17
         self.a2_0=434.2233e-17
         self.gal=10.6E-17 
-        self.sky=4.61E-18  ##fix
       if (plate == 1268 and fiber == 318):
         self.z=0.1257486
         self.deltav=10.03548/3e5
         self.a1_0=3315.32e-17 #3438.711e-17
         self.a2_0=1094.53e-17 #1203.549e-17
         self.gal=(14.7624+14.3708)/2*1e-17
-        self.sky=8.71E-18
       if (plate == 1935	 and fiber == 204):
         self.z=0.09838755
         self.deltav=10.03865/3e5
         self.a1_0=5934.72e-17 #3547.454e-17
         self.a2_0=1959.3e-17 #1241.609e-17
         self.gal=(19.3408+19.0352)/2*1e-17
-        self.sky=8.71E-18
       if (plate == 1657	 and fiber == 483):
         self.z=0.2213398
         self.deltav=10.30226/3e5
         self.a1_0=1839.82e-17 #1699.26e-17
         self.a2_0=607.401e-17 # 594.7409e-17
         self.gal=(11.0375+10.6736)/2*1e-17
-        self.sky=6.6e-18
       if (plate == 4794	 and fiber == 757):
         self.z=0.5601137
         self.deltav=26.45063/3e5
         self.a1_0=25.0992e-17 #124.1981e-17
         self.a2_0=8.28632e-17 #43.46934e-17
         self.gal=(1.54566+1.47933)/2*1e-17
-        self.sky=10.6e-18 #
       if (plate == 1514	 and fiber == 137):
         self.z=0.318046
         self.deltav=10.00679/3e5
         self.a1_0=116.704e-17#55.258061e-17
         self.a2_0=38.5289e-17#19.34032e-17
         self.gal=(10.9357+10.4893)/2*1e-17
-        self.sky=10.6e-18 #
- 
+      if (plate == 1036 and fiber == 584):
+        self.mjd=52562
+        self.z=0.1078989
+        self.deltav=4.545177/3e5
+        self.a1_0=105.064e-17
+        self.a2_0=34.6861e-17
+        self.gal=(4.7564+4.08471)/2*1e-17
+      if (plate == 1073 and fiber == 225):
+        self.mjd=52649
+        self.z=0.2716023
+        self.deltav=1.428721/3e5
+        self.a1_0=113.574e-17
+        self.a2_0=37.4957e-17
+        self.gal=(3.88981+3.88917)/2*1e-17
+      if (plate == 1523 and fiber == 602):
+        self.mjd=52937
+        self.z=0.08933221
+        self.deltav=5.1353/3e5
+        self.a1_0=213.148e-17
+        self.a2_0=70.3692e-17
+        self.gal=(1.875331+2.05596)/2*1e-17
+      if (plate == 2959 and fiber == 354):
+        self.mjd=54537
+        self.z=0.1199353
+        self.deltav=6.857259/3e5
+        self.a1_0=33.6067e-17
+        self.a2_0=11.095e-17
+        self.gal=(0.165449+0.137032)/2*1e-17
     #[OII] http://arxiv.org/pdf/1310.0615.pdf
     elif (line == 'OII'):
       self.lambda1_0=3729.875e-10
@@ -201,96 +217,80 @@ class Lines(object):
         self.a1_0=1564.34e-17
         self.a2_0=1656.03e-17
         self.gal=44.1E-17 
-        self.sky=4.61E-18
       elif (plate == 0766 and fiber == 492):
         self.z=0.0959272
         self.deltav=47.4223/3e5
         self.a1_0=980.253e-17
         self.a2_0=1223.54e-17
         self.gal=33.5E-17 
-        self.sky=4.61E-18 
-        #      elif (plate == 1349 and fiber == 175):
-        #self.z=0.124904
-        #self.deltav=24.32/3e5
-        #self.a1_0=898.3423e-17
-        #self.a2_0=903.752e-17
-        #self.gal=22.14E-17 
-        #self.sky=4.61E-18
       elif (plate == 1349 and fiber == 175): #352797
         self.z=0.124904
         self.deltav=10.07/3e5
         self.a1_0=1602.899e-17
         self.a2_0=864.0497e-17
         self.gal=20.9E-17 
-        self.sky=4.61E-18
       elif (plate == 649 and fiber == 117):
         self.z=0.120763
         self.deltav=12.6515/3e5
         self.a1_0=695.0e-17
         self.a2_0=851.595e-17
         self.gal=20.55E-17 
-        self.sky=4.61E-18
       elif (plate == 1758 and fiber == 490):
         self.z=0.255127
         self.deltav=20/3e5
         self.a1_0=599.7573e-17
         self.a2_0=493.4042e-17
         self.gal=12.7E-17 
-        self.sky=4.61E-18  ##fix
       elif (plate == 1814 and fiber == 352):
         self.z=0.3754629
         self.deltav=35.5/3e5
         self.a1_0=395.2258e-17
         self.a2_0=484.433e-17
         self.gal=10.75E-17 
-        self.sky=4.61E-18  ##fix
       elif (plate == 1268 and fiber == 318):
         self.z=0.1257486	
         self.deltav=(10.0547+10.03259)/2/3e5
         self.a1_0=629.109e-17 #686.3459e-17
         self.a2_0=589.096e-17 # 609.7103e-17
         self.gal=(17.6749+17.7632)/2*1E-17 
-        self.sky=4.61E-18  ##fix
       elif (plate == 1935 and fiber == 204):
         self.z=0.09838755	
         self.deltav=10.05437/3e5
         self.a1_0=1276.21e-17 #1515.795e-17
         self.a2_0=1055.79e-17 #786.8914e-17
         self.gal=(23.8402+23.9842)/2*1E-17 
-        self.sky=4.61E-18  ##fix
       elif (plate == 1657 and fiber == 483):
         self.z=0.2213398	
         self.deltav=(10.35904+10.35904)/2/3e5
         self.a1_0=427.779e-17 #459.011e-17
         self.a2_0=469.207e-17 #476.065e-17
         self.gal=(13.5476+13.5792)/2*1E-17 
-        self.sky=5.15E-18  ##fix
       elif (plate == 4794 and fiber == 757):
         self.z=0.5601137		
         self.deltav=(49.60205+42.17744)/2/3e5
         self.a1_0=31.8402e-17 #305.8288e-17
         self.a2_0=20.2544e-17 #207.7097e-17
         self.gal=(0.819377+0.816817)/2*1E-17 
-        self.sky=7.15E-18  ##fix
       elif (plate == 1514 and fiber == 137):
         self.z=0.318046		
         self.deltav=(10.00539+10.0053)/2/3e5
         self.a1_0=173.733e-17 #125.847e-17
         self.a2_0=120.246e-17 #115.5477e-17
         self.gal=(6.33959+6.35175)/2*1E-17 
-        self.sky=6.15E-18  ##fix
-
-    if (line == 'OII&OIII'):
-      self.lambda1_0=5006.843e-10 
-      self.lambda3_0=None
-      self.lambda2_0=3729.875e-10
-      if (plate == 1720 and fiber == 459):
-        self.z=0.217681
-        self.deltav=15.9865/3e5
-        self.a1_0=1630.04e-17
-        self.a2_0=496.727e-17
-        self.gal=6.65e-17
-        self.sky=8.71E-18
+      elif (plate == 1059 and fiber == 564):
+        self.z=0.693329
+	self.mjd=52592
+        self.deltav=(9.460785+9.699522)/2/3e5
+        self.a1_0=1943.71e-17
+        self.a2_0=1.39517e-17
+        self.gal=(1.46043+1.47121)/2*1E-17 
+      elif (plate == 1073 and fiber == 225):
+        self.z=0.2716023
+	self.mjd=52649
+        self.deltav=(84.61399+84.87743)/2/3e5
+        self.a1_0=104.709e-17
+        self.a2_0=83.7931e-17
+        self.gal=(3.33375+3.39536)/2*1E-17 
     seeing = 1.
     self.aperture=numpy.pi*(seeing/2)**2
 
@@ -316,8 +316,9 @@ class Lines(object):
       self.sigma3=1/lambda3
       self.l32=(self.sigma3*self.deltav)**2
       self.a3=self.a3_0 * lambda3/Lines.hc   #erg/cm2/s
-    
-    self.back=(self.gal+self.sky) * mnlambda /Lines.hc # for photons V=21.8
+
+    sky=skyflux(mnlambda)
+    self.back=(self.gal+sky) * mnlambda /Lines.hc # for photons V=21.8
     
     self.back = self.back * 1e10 # Angstrom to m
     self.back = self.back*(mnlambda**2) #per wavelength to per wavenumber
@@ -351,14 +352,109 @@ class SHS(object):
     self.deltax=1.00*xrange/self.npt
     self.xs=numpy.arange(0*xrange,1*xrange,self.deltax)
 
+class EDI(object):
+  def __init__(self,_lines,taufactor,dz):
+    self.r=20000
+    self.edge=0.001
+    mnsigma=(1/_lines.lambda1_0+1/_lines.lambda2_0)/2
+    dsigma=mnsigma*(1/(1+_lines.z)-1/(1+_lines.z+dz))
+    self.tau=1/dsigma/taufactor
+    self.aperture=numpy.pi*(10e2/2)**2 
+    self.etime=3600.*8
+
+    nmax=numpy.log(_lines.sigma2*(1.+self.edge)/_lines.sigma1/(1-self.edge))*self.r
+    self.subres=100
+    #self.nus=(_lines.sigma1)*(1-self.edge)*numpy.exp(numpy.arange(0,nmax)/self.r)
+    self.finenus=(_lines.sigma1)*(1-self.edge)*numpy.exp(numpy.arange(0,nmax,1./self.subres)/self.r)
+    self.nus=self.finenus[self.subres::self.subres]
+    self.eff=.7
+
+def edicounts(_lines,edi):
+  tau=edi.tau
+  
+  s0=line(edi.finenus, _lines.sigma1, _lines.a1, _lines.l12)+line(edi.finenus, _lines.sigma2, _lines.a2, _lines.l22)
+  s0=s0+_lines.back*edi.finenus/edi.r/edi.subres
+  s0=s0*edi.aperture*edi.etime*edi.eff
+  sw=[]
+  plab=['0','$\pi/2$','$\pi$','$3\pi/2$']
+  ind=0
+  for phi in numpy.arange(0,2*numpy.pi-0.001,numpy.pi/2):
+    fineans=.25*s0*(1+numpy.cos(2*numpy.pi*tau*edi.finenus+phi))
+    kernel=numpy.zeros(edi.subres)+1
+    fineans=numpy.convolve(fineans,kernel)
+    ans=fineans[edi.subres::edi.subres]
+    sw.append(ans)
+    #    plt.plot(nus,sw[-1],label=plab[ind])
+    #plt.xlim([_lines.sigma2*(1.-edge),_lines.sigma2*(1.+edge)])
+    ind=ind+1
+    #plt.legend()
+    #plt.show()
+  return sw,s0[edi.subres::edi.subres]
+
+def edifisher(lines, zshift,taufactor):
+  epsilon=zshift
+  lines2=copy.copy(lines)
+  lines2.setz(lines2.z+epsilon)
+  edi=EDI(lines,taufactor,zshift)
+  f1=edicounts(lines,edi)
+  f2=edicounts(lines2,edi)
+  deltas=[]
+  #plt.clf()
+  for i in xrange(4):
+    deltas.append((f2[0][i]-f1[0][i])/epsilon)
+    #plt.plot(f1[2],f1[0][i])
+    #plt.savefig('edi_signal.pdf')
+  fisher=0
+  #plt.clf()
+  for i in xrange(4):
+    fisher=fisher + numpy.sum(deltas[i]*deltas[i]/f1[0][i])
+    #plt.plot(f2[2],deltas[i])
+    #plt.savefig('edi_delta.pdf')
+  f10=f1[1]
+  f20=f2[1]
+
+  deltas0=(f20-f10)/epsilon
+  fisher0= numpy.sum(deltas0*deltas0/f10)
+  
+  return numpy.sqrt(1/fisher), numpy.sqrt(1/fisher0), 1/numpy.sqrt(fisher-fisher0)
+
+def editwooutput(plate,line):
+  a3= edifisher(Lines(plate,line,'OIII'),1e-10,3.)
+  a2= edifisher(Lines(plate,line,'OII'),1e-10,3.)
+  print "{} &{} &${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$\\\\".format(plate,line,a2[0],a2[1],a2[2],a3[0],a3[1],a3[2],1/numpy.sqrt(1/a2[0]**2+1/a3[0]**2))
+
+def edioneoutput(plate,line,str):
+  if str=='OIII':
+    a3= edifisher(Lines(plate,line,'OIII'),1e-10,3.)
+    a2=[0,0,0]
+    last=a3[0]
+  else:
+    a2= edifisher(Lines(plate,line,'OII'),1e-10,3.)
+    a3=[0,0,0]
+    last=a2[0]
+  print "{} &{} &${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$\\\\".format(plate,line,a2[0],a2[1],a2[2],a3[0],a3[1],a3[2],last)
+
+def table_edi():
+  edioneoutput(1523,602,'OIII')
+  editwooutput(1935,204)
+  edioneoutput(1036,584,'OIII')
+  edioneoutput(2959,354,'OIII')
+  editwooutput(1268,318)
+  editwooutput(1657,483)
+  editwooutput(1073,225)
+  editwooutput(1514,137)
+  editwooutput(4794,757)
+  edioneoutput(1059,564,'OII')
+table_edi()
+shit
 def oneratiopartials(_lines,nratio):
   _lines2=copy.copy(_lines)
-  _lines2.setz(_lines2.z+1e-10)
+  _lines2.setz(_lines2.z+1e-9)
   shs=SHS(_lines,nratio)
   #print shs.theta, sigmasinegamma_exact(_lines.sigma1,shs), sigmasinegamma_exact(_lines.sigma2,shs)
   sig=counts(_lines, shs)
   sig2=counts(_lines2, shs)
-  partials=(sig2-sig)/1e-10
+  partials=(sig2-sig)/1e-9
   return partials,sig
 
 
@@ -383,7 +479,7 @@ def uncertaintyvsnratio(_lines):
 def fisherandplot(_lines):
   allpartials=None
   allsignals=None
-  plt.clf()
+  #  plt.clf()
   #for nratio in numpy.arange(.1,.5,1):
   for nratio in numpy.arange(1.5,9,10):
     shs=SHS(_lines,nratio)
@@ -394,11 +490,11 @@ def fisherandplot(_lines):
     else:
       allpartials=numpy.append(allpartials,partials_[0])
       allsignals=numpy.append(allsignals,partials_[1])
-    plt.plot(shs.xs*100,partials_[0],label='n='+str(nratio))
-  plt.legend()
-  plt.xlabel('x (cm)')
-  plt.ylabel('d(counts)/dz')
-  plt.savefig('dsigdz.eps')
+      #    plt.plot(shs.xs*100,partials_[0],label='n='+str(nratio))
+      #plt.legend()
+      #plt.xlabel('x (cm)')
+      #plt.ylabel('d(counts)/dz')
+      #plt.savefig('dsigdz.eps')
   fisher=numpy.sum(allpartials*allpartials/allsignals) * 2 #the extra 2 for the -x values
   return fisher
 
@@ -406,30 +502,119 @@ def twoline(plate, fiber):
   lines=Lines(plate,fiber,'OII')
   fisher=fisherandplot(lines)
   o2=1/numpy.sqrt(fisher)
-  print '{:5.1e} &'.format(o2),
+  print '${:5.1e}}}$ &'.format(o2),
   lines=Lines(plate,fiber,'OIII')
   fisher=fisherandplot(lines)
   o3=1/numpy.sqrt(fisher)
-  print '{:5.1e} &'.format(o3),
-  print '{:5.1e} &'.format(1./numpy.sqrt(1/o2**2+1/o3**2)), '//'
+  print '${:5.1e}}}$ &'.format(o3),
+  print '${:5.1e}}}$ '.format(1./numpy.sqrt(1/o2**2+1/o3**2)), '\\\\'
 
+def table():
+  lines=Lines(1523,602,'OIII')
+  fisher=fisherandplot(lines)
+  o2=1/numpy.sqrt(fisher)
+  print 1523, '&', 602,'&', lines.z,'&','&',
+  print '${:5.1e}}}$ '.format(o2),'&','${:5.1e}}}$ \\\\'.format(o2)
 
-#lines=Lines(1268,318,'OIII')
-#plotcounts(lines)
-#shit
+  print 1935, '&', 204,'&', Lines(1935,204,'OII').z,'&',
+  twoline(1935,204) #53387
 
+  lines=Lines(1036,584,'OIII')
+  fisher=fisherandplot(lines)
+  o2=1/numpy.sqrt(fisher)
+  print 1036, '&', 584,'&', lines.z,'&','&',
+  print '${:5.1e}}}$ '.format(o2),'&','${:5.1e}}}$ \\\\'.format(o2)
 
-print 1935, '&', 204,'&', Lines(1935,204,'OII').z,'&',
-twoline(1935,204) #53387
-print 1268, 318, Lines(1268,318,'OII').z,
-twoline(1268,318) #52933
-print 1657, 483, Lines(1657,483,'OII').z,
-twoline(1657,483) #53520
-print 1514, 137, Lines(1514,137,'OII').z,
-twoline(1514,137) #52931
-print 4794, 757, Lines(4794,757,'OII').z,
-twoline(4794,757) #55647     
-#twoline(1349,175) not happy
+  lines=Lines(2959,354,'OIII')
+  fisher=fisherandplot(lines)
+  o2=1/numpy.sqrt(fisher)
+  print 2959, '&', 354,'&', lines.z,'&','&',
+  print '${:5.1e}}}$ '.format(o2),'&','${:5.1e}}}$ \\\\'.format(o2)
+
+  print 1268, '&', 318, '&', Lines(1268,318,'OII').z, '&',
+  twoline(1268,318) #52933
+  print 1657, '&', 483, '&', Lines(1657,483,'OII').z, '&',
+  twoline(1657,483) #53520
+
+  lines=Lines(1073,225,'OIII')
+  fisher=fisherandplot(lines)
+  o2=1/numpy.sqrt(fisher)
+  print 1073, '&', 225,'&', lines.z,'&','&',
+  print '${:5.1e}}}$ '.format(o2),'&','${:5.1e}}}$ \\\\'.format(o2)
+
+  print 1073, '&', 225,  '&',Lines(1073,225,'OII').z, '&',
+  twoline(1073,225) #55647     
+  print 1514, '&', 137, '&', Lines(1514,137,'OII').z, '&',
+  twoline(1514,137) #52931
+  print 4794, '&', 757,  '&',Lines(4794,757,'OII').z, '&',
+  twoline(4794,757) #55647     
+  lines=Lines(1059,564,'OII')
+  fisher=fisherandplot(lines)
+  o2=1/numpy.sqrt(fisher)
+  print 1059, '&', 564,'&', lines.z,'&',
+  print '${:5.1e}}}$ &'.format(o2),'& &','${:5.1e}}}$ \\\\'.format(o2)
+
+                    #twoline(1349,175) not happy
+#table()
+
+def plotvelocity():
+  plate=1268
+  fiber=318
+  vel=[]
+  ans=[]
+  for fact in numpy.arange(.5,2,.1):
+    lines=Lines(plate,fiber,'OII')
+    lines.deltav=lines.deltav*fact
+    lines.setz(lines.z)
+    fisher=fisherandplot(lines)
+    o2=1/numpy.sqrt(fisher)
+    lines=Lines(plate,fiber,'OIII')
+    lines.deltav=lines.deltav*fact
+    lines.setz(lines.z)
+    fisher=fisherandplot(lines)
+    o3=1/numpy.sqrt(fisher)
+    vel.append(lines.deltav)
+    ans.append(1./numpy.sqrt(1/o2**2+1/o3**2))
+  vel=numpy.array(vel)*3e5
+  ans=numpy.array(ans)
+  plt.clf()
+  plt.plot(vel,ans)
+  plt.xlabel('$\Delta v$ (km s$^{-1}$)')
+  plt.ylabel('$\sigma_z^{[OII]&[OIII]}$')
+  plt.savefig('vdependence.pdf')
+
+  #plotvelocity()
+  #shit
+
+def plotflux():
+  plate=1268
+  fiber=318
+  vel=[]
+  ans=[]
+  for fact in numpy.arange(.5,10,.25):
+    lines=Lines(plate,fiber,'OII')
+    lines.a1_0=lines.a1_0*fact
+    lines.a2_0=lines.a2_0*fact
+    lines.setz(lines.z)
+    fisher=fisherandplot(lines)
+    o2=1/numpy.sqrt(fisher)
+    lines=Lines(plate,fiber,'OIII')
+    lines.a1_0=lines.a1_0*fact
+    vel.append(lines.a1_0)
+    lines.a2_0=lines.a2_0*fact
+    lines.setz(lines.z)
+    fisher=fisherandplot(lines)
+    o3=1/numpy.sqrt(fisher)
+    ans.append(1./numpy.sqrt(1/o2**2+1/o3**2))
+  vel=numpy.array(vel)*3e5
+  ans=numpy.array(ans)
+  plt.clf()
+  plt.plot(vel,ans)
+  plt.xlabel('[OIII](5006) flux (erg cm$^{-1}$ s$^{-1}$)')
+  plt.ylabel('$\sigma_z^{[OII]&[OIII]}$')
+  plt.savefig('fdependence.pdf')
+
+#plotflux()
 print shit
 
 #lines=Lines(1349,175,'OIII')
