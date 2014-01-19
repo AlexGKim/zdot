@@ -68,7 +68,7 @@ def ed_counts(_lines, _shs):
     ans[i]=ans[i]+integrand(_shs.sigmas,_shs.xs[i],_lines.sigma2,_lines.a2,_lines.l22,_shs)
     ans[i]=ans[i]+ _lines.back
     ans[i]=ans[i]*_shs.binwidths
-  ans=ans*_shs.deltax*_shs.aperture*_shs.etime*_shs.eff
+  ans=ans*_shs.deltax*_shs.aperture*_shs.etime*_shs.eff/ (2*_shs.xs[-1])
   #  plt.imshow(numpy.log(ans),aspect='equal')
   #plt.show()
   return ans
@@ -344,7 +344,7 @@ class Lines(object):
 class SHS(object):
   def __init__(self,_lines,n):
     self.littrow=(_lines.sigma1+_lines.sigma2)/2-(_lines.sigma1-_lines.sigma2)/2./n
-    #self.littrow=_lines.sigma1
+    self.littrow=(_lines.sigma1+_lines.sigma2)/2
     self.moverd=1.*(1200*1e3)
     #self.moverd=1.*(2000*1e3)
     self.theta = numpy.arcsin(self.moverd/2/self.littrow)
@@ -657,13 +657,13 @@ def ed_fisher(_lines):
     _lines2.setz(_lines2.z+1e-9)
     c1=ed_counts(_lines,shs)
     c2=ed_counts(_lines2,shs)
-    plt.imshow(c2-c1)
-    plt.show()
+    #plt.plot(c1)
+    #plt.show()
     partials_ = (c2-c1)/1e-9    
     fisher=numpy.sum(partials_*partials_/c1) * 2 #the extra 2 for the -x values
   return fisher
 
-lines=Lines(1268,318,'OIII')
+lines=Lines(1268,318,'OII')
 print 1/numpy.sqrt(ed_fisher(lines))
 shit
 
