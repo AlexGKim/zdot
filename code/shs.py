@@ -59,66 +59,58 @@ def intensity(_x, _lines, _shs):
   #normalization for dx
   return ans / (2*_shs.xs[-1])
 
-def ed_counts(_lines, _shs):
-  ans=numpy.zeros((len(_shs.xs),len(_shs.sigmas)))
-  for i in xrange(len(_shs.xs)):
-    ans[i]=line(_shs.sigmas,_lines.sigma1,_lines.a1,_lines.l12)
-    ans[i]=ans[i]+line(_shs.sigmas,_lines.sigma2,_lines.a2,_lines.l22)
-    ans[i]=ans[i]+integrand(_shs.sigmas,_shs.xs[i],_lines.sigma1,_lines.a1,_lines.l12,_shs)
-    ans[i]=ans[i]+integrand(_shs.sigmas,_shs.xs[i],_lines.sigma2,_lines.a2,_lines.l22,_shs)
-    ans[i]=ans[i]+ _lines.back
-    ans[i]=ans[i]*_shs.binwidths
-  ans=ans*_shs.deltax*_shs.aperture*_shs.etime*_shs.eff/ (2*_shs.xs[-1])
-  #  plt.imshow(numpy.log(ans),aspect='equal')
-  #plt.show()
-  return ans
-  
-
-def counts(_lines,_shs):
+def shs_counts(_lines,_shs):
   sig = []
   for x in _shs.xs:
     sig.append(intensity(x, _lines, _shs))
   sig=numpy.array(sig)*_shs.deltax*_shs.aperture*_shs.etime*_shs.eff
   return sig
-#  return signal(_lines,_shs)*_shs.deltax*_shs.aperture*_shs.etime*_shs.eff
 
-def plotspectrum(_lines):
-  sigmas=numpy.arange(_lines.sigma1-5*numpy.sqrt(_lines.l12),_lines.sigma2+5*numpy.sqrt(_lines.l22),1)
-  shit=[]
-  for sig in sigmas:
-    shit.append(line(sig,_lines.sigma1,_lines.a1,_lines.l12)+line(sig,_lines.sigma2,_lines.a2,_lines.l22))
-  shit=numpy.array(shit)
-  plt.clf()
-  plt.plot(sigmas/100,shit)
-  plt.xlabel('wavenumber (cm$^{-1}$)')
-  plt.ylabel('Flux')
-  plt.savefig('shsinput.eps')
-  #  plt.show()
+def edshs_counts(_lines, _shs):
+  ans=numpy.zeros((len(_shs.xs),len(_shs.spectro.sigmas)))
+  kernel=numpy.zeros(_shs.spectro.subres)+1
+  for i in xrange(len(_shs.xs)):
+    an=line(_shs.spectro.finesigmas,_lines.sigma1,_lines.a1,_lines.l12)
+    an=an+line(_shs.spectro.finesigmas,_lines.sigma2,_lines.a2,_lines.l22)
+    an=an+integrand(_shs.spectro.finesigmas,_shs.xs[i],_lines.sigma1,_lines.a1,_lines.l12,_shs)
+    an=an+integrand(_shs.spectro.finesigmas,_shs.xs[i],_lines.sigma2,_lines.a2,_lines.l22,_shs)
+    an=an+ _lines.back
+    an=an*_shs.spectro.finebinwidths
+    an=numpy.convolve(an,kernel,mode='same')
+    ans[i]=an[_shs.spectro.subres::_shs.spectro.subres]
+  ans=ans*_shs.deltax*_shs.aperture*_shs.etime*_shs.eff/ (2*_shs.xs[-1])
+  return ans
 
-def plotcounts(_lines):
-  plt.clf()
-  nratios=[1/3.5,1/1.05,1,1.05,3.5]
-  nratiostxt=["1/3.5","1/1.05","1","1.05","3.5"]
-  #  for nratio in numpy.arange(1.2,12,20):
+def edi_counts(_lines,edi):
+  tau=edi.tau
+  s0=line(edi.spectro.finesigmas, _lines.sigma1, _lines.a1, _lines.l12)+line(edi.spectro.finesigmas, _lines.sigma2, _lines.a2, _lines.l22)
+  s0=s0+_lines.back
+  s0 =s0*edi.spectro.finebinwidths
+  s0=s0*edi.aperture*edi.etime*edi.eff
+  kernel=numpy.zeros(edi.spectro.subres)+1
+  sw=numpy.zeros((4,len(edi.spectro.sigmas)))
   ind=0
-  for nratio in nratios:
-    shs=SHS(_lines,nratio)
-    print 2*(_lines.sigma1+_lines.sigma2-2*shs.littrow)*numpy.tan(shs.theta), 2*(_lines.sigma1-_lines.sigma2)*numpy.tan(shs.theta)
-    s1=counts(lines,shs)
-    s1=s1
-    plt.plot(shs.xs/numpy.max(shs.xs),s1+ind*numpy.max(s1)*1.04,label='n='+nratiostxt[ind])
-    plt.xlabel('x')
-    plt.ylabel('counts per resolution element + offset')
+                 
+  for phi in numpy.arange(0,2*numpy.pi-0.001,numpy.pi/2):
+    ans=.25*s0*(1+numpy.cos(2*numpy.pi*tau*edi.spectro.finesigmas+phi))
+    ans=numpy.convolve(ans,kernel,mode='same')
+    ans=ans[edi.spectro.subres::edi.spectro.subres]
+    sw[ind]=ans
     ind=ind+1
-  plt.legend()
-  plt.legend(prop={'size':10})
-  plt.savefig('shscounts.pdf')
-  
+  return sw
+
+def spec_counts(_lines,edi):
+  tau=edi.tau
+  s0=line(edi.spectro.finesigmas, _lines.sigma1, _lines.a1, _lines.l12)+line(edi.spectro.finesigmas, _lines.sigma2, _lines.a2, _lines.l22)
+  s0=s0+_lines.back
+  s0 =s0*edi.spectro.finebinwidths
+  s0=s0*edi.aperture*edi.etime*edi.eff
+  return s0[edi.spectro.subres::edi.spectro.subres]
+
 class Lines(object):
   hc=6.626e-27*3e8
 
   def __init__(self, plate, fiber, line):
-
     if (line == 'OIII'):
       self.lambda1_0=5006.843e-10 
       #self.lambda3_0=4958.911e-10
@@ -343,20 +335,13 @@ class Lines(object):
 #A description of the hardware
 class SHS(object):
   def __init__(self,_lines,n):
-    #self.littrow=(_lines.sigma1+_lines.sigma2)/2-(_lines.sigma1-_lines.sigma2)/2./n
-    self.littrow=(_lines.sigma1+_lines.sigma2)/2
+    self.spectro = Spectrograph(_lines)
+    self.littrow=(_lines.sigma1+_lines.sigma2)/2-(_lines.sigma1-_lines.sigma2)/2./n
     self.moverd=1.*(1200*1e3)
-    #self.moverd=1.*(2000*1e3)
     self.theta = numpy.arcsin(self.moverd/2/self.littrow)
-   #self.tau = 1./(_lines.sigma2-_lines.sigma1)
+    #self.tau = 1./(_lines.sigma2-_lines.sigma1)
     self.tau=0
     self.phase = 0
-
-    self.r=20000
-    self.edge=0.001
-    nmax=numpy.log(_lines.sigma2*(1.+self.edge)/_lines.sigma1/(1-self.edge))*self.r
-    self.sigmas=(_lines.sigma1*(1-self.edge))*numpy.exp(numpy.arange(0,nmax)/self.r)
-    self.binwidths = self.sigmas/self.r
 
     # the ranges is defined by the width of the line
     fdecay =12*numpy.sqrt(_lines.l12)*numpy.tan(self.theta)
@@ -378,9 +363,8 @@ class SHS(object):
     self.xs=numpy.arange(0*xrange,1*xrange,self.deltax)
 
 class EDI(object):
-  def __init__(self,_lines,taufactor,dz):
-    self.r=20000
-    self.edge=0.0005
+  def __init__(self,_lines):
+    self.spectro = Spectrograph(_lines)
     #mnsigma=(1/_lines.lambda1_0+1/_lines.lambda2_0)/2
     #dsigma=mnsigma*(1/(1+_lines.z)-1/(1+_lines.z+dz))    
     self.tau=1/(2.36*numpy.sqrt(_lines.l12)*2)
@@ -388,34 +372,86 @@ class EDI(object):
     self.aperture=numpy.pi*(10e2/2)**2 
     self.etime=3600.*8
 
-    nmax=numpy.log(_lines.sigma2*(1.+self.edge)/_lines.sigma1/(1-self.edge))*self.r
-    self.subres=100
-    #self.nus=(_lines.sigma1)*(1-self.edge)*numpy.exp(numpy.arange(0,nmax)/self.r)
-    self.finenus=(_lines.sigma1)*(1-self.edge)*numpy.exp(numpy.arange(0,nmax,1./self.subres)/self.r)
-    self.nus=self.finenus[self.subres::self.subres]
     self.eff=.7
 
-def edicounts(_lines,edi):
-  tau=edi.tau
-  
-  s0=line(edi.finenus, _lines.sigma1, _lines.a1, _lines.l12)+line(edi.finenus, _lines.sigma2, _lines.a2, _lines.l22)
-  s0=s0+_lines.back*edi.finenus/edi.r/edi.subres
-  s0=s0*edi.aperture*edi.etime*edi.eff
-  sw=[]
-  plab=['0','$\pi/2$','$\pi$','$3\pi/2$']
-  ind=0
-  for phi in numpy.arange(0,2*numpy.pi-0.001,numpy.pi/2):
-    fineans=.25*s0*(1+numpy.cos(2*numpy.pi*tau*edi.finenus+phi))
-    kernel=numpy.zeros(edi.subres)+1
-    fineans=numpy.convolve(fineans,kernel)
-    ans=fineans[edi.subres::edi.subres]
-    sw.append(ans)
-    #    plt.plot(nus,sw[-1],label=plab[ind])
-    #plt.xlim([_lines.sigma2*(1.-edge),_lines.sigma2*(1.+edge)])
-    ind=ind+1
-    #plt.legend()
+class Spectrograph(object):
+  def __init__(self,_lines):
+    self.r=40000
+    self.edge=0.001
+    self.subres=10
+    nmax=numpy.log(_lines.sigma2*(1.+self.edge)/_lines.sigma1/(1-self.edge))*self.r
+    self.finesigmas=(_lines.sigma1)*(1-self.edge)*numpy.exp(numpy.arange(0,nmax,1./self.subres)/self.r)
+    self.sigmas=self.finesigmas[self.subres::self.subres]
+    self.finebinwidths = self.finesigmas/self.r/self.subres
+    self.binwidths = self.sigmas/self.r
+
+def fisher(lines, inst, _counts, epsilon):
+  lines2=copy.copy(lines)
+  lines2.setz(lines2.z+epsilon)
+  f1=_counts(lines,inst)
+  f2=_counts(lines2,inst)
+  deltas=(f2-f1)/epsilon
+  return numpy.sum(deltas*deltas/f1)
+
+#def ed_fisher(_lines):
+#  for nratio in numpy.arange(1.5,9,10):
+#    shs=SHS(_lines,nratio)
+#    _lines2=copy.copy(_lines)
+#    _lines2.setz(_lines2.z+1e-9)
+#    c1=edshs_counts(_lines,shs)
+#    c2=edshs_counts(_lines2,shs)
+    #plt.plot(c1)
     #plt.show()
-  return sw,s0[edi.subres::edi.subres]
+    #    partials_ = (c2-c1)/1e-9    
+    #    fisher=numpy.sum(partials_*partials_/c1) * 2 #the extra 2 for the -x values
+    #  return fisher
+
+    #def oneratiopartials(_lines,nratio):
+    #_lines2=copy.copy(_lines)
+    #_lines2.setz(_lines2.z+1e-9)
+    #shs=SHS(_lines,nratio)
+  #print shs.theta, sigmasinegamma_exact(_lines.sigma1,shs), sigmasinegamma_exact(_lines.sigma2,shs)
+  #sig=counts(_lines, shs)
+  #sig2=counts(_lines2, shs)
+  #partials=(sig2-sig)/1e-9
+  #return partials,sig
+
+  #def fisherandplot(_lines):
+  #allpartials=None
+  #allsignals=None
+  #  plt.clf()
+  #for nratio in numpy.arange(.1,.5,1):
+  #for nratio in numpy.arange(1.5,9,10):
+  # shs=SHS(_lines,nratio)
+  # partials_ = oneratiopartials(_lines,nratio)
+  # if allpartials is None:
+  #   allpartials = partials_[0]
+  #   allsignals=partials_[1]
+  # else:
+  #   allpartials=numpy.append(allpartials,partials_[0])
+  #   allsignals=numpy.append(allsignals,partials_[1])
+  #   #    plt.plot(shs.xs*100,partials_[0],label='n='+str(nratio))
+      #plt.legend()
+      #plt.xlabel('x (cm)')
+      #plt.ylabel('d(counts)/dz')
+      #plt.savefig('dsigdz.eps')
+      #fisher=numpy.sum(allpartials*allpartials/allsignals) * 2 #the extra 2 for the -x values
+      #return fisher
+
+lines=Lines(1523,602,'OIII')
+shs=SHS(lines,1.5)
+edi=EDI(lines)
+fish=fisher(lines, edi, edi_counts,1e-9)
+print 1./numpy.sqrt(fish)
+fish=fisher(lines, edi, spec_counts,1e-9)
+print 1./numpy.sqrt(fish)
+#fish=fisher(lines, shs, edshs_counts,1e-9)*2
+#print 1./numpy.sqrt(fish)
+#fish=fisher(lines, shs, shs_counts,1e-9)*2
+#print 1./numpy.sqrt(fish)
+#fish=fisherandplot(lines)
+#o2=1/numpy.sqrt(fish)
+#print o2
 
 def edifisher(lines, zshift,taufactor):
   epsilon=zshift
@@ -540,15 +576,6 @@ def table_shsedi():
   shsedioneoutput(1059,564,'OII')
   #table_shsedi()
 
-def oneratiopartials(_lines,nratio):
-  _lines2=copy.copy(_lines)
-  _lines2.setz(_lines2.z+1e-9)
-  shs=SHS(_lines,nratio)
-  #print shs.theta, sigmasinegamma_exact(_lines.sigma1,shs), sigmasinegamma_exact(_lines.sigma2,shs)
-  sig=counts(_lines, shs)
-  sig2=counts(_lines2, shs)
-  partials=(sig2-sig)/1e-9
-  return partials,sig
 
 
 def uncertaintyvsnratio(_lines):
@@ -569,27 +596,6 @@ def uncertaintyvsnratio(_lines):
   plt.savefig('uncertaintyvsnratio.eps')
 
 
-def fisherandplot(_lines):
-  allpartials=None
-  allsignals=None
-  #  plt.clf()
-  #for nratio in numpy.arange(.1,.5,1):
-  for nratio in numpy.arange(1.5,9,10):
-    shs=SHS(_lines,nratio)
-    partials_ = oneratiopartials(_lines,nratio)
-    if allpartials is None:
-      allpartials = partials_[0]
-      allsignals=partials_[1]
-    else:
-      allpartials=numpy.append(allpartials,partials_[0])
-      allsignals=numpy.append(allsignals,partials_[1])
-      #    plt.plot(shs.xs*100,partials_[0],label='n='+str(nratio))
-      #plt.legend()
-      #plt.xlabel('x (cm)')
-      #plt.ylabel('d(counts)/dz')
-      #plt.savefig('dsigdz.eps')
-  fisher=numpy.sum(allpartials*allpartials/allsignals) * 2 #the extra 2 for the -x values
-  return fisher
 
 def twoline(plate, fiber):
   lines=Lines(plate,fiber,'OII')
@@ -659,20 +665,8 @@ def table():
   print '${:5.1e}}}$ &'.format(o2),'& &','${:5.1e}}}$ \\\\'.format(o2)
 
                     #twoline(1349,175) not happy
-#table()
+table()
 
-def ed_fisher(_lines):
-  for nratio in numpy.arange(1.5,9,10):
-    shs=SHS(_lines,nratio)
-    _lines2=copy.copy(_lines)
-    _lines2.setz(_lines2.z+1e-9)
-    c1=ed_counts(_lines,shs)
-    c2=ed_counts(_lines2,shs)
-    #plt.plot(c1)
-    #plt.show()
-    partials_ = (c2-c1)/1e-9    
-    fisher=numpy.sum(partials_*partials_/c1) * 2 #the extra 2 for the -x values
-  return fisher
 
 def ed_table():
   lines=Lines(1523,602,'OIII')
@@ -713,10 +707,9 @@ def ed_table():
   print 1059, '&', 564,'&', 
   print '${:5.1e}}}$ &'.format(o2),'& &','${:5.1e}}}$ \\\\'.format(o2)
 
+table_edi()
+sd
 ed_table()
-sh
-lines=Lines(1268,318,'OII')
-print 1/numpy.sqrt(ed_fisher(lines))
 shit
 
 def plotvelocity():
@@ -805,41 +798,36 @@ def plotflux():
 fisher=fisherandplot(lines)
 print 1/numpy.sqrt(fisher)
 
-#def gamma_exact(_sigma0,_shs):
-#  ans=_shs.moverd/_sigma0
-#  ans=ans-numpy.sin(_shs.theta)
-  #  if numpy.abs(ans) > 1:
-  #    raise Exception()
-  #  ans=numpy.arcsin(ans)  
-  #  return _shs.theta-ans
 
-  #def sigmasinegamma_exact(_sigma0,_shs):
-  #  try:
-  #  ans = _sigma0*numpy.sin(gamma_exact(_sigma0,_shs))
-    #  except:
-    #  raise Exception()
-    #  return ans
+def plotspectrum(_lines):
+  sigmas=numpy.arange(_lines.sigma1-5*numpy.sqrt(_lines.l12),_lines.sigma2+5*numpy.sqrt(_lines.l22),1)
+  shit=[]
+  for sig in sigmas:
+    shit.append(line(sig,_lines.sigma1,_lines.a1,_lines.l12)+line(sig,_lines.sigma2,_lines.a2,_lines.l22))
+  shit=numpy.array(shit)
+  plt.clf()
+  plt.plot(sigmas/100,shit)
+  plt.xlabel('wavenumber (cm$^{-1}$)')
+  plt.ylabel('Flux')
+  plt.savefig('shsinput.eps')
+  #  plt.show()
 
-#def gamma(_sigma0,_shs):
-#  return numpy.arcsin(2*(_sigma0-_shs.littrow)/_sigma0*numpy.tan(_shs.theta))
-
-#def sigmasinegamma(_sigma0,_shs):
-#  return 2*(_sigma0-_shs.littrow)*numpy.tan(_shs.theta)
-
-#def signal(_lines, _shs):
-#  sig = []
-#  for x in _shs.xs:
-#    sig.append(intensity(x, _lines, _shs))
-#  sig=numpy.array(sig)
-#  return sig
-#def plotsignals(_lines):
-#  plt.clf()
-#  for nratio in numpy.arange(1.5,5,10):
-#    shs=SHS(_lines,nratio)
-#    s1=signal(lines,shs)
-#    plt.plot(shs.xs*100,s1,label='n='+str(nratio))
-#    plt.xlabel('x (cm)')
-#    plt.ylabel('signal')
-#  plt.legend()
-#  plt.savefig('shssignal.eps')
-
+def plotcounts(_lines):
+  plt.clf()
+  nratios=[1/3.5,1/1.05,1,1.05,3.5]
+  nratiostxt=["1/3.5","1/1.05","1","1.05","3.5"]
+  #  for nratio in numpy.arange(1.2,12,20):
+  ind=0
+  for nratio in nratios:
+    shs=SHS(_lines,nratio)
+    print 2*(_lines.sigma1+_lines.sigma2-2*shs.littrow)*numpy.tan(shs.theta), 2*(_lines.sigma1-_lines.sigma2)*numpy.tan(shs.theta)
+    s1=counts(lines,shs)
+    s1=s1
+    plt.plot(shs.xs/numpy.max(shs.xs),s1+ind*numpy.max(s1)*1.04,label='n='+nratiostxt[ind])
+    plt.xlabel('x')
+    plt.ylabel('counts per resolution element + offset')
+    ind=ind+1
+  plt.legend()
+  plt.legend(prop={'size':10})
+  plt.savefig('shscounts.pdf')
+  
