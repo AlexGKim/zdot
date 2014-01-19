@@ -57,7 +57,7 @@ def intensity(_x, _lines, _shs):
     ans=ans+sky
 
   #normalization for dx
-  return ans / (2*_shs.xs[-1])
+  return ans / (1*_shs.xs[-1])
 
 def shs_counts(_lines,_shs):
   sig = []
@@ -65,6 +65,18 @@ def shs_counts(_lines,_shs):
     sig.append(intensity(x, _lines, _shs))
   sig=numpy.array(sig)*_shs.deltax*_shs.aperture*_shs.etime*_shs.eff
   return sig
+
+def shsphase_counts(_lines,_shs):
+  shs=copy.copy(_shs)
+  shs.etime=shs.etime/4
+  ans=numpy.zeros((4,len(_shs.xs)))
+  phases=[1,1.25,1.5,1.75]
+  i=0
+  for phase in phases:
+    shs.phase=phase
+    ans[i]=shs_counts(_lines,shs)
+    i=i+1
+  return ans
 
 def edshs_counts(_lines, _shs):
   ans=numpy.zeros((len(_shs.xs),len(_shs.spectro.sigmas)))
@@ -78,7 +90,7 @@ def edshs_counts(_lines, _shs):
     an=an*_shs.spectro.finebinwidths
     an=numpy.convolve(an,kernel,mode='same')
     ans[i]=an[_shs.spectro.subres::_shs.spectro.subres]
-  ans=ans*_shs.deltax*_shs.aperture*_shs.etime*_shs.eff/ (2*_shs.xs[-1])
+  ans=ans*_shs.deltax*_shs.aperture*_shs.etime*_shs.eff/ (1*_shs.xs[-1])
   return ans
 
 def edi_counts(_lines,edi):
@@ -376,7 +388,7 @@ class EDI(object):
 
 class Spectrograph(object):
   def __init__(self,_lines):
-    self.r=40000
+    self.r=20000
     self.edge=0.001
     self.subres=10
     nmax=numpy.log(_lines.sigma2*(1.+self.edge)/_lines.sigma1/(1-self.edge))*self.r
@@ -393,129 +405,29 @@ def fisher(lines, inst, _counts, epsilon):
   deltas=(f2-f1)/epsilon
   return numpy.sum(deltas*deltas/f1)
 
-#def ed_fisher(_lines):
-#  for nratio in numpy.arange(1.5,9,10):
-#    shs=SHS(_lines,nratio)
-#    _lines2=copy.copy(_lines)
-#    _lines2.setz(_lines2.z+1e-9)
-#    c1=edshs_counts(_lines,shs)
-#    c2=edshs_counts(_lines2,shs)
-    #plt.plot(c1)
-    #plt.show()
-    #    partials_ = (c2-c1)/1e-9    
-    #    fisher=numpy.sum(partials_*partials_/c1) * 2 #the extra 2 for the -x values
-    #  return fisher
-
-    #def oneratiopartials(_lines,nratio):
-    #_lines2=copy.copy(_lines)
-    #_lines2.setz(_lines2.z+1e-9)
-    #shs=SHS(_lines,nratio)
-  #print shs.theta, sigmasinegamma_exact(_lines.sigma1,shs), sigmasinegamma_exact(_lines.sigma2,shs)
-  #sig=counts(_lines, shs)
-  #sig2=counts(_lines2, shs)
-  #partials=(sig2-sig)/1e-9
-  #return partials,sig
-
-  #def fisherandplot(_lines):
-  #allpartials=None
-  #allsignals=None
-  #  plt.clf()
-  #for nratio in numpy.arange(.1,.5,1):
-  #for nratio in numpy.arange(1.5,9,10):
-  # shs=SHS(_lines,nratio)
-  # partials_ = oneratiopartials(_lines,nratio)
-  # if allpartials is None:
-  #   allpartials = partials_[0]
-  #   allsignals=partials_[1]
-  # else:
-  #   allpartials=numpy.append(allpartials,partials_[0])
-  #   allsignals=numpy.append(allsignals,partials_[1])
-  #   #    plt.plot(shs.xs*100,partials_[0],label='n='+str(nratio))
-      #plt.legend()
-      #plt.xlabel('x (cm)')
-      #plt.ylabel('d(counts)/dz')
-      #plt.savefig('dsigdz.eps')
-      #fisher=numpy.sum(allpartials*allpartials/allsignals) * 2 #the extra 2 for the -x values
-      #return fisher
 
 lines=Lines(1523,602,'OIII')
 shs=SHS(lines,1.5)
+shs.tau = 1./(lines.sigma2-lines.sigma1)
+fish=fisher(lines, shs, shsphase_counts,1e-9)
+print 1./numpy.sqrt(fish)
+fish=fisher(lines, shs, shs_counts,1e-9)
+print 1./numpy.sqrt(fish)
+
+print shit
 edi=EDI(lines)
 fish=fisher(lines, edi, edi_counts,1e-9)
 print 1./numpy.sqrt(fish)
 fish=fisher(lines, edi, spec_counts,1e-9)
 print 1./numpy.sqrt(fish)
-#fish=fisher(lines, shs, edshs_counts,1e-9)*2
+#fish=fisher(lines, shs, edshs_counts,1e-9)
 #print 1./numpy.sqrt(fish)
-#fish=fisher(lines, shs, shs_counts,1e-9)*2
+#fish=fisher(lines, shs, shs_counts,1e-9)
 #print 1./numpy.sqrt(fish)
 #fish=fisherandplot(lines)
 #o2=1/numpy.sqrt(fish)
 #print o2
 
-def edifisher(lines, zshift,taufactor):
-  epsilon=zshift
-  lines2=copy.copy(lines)
-  lines2.setz(lines2.z+epsilon)
-  edi=EDI(lines,taufactor,zshift)
-  f1=edicounts(lines,edi)
-  f2=edicounts(lines2,edi)
-  deltas=[]
-  #plt.clf()
-  for i in xrange(4):
-    deltas.append((f2[0][i]-f1[0][i])/epsilon)
-    #plt.plot(f1[2],f1[0][i])
-    #plt.savefig('edi_signal.pdf')
-  fisher=0
-  #plt.clf()
-  for i in xrange(4):
-    fisher=fisher + numpy.sum(deltas[i]*deltas[i]/f1[0][i])
-    #plt.plot(f2[2],deltas[i])
-    #plt.savefig('edi_delta.pdf')
-  f10=f1[1]
-  f20=f2[1]
-
-  deltas0=(f20-f10)/epsilon
-  fisher0= numpy.sum(deltas0*deltas0/f10)
-  
-  return numpy.sqrt(1/fisher), numpy.sqrt(1/fisher0), 1/numpy.sqrt(fisher-fisher0)
-
-def shsedifisher(lines, zshift):
-  epsilon=zshift
-  lines2=copy.copy(lines)
-  lines2.setz(lines2.z+epsilon)
-  f1=[]
-  f2=[]
-  shs=SHS(lines,1.5)
-  shs.tau=0
-  f10=counts(lines,shs)
-  f20=counts(lines2,shs)
-  for phase in numpy.arange(0,1,.25):
-    shs=SHS(lines,1.5)
-    shs.phase=phase
-    f1.append(.25*counts(lines,shs))
-    #plt.plot(f1[-1])
-    f2.append(.25*counts(lines2,shs))
-    #plt.show()
-  deltas=[]
-  #plt.clf()
-  for i in xrange(4):
-    deltas.append((f2[i]-f1[i])/epsilon)
-    #plt.plot(f1[2],f1[0][i])
-    #plt.savefig('edi_signal.pdf')
-  fisher=0
-  #plt.clf()
-  for i in xrange(4):
-    fisher=fisher + numpy.sum(deltas[i]*deltas[i]/f1[i])
-    #plt.plot(f2[2],deltas[i])
-    #plt.savefig('edi_delta.pdf')
-  fisher=fisher*2 #double range
-
-
-  deltas0=(f20-f10)/epsilon
-  fisher0= numpy.sum(deltas0*deltas0/f10)*2
-  
-  return numpy.sqrt(1/fisher), numpy.sqrt(1/fisher0), 1/numpy.sqrt(fisher-fisher0)
 
 def editwooutput(plate,line):
   a3= edifisher(Lines(plate,line,'OIII'),1e-10,3.)
