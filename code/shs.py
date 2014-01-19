@@ -343,12 +343,12 @@ class Lines(object):
 #A description of the hardware
 class SHS(object):
   def __init__(self,_lines,n):
-    self.littrow=(_lines.sigma1+_lines.sigma2)/2-(_lines.sigma1-_lines.sigma2)/2./n
+    #self.littrow=(_lines.sigma1+_lines.sigma2)/2-(_lines.sigma1-_lines.sigma2)/2./n
     self.littrow=(_lines.sigma1+_lines.sigma2)/2
     self.moverd=1.*(1200*1e3)
     #self.moverd=1.*(2000*1e3)
     self.theta = numpy.arcsin(self.moverd/2/self.littrow)
-    #self.tau = 1./(_lines.sigma2-_lines.sigma1)
+   #self.tau = 1./(_lines.sigma2-_lines.sigma1)
     self.tau=0
     self.phase = 0
 
@@ -602,6 +602,17 @@ def twoline(plate, fiber):
   print '${:5.1e}}}$ &'.format(o3),
   print '${:5.1e}}}$ '.format(1./numpy.sqrt(1/o2**2+1/o3**2)), '\\\\'
 
+def ed_twoline(plate, fiber):
+  lines=Lines(plate,fiber,'OII')
+  fisher=ed_fisher(lines)
+  o2=1/numpy.sqrt(fisher)
+  print '${:5.1e}}}$ &'.format(o2),
+  lines=Lines(plate,fiber,'OIII')
+  fisher=ed_fisher(lines)
+  o3=1/numpy.sqrt(fisher)
+  print '${:5.1e}}}$ &'.format(o3),
+  print '${:5.1e}}}$ '.format(1./numpy.sqrt(1/o2**2+1/o3**2)), '\\\\'
+
 def table():
   lines=Lines(1523,602,'OIII')
   fisher=fisherandplot(lines)
@@ -663,6 +674,47 @@ def ed_fisher(_lines):
     fisher=numpy.sum(partials_*partials_/c1) * 2 #the extra 2 for the -x values
   return fisher
 
+def ed_table():
+  lines=Lines(1523,602,'OIII')
+  fisher=ed_fisher(lines)
+  o2=1/numpy.sqrt(fisher)
+  print 1523, '&', 602,'&','&',
+  print '${:5.1e}}}$ '.format(o2),'&','${:5.1e}}}$ \\\\'.format(o2)
+
+  print 1935, '&', 204,'&',
+  ed_twoline(1935,204) #53387
+
+  lines=Lines(1036,584,'OIII')
+  fisher=ed_fisher(lines)
+  o2=1/numpy.sqrt(fisher)
+  print 1036, '&', 584,'&','&',
+  print '${:5.1e}}}$ '.format(o2),'&','${:5.1e}}}$ \\\\'.format(o2)
+
+  lines=Lines(2959,354,'OIII')
+  fisher=ed_fisher(lines)
+  o2=1/numpy.sqrt(fisher)
+  print 2959, '&', 354,'&','&',
+  print '${:5.1e}}}$ '.format(o2),'&','${:5.1e}}}$ \\\\'.format(o2)
+
+  print 1268, '&', 318, '&', 
+  ed_twoline(1268,318) #52933
+  print 1657, '&', 483, '&', 
+  ed_twoline(1657,483) #53520
+
+  print 1073, '&', 225,  '&',
+  ed_twoline(1073,225) #55647     
+  print 1514, '&', 137, '&', 
+  ed_twoline(1514,137) #52931
+  print 4794, '&', 757,  '&',
+  ed_twoline(4794,757) #55647     
+  lines=Lines(1059,564,'OII')
+  fisher=ed_fisher(lines)
+  o2=1/numpy.sqrt(fisher)
+  print 1059, '&', 564,'&', 
+  print '${:5.1e}}}$ &'.format(o2),'& &','${:5.1e}}}$ \\\\'.format(o2)
+
+ed_table()
+sh
 lines=Lines(1268,318,'OII')
 print 1/numpy.sqrt(ed_fisher(lines))
 shit
