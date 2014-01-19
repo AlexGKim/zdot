@@ -21,7 +21,7 @@ def sigmasinegamma_exact(_sigma0,_shs):
   costheta=numpy.cos(_shs.theta)
   factor=_shs.moverd/_sigma0-sintheta
 
-  if factor > 1:
+  if numpy.sum(factor > 1) != 0:
     raise Exception()
   
   singamma= -factor*costheta+sintheta*numpy.sqrt(1-factor**2)
@@ -32,7 +32,7 @@ def line(_sigma, _sigma0, _a0, _l02):
   return _a0/numpy.sqrt(2*numpy.pi*_l02)*numpy.exp(-(_sigma-_sigma0)**2/2/_l02)
 
 def integrand(_sigma, _x, _sigma1, _a1, _l12, _shs):
-  ans=line(_sigma,_sigma1,_a1,_l12)* numpy.cos(2*numpy.pi*_x*2*sigmasinegamma_exact(_sigma,_shs))
+  ans=line(_sigma,_sigma1,_a1,_l12)* numpy.cos(2*numpy.pi*(_x*2*sigmasinegamma_exact(_sigma,_shs)+_shs.tau*_sigma*(1+_shs.phase)))
   return ans
 
 def intensity(_x, _lines, _shs):
@@ -58,6 +58,21 @@ def intensity(_x, _lines, _shs):
 
   #normalization for dx
   return ans / (2*_shs.xs[-1])
+
+def ed_counts(_lines, _shs):
+  ans=numpy.zeros((len(_shs.xs),len(_shs.sigmas)))
+  for i in xrange(len(_shs.xs)):
+    ans[i]=line(_shs.sigmas,_lines.sigma1,_lines.a1,_lines.l12)
+    ans[i]=ans[i]+line(_shs.sigmas,_lines.sigma2,_lines.a2,_lines.l22)
+    ans[i]=ans[i]+integrand(_shs.sigmas,_shs.xs[i],_lines.sigma1,_lines.a1,_lines.l12,_shs)
+    ans[i]=ans[i]+integrand(_shs.sigmas,_shs.xs[i],_lines.sigma2,_lines.a2,_lines.l22,_shs)
+    ans[i]=ans[i]+ _lines.back
+    ans[i]=ans[i]*_shs.binwidths
+  ans=ans*_shs.deltax*_shs.aperture*_shs.etime*_shs.eff
+  #  plt.imshow(numpy.log(ans),aspect='equal')
+  #plt.show()
+  return ans
+  
 
 def counts(_lines,_shs):
   sig = []
@@ -329,9 +344,19 @@ class Lines(object):
 class SHS(object):
   def __init__(self,_lines,n):
     self.littrow=(_lines.sigma1+_lines.sigma2)/2-(_lines.sigma1-_lines.sigma2)/2./n
+    #self.littrow=_lines.sigma1
     self.moverd=1.*(1200*1e3)
     #self.moverd=1.*(2000*1e3)
     self.theta = numpy.arcsin(self.moverd/2/self.littrow)
+    #self.tau = 1./(_lines.sigma2-_lines.sigma1)
+    self.tau=0
+    self.phase = 0
+
+    self.r=20000
+    self.edge=0.001
+    nmax=numpy.log(_lines.sigma2*(1.+self.edge)/_lines.sigma1/(1-self.edge))*self.r
+    self.sigmas=(_lines.sigma1*(1-self.edge))*numpy.exp(numpy.arange(0,nmax)/self.r)
+    self.binwidths = self.sigmas/self.r
 
     # the ranges is defined by the width of the line
     fdecay =12*numpy.sqrt(_lines.l12)*numpy.tan(self.theta)
@@ -355,10 +380,11 @@ class SHS(object):
 class EDI(object):
   def __init__(self,_lines,taufactor,dz):
     self.r=20000
-    self.edge=0.001
-    mnsigma=(1/_lines.lambda1_0+1/_lines.lambda2_0)/2
-    dsigma=mnsigma*(1/(1+_lines.z)-1/(1+_lines.z+dz))
-    self.tau=1/dsigma/taufactor
+    self.edge=0.0005
+    #mnsigma=(1/_lines.lambda1_0+1/_lines.lambda2_0)/2
+    #dsigma=mnsigma*(1/(1+_lines.z)-1/(1+_lines.z+dz))    
+    self.tau=1/(2.36*numpy.sqrt(_lines.l12)*2)
+    
     self.aperture=numpy.pi*(10e2/2)**2 
     self.etime=3600.*8
 
@@ -418,10 +444,47 @@ def edifisher(lines, zshift,taufactor):
   
   return numpy.sqrt(1/fisher), numpy.sqrt(1/fisher0), 1/numpy.sqrt(fisher-fisher0)
 
+def shsedifisher(lines, zshift):
+  epsilon=zshift
+  lines2=copy.copy(lines)
+  lines2.setz(lines2.z+epsilon)
+  f1=[]
+  f2=[]
+  shs=SHS(lines,1.5)
+  shs.tau=0
+  f10=counts(lines,shs)
+  f20=counts(lines2,shs)
+  for phase in numpy.arange(0,1,.25):
+    shs=SHS(lines,1.5)
+    shs.phase=phase
+    f1.append(.25*counts(lines,shs))
+    #plt.plot(f1[-1])
+    f2.append(.25*counts(lines2,shs))
+    #plt.show()
+  deltas=[]
+  #plt.clf()
+  for i in xrange(4):
+    deltas.append((f2[i]-f1[i])/epsilon)
+    #plt.plot(f1[2],f1[0][i])
+    #plt.savefig('edi_signal.pdf')
+  fisher=0
+  #plt.clf()
+  for i in xrange(4):
+    fisher=fisher + numpy.sum(deltas[i]*deltas[i]/f1[i])
+    #plt.plot(f2[2],deltas[i])
+    #plt.savefig('edi_delta.pdf')
+  fisher=fisher*2 #double range
+
+
+  deltas0=(f20-f10)/epsilon
+  fisher0= numpy.sum(deltas0*deltas0/f10)*2
+  
+  return numpy.sqrt(1/fisher), numpy.sqrt(1/fisher0), 1/numpy.sqrt(fisher-fisher0)
+
 def editwooutput(plate,line):
   a3= edifisher(Lines(plate,line,'OIII'),1e-10,3.)
   a2= edifisher(Lines(plate,line,'OII'),1e-10,3.)
-  print "{} &{} &${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$\\\\".format(plate,line,a2[0],a2[1],a2[2],a3[0],a3[1],a3[2],1/numpy.sqrt(1/a2[0]**2+1/a3[0]**2))
+  print "{} &{} &${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ && ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ && ${:5.1e}}}$\\\\".format(plate,line,a2[0],a2[1],a2[2],a3[0],a3[1],a3[2],1/numpy.sqrt(1/a2[0]**2+1/a3[0]**2))
 
 def edioneoutput(plate,line,str):
   if str=='OIII':
@@ -432,7 +495,7 @@ def edioneoutput(plate,line,str):
     a2= edifisher(Lines(plate,line,'OII'),1e-10,3.)
     a3=[0,0,0]
     last=a2[0]
-  print "{} &{} &${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$\\\\".format(plate,line,a2[0],a2[1],a2[2],a3[0],a3[1],a3[2],last)
+  print "{} &{} &${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ && ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ && ${:5.1e}}}$\\\\".format(plate,line,a2[0],a2[1],a2[2],a3[0],a3[1],a3[2],last)
 
 def table_edi():
   edioneoutput(1523,602,'OIII')
@@ -445,8 +508,38 @@ def table_edi():
   editwooutput(1514,137)
   editwooutput(4794,757)
   edioneoutput(1059,564,'OII')
-table_edi()
-shit
+  #table_edi()
+
+
+def shseditwooutput(plate,line):
+  a3= shsedifisher(Lines(plate,line,'OIII'),1e-10)
+  a2= shsedifisher(Lines(plate,line,'OII'),1e-10)
+  print "{} &{} &${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ && ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ && ${:5.1e}}}$\\\\".format(plate,line,a2[0],a2[1],a2[2],a3[0],a3[1],a3[2],1/numpy.sqrt(1/a2[0]**2+1/a3[0]**2))
+
+def shsedioneoutput(plate,line,str):
+  if str=='OIII':
+    a3= shsedifisher(Lines(plate,line,'OIII'),1e-10)
+    a2=[0,0,0]
+    last=a3[0]
+  else:
+    a2= shsedifisher(Lines(plate,line,'OII'),1e-10)
+    a3=[0,0,0]
+    last=a2[0]
+  print "{} &{} &${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ && ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ && ${:5.1e}}}$\\\\".format(plate,line,a2[0],a2[1],a2[2],a3[0],a3[1],a3[2],last)
+
+def table_shsedi():
+  shsedioneoutput(1523,602,'OIII')
+  shseditwooutput(1935,204)
+  shsedioneoutput(1036,584,'OIII')
+  shsedioneoutput(2959,354,'OIII')
+  shseditwooutput(1268,318)
+  shseditwooutput(1657,483)
+  shseditwooutput(1073,225)
+  shseditwooutput(1514,137)
+  shseditwooutput(4794,757)
+  shsedioneoutput(1059,564,'OII')
+  #table_shsedi()
+
 def oneratiopartials(_lines,nratio):
   _lines2=copy.copy(_lines)
   _lines2.setz(_lines2.z+1e-9)
@@ -557,6 +650,23 @@ def table():
                     #twoline(1349,175) not happy
 #table()
 
+def ed_fisher(_lines):
+  for nratio in numpy.arange(1.5,9,10):
+    shs=SHS(_lines,nratio)
+    _lines2=copy.copy(_lines)
+    _lines2.setz(_lines2.z+1e-9)
+    c1=ed_counts(_lines,shs)
+    c2=ed_counts(_lines2,shs)
+    plt.imshow(c2-c1)
+    plt.show()
+    partials_ = (c2-c1)/1e-9    
+    fisher=numpy.sum(partials_*partials_/c1) * 2 #the extra 2 for the -x values
+  return fisher
+
+lines=Lines(1268,318,'OIII')
+print 1/numpy.sqrt(ed_fisher(lines))
+shit
+
 def plotvelocity():
   plate=1268
   fiber=318
@@ -615,7 +725,6 @@ def plotflux():
   plt.savefig('fdependence.pdf')
 
 #plotflux()
-print shit
 
 #lines=Lines(1349,175,'OIII')
 #lines=Lines(1349,175,'OII')
