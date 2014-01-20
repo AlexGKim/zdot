@@ -136,7 +136,7 @@ class Lines(object):
         self.a2_0=551.777e-17
         self.a3_0=453.1056e-17
         self.gal=6.65e-17 
-      if (plate == 1349 and fiber == 175):
+      elif (plate == 1349 and fiber == 175):
         self.z=0.124904
         self.deltav=10.0346/3e5
         self.a1_0=3341.699e-17
@@ -167,64 +167,66 @@ class Lines(object):
         self.a1_0=1240.638e-17
         self.a2_0=434.2233e-17
         self.gal=10.6E-17 
-      if (plate == 1268 and fiber == 318):
+      elif (plate == 1268 and fiber == 318):
         self.z=0.1257486
         self.deltav=10.03548/3e5
         self.a1_0=3315.32e-17 #3438.711e-17
         self.a2_0=1094.53e-17 #1203.549e-17
         self.gal=(14.7624+14.3708)/2*1e-17
-      if (plate == 1935	 and fiber == 204):
+      elif (plate == 1935	 and fiber == 204):
         self.z=0.09838755
         self.deltav=10.03865/3e5
         self.a1_0=5934.72e-17 #3547.454e-17
         self.a2_0=1959.3e-17 #1241.609e-17
         self.gal=(19.3408+19.0352)/2*1e-17
-      if (plate == 1657	 and fiber == 483):
+      elif (plate == 1657	 and fiber == 483):
         self.z=0.2213398
         self.deltav=10.30226/3e5
         self.a1_0=1839.82e-17 #1699.26e-17
         self.a2_0=607.401e-17 # 594.7409e-17
         self.gal=(11.0375+10.6736)/2*1e-17
-      if (plate == 4794	 and fiber == 757):
+      elif (plate == 4794	 and fiber == 757):
         self.z=0.5601137
         self.deltav=26.45063/3e5
         self.a1_0=25.0992e-17 #124.1981e-17
         self.a2_0=8.28632e-17 #43.46934e-17
         self.gal=(1.54566+1.47933)/2*1e-17
-      if (plate == 1514	 and fiber == 137):
+      elif (plate == 1514	 and fiber == 137):
         self.z=0.318046
         self.deltav=10.00679/3e5
         self.a1_0=116.704e-17#55.258061e-17
         self.a2_0=38.5289e-17#19.34032e-17
         self.gal=(10.9357+10.4893)/2*1e-17
-      if (plate == 1036 and fiber == 584):
+      elif (plate == 1036 and fiber == 584):
         self.mjd=52562
         self.z=0.1078989
         self.deltav=4.545177/3e5
         self.a1_0=105.064e-17
         self.a2_0=34.6861e-17
         self.gal=(4.7564+4.08471)/2*1e-17
-      if (plate == 1073 and fiber == 225):
+      elif (plate == 1073 and fiber == 225):
         self.mjd=52649
         self.z=0.2716023
         self.deltav=1.428721/3e5
         self.a1_0=113.574e-17
         self.a2_0=37.4957e-17
         self.gal=(3.88981+3.88917)/2*1e-17
-      if (plate == 1523 and fiber == 602):
+      elif (plate == 1523 and fiber == 602):
         self.mjd=52937
         self.z=0.08933221
         self.deltav=5.1353/3e5
         self.a1_0=213.148e-17
         self.a2_0=70.3692e-17
         self.gal=(1.875331+2.05596)/2*1e-17
-      if (plate == 2959 and fiber == 354):
+      elif (plate == 2959 and fiber == 354):
         self.mjd=54537
         self.z=0.1199353
         self.deltav=6.857259/3e5
         self.a1_0=33.6067e-17
         self.a2_0=11.095e-17
         self.gal=(0.165449+0.137032)/2*1e-17
+      else:
+        raise NameError('bad name')
     #[OII] http://arxiv.org/pdf/1310.0615.pdf
     elif (line == 'OII'):
       self.lambda1_0=3729.875e-10
@@ -309,7 +311,9 @@ class Lines(object):
         self.deltav=(84.61399+84.87743)/2/3e5
         self.a1_0=104.709e-17
         self.a2_0=83.7931e-17
-        self.gal=(3.33375+3.39536)/2*1E-17 
+        self.gal=(3.33375+3.39536)/2*1E-17
+      else:
+        raise NameError('bad name')
     seeing = 1.
     self.aperture=numpy.pi*(seeing/2)**2
 
@@ -397,7 +401,8 @@ class Spectrograph(object):
     self.finebinwidths = self.finesigmas/self.r/self.subres
     self.binwidths = self.sigmas/self.r
 
-def fisher(lines, inst, _counts, epsilon):
+def fisher(lines, inst, _counts):
+  epsilon=1e-9
   lines2=copy.copy(lines)
   lines2.setz(lines2.z+epsilon)
   f1=_counts(lines,inst)
@@ -405,9 +410,53 @@ def fisher(lines, inst, _counts, epsilon):
   deltas=(f2-f1)/epsilon
   return numpy.sum(deltas*deltas/f1)
 
+def tableline(plate, fiber, _inst, _counts,args=None):
+  try:
+    lines=Lines(plate,fiber,'OII')
+    z=lines.z
+  except NameError:
+    lines=Lines(plate,fiber,'OIII')
+    z=lines.z
+  print '{} & {} & {:7.3f} &'.format(plate,fiber,z),
+  cum=0
+  try:
+    lines=Lines(plate,fiber,'OII')
+    inst=_inst(lines,args)
+    fish=fisher(lines,inst,_counts)
+    o2=1/numpy.sqrt(fish)
+    cum=1/o2**2
+    print '${:5.1e}}}$ &'.format(o2),
+  except NameError:
+    o2=0.
+    print '\\nodata &',
+  try:
+    lines=Lines(plate,fiber,'OIII')
+    inst=_inst(lines,args)
+    fish=fisher(lines,inst,_counts)
+    o3=1/numpy.sqrt(fish)
+    cum=cum+1/o3**2
+    print '${:5.1e}}}$ &'.format(o3),
+  except NameError:
+    o3=0.
+    print '\\nodata &',
+  print '${:5.1e}}}$ '.format(1./numpy.sqrt(cum)), '\\\\'
 
-lines=Lines(1523,602,'OIII')
-shs=SHS(lines,1.5)
+def table(inst,  _counts, args=None):
+  tableline(1523,602,inst,_counts, args)
+  tableline(1935,204,inst,_counts, args)
+  tableline(1036,584,inst,_counts, args)
+  tableline(2959,354,inst,_counts, args)
+  tableline(1268,318,inst,_counts, args)
+  tableline(1657,483,inst,_counts, args)
+  tableline(1073,225,inst,_counts, args)
+  tableline(1514,137,inst,_counts, args)
+  tableline(4794,757,inst,_counts, args)
+  tableline(1059,564,inst,_counts, args)
+
+table(SHS,edshs_counts,1e8)
+#table(SHS,shsphase_counts,1.5)
+#table(SHS,shs_counts,1.5)
+shit
 shs.tau = 1./(lines.sigma2-lines.sigma1)
 fish=fisher(lines, shs, shsphase_counts,1e-9)
 print 1./numpy.sqrt(fish)
@@ -531,50 +580,6 @@ def ed_twoline(plate, fiber):
   print '${:5.1e}}}$ &'.format(o3),
   print '${:5.1e}}}$ '.format(1./numpy.sqrt(1/o2**2+1/o3**2)), '\\\\'
 
-def table():
-  lines=Lines(1523,602,'OIII')
-  fisher=fisherandplot(lines)
-  o2=1/numpy.sqrt(fisher)
-  print 1523, '&', 602,'&', lines.z,'&','&',
-  print '${:5.1e}}}$ '.format(o2),'&','${:5.1e}}}$ \\\\'.format(o2)
-
-  print 1935, '&', 204,'&', Lines(1935,204,'OII').z,'&',
-  twoline(1935,204) #53387
-
-  lines=Lines(1036,584,'OIII')
-  fisher=fisherandplot(lines)
-  o2=1/numpy.sqrt(fisher)
-  print 1036, '&', 584,'&', lines.z,'&','&',
-  print '${:5.1e}}}$ '.format(o2),'&','${:5.1e}}}$ \\\\'.format(o2)
-
-  lines=Lines(2959,354,'OIII')
-  fisher=fisherandplot(lines)
-  o2=1/numpy.sqrt(fisher)
-  print 2959, '&', 354,'&', lines.z,'&','&',
-  print '${:5.1e}}}$ '.format(o2),'&','${:5.1e}}}$ \\\\'.format(o2)
-
-  print 1268, '&', 318, '&', Lines(1268,318,'OII').z, '&',
-  twoline(1268,318) #52933
-  print 1657, '&', 483, '&', Lines(1657,483,'OII').z, '&',
-  twoline(1657,483) #53520
-
-  lines=Lines(1073,225,'OIII')
-  fisher=fisherandplot(lines)
-  o2=1/numpy.sqrt(fisher)
-  print 1073, '&', 225,'&', lines.z,'&','&',
-  print '${:5.1e}}}$ '.format(o2),'&','${:5.1e}}}$ \\\\'.format(o2)
-
-  print 1073, '&', 225,  '&',Lines(1073,225,'OII').z, '&',
-  twoline(1073,225) #55647     
-  print 1514, '&', 137, '&', Lines(1514,137,'OII').z, '&',
-  twoline(1514,137) #52931
-  print 4794, '&', 757,  '&',Lines(4794,757,'OII').z, '&',
-  twoline(4794,757) #55647     
-  lines=Lines(1059,564,'OII')
-  fisher=fisherandplot(lines)
-  o2=1/numpy.sqrt(fisher)
-  print 1059, '&', 564,'&', lines.z,'&',
-  print '${:5.1e}}}$ &'.format(o2),'& &','${:5.1e}}}$ \\\\'.format(o2)
 
                     #twoline(1349,175) not happy
 table()
