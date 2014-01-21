@@ -350,13 +350,15 @@ class Lines(object):
 
 #A description of the hardware
 class SHS(object):
-  def __init__(self,_lines,n):
+  def __init__(self,_lines,(n,tau)):
     self.spectro = Spectrograph(_lines)
     self.littrow=(_lines.sigma1+_lines.sigma2)/2-(_lines.sigma1-_lines.sigma2)/2./n
     self.moverd=1.*(1200*1e3)
     self.theta = numpy.arcsin(self.moverd/2/self.littrow)
-    #self.tau = 1./(_lines.sigma2-_lines.sigma1)
-    self.tau=0
+    if tau:
+      self.tau = 1./(_lines.sigma2-_lines.sigma1)
+    else:
+      self.tau=0
     self.phase = 0
 
     # the ranges is defined by the width of the line
@@ -379,7 +381,7 @@ class SHS(object):
     self.xs=numpy.arange(0*xrange,1*xrange,self.deltax)
 
 class EDI(object):
-  def __init__(self,_lines):
+  def __init__(self,_lines,dum=None):
     self.spectro = Spectrograph(_lines)
     #mnsigma=(1/_lines.lambda1_0+1/_lines.lambda2_0)/2
     #dsigma=mnsigma*(1/(1+_lines.z)-1/(1+_lines.z+dz))    
@@ -392,7 +394,7 @@ class EDI(object):
 
 class Spectrograph(object):
   def __init__(self,_lines):
-    self.r=20000
+    self.r=40000
     self.edge=0.001
     self.subres=10
     nmax=numpy.log(_lines.sigma2*(1.+self.edge)/_lines.sigma1/(1-self.edge))*self.r
@@ -410,6 +412,104 @@ def fisher(lines, inst, _counts):
   deltas=(f2-f1)/epsilon
   return numpy.sum(deltas*deltas/f1)
 
+def galdata(plate, fiber, _inst, _counts,args=None):
+  out=dict()
+  out['fiber']=fiber
+  try:
+    lines=Lines(plate,fiber,'OII')
+    z=lines.z
+  except NameError:
+    lines=Lines(plate,fiber,'OIII')
+    z=lines.z
+  out['z']=z
+  cum=0
+  try:
+    lines=Lines(plate,fiber,'OII')
+    inst=_inst(lines,args)
+    fish=fisher(lines,inst,_counts)
+    o2=1/numpy.sqrt(fish)
+    out['OII']=o2
+    cum=1/o2**2
+  except NameError:
+    out['OII']='\\nodata'
+  try:
+    lines=Lines(plate,fiber,'OIII')
+    inst=_inst(lines,args)
+    fish=fisher(lines,inst,_counts)
+    o3=1/numpy.sqrt(fish)
+    out['OIII']=o3
+    cum=cum+1/o3**2
+  except NameError:
+    out['OIII']='\\nodata'
+  out['OII&OIII']=1./numpy.sqrt(cum)
+  return out
+
+def gendata():
+  insts=[EDI,EDI,SHS,SHS]
+  counts=[spec_counts,edi_counts,shs_counts,edshs_counts]
+  _args=[False,False,(1.5,False),(1.5,False)]
+
+  gals=[(1523,602),(1935,204),(1036,584),(2959,354),(1268,318),(1657,483),(1073,225),(1514,137),(4794,757),(1059,564)]
+  ans=dict()
+  ind=0
+  for name,inst,_counts,args in zip(names,insts,counts,_args):
+    for plate,fiber in gals:
+      if ind == 0:
+        ans[(plate,fiber)]=dict()
+      ans[(plate,fiber)][name]=galdata(plate,fiber,inst,_counts, args)
+    ind=ind+1
+
+  import pickle
+  file = open('gendata.pkl', 'wb')
+  pickle.dump(ans,file)
+  file.close()
+
+#gendata()
+
+def testtable():
+  names=['Convetional','EDI','SHS','EDSHS']
+  file = open('gendata.pkl', 'rb')
+  import pickle
+  ans=pickle.load(file)
+  file.close()
+  keys=ans.keys()
+  zs=[]
+  for key in keys:
+    zs.append(ans[key][names[0]]['z'])
+  zs=numpy.array(zs)
+  so=numpy.argsort(zs)
+  
+  for i in xrange(len(keys)):
+    key=keys[so[i]]
+    docomb=True
+    an=ans[key]
+    print "{} & {} ".format(key[0], key[1])
+    if an[an.keys()[0]]['OII'] != '\\nodata':
+      print '& OII' ,
+      for nm in names:
+        print '& ${:5.1e}}}$ '.format(an[nm]['OII']),
+      print '\\\\'
+    else:
+      docomb=False
+
+    if an[an.keys()[0]]['OIII'] != '\\nodata':
+      print '& &OIII ',
+      for nm in names:
+        print '& ${:5.1e}}}$ '.format(an[nm]['OIII']),
+      print '\\\\'
+    else:
+      docomb=False
+
+    if docomb:
+      print '& &OII\\&OIII ',
+      for nm in names:
+        print '& ${:5.1e}}}$ '.format(an[nm]['OII&OIII']),
+      print '\\\\'
+    print '\\tableline'
+    
+testtable()
+st
+  
 def tableline(plate, fiber, _inst, _counts,args=None):
   try:
     lines=Lines(plate,fiber,'OII')
@@ -453,11 +553,12 @@ def table(inst,  _counts, args=None):
   tableline(4794,757,inst,_counts, args)
   tableline(1059,564,inst,_counts, args)
 
-table(SHS,edshs_counts,1e8)
-#table(SHS,shsphase_counts,1.5)
-#table(SHS,shs_counts,1.5)
+#table(EDI,edi_counts)
+#table(EDI,spec_counts)
+#table(SHS,edshs_counts,(1e8,False))
+table(SHS,shsphase_counts,(1.5,True))
+#table(SHS,shs_counts,(1.5,False))
 shit
-shs.tau = 1./(lines.sigma2-lines.sigma1)
 fish=fisher(lines, shs, shsphase_counts,1e-9)
 print 1./numpy.sqrt(fish)
 fish=fisher(lines, shs, shs_counts,1e-9)
@@ -478,64 +579,6 @@ print 1./numpy.sqrt(fish)
 #print o2
 
 
-def editwooutput(plate,line):
-  a3= edifisher(Lines(plate,line,'OIII'),1e-10,3.)
-  a2= edifisher(Lines(plate,line,'OII'),1e-10,3.)
-  print "{} &{} &${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ && ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ && ${:5.1e}}}$\\\\".format(plate,line,a2[0],a2[1],a2[2],a3[0],a3[1],a3[2],1/numpy.sqrt(1/a2[0]**2+1/a3[0]**2))
-
-def edioneoutput(plate,line,str):
-  if str=='OIII':
-    a3= edifisher(Lines(plate,line,'OIII'),1e-10,3.)
-    a2=[0,0,0]
-    last=a3[0]
-  else:
-    a2= edifisher(Lines(plate,line,'OII'),1e-10,3.)
-    a3=[0,0,0]
-    last=a2[0]
-  print "{} &{} &${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ && ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ && ${:5.1e}}}$\\\\".format(plate,line,a2[0],a2[1],a2[2],a3[0],a3[1],a3[2],last)
-
-def table_edi():
-  edioneoutput(1523,602,'OIII')
-  editwooutput(1935,204)
-  edioneoutput(1036,584,'OIII')
-  edioneoutput(2959,354,'OIII')
-  editwooutput(1268,318)
-  editwooutput(1657,483)
-  editwooutput(1073,225)
-  editwooutput(1514,137)
-  editwooutput(4794,757)
-  edioneoutput(1059,564,'OII')
-  #table_edi()
-
-
-def shseditwooutput(plate,line):
-  a3= shsedifisher(Lines(plate,line,'OIII'),1e-10)
-  a2= shsedifisher(Lines(plate,line,'OII'),1e-10)
-  print "{} &{} &${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ && ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ && ${:5.1e}}}$\\\\".format(plate,line,a2[0],a2[1],a2[2],a3[0],a3[1],a3[2],1/numpy.sqrt(1/a2[0]**2+1/a3[0]**2))
-
-def shsedioneoutput(plate,line,str):
-  if str=='OIII':
-    a3= shsedifisher(Lines(plate,line,'OIII'),1e-10)
-    a2=[0,0,0]
-    last=a3[0]
-  else:
-    a2= shsedifisher(Lines(plate,line,'OII'),1e-10)
-    a3=[0,0,0]
-    last=a2[0]
-  print "{} &{} &${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ && ${:5.1e}}}$ & ${:5.1e}}}$ & ${:5.1e}}}$ && ${:5.1e}}}$\\\\".format(plate,line,a2[0],a2[1],a2[2],a3[0],a3[1],a3[2],last)
-
-def table_shsedi():
-  shsedioneoutput(1523,602,'OIII')
-  shseditwooutput(1935,204)
-  shsedioneoutput(1036,584,'OIII')
-  shsedioneoutput(2959,354,'OIII')
-  shseditwooutput(1268,318)
-  shseditwooutput(1657,483)
-  shseditwooutput(1073,225)
-  shseditwooutput(1514,137)
-  shseditwooutput(4794,757)
-  shsedioneoutput(1059,564,'OII')
-  #table_shsedi()
 
 
 
@@ -557,77 +600,9 @@ def uncertaintyvsnratio(_lines):
   plt.savefig('uncertaintyvsnratio.eps')
 
 
-
-def twoline(plate, fiber):
-  lines=Lines(plate,fiber,'OII')
-  fisher=fisherandplot(lines)
-  o2=1/numpy.sqrt(fisher)
-  print '${:5.1e}}}$ &'.format(o2),
-  lines=Lines(plate,fiber,'OIII')
-  fisher=fisherandplot(lines)
-  o3=1/numpy.sqrt(fisher)
-  print '${:5.1e}}}$ &'.format(o3),
-  print '${:5.1e}}}$ '.format(1./numpy.sqrt(1/o2**2+1/o3**2)), '\\\\'
-
-def ed_twoline(plate, fiber):
-  lines=Lines(plate,fiber,'OII')
-  fisher=ed_fisher(lines)
-  o2=1/numpy.sqrt(fisher)
-  print '${:5.1e}}}$ &'.format(o2),
-  lines=Lines(plate,fiber,'OIII')
-  fisher=ed_fisher(lines)
-  o3=1/numpy.sqrt(fisher)
-  print '${:5.1e}}}$ &'.format(o3),
-  print '${:5.1e}}}$ '.format(1./numpy.sqrt(1/o2**2+1/o3**2)), '\\\\'
-
-
-                    #twoline(1349,175) not happy
 table()
 
 
-def ed_table():
-  lines=Lines(1523,602,'OIII')
-  fisher=ed_fisher(lines)
-  o2=1/numpy.sqrt(fisher)
-  print 1523, '&', 602,'&','&',
-  print '${:5.1e}}}$ '.format(o2),'&','${:5.1e}}}$ \\\\'.format(o2)
-
-  print 1935, '&', 204,'&',
-  ed_twoline(1935,204) #53387
-
-  lines=Lines(1036,584,'OIII')
-  fisher=ed_fisher(lines)
-  o2=1/numpy.sqrt(fisher)
-  print 1036, '&', 584,'&','&',
-  print '${:5.1e}}}$ '.format(o2),'&','${:5.1e}}}$ \\\\'.format(o2)
-
-  lines=Lines(2959,354,'OIII')
-  fisher=ed_fisher(lines)
-  o2=1/numpy.sqrt(fisher)
-  print 2959, '&', 354,'&','&',
-  print '${:5.1e}}}$ '.format(o2),'&','${:5.1e}}}$ \\\\'.format(o2)
-
-  print 1268, '&', 318, '&', 
-  ed_twoline(1268,318) #52933
-  print 1657, '&', 483, '&', 
-  ed_twoline(1657,483) #53520
-
-  print 1073, '&', 225,  '&',
-  ed_twoline(1073,225) #55647     
-  print 1514, '&', 137, '&', 
-  ed_twoline(1514,137) #52931
-  print 4794, '&', 757,  '&',
-  ed_twoline(4794,757) #55647     
-  lines=Lines(1059,564,'OII')
-  fisher=ed_fisher(lines)
-  o2=1/numpy.sqrt(fisher)
-  print 1059, '&', 564,'&', 
-  print '${:5.1e}}}$ &'.format(o2),'& &','${:5.1e}}}$ \\\\'.format(o2)
-
-table_edi()
-sd
-ed_table()
-shit
 
 def plotvelocity():
   plate=1268
@@ -686,21 +661,6 @@ def plotflux():
   plt.ylabel('$\sigma_z^{[OII]&[OIII]}$')
   plt.savefig('fdependence.pdf')
 
-#plotflux()
-
-#lines=Lines(1349,175,'OIII')
-#lines=Lines(1349,175,'OII')
-#lines=Lines(649,117,'OII')
-#lines=Lines(649,117,'OIII')
-#lines=Lines(585,22,'OIII')
-#lines=Lines(1814,352,'OII') #one with only OII at high redshift
-#lines=Lines(1758,490,'OII') #one at z=0.25
-#lines=Lines(1758,490,'OIII')
-#lines=Lines(1268,318,'OIII')
-#lines=Lines(1268,318,'OII')
-#lines=Lines(1935,204,'OIII')
-#lines=Lines(1935,204,'OII')
-
 #shs=SHS(lines,1.5)
 #print shs.theta, shs.littrow, lines.sigma1,lines.sigma2
 #print shit
@@ -711,10 +671,6 @@ def plotflux():
 #print shit
 #uncertaintyvsnratio(lines)
 #print shit
-
-fisher=fisherandplot(lines)
-print 1/numpy.sqrt(fisher)
-
 
 def plotspectrum(_lines):
   sigmas=numpy.arange(_lines.sigma1-5*numpy.sqrt(_lines.l12),_lines.sigma2+5*numpy.sqrt(_lines.l22),1)
