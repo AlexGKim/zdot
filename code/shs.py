@@ -60,11 +60,15 @@ def intensity(_x, _lines, _shs):
   return ans / (1*_shs.xs[-1])
 
 def shs_counts(_lines,_shs):
+  npix=3
+  ans=numpy.zeros((npix,len(_shs.xs)))
   sig = []
   for x in _shs.xs:
     sig.append(intensity(x, _lines, _shs))
   sig=numpy.array(sig)*_shs.deltax*_shs.aperture*_shs.etime*_shs.eff
-  return sig
+  for np in xrange(npix):
+    ans[np]=sig/npix
+  return ans
 
 def shsphase_counts(_lines,_shs):
   shs=copy.copy(_shs)
@@ -94,30 +98,36 @@ def edshs_counts(_lines, _shs):
   return ans
 
 def edi_counts(_lines,edi):
+  npix=3
   tau=edi.tau
   s0=line(edi.spectro.finesigmas, _lines.sigma1, _lines.a1, _lines.l12)+line(edi.spectro.finesigmas, _lines.sigma2, _lines.a2, _lines.l22)
   s0=s0+_lines.back
   s0 =s0*edi.spectro.finebinwidths
   s0=s0*edi.aperture*edi.etime*edi.eff
   kernel=numpy.zeros(edi.spectro.subres)+1
-  sw=numpy.zeros((4,len(edi.spectro.sigmas)))
+  sw=numpy.zeros((4*npix,len(edi.spectro.sigmas)))
   ind=0
-                 
   for phi in numpy.arange(0,2*numpy.pi-0.001,numpy.pi/2):
     ans=.25*s0*(1+numpy.cos(2*numpy.pi*tau*edi.spectro.finesigmas+phi))
     ans=numpy.convolve(ans,kernel,mode='same')
     ans=ans[edi.spectro.subres::edi.spectro.subres]
-    sw[ind]=ans
+    for np in xrange(npix):
+      sw[ind*npix+np]=ans/npix
     ind=ind+1
   return sw
 
 def spec_counts(_lines,edi):
+  npix=3
+  sw=numpy.zeros((npix,len(edi.spectro.sigmas)))
   tau=edi.tau
   s0=line(edi.spectro.finesigmas, _lines.sigma1, _lines.a1, _lines.l12)+line(edi.spectro.finesigmas, _lines.sigma2, _lines.a2, _lines.l22)
   s0=s0+_lines.back
   s0 =s0*edi.spectro.finebinwidths
   s0=s0*edi.aperture*edi.etime*edi.eff
-  return s0[edi.spectro.subres::edi.spectro.subres]
+  s0=s0[edi.spectro.subres::edi.spectro.subres]
+  for np in xrange(npix):
+    sw[np]=s0/npix
+  return sw
 
 class Lines(object):
   hc=6.626e-27*3e8
@@ -352,6 +362,7 @@ class Lines(object):
 class SHS(object):
   def __init__(self,_lines,(n,tau)):
     self.spectro = Spectrograph(_lines)
+    self.ccd=CCD()
     self.littrow=(_lines.sigma1+_lines.sigma2)/2-(_lines.sigma1-_lines.sigma2)/2./n
     self.moverd=1.*(1200*1e3)
     self.theta = numpy.arcsin(self.moverd/2/self.littrow)
@@ -373,7 +384,7 @@ class SHS(object):
 
     self.aperture=numpy.pi*(10e2/2)**2 
     self.etime=3600.*8
-
+    self.nexp=1
     self.eff=.7
 
   def setXRange(self,xrange):
@@ -383,13 +394,14 @@ class SHS(object):
 class EDI(object):
   def __init__(self,_lines,dum=None):
     self.spectro = Spectrograph(_lines)
+    self.ccd=CCD()
     #mnsigma=(1/_lines.lambda1_0+1/_lines.lambda2_0)/2
     #dsigma=mnsigma*(1/(1+_lines.z)-1/(1+_lines.z+dz))    
     self.tau=1/(2.36*numpy.sqrt(_lines.l12)*2)
     
     self.aperture=numpy.pi*(10e2/2)**2 
     self.etime=3600.*8
-
+    self.nexp=4
     self.eff=.7
 
 class Spectrograph(object):
@@ -403,6 +415,12 @@ class Spectrograph(object):
     self.finebinwidths = self.finesigmas/self.r/self.subres
     self.binwidths = self.sigmas/self.r
 
+class CCD(object):
+  rn=2.
+  dc=1/3600.
+  maxtime=2*3600.
+
+
 def fisher(lines, inst, _counts):
   epsilon=1e-9
   lines2=copy.copy(lines)
@@ -410,9 +428,10 @@ def fisher(lines, inst, _counts):
   f1=_counts(lines,inst)
   f2=_counts(lines2,inst)
   deltas=(f2-f1)/epsilon
-  return numpy.sum(deltas*deltas/f1)
+  noise=f1+inst.nexp*inst.ccd.rn**2+inst.ccd.dc*inst.etime
+  return numpy.sum(deltas*deltas/noise)
 
-def galdata(plate, fiber, _inst, _counts,args=None):
+def galdata(plate, fiber, _inst, _counts,args=None, vfactor=1.):
   out=dict()
   out['fiber']=fiber
   try:
@@ -425,6 +444,8 @@ def galdata(plate, fiber, _inst, _counts,args=None):
   cum=0
   try:
     lines=Lines(plate,fiber,'OII')
+    lines.deltav=vfactor*lines.deltav
+    lines.setz(lines.z)
     inst=_inst(lines,args)
     fish=fisher(lines,inst,_counts)
     o2=1/numpy.sqrt(fish)
@@ -434,6 +455,8 @@ def galdata(plate, fiber, _inst, _counts,args=None):
     out['OII']='\\nodata'
   try:
     lines=Lines(plate,fiber,'OIII')
+    lines.deltav=vfactor*lines.deltav
+    lines.setz(lines.z)
     inst=_inst(lines,args)
     fish=fisher(lines,inst,_counts)
     o3=1/numpy.sqrt(fish)
@@ -445,6 +468,7 @@ def galdata(plate, fiber, _inst, _counts,args=None):
   return out
 
 def gendata():
+  names=['Convetional','EDI','SHS','EDSHS']
   insts=[EDI,EDI,SHS,SHS]
   counts=[spec_counts,edi_counts,shs_counts,edshs_counts]
   _args=[False,False,(1.5,False),(1.5,False)]
@@ -466,7 +490,7 @@ def gendata():
 
 #gendata()
 
-def testtable():
+def table():
   names=['Convetional','EDI','SHS','EDSHS']
   file = open('gendata.pkl', 'rb')
   import pickle
@@ -507,51 +531,54 @@ def testtable():
       print '\\\\'
     print '\\tableline'
     
-testtable()
-st
-  
-def tableline(plate, fiber, _inst, _counts,args=None):
-  try:
-    lines=Lines(plate,fiber,'OII')
-    z=lines.z
-  except NameError:
-    lines=Lines(plate,fiber,'OIII')
-    z=lines.z
-  print '{} & {} & {:7.3f} &'.format(plate,fiber,z),
-  cum=0
-  try:
-    lines=Lines(plate,fiber,'OII')
-    inst=_inst(lines,args)
-    fish=fisher(lines,inst,_counts)
-    o2=1/numpy.sqrt(fish)
-    cum=1/o2**2
-    print '${:5.1e}}}$ &'.format(o2),
-  except NameError:
-    o2=0.
-    print '\\nodata &',
-  try:
-    lines=Lines(plate,fiber,'OIII')
-    inst=_inst(lines,args)
-    fish=fisher(lines,inst,_counts)
-    o3=1/numpy.sqrt(fish)
-    cum=cum+1/o3**2
-    print '${:5.1e}}}$ &'.format(o3),
-  except NameError:
-    o3=0.
-    print '\\nodata &',
-  print '${:5.1e}}}$ '.format(1./numpy.sqrt(cum)), '\\\\'
+#table()
 
-def table(inst,  _counts, args=None):
-  tableline(1523,602,inst,_counts, args)
-  tableline(1935,204,inst,_counts, args)
-  tableline(1036,584,inst,_counts, args)
-  tableline(2959,354,inst,_counts, args)
-  tableline(1268,318,inst,_counts, args)
-  tableline(1657,483,inst,_counts, args)
-  tableline(1073,225,inst,_counts, args)
-  tableline(1514,137,inst,_counts, args)
-  tableline(4794,757,inst,_counts, args)
-  tableline(1059,564,inst,_counts, args)
+def widthplot():
+  factors=numpy.arange(0.5,2,.25)
+  names=['Convetional','EDI','SHS','EDSHS']
+  insts=[EDI,EDI,SHS,SHS]
+  counts=[spec_counts,edi_counts,shs_counts,edshs_counts]
+  _args=[False,False,(1.5,False),(1.5,False)]
+
+  plate,fiber =(1268,318)
+  ind=0
+  for name,inst,_counts,args in zip(names,insts,counts,_args):
+    ans=[]
+    for factor in factors:
+      ans.append(galdata(plate,fiber,inst,_counts, args, vfactor=factor)['OII&OIII'])
+    ans=numpy.array(ans)
+    plt.plot(factors,ans,label=name)
+  plt.legend()
+  plt.show()
+    
+  #widthplot()
+
+def linetable():
+  gals=[(1523,602),(1935,204),(1036,584),(2959,354),(1268,318),(1657,483),(1073,225),(1514,137),(4794,757),(1059,564)]
+  for plate,fiber in gals:
+    print "{} & {} &".format(plate,fiber),
+    try:
+      lines=Lines(plate,fiber,'OII')
+      z=lines.z
+    except NameError:
+      lines=Lines(plate,fiber,'OIII')
+      z=lines.z
+    print "{:6.3f}".format(z),
+    try:
+      lines=Lines(plate,fiber,'OII')
+      print "&[OII] & ${:5.3f}$ &${:5.2e}}}$ &${:5.2e}}}$ &${:5.2e}}}$\\\\".format(lines.deltav*3e5, lines.a2_0, lines.a1_0, lines.gal)
+      print "&&"
+    except NameError:
+      print ""
+    try:
+      lines=Lines(plate,fiber,'OIII')
+      print "&[OIII]& ${:5.2f}$ &${:5.2e}}}$ &${:5.2e}}}$ &${:5.2e}}}$ \\\\ ".format(lines.deltav*3e5, lines.a2_0, lines.a1_0, lines.gal)
+      print "\\tableline"
+    except NameError:
+      print "\\tableline"
+
+linetable()
+st
 
 #table(EDI,edi_counts)
 #table(EDI,spec_counts)
