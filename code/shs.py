@@ -577,59 +577,28 @@ def linetable():
     except NameError:
       print "\\tableline"
 
-linetable()
-st
-
-#table(EDI,edi_counts)
-#table(EDI,spec_counts)
-#table(SHS,edshs_counts,(1e8,False))
-table(SHS,shsphase_counts,(1.5,True))
-#table(SHS,shs_counts,(1.5,False))
-shit
-fish=fisher(lines, shs, shsphase_counts,1e-9)
-print 1./numpy.sqrt(fish)
-fish=fisher(lines, shs, shs_counts,1e-9)
-print 1./numpy.sqrt(fish)
-
-print shit
-edi=EDI(lines)
-fish=fisher(lines, edi, edi_counts,1e-9)
-print 1./numpy.sqrt(fish)
-fish=fisher(lines, edi, spec_counts,1e-9)
-print 1./numpy.sqrt(fish)
-#fish=fisher(lines, shs, edshs_counts,1e-9)
-#print 1./numpy.sqrt(fish)
-#fish=fisher(lines, shs, shs_counts,1e-9)
-#print 1./numpy.sqrt(fish)
-#fish=fisherandplot(lines)
-#o2=1/numpy.sqrt(fish)
-#print o2
-
-
-
-
-
-def uncertaintyvsnratio(_lines):
-  binsize=0.1
-  xax=numpy.append(1/numpy.arange(5,1,-binsize),numpy.arange(1,5.00001,binsize))
-  #xax=10**numpy.arange(-3,1,.25)
-  #xax=numpy.arange(.001,numpy.pi/4,.01)
-  ans=[]
-  for nratio in xax:
-    partials = oneratiopartials(_lines,nratio)
-    ans.append(numpy.sqrt(1/numpy.sum(partials[0]*partials[0]/partials[1])/2))
-  ans=numpy.array(ans)
+def ediplot():
+  plate=1268
+  fiber=318
+  lines=Lines(plate,fiber,'OIII')
+  edi=EDI(lines)
+  ans=edi_counts(lines,edi)
   plt.clf()
-  plt.plot(xax,ans)
-  plt.xlabel('n')
-  plt.ylabel('z uncertainty')
-  #  plt.xscale('log')
-  plt.savefig('uncertaintyvsnratio.eps')
+  plt.plot(edi.spectro.sigmas/100,ans[0],label="$\Delta\phi=0$")
+  plt.plot(edi.spectro.sigmas/100,ans[3],label="$\Delta \phi=\pi/2$")
+  plt.plot(edi.spectro.sigmas/100,ans[7],label="$\Delta \phi=\pi$")
+  plt.plot(edi.spectro.sigmas/100,ans[11],label="$\Delta \phi=3\pi/2$")
+  plt.xlabel('Wavenumber (cm$^{-1}$)')
+  plt.ylabel('Counts per resolution element')
+  plt.xlim((lines.sigma1*.9998/100,lines.sigma1*1.0002/100))
+  plt.ticklabel_format(axis='x', useOffset=False)
+  plt.legend()
+  plt.savefig("/Users/akim/Work/zdot/paper/edi.pdf")
 
+ediplot()
 
-table()
-
-
+#linetable()
+st
 
 def plotvelocity():
   plate=1268
