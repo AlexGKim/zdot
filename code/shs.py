@@ -107,8 +107,8 @@ def edi_counts(_lines,edi):
   kernel=numpy.zeros(edi.spectro.subres)+1
   sw=numpy.zeros((4*npix,len(edi.spectro.sigmas)))
   ind=0
-  for phi in numpy.arange(0,2*numpy.pi-0.001,numpy.pi/2):
-    ans=.25*s0*(1+numpy.cos(2*numpy.pi*tau*edi.spectro.finesigmas+phi))
+  for phi in numpy.arange(1,2,.25):
+    ans=.25*s0*(1+numpy.cos(2*numpy.pi*(tau*phi)*edi.spectro.finesigmas))
     ans=numpy.convolve(ans,kernel,mode='same')
     ans=ans[edi.spectro.subres::edi.spectro.subres]
     for np in xrange(npix):
@@ -488,7 +488,6 @@ def gendata():
   pickle.dump(ans,file)
   file.close()
 
-#gendata()
 
 def table():
   names=['Convetional','EDI','SHS','EDSHS']
@@ -531,7 +530,6 @@ def table():
       print '\\\\'
     print '\\tableline'
     
-#table()
 
 def widthplot():
   factors=numpy.arange(0.5,2,.25)
@@ -582,12 +580,13 @@ def ediplot():
   fiber=318
   lines=Lines(plate,fiber,'OIII')
   edi=EDI(lines)
+  print edi.tau
   ans=edi_counts(lines,edi)
   plt.clf()
-  plt.plot(edi.spectro.sigmas/100,ans[0],label="$\Delta\phi=0$")
-  plt.plot(edi.spectro.sigmas/100,ans[3],label="$\Delta \phi=\pi/2$")
-  plt.plot(edi.spectro.sigmas/100,ans[7],label="$\Delta \phi=\pi$")
-  plt.plot(edi.spectro.sigmas/100,ans[11],label="$\Delta \phi=3\pi/2$")
+  plt.plot(edi.spectro.sigmas/100,ans[0],label="$n=0$")
+  plt.plot(edi.spectro.sigmas/100,ans[3],label="$n=1$")
+  plt.plot(edi.spectro.sigmas/100,ans[7],label="$n=2$")
+  plt.plot(edi.spectro.sigmas/100,ans[11],label="$n=3$")
   plt.xlabel('Wavenumber (cm$^{-1}$)')
   plt.ylabel('Counts per resolution element')
   plt.xlim((lines.sigma1*.9998/100,lines.sigma1*1.0002/100))
@@ -595,10 +594,66 @@ def ediplot():
   plt.legend()
   plt.savefig("/Users/akim/Work/zdot/paper/edi.pdf")
 
-ediplot()
+def edshsplot():
+  plate=1268
+  fiber=318
+  lines=Lines(plate,fiber,'OIII')
+  shs=SHS(lines,(1e4, False))
+  ans=edshs_counts(lines,shs)
+  argmin1=numpy.argmin(numpy.abs(shs.spectro.sigmas-lines.sigma1))
+  argmin2=numpy.argmin(numpy.abs(shs.spectro.sigmas-lines.sigma2))
+  plt.clf()
+  plt.plot(shs.xs,ans[:,argmin1],label="line 1")
+  plt.plot(shs.xs,ans[:,argmin2] + 1.05*numpy.max(ans[:,argmin1]),label="line 2")
+  plt.xlabel('x')
+  plt.ylabel('Counts per resolution element + offset')
+  plt.ticklabel_format(axis='x', useOffset=False)
+  plt.legend()
+  plt.savefig("/Users/akim/Work/zdot/paper/edshs.pdf")
 
+def shsplot():
+  plate=1268
+  fiber=318
+  lines=Lines(plate,fiber,'OIII')
+  plt.clf()
+  nratios=[1/3.5,1/1.05,1,1.05,3.5]
+  nratiostxt=["1/3.5","1/1.05","1","1.05","3.5"]
+  #  for nratio in numpy.arange(1.2,12,20):
+  ind=0
+  for nratio in nratios:
+    shs=SHS(lines,(nratio,False))
+    s1=shs_counts(lines,shs)
+    plt.plot(shs.xs/numpy.max(shs.xs),s1[1,:]/2+ind*numpy.max(s1)/2*1.04,label='n='+nratiostxt[ind])
+    plt.xlabel('x')
+    plt.ylabel('counts per resolution element + offset')
+    ind=ind+1
+  plt.legend()
+  plt.legend(prop={'size':10})
+  plt.savefig('shscounts.pdf')
+  
+shsplot()
+#edshsplot()
+
+def specplot():
+  plate=1268
+  fiber=318
+  lines=Lines(plate,fiber,'OIII')
+  edi=EDI(lines)
+  ans=spec_counts(lines,edi)
+  plt.clf()
+  plt.plot(edi.spectro.sigmas/100,ans[0]*3,)
+  plt.xlabel('Wavenumber (cm$^{-1}$)')
+  plt.ylabel('Counts per resolution element')
+  plt.xlim((lines.sigma1*.9998/100,lines.sigma1*1.0002/100))
+  plt.ticklabel_format(axis='x', useOffset=False)
+  plt.legend()
+  plt.savefig("/Users/akim/Work/zdot/paper/spec.pdf")
+
+  #gendata()
+  #table()
+  #ediplot()
+#specplot()
 #linetable()
-st
 
 def plotvelocity():
   plate=1268
@@ -681,22 +736,3 @@ def plotspectrum(_lines):
   plt.savefig('shsinput.eps')
   #  plt.show()
 
-def plotcounts(_lines):
-  plt.clf()
-  nratios=[1/3.5,1/1.05,1,1.05,3.5]
-  nratiostxt=["1/3.5","1/1.05","1","1.05","3.5"]
-  #  for nratio in numpy.arange(1.2,12,20):
-  ind=0
-  for nratio in nratios:
-    shs=SHS(_lines,nratio)
-    print 2*(_lines.sigma1+_lines.sigma2-2*shs.littrow)*numpy.tan(shs.theta), 2*(_lines.sigma1-_lines.sigma2)*numpy.tan(shs.theta)
-    s1=counts(lines,shs)
-    s1=s1
-    plt.plot(shs.xs/numpy.max(shs.xs),s1+ind*numpy.max(s1)*1.04,label='n='+nratiostxt[ind])
-    plt.xlabel('x')
-    plt.ylabel('counts per resolution element + offset')
-    ind=ind+1
-  plt.legend()
-  plt.legend(prop={'size':10})
-  plt.savefig('shscounts.pdf')
-  

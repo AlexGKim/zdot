@@ -2,6 +2,7 @@
 \usepackage{amsmath}
 \usepackage{verbatim}
 \usepackage{graphicx}
+\usepackage{color}
 \newcommand{\lnnu}{\ln{\sigma}} 
 \usepackage[OT2,T1]{fontenc}
 \usepackage{url}
@@ -20,7 +21,8 @@ from the radio absorption line in 3C~286 at $z=0.849$
 \section{[OII] and [OIII] Emission Line Galaxies as Targets}
 Emission line galaxies are excellent candidates for the measurement of precision redshifts.
 The unique signature
-of doublets amidst  other emission lines allows unambiguous identification of [OII] and [OIII] lines.
+of doublets amidst  other emission lines allows unambiguous identification of the [OII] $\lambda\lambda$3727--3729\AA\ 
+and [OIII]$\lambda\lambda$4959--5007\AA\ doublets.
 Their high line fluxes provide strong signals that suppress statistical Poisson uncertainty.
 Doublets occupy only a narrow bandwidth that spectrographs must span.
 The two lines of a doublet are produced by the same atoms and therefore
@@ -133,12 +135,16 @@ Spatial information is unimportant and the target is considered as point-like: a
 circular aperture of $1\arcsec$ diameter is assumed to cover the full line flux.
 The effective PSF (including pixels and possible subpixel quantum efficiency variation) 
 Nyquist samples the intrinsic line profiles.
+When appropriate, the sampling along the spatial axis is not included explicitly in the
+signal equations for conciseness.
+
 
 Projected redshift precisions are calculated with Fisher matrix analysis with the source
 redshift $z$ as the only free parameter. 
 Precisions scale as the inverse square of exposure time and inverse of telescope aperture. 
 For the SHS and when the  $R=20000$ spectrographs resolve the spectral line, the precision scales inversely
-with the line dispersion velocity.  As the measurements
+with the line dispersion velocity.  
+As the measurements
 are source-noise dominated, redshift precisions scale as the inverse square of line flux. 
 
 We are interested in uncertainties in redshift drift.  This is in some ways simpler than measuring absolute redshifts
@@ -157,10 +163,12 @@ I(\sigma) = \left[B(\sigma)\otimes \mbox{PSF}(\sigma)\right]\Sha\left(\frac{\sig
 \label{conventional:eqn}
 \end{equation}
 where $p$ is the spacing of the wavenumber sampling and the Shah function $\Sha$ is the set of delta functions
-that specify the discrete sampling,  The sampling along the spatial axis is not included explicitly for conciseness.
+that specify the discrete sampling,
 
 The wavelengths of the observed lines are compared to the corresponding known restframe to give
 the redshift.
+\textcolor{red}{Looking into uncertainty of the double wavelengths.
+The [OII] double wavelengths are known to $0.0010$\AA\ \citep{1993JPCRD..22.1179M}.}
 Projected statistical uncertainties from an $R=20000$ spectrograph for the target galaxies are given under
 the ``Conventional'' column of Table~\ref{dz:tab}.  Results from [OII], [OIII], and their combination are listed separately.
 
@@ -281,7 +289,6 @@ and $\Delta \tau$ represents the changes in time delay in the series of exposure
 with the change achieved by adjusting an interferometer arm length.
 The first term represents the signal obtained with a conventional spectrograph while the second cosine term
 introduces a wavelength-dependent phase that provides additional leverage in measuring redshift.
-The sampling along the spatial axis is not included explicitly for conciseness.
 
 
 The expected signal for one of the [OIII] lines of the SDSS target specified by Plate~\#1268, Fiber~\#318 is shown
@@ -299,20 +306,20 @@ made in steps of 0.892 mm.
 
 The redshift precisions on the target galaxies are given in Table~\ref{dz:tab}, where each of the four phases receives
 a 2-hour exposure.  The EDI performance includes that of the Conventional spectrograph plus
-the additional contribution from the whirl; in total the EDI outperforms Conventional in redshift precision by a factor of $\sim 3$.
+the additional contribution from the whirl; in total the EDI outperforms the Conventional spectrograph
+in redshift precision by a factor of $\sim 3$.
 
-Separating the EDI information into Conventional and whirl pieces,
+Separating the EDI information into Conventional and whirl contributions,
 the signal and constraint from the Conventional spectrograph contribution shares those same systematic uncertainties.
-The whirl component is best calibrated using arc lamps in the science exposure.
-Don't have to be close.  Wavelength calibration is calibration of EDI parameters.
- 
-Wavelength calibration of the whirl component is established relative to the phases of known arc lines taken with the science
-observation.  The delay offsets $\Delta \tau$ are common for calibration and source lines and can be marginalized out.
+The whirl component is best calibrated using arc lamps in the science exposure.  The arc lines determine the configuration
+of the EDI itself, $\phi_y$ and the $\Delta \tau$'s, and do not have to be close
+to the science lines.  This avoids the temporal and wavelength interpolation needed in conventional spectrographs.
+Wavelength uncertainty would then come from mismeasurement of phase and frequency due to pixels local to the
+science lines. Absolute flux and PSF uncertainties then become irrelevant.
 
-Fit $\tau$.
-
-
-The point spread function does remain as a source of systematic uncertainty in its blurring of the line profiles.
+Flux miscalibration still affect the line profiles, resulting in potential bias in effect wavelength similar to
+the Conventional case in scale.  PSF calibration is facilitated with the presence of arc lines from which the
+PSF can be directly determined.
 
 \subsection{Spatial Heterodyne Spectroscopy}
 \label{SHS:sec}
@@ -326,7 +333,8 @@ where $\sigma_i$ is the observed and $\sigma_{i0}$ the restframe wavenumber of l
 At face value, the measurement of $\sigma_1\pm\sigma_2$ should be expected to suffer larger uncertainty than that of the wavenumber
 of a single line.  To counter this expectation, we consider a scenario where the experimental setup has an output that is naturally sensitive
 to $\sigma_1\pm\sigma_2$.  The differential measurement can be immune to certain systematic uncertainties encountered when using dispersion spectrographs.
-Redshifts are measured from the relative shift of a single line profile common to two lines of a doublet with no PSF blurring along wavelength.
+Redshifts are measured from the relative shift of a single line profile common to two lines of a doublet with no PSF blurring of the
+line profiles.
 
 
 
@@ -429,42 +437,69 @@ as a representative example where the pixels resolve the frequencies of interest
    \plotone{shscounts.pdf} 
    \caption{The output signal for positive $x$ of the  SHS configurations that give the four different
    Littrow numbers according to
-   $n=1/3.5,1/1.05,1,1.05,3.5$  in Equation~\ref{littrowchoices:eqn}.\label{shscounts:fig}}
+   $n=1/3.5,1/1.05,1,1.05,3.5$  in Equation~\ref{littrowchoices:eqn}. Only half the signal is shown: it is
+   symmetric about $x=0$.\label{shscounts:fig}}
 \end{figure}
 
 The redshift precisions on the target galaxies are given in Table~\ref{dz:tab}.  The statistical uncertainties are slightly worse than for
-the Conventional spectrograph and well below EDI.
+the Conventional spectrograph and well below EDI.  However, the results have reduced sensitivity to PSF uncertainties.
 
-Wavelength calibration is tied to the determination of the grating density and $\theta$.  Both can be calibrated externally; alternatively
-the long exposures could be divided into sub-exposures each with a different SHS configuration, either by changing the
-gratings or by rotating the grating angles by a series of $\delta \theta$.  The data themselves can be then used to determine
-the hardware parameters that determine the wavelength solution.
+Wavelength calibration is tied to the determination of the EDI system parameters, the grating density $1/d$ and angle $\theta$.
+Both can be calibrated externally through direct measurements, or arc lamp exposures; including lamp light
+in science exposures is not preferred as all sources of light contribute the noise background.
+Alternatively
+the long exposures can be divided into sub-exposures each with a different SHS configuration, either by changing the
+gratings or by rotating the grating angles by a series of $\delta \theta$.  The data themselves can be then used to fit for
+the hardware parameters.
+
+The line signal is distributed over thousands of pixels reducing the pixel flux requirement to better than 1\%, much less stringent
+than for the the Conventional and EDI spectrographs.
+
 Converting the spectrum to Fourier space transforms the sharp imperfectly-known line profiles into the low-frequency envelope,
 distinct from the high-frequency wiggles characteristic to each configuration that inform the redshift measurement.
-The wave frequencies are determined using many pixels and any single pixel contributes a different weighting to the redshift measurement;
-as a result the measurement  is less sensitive to
-detector miscalibration.  The PSF blurring applies not in wavenumber space where it affects
+The PSF blurring applies not in wavenumber space where it affects
 line shapes but rather in physical space after the conversion of the lines into cosine functions; the PSF does not directly bias the effective
 wavelength of lines.
 
 \subsection{ED-SHS}
 The two doublet lines combine to produce a mixed signal in an SHS.  Sending SHS light, such as those signals shown
 in  Figure~\ref{shscounts:fig}, into an ensuing dispersion grating
-allows the disentangling of the two signals for an unambiguous measure of the frequency of each.  This scheme is 
-referred to as an ED-SHS.  Just as with an EDI, the wave signal is isolated for each wavelength.  
-The ED-SHS differs from EDI in that
-
+allows the disentangling of the two signals for an unambiguous measure of the frequency of each.  In this article,
+this scheme is 
+referred to as an External Dispersion SHS (ED-SHS).
+The observed signal is described by
 \begin{equation}
-I(\sigma,x) = \frac{1}{\Delta x}\left[\int_{0}^{\infty} B(\sigma)\left(1+\cos{\left(2 \pi x (2\sigma \sin{\gamma})\right)}\right)d\sigma \otimes \mbox{PSF}(x)\right]\Sha\left(\frac{\sigma}{p_\sigma}\right) \Sha\left(\frac{x}{p_x}\right) 
+I(\sigma,x) = \frac{1}{\Delta x}\left[\int^{\sigma \exp{\left(1/2R\right)}}_{\sigma} B(\sigma')\left(1+\cos{\left(2 \pi x (2\sigma' \sin{\gamma})\right)}\right)d\sigma' \otimes \mbox{PSF}(\sigma,x)\right]\Sha\left(\frac{\sigma}{p_\sigma}\right) \Sha\left(\frac{x}{p_x}\right).
 \label{edishssig:eqn}
 \end{equation}
+The similarities between ED-SHS and EDI can be seen in Fig,\ 2 of \citet{2003PASP..115..255E}; both use
+interferometry to create wavelength-dependent modulations in the signal, the distinction between the two coming
+from the functional form of
+the modulation frequency.
+
+
+The signal from two columns of pixels corresponding to the two wavelengths of
+the [OIII] doublet of the
+SDSS target specified by Plate~\#1268, Fiber~\#318 is shown in Figure~\ref{edshs:fig}.
+The Littrow wavelength is set to the average of the two lines  $\sigma_0=(\sigma_1+\sigma_2)/2$.
+In an SHS the output signal would be the sum of these and all other columns in the bandpass.
 
 \begin{figure}[t]
    \centering
    \plotone{edshs} 
    \caption{The output signal for positive $x$ of the  SHS configuration
-   $n=10^4$  in Equation~\ref{littrowchoices:eqn}.\label{edshs}}
+    $\sigma_0=(\sigma_1+\sigma_2)/2$. \label{edshs:fig}}
 \end{figure}
+
+The redshift precisions on the target galaxies are given in Table~\ref{dz:tab}.  The statistical uncertainties are improved compared to those of the
+SHS, and are comparable to the performance of the EDI.
+
+Now that the signals from different wavelengths are no longer mixed, calibration arcs can be observed with the science image without increasing
+the photon noise of the doublet lines.  Both wavelength and PSF calibration are simplified as with the EDI.
+In addition, the flux signals are further reduced relative to the SHS relaxing flux calibration requiirements.
+
+\subsection{Misc}
+Maybe these instruments are good for atomic line catalogs.
 
 \bibliographystyle{apj}
 \bibliography{/Users/akim/Documents/alex.bib}
