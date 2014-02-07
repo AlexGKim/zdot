@@ -1,4 +1,4 @@
-\documentclass[article]{aastex}
+\documentclass[preprint2]{aastex}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{dcolumn}
@@ -9,6 +9,7 @@
 \usepackage{color}
 %\usepackage{epstopdf}
 \usepackage{hyperref}
+\usepackage{url} 
 \usepackage[OT2,T1]{fontenc}
 \DeclareSymbolFont{cyrletters}{OT2}{wncyr}{m}{n}
 \DeclareMathSymbol{\Sha}{\mathalpha}{cyrletters}{"58}
@@ -37,6 +38,7 @@
 \newcommand{\lcdm}{$\Lambda$CDM} 
 \newcommand{\neff}{N_{\rm eff}} 
 \newcommand{\tdd}{D_{\Delta t}} 
+\newcommand{\lnnu}{\ln{\sigma}} 
 
 
 \begin{document}
@@ -168,9 +170,10 @@ i.e.\ peculiar accelerations.
 The full expression for the redshift drift including metric and geodesic 
 effects but not peculiar acceleration is 
 \bea 
-\frac{dz}{dt_o}&=&\frac{\dot a_o-\dot a_e}{a_e}+2[\dot\psi_e-(1+z)\dot\psi_o] 
+\frac{dz}{dt_o}&=&\frac{\dot a_o-\dot a_e}{a_e}\\ 
+&&+2[\dot\psi_e-(1+z)\dot\psi_o]
 +\frac{2}{a_e}\partial_1(\psi_e-\psi_o)\nonumber\\ 
-&&-(\dot\psi_e-\dot\phi_e)+(1+z)(\dot\psi_o-\dot\phi_o)\\ 
+&&-(\dot\psi_e-\dot\phi_e)+(1+z)(\dot\psi_o-\dot\phi_o)\nonumber\\ 
 &&-H(z)\,(\phi_o-\phi_e)+H_0\,(1+z)[a_o k^0_o]^{(1)}\ ,\nonumber  
 \eea 
 where $\psi$ and $\phi$ are the metric gravitational potentials. 
@@ -225,7 +228,7 @@ well with the new experimental techniques introduced in Sec.~\ref{sec:tech}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 \begin{figure}
    \centering
-   \includegraphics[width=3in]{zdriftd.ps}
+   \includegraphics[width=\columnwidth]{zdriftd.pdf}
 \caption{The dependence of the redshift drift $\dot z$ and the sensitivities 
 $\partial\dot z/\partial p$ to various cosmological parameters $p$ are shown 
 as functions of redshift. All quantities are in units of $H_0$, hence 
@@ -263,7 +266,7 @@ parameters.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
 \begin{figure}
    \centering
-   \includegraphics[width=3in]{zrange.ps}
+   \includegraphics[width=\columnwidth]{zrange.pdf}
 \caption{Joint constraints on the dark energy equation of state parameters 
 $w_0$ and $w_a$ are shown at 68\% confidence level. Note that for comparable 
 constraints, less stringent accuracy is needed when using low redshift 
@@ -338,7 +341,7 @@ separate instrument or experiment is required.
 \begin{tabular}{l|ccc} 
 Probe \ & \ Quantity \ & Nuisance & \ Sign \ \\ 
 \hline 
-$z$ drift &$\ (1+z)\,H_0-H(z)\ $ & $H_0$ & $w_{\rm tot}<-1/3$ \\ 
+$z$ drift &$(1+z)\,H_0-H(z)$ & $H_0$ & $w_{\rm tot}<-1/3$ \\ 
 drBAO & $s\,[H(z_2)-H(z_1)]$ & $s$ & $w_{\rm tot}<-1$ \\ 
 \end{tabular} 
 \caption{Redshift drift and differential radial BAO both 
@@ -371,8 +374,10 @@ gains can be made.  This is the idea behind the period probe, or cosmic
 pulsar test; here we follow the textbook treatment of \cite{fpoc}.  The time 
 observed for the arrival of the $N$th pulse with emitted period $P$ is 
 \bea 
-t_N&\equiv& t_o(NP)=NP\,\frac{dt_o}{dt_e}+\frac{1}{2}\,(NP)^2\,\frac{d^2t_o}{dt_e^2}+\dots\\ 
-&=&NP\,(1+z)+\frac{1}{2}\,(NP)^2\,(1+z)\left[(1+z)\,H_0-H(z)\right]\ . 
+t_N&\equiv& t_o(NP)\nonumber\\ 
+&=&NP\,\frac{dt_o}{dt_e}+\frac{1}{2}\,(NP)^2\,\frac{d^2t_o}{dt_e^2}+\dots\\ 
+&=&NP\,(1+z)\nonumber\\ 
+&\quad&+\frac{1}{2}\,(NP)^2\,(1+z)\left[(1+z)\,H_0-H(z)\right]\ . 
 \eea 
 The redshift drift (in square brackets) is thus enhanced by $N^2$ and 
 can be specifically fit to the quadratic behavior of the time series, 
@@ -529,8 +534,6 @@ are removed with a simultaneous differential measurement.
 %so can fit within a single field of view of the spectrograph. 
 
 
-\newcommand{\lnnu}{\ln{\sigma}} 
-\usepackage{url}
 
 \eric{Make transition to this text and following subsections.} 
 
@@ -554,7 +557,7 @@ Potential targets are selected from the Sloan Digital Sky Survey data release SD
 objects 
 with $z>0.08$
 and sharp and bright [OII] and/or [OIII] emission lines.
-The redshifts, velocity dispersions $\Delta v$, line strengths, and host continuum levels for a select set of galaxies are shown in Table~\ref{lines:tab}.
+The redshifts, velocity dispersions $\Delta v$, line strengths, and host continuum levels for a select set of galaxies are shown in Table~\ref{lines:tab}. 
 The two-line average $\Delta v$ for [OII] , and the continua flux for bout doublets  are given.
 Although we use its velocity dispersions, the Portsmouth table  gives ``rest-frame'' fluxes corrected for dust correction;
 the observed fluxes needed to simulate observations are taken from the spZline data model
@@ -611,7 +614,8 @@ target, from Plate~\#1268, Fiber~\#318, has its  SDSS spectrum shown in Figure~\
 
 \begin{figure}[t]
    \centering
-    \includegraphics[scale=0.4]{SpecById.pdf} 
+%    \includegraphics[scale=0.4]{SpecById.pdf} 
+    \includegraphics[width=\columnwidth]{SpecById.pdf} 
   % \plotone{SpecById.eps} 
    \caption{Spectrum of SDSS target specified by Plate~\#1268, Fiber~\#318 from the SDSS3 DR10.  \label{shsinput:fig}}
 \end{figure}
@@ -632,7 +636,10 @@ B(\sigma)=\frac{a_1}{\sqrt{2\pi s_1^2}}\exp{\left[-\frac{\left(\sigma-\sigma_1\r
 The two lines have central wavenumbers $\sigma_1$ and $\sigma_2$, and share a common Gaussian profile with width parameterized by velocity dispersion
 such that $s_i=\sigma_i\Delta v/c$. 
 
-\section{Spectrographs Considered For Redshift Measurements}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Spectrographs Considered For Redshift Measurements} 
+
 The precision with which redshift can be determined depends on the instrument used for the measurement.
 We consider several spectrometers designs, including a ``Conventional'' high-resolution dispersion spectrograph and the
 interferometric instruments ``EDI'',
@@ -676,6 +683,7 @@ Each spectrograph type
 has different susceptibilities to  systematic uncertainties.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%% 
 \subsection{Conventional Dispersion Spectrograph} 
 The redshift of a galaxy can be measured from the output of a dispersion spectrograph, such as shown in Figure~\ref{shsinput:fig}.
 For an input spectrum $B(\sigma)$ the expected signal is
@@ -694,6 +702,7 @@ Projected statistical uncertainties from an $R=20000$ spectrograph for the targe
 the ``Conventional'' column of Table~\ref{dz:tab}.  Results from [OII], [OIII], and their combination are listed separately.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{deluxetable}{ccccccc}
 \tablecaption{Statistical Uncertainties of Select SDSS Targets With
 an 8 Hour Exposure on a 10-m Telescope For Different Spectrographs. \label{dz:tab}}
@@ -765,6 +774,7 @@ is required.  For redshift drift, these calibration requirements are differentia
 over the duration of the survey: if absolute calibration is not achieved, instrumental stability is essential.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \subsection{Externally Dispersed Interferometer}
 The Externally Dispersed Interferometer \citep[EDI;][]{2003PASP..115..255E} is a candidate instrument with which to measure precision redshifts.
 An EDI is the sequence of a Fourier transform spectrograph (FTS) and a dispersion spectrograph.  The FTS is an interferometer that shifts
@@ -816,6 +826,8 @@ The expected signal for one of the [OIII] lines of the SDSS target specified by 
 in Figure~\ref{edicounts:fig}.   In this case the nominal delay is $\tau = 3.57$ mm with measurements
 made in steps of 0.892 mm.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \begin{figure}[t]
    \centering
    \plotone{edi.pdf} 
@@ -842,8 +854,11 @@ Flux miscalibration still affect the line profiles, resulting in potential bias 
 the Conventional case in scale.  PSF calibration is facilitated with the presence of arc lines from which the
 PSF can be directly determined.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \subsection{Spatial Heterodyne Spectroscopy}
-\label{SHS:sec}
+\label{SHS:sec} 
+
 \subsubsection{Measuring Redshift}
 Redshift can also be measured through the sum and the difference of observed wavenumbers of two lines whose restframe wavenumbers are known:
 \begin{equation}
@@ -858,7 +873,7 @@ Redshifts are measured from the relative shift of a single line profile common t
 line profiles.
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \subsubsection{Signal}
 %Specifically,  when using a single feature to measure redshift the shape of the line profile
 %contributes uncertainty.
@@ -894,6 +909,7 @@ where  $p$ is the spacing of the wavenumber sampling, and for simplicity we assu
 a range  $\Delta x \gg \left(2\sigma \sin{\gamma}\right)^{-1}$.
 The Littrow wavenumber $\sigma_0$ is defined such that $2\sigma_0\sin{\theta}=m/d$, $\gamma=0$ and no fringe patterns are produced.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \subsubsection{Toy Example}
 \label{toy:sec}
 For illustration, consider a toy example where the input signal consists of two $\delta$-functions with the same intensity
@@ -928,6 +944,7 @@ which in practice is difficult to quantify through measurment.  When $n=1$ the L
 of the oscillations; the value of the two beat frequencies are equal.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \subsubsection{Performance on Target Galaxies}
 
 We calculate the expected signal using the first order $m=1$ for a SHS with grating line density $1/d=1200$\,mm$^{-1}$
@@ -953,6 +970,7 @@ for small deviations near $n=1$ and at integer ratios of the beat frequencies; w
 the case of $n=1.5$ or $\theta = 0.3421194$ (a change in angle of $1.95 \arcmin$ from the $n=1$ case)
 as a representative example where the pixels resolve the frequencies of interest.
 
+%%%%%%%%%%%%%%%%%%%%%% 
 \begin{figure}[t]
    \centering
    \plotone{shscounts.pdf} 
@@ -982,6 +1000,7 @@ The PSF blurring applies not in wavenumber space where it affects
 line shapes but rather in physical space after the conversion of the lines into cosine functions; the PSF does not directly bias the effective
 wavelength of lines.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \subsection{ED-SHS}
 The two doublet lines combine to produce a mixed signal in an SHS.  Sending SHS light, such as those signals shown
 in  Figure~\ref{shscounts:fig}, into an ensuing dispersion grating
@@ -1005,6 +1024,8 @@ SDSS target specified by Plate~\#1268, Fiber~\#318 is shown in Figure~\ref{edshs
 The Littrow wavelength is set to the average of the two lines  $\sigma_0=(\sigma_1+\sigma_2)/2$.
 In an SHS the output signal would be the sum of these and all other columns in the bandpass.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%% 
 \begin{figure}[t]
    \centering
    \plotone{edshs} 
@@ -1019,13 +1040,10 @@ Now that the signals from different wavelengths are no longer mixed, calibration
 the photon noise of the doublet lines.  Both wavelength and PSF calibration are simplified as with the EDI.
 In addition, the flux signals are further reduced relative to the SHS relaxing flux calibration requiirements.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \subsection{Misc}
 Maybe these instruments are good for atomic line catalogs.
-
-\eric{Decide on bibstyle and if needed uncomment the next two lines.} 
-%\bibliographystyle{apj}
-%\bibliography{alex.bib}
-
 
 
 
@@ -1073,66 +1091,9 @@ Office of Science, Office of High Energy Physics,
 of the U.S.\ Department of Energy under Contract No.\ DE-AC02-05CH11231. 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\begin{thebibliography}{99} 
+\bibliographystyle{apj}
+\bibliography{alex.bib}
 
-\bibitem{sandage} 
-A. Sandage, ApJ 136, 319 (1962) 
-
-\bibitem{mcvittie} 
-G.C. McVittie, ApJ 136, 334 (1962) 
-
-\bibitem{fpoc} 
-E.V. Linder, {\it First Principles of Cosmology\/}, (Addison-Wesley: London) 
-(1997) 
-
-\bibitem{10044646} 
-E.V Linder, arXiv:1006.4646 
-
-\bibitem{pulsars} 
-D.R. Lorimer, Living Rev. Relativity 11, 8 (2008) 
-
-\bibitem{13071628} 
-D. Thornton et al., Science 341, 53 (2013) [arXiv:1307.1628]  
-
-\bibitem{09122724} 
-N. Yunes, F. Pretorius, D. Spergel, Phys. Rev. D 81, 064018 (2010) 
-[arXiv:0912.2724] 
-
-\bibitem{13061272} 
-T. Treu et al., arXiv:1306.1272 
-
-\bibitem{tewes} 
-M. Tewes, F. Courbin, G. Meylan, Astron. Astroph. 553, A120 (2013) 
-
-\bibitem{hkl} 
-A. Hojjati, A.G. Kim, E.V. Linder, Phys. Rev. D 87, 123512 (2013) 
-
-\bibitem{09100250} 
-M.S. Peeples, D.H. Weinberg, R. Dav{\'e}, M.A. Fardal, N. Katz, 
-MNRAS 404, 1295 (2010) 
-[arXiv:0910.0250] 
-
-\bibitem{cosmograil} 
-COSMOGRAIL: \url{http://www.cosmograil.org} 
-
-\bibitem{strides} 
-STRIDES: ???? 
-
-\bibitem{1001} 
-R. Burton (translator), {\it The Book of the Thousand Nights and a 
-Night\/} (1885) 
-
-\bibitem{mitrofanov} 
-I.G. Mitrofanov, Sov. Ast. Lett. 7, 39 (1981) 
-
-\bibitem{birkgull} 
-M. Birkinshaw, S.F. Gull, Nature 302, 315 (1983) 
-
-\bibitem{stebbins} 
-A. Stebbins, Int. J. Mod. Phys. D 21, 1242017 (2012) [arXiv:1205.4201] 
-
-\end{thebibliography}
 
 
 \end{document}
