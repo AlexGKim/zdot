@@ -1,0 +1,1140 @@
+\documentclass[prd, twocolumn, nofootinbib, floatfix]{revtex4-1}
+%\documentclass[prd, onecolumn, nofootinbib, floatfix]{revtex4} 
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage{epsfig}
+\usepackage{amssymb,latexsym,mathrsfs}
+\usepackage{graphicx}
+\usepackage{color}
+%\usepackage{epstopdf}
+\usepackage{hyperref}
+\usepackage[OT2,T1]{fontenc}
+\DeclareSymbolFont{cyrletters}{OT2}{wncyr}{m}{n}
+\DeclareMathSymbol{\Sha}{\mathalpha}{cyrletters}{"58}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=red,
+    citecolor=blue,
+} 
+
+% Making life easier
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bs}{\begin{split}} 
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+\newcommand{\eric}[1]{\textcolor{blue}{[{\bf EL}: #1]}}
+
+% useful symbols
+\newcommand{\om}{\Omega_m}
+\newcommand{\ode}{\Omega_{de}}
+\newcommand{\Oe}{\Omega_{e}}
+\newcommand{\ob}{\Omega_b h^2}
+\newcommand{\omc}{\Omega_c h^2}
+\newcommand{\lcdm}{$\Lambda$CDM} 
+\newcommand{\neff}{N_{\rm eff}} 
+\newcommand{\tdd}{D_{\Delta t}} 
+
+
+\begin{document}
+
+\title{Beating Down Cosmic Redshift Drift} 
+\author{Alex G.\ Kim, Eric V.\ Linder, \dots} 
+
+\begin{abstract} 
+Redshift drift provides a direct kinematic measurement of cosmic acceleration 
+but it occurs with a characteristic time scale of a Hubble time.  Thus 
+redshift observations with a challenging precision of $10^{-9}$ require a 
+10 year time span to obtain a signal-to-noise of 1. We discuss theoretical 
+and experimental approaches to address this challenge, potentially requiring 
+less observer time and having greater immunity to common systematics.  On 
+the theoretical side we explore allowing the universe, rather than the 
+observer, to provide long time spans; speculative methods include radial 
+baryon acoustic oscillations, cosmic pulsars, and strongly lensed quasars. 
+On the experimental side, we explore beating down the redshift precision 
+using differential interferometric techniques, including externally 
+dispersed interferometers and spatial heterodyne spectroscopy. Low 
+redshift emission line galaxies are identified as having high cosmology 
+leverage and systematics control, with an 8 hour exposure on a 10-meter 
+telescope (1000 hours of exposure on a 40-meter telescope) potentially 
+capable of measuring redshifts to a precision of $2\times 10^{-9}$ 
+($\sim5\times 10^{-11}$). 
+\end{abstract}
+
+\date{\today} 
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction} \label{Sec:intro} 
+
+Our universe is dynamical, i.e.\ the metric evolves or more simply the 
+scale factor of the universe changes with time, hence $a(t)$.  This 
+kinematic effect 
+gives rise to the cosmic redshift of light from distant sources.  Moreover, 
+since the expansion rate itself evolves, in all but a coasting, Milne 
+universe, the redshift itself will shift.  This redshift drift was 
+introduced by Sandage \cite{sandage} and McVittie \cite{mcvittie} in the 
+early 1960s and revisited in the 1980s and 1990s; see the textbook 
+summary in \cite{fpoc}. 
+
+Just as redshift is direct, kinematical evidence for cosmic expansion, 
+redshift drift is likewise for cosmic acceleration.  This directness is 
+an attractive feature, so even if such a cosmic probe cannot reach the 
+accuracy on cosmological parameter estimation of, say, distance or growth 
+of structure probes, it is worthwhile to explore possibilities to carry 
+it out. 
+
+Conventionally, this is thought of in a brute force approach: stare at an 
+object for a long time and wait to measure the change in its redshift.  
+Since the time scale for an order unity variation is the characteristic 
+time scale of the expansion, the Hubble time of $\sim10^{10}$ y, this 
+requires fantastically precise measurements of redshift stable over the 
+observing period.  Moreover, any other time variation in the metric that 
+is not linear gives a competing effect.  From the Principle of Equivalence, 
+any acceleration of the source or change in gravity along the line of sight 
+acts as a systematic contribution. 
+
+Here we explore two parallel tracks to make this cosmological probe more 
+viable. One is exploring theoretical ideas for letting the universe do the 
+difficult work for us, by taking advantage of source redshifts delivered 
+to us at effectively different epochs and of differential rather than absolute 
+measurements.  The second involves experimental approaches to improve the 
+brute force precision, while again using differential measurements to 
+ameliorate instrumental systematics. As with any probe, systematics are a 
+key concern so any method that may enable better control of them is 
+important to consider. 
+
+In Sec.~\ref{sec:basic} we review the basic redshift drift and the plethora 
+of systematics that confront it, as well as the potential cosmological 
+leverage.  Section~\ref{sec:methods} outlines three theoretical 
+alternatives to the brute force approach, each with their own advantages 
+and speculative aspects. 
+We turn to some innovative experimental approaches in Sec.~\ref{sec:tech}, 
+which may offer improvements in precision and systematics, and conclude in 
+Sec.~\ref{sec:concl}. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Redshift Drift and Systematics} \label{sec:basic} 
+
+In back to back articles published in 1962, McVittie \cite{mcvittie} and 
+Sandage \cite{sandage} laid out the basics of redshift drift.  Since the 
+cosmic redshift $z=a^{-1}-1$, then the dependence $a(t)$ of the source with 
+respect to the observer necessarily implies that $z$ changes with time as 
+well. Following the approach in \cite{fpoc}, we have 
+\bea 
+\frac{dz}{dt_0}&=&\frac{d}{dt_0}\left[\frac{a(t_0)}{a(t_e)}-1\right] 
+=\frac{\dot a(t_0)-\dot a (t_e)}{a(t_e)}\\ 
+&=&(1+z)\,H_0-H(z)\ , 
+\eea 
+where $t_0$ is the observing time, $t_e$ the signal emission time, and 
+$H=\dot a/a$ the Hubble expansion rate.  
+
+The form involving a difference 
+between $\dot a$'s makes clear that this arises from acceleration (positive 
+or negative).  Only a universe where $\dot a=$constant, i.e.\ $a\propto t$, 
+has no redshift drift.  This is a Milne universe, which is conformal to a 
+Minkowski spacetime, and so the Principle of Equivalence assures us that 
+a universe without gravity has no acceleration, and vice versa. 
+We emphasize the kinematic aspect of the redshift drift: its nonzero 
+value directly indicates acceleration, with no need to know the dynamics, 
+i.e.\ the specific functional dependence $a(t)$. Only when we want to compare 
+to a particular model, e.g.\ so much matter density and so much dark energy 
+density with some equation of state, do we need to know $a(t)$. 
+
+At high redshift we expect the universe to be decelerating, and hence 
+the drift should be negative.  When the universe begins to accelerate 
+(speed up) under the influence of dark energy in recent times, however, 
+then the drift will change to positive.  Thus the hope is to map out the 
+influence of dark energy, and its equation of state, by accurate 
+measurements of the redshift drift. 
+
+One fly in the ointment is that in fact the observed redshift 
+$z\ne a^{-1}-1$. The full relativistic expression is 
+\be 
+1+z=\frac{(g_{\mu\nu}k^\mu u^\nu)_e}{(g_{\mu\nu}k^\mu u^\nu)_o}\ , 
+\label{eq:zgen} 
+\ee 
+with the redshift drift obtaining contributions from not only the 
+homogeneous expansion in the metric, but 1) inhomogeneous gravitational 
+potentials, 2) deviations in the photon four-momentum $k^\mu$ due to 
+inhomogeneities, and 3) time variation of the source four-velocity $u^\nu$, 
+i.e.\ peculiar accelerations.  
+
+The full expression for the redshift drift including metric and geodesic 
+effects but not peculiar acceleration is 
+\bea 
+\frac{dz}{dt_o}&=&\frac{\dot a_o-\dot a_e}{a_e}+2[\dot\psi_e-(1+z)\dot\psi_o] 
++\frac{2}{a_e}\partial_1(\psi_e-\psi_o)\nonumber\\ 
+&&-(\dot\psi_e-\dot\phi_e)+(1+z)(\dot\psi_o-\dot\phi_o)\\ 
+&&-H(z)\,(\phi_o-\phi_e)+H_0\,(1+z)[a_o k^0_o]^{(1)}\ ,\nonumber  
+\eea 
+where $\psi$ and $\phi$ are the metric gravitational potentials. 
+These terms are discussed in detail in \cite{10044646}; most are smaller 
+than, though some are comparable to (especially for relativistic systems), 
+peculiar accelerations. 
+
+As for peculiar accelerations, using 
+$\vec\nabla\psi\sim \dot u$, the contribution is 
+\be 
+\dot u \sim \frac{\psi}{L}\sim H\,\frac{H^{-1}}{L}\,\psi\sim H\, 
+\left(\frac{40\,{\rm kpc}}{L}\right)\left(\frac{\psi}{10^{-5}}\right)\ , 
+\ee 
+where $L$ is a characteristic size of the system.  This contribution can be 
+the same order of magnitude as the first, McVittie-Sandage term, and so is 
+not obviously negligible when talking about active galactic nuclei as 
+sources, for example. It is crucial to realize that this should not be 
+interpreted statistically, i.e.\ averaging over sources in low density 
+and high density regions, but treated for an individual line of sight. 
+Similarly it should not be treated as though the source was in the linear 
+density perturbation regime. 
+
+Methods exist for ameliorating these systematics, e.g.\ observing several 
+well separated sources.  However the precision required for measurement of 
+redshift drift at a signal-to-noise of merely unity is 
+$dz\approx 10^{-10}$ over a year (or $10^{-9}$ over 10 years), 
+while a 1\% measurement of the dark energy equation of state (assumed 
+constant) requires $dz\approx 10^{-13}$ over a year.  Systematics would 
+need to be reduced below these levels. 
+
+To see how far we can beat down these challenges we first explore the 
+cosmological sensitivity of the probe, then in the next two sections 
+consider some theoretical and experimental leverages. 
+
+Figure~\ref{fig:sens} shows the sensitivity of the drift $\dot z$ as a 
+function of source redshift to the cosmological parameters of the matter 
+density $\om$ and dark energy equation of state $w(a)=w_0+w_a(1-a)$ where 
+$w_0$ is its present value and $w_a$ a measure of its time variation. The 
+key properties to notice are: 1) The sensitivity curves are different 
+shapes, indicating no strong covariance between the effects of the different 
+parameters, 2) The greatest sensitivity is to the matter density, and this 
+continues to outweigh the equation of state parameters at higher redshifts, 
+by ever increasing factors, and 3) The initial rise of the equation of 
+state sensitivities is sharp, achieving 50\% of the maximum sensitivity 
+at quite low redshifts. These characteristics suggest that low redshift 
+measurements, especially if they have better signal to noise than higher 
+redshift ones, could be valuable for cosmological leverage on dark energy 
+through the redshift drift probe. We will see that this in fact fits in 
+well with the new experimental techniques introduced in Sec.~\ref{sec:tech}. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+\begin{figure}
+   \centering
+   \includegraphics[width=3in]{zdriftd.ps}
+\caption{The dependence of the redshift drift $\dot z$ and the sensitivities 
+$\partial\dot z/\partial p$ to various cosmological parameters $p$ are shown 
+as functions of redshift. All quantities are in units of $H_0$, hence 
+the redshift drift over an observing time $\Delta t$ is 
+$\Delta z\lesssim H_0\Delta t=10^{10}\,h(\Delta t/{\rm yr})$. 
+}
+\label{fig:sens} 
+\end{figure}
+
+
+At low redshift $\dot z\approx -H_0q_0z$ so the cosmological sensitivity 
+initially increases linearly with redshift. If the precision is photon 
+noise limited, then it will go inversely with the luminosity distance. 
+Since luminosity distance grows initially linearly with redshift, then 
+more quickly at higher redshift, this indicates that low redshift may give 
+the strongest cosmological leverage. 
+
+Another consideration is that the low redshift $q_0$ dependence (which 
+accords with redshift drift being a direct probe of acceleration) implies 
+the sensitivity to $\om$ will be a factor $\sim3/2$ better than to $w_0$, 
+in agreement with Fig.~\ref{fig:sens}. The sensitivity to matter density 
+continues to increase with redshift, growing from linear with $z$ to 
+proportional to $z^{3/2}$ at high redshift, swamping the dark energy 
+parameters, whose sensitivities decline at high redshift. These 
+characteristics give merit to further exploration of the use of 
+low redshift sources. 
+
+Figure~\ref{fig:fisher} considers measurements at low, medium, and 
+high redshift ranges and compares the precisions needed on $\dot z$ to 
+give roughly comparable constraints on dark energy equation of state 
+parameters. 
+{\bf More discussion once I've made the plot.} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+\begin{figure}
+   \centering
+   \includegraphics[width=3in]{zrange.ps}
+\caption{Joint constraints on the dark energy equation of state parameters 
+$w_0$ and $w_a$ are shown at 68\% confidence level. Note that for comparable 
+constraints, less stringent accuracy is needed when using low redshift 
+sources. 
+{\bf Try Fisher contours for measurements over [0.1,0.5], [0.7,1.2], [2.5,3]} 
+}
+\label{fig:fisher} 
+\end{figure}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Theoretical Ideas} \label{sec:methods} 
+
+Since the requirements of measuring $dz$ are so challenging, theoretical 
+concepts for observational probes that inherently use long time scales or 
+multiple measurements in one system would be of particular interest. 
+A long lever arm in time and many measurements could reduce the requirements 
+on individual measurement precision.  The universe itself provides sources 
+at many different epochs, spread out over a Hubble time.  Likewise, 
+individual sources can provide many different signals, e.g.\ spectral lines 
+or wavetrains.  In this section we explore the use of each of these 
+characteristics, and then their combination, in potential probes of 
+acceleration. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\subsection{Many sources: Radial baryon acoustic oscillations} \label{sec:rbao} 
+
+While the light from sources at different redshifts reaches us after 
+being emitted at vastly different times, this does not inform us regarding 
+redshift drift since that involves the change of a given source over time.  
+However, we can think of a statistical ensemble of objects collectively as 
+a source, for example 
+defining a baryon acoustic feature in the density power spectrum.  This 
+encodes a particular comoving scale, roughly the sound horizon $s$ at 
+baryon-photon decoupling.  By measuring it along the line of sight, we 
+are measuring a cosmic length $dr\sim150$ Mpc with endpoints at two 
+different redshifts so $dr=dz/H$.  Since $dz\approx0.05$ then $H$ is 
+fairly constant over this interval and we can simply say we obtain a 
+measurement $H(z_1)$, where $z_1$ is the mean redshift.  This is called a 
+radial baryon acoustic oscillation (BAO) measurement, of the quantity 
+$sH$. 
+
+Carrying this out in a second redshift slice delivers $H(z_2)$.  Propagating 
+the errors from each we can create a differential radial BAO (drBAO) 
+measurement 
+\be 
+R=s\,(H_2-H_1) \ . \label{eq:drbao} 
+\ee 
+For redshift differences not small compared to unity, we measure the 
+Hubble expansion parameter at times separated by a substantial fraction 
+of the Hubble time, $\sim10^{10}$ y.  That is, we have left it to the universe 
+to do the work of providing the long time baseline.  
+
+While drBAO gives the 
+``Hubble drift'' rather than the redshift drift, these two quantities are 
+closely related, and indeed the Hubble drift measurement has some 
+useful differences as shown in Table~\ref{tab:drbao}.  The nuisance 
+parameter for comparing to cosmology theory is $H_0$ for the redshift 
+drift, while it is the much better known sound horizon $s$ for drBAO.  
+While redshift drift has a null at the acceleration-deceleration transition, 
+drBAO has a null at the superacceleration or phantom transition, when the 
+total equation of state of the universe $w_{\rm tot}=-1$.  Finally, 
+spectroscopic galaxy surveys measuring BAO also provide drBAO so no 
+separate instrument or experiment is required. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{table}[!htb]
+\begin{tabular}{l|ccc} 
+Probe \ & \ Quantity \ & Nuisance & \ Sign \ \\ 
+\hline 
+$z$ drift &$\ (1+z)\,H_0-H(z)\ $ & $H_0$ & $w_{\rm tot}<-1/3$ \\ 
+drBAO & $s\,[H(z_2)-H(z_1)]$ & $s$ & $w_{\rm tot}<-1$ \\ 
+\end{tabular} 
+\caption{Redshift drift and differential radial BAO both 
+directly measure the acceleration of the universe, but with different 
+nuisance parameters and observational requirements. 
+}
+\label{tab:drbao}
+\end{table} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\subsection{Many signals: Cosmic pulsars} 
+
+The long time baseline of the drBAO probe ameliorates the redshift 
+precision needed, to simply that needed to measure the radial BAO scale 
+($dz\approx10^{-3}$).  However it does involve the clustering of large scale 
+structure and a statistical measure rather than simply photon propagation 
+from an individual source.  If a single source gave many measurements, 
+i.e.\ emitted many signals each of which could be used to measure redshift 
+drift, then the requirement on the redshift precision can also be 
+ameliorated in this manner.  
+Conventionally this is thought of in terms of many spectral lines; we 
+return to this later but here explore the time domain. 
+
+If the source repeatedly emitted signals, then by measuring $N$ of them 
+we could hope to statistically reduce the uncertainty on the redshift drift.  
+Moreover, if there 
+is a specific pattern to the signals, e.g.\ a periodicity, then further 
+gains can be made.  This is the idea behind the period probe, or cosmic 
+pulsar test; here we follow the textbook treatment of \cite{fpoc}.  The time 
+observed for the arrival of the $N$th pulse with emitted period $P$ is 
+\bea 
+t_N&\equiv& t_o(NP)=NP\,\frac{dt_o}{dt_e}+\frac{1}{2}\,(NP)^2\,\frac{d^2t_o}{dt_e^2}+\dots\\ 
+&=&NP\,(1+z)+\frac{1}{2}\,(NP)^2\,(1+z)\left[(1+z)\,H_0-H(z)\right]\ . 
+\eea 
+The redshift drift (in square brackets) is thus enhanced by $N^2$ and 
+can be specifically fit to the quadratic behavior of the time series, 
+helping to make a clean detection.  There is an extensive literature on 
+pulsar timing and efficient fitting of different contributions 
+\cite{pulsars}. 
+
+While pulsars are fantastically regular clocks, well suited to this probe, 
+we do not currently detect them at cosmological distances in the Hubble 
+flow (but see \cite{13071628}).  The idea behind cosmic pulsars is not 
+restrict to neutron stars, however.  
+One could consider other sources of (quasi-)periodic signals such as 
+gravitational waves from supermassive binary black hole inspirals, which 
+should be detectable 
+at cosmic distances.  An issue here (other than detecting such sources) 
+is that in these systems redshift is not measured separately but is tied 
+into the chirp mass combination with the black hole masses.  Any evolution 
+in the black hole masses -- or Newton's constant -- would be a systematic; 
+see the analysis in Appendix B of \cite{09122724} following a suggestion 
+by Linder.  Finally, any other accelerations, such as the motion of the system 
+through an inhomogeneous gravitational potential or pulsar or gravitational 
+wave kicks, would be a systematic. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\subsection{Multiple sources and signals: Strongly lensed quasars} \label{sec:lens} 
+
+The ideal situation would be to combine the long time baseline provided 
+by cosmological distances as in the drBAO method with the multiple 
+signals per source as in the cosmic pulsar method.  While this cannot be 
+exactly done, some of advantages of each enter in the use of strongly 
+lensed sources, plus the ability to do a differential rather than absolute 
+measurement. 
+
+Strong gravitational lensing produces multiple images of the source, 
+and so in a single system one can measure the redshift along multiple 
+lines of sight.  Gravitational lensing itself is achromatic in the 
+geometric optics regime (wavelength divided by effective lens scale 
+much less than one, an excellent approximation at ultraviolet and optical 
+wavelengths) 
+and so the redshifts will be the same.  If the propagating light is 
+absorbed in the Lyman alpha forest due to neutral hydrogen gas along 
+the path, then many narrow spectral features arise, enabling multiple 
+measurements of the redshift drift. 
+
+Moreover, due to the different light paths there will be time delays 
+between the spectra observed of each image.  This is used in strong 
+lensing as a cosmological distance probe itself (see, e.g., \cite{13061272} 
+and references therein).  Here, however, it provides a time baseline for 
+the redshift drift of the individual source.  If the time delay were of 
+order 10 years (or even better a substantial fraction of the Hubble time) 
+then the required redshift measurement precision would be eased, but 
+observed systems have time delays of days to a year.  Still, the universe 
+is giving us for free a time baseline of a year though the redshift 
+observations may be done in a single night.  
+
+Note that unlike for time delay distances 
+we have no need to model the time delay through knowledge of the lens mass 
+profile, image geometry, etc. -- all we need to do is measure it from 
+monitoring the light curves of the images.  A bright, time varying source 
+such as a quasar is ideal for this, and the time delay is measured from 
+the photometric light curves (see, e.g.\ \cite{tewes,hkl} for statistical 
+techniques for 
+robust estimation).  The Lyman alpha spectral features do not enter in 
+this part.  Since we do not need to model the lens mass profile, we can 
+use cluster lenses, with larger time delays, rather than restricting to 
+galaxy lenses as for the time delay distance technique. 
+
+If the lines of sight are sufficiently close together, then they can be 
+observed simultaneously, allowing a direct differential measurement to give 
+the redshift drift, rather than an absolute one.  Furthermore, this increases 
+the likelihood that the Lyman alpha absorption is coherent between the 
+multiple lines of sight.  The transverse distance at redshift $z$ between 
+lines of sight separated by angle $\Delta\theta$ is 
+\be 
+\Delta r=D_A\,\Delta\theta\approx 
+6\left(\frac{H_0D_A}{0.4}\right)\left(\frac{\Delta\theta}{1''}\right)\, 
+h^{-1}{\rm kpc} \ . 
+\ee 
+Note that for $z=1-3.5$, $H_0D_A$ is almost constant at 0.4 in a 
+cosmology near the concordance model.  Image separations tend to be in 
+the 1--5'' range.  For such transverse separations, much smaller than 
+the gas Jeans scale of $\sim300\,h^{-1}$ kpc, the Lyman alpha lines 
+should be coherent in the multiple images \cite{09100250}.  
+Note that if we wanted to 
+use very long time delay systems (though few are known, none with 
+$\Delta t>3$ y) then these tend to have larger image separations, roughly 
+$\Delta t\sim(\Delta\theta)^2$ and the coherence may be degraded for 
+hypothetical systems with separations greater than tens of arcseconds. 
+
+Wide field surveys such as Dark Energy Survey and LSST will find 
+approximately $10^3$ and $10^4$ strongly lensed quasars, respectively.  
+Monitoring 
+campaigns such as COSMOGRAIL \cite{cosmograil} and STRIDES \cite{strides} 
+obtain long term light curves for their images, measuring the time 
+delays.  Depending on the time delay, photometry quality, and other 
+factors it may take up to 1000 nights to obtain a time delay 
+estimation, though note that the accuracy requirements may be relaxed 
+from the time delay distance case, e.g.\ 5\% accuracy may be sufficient 
+for this not to contribute significantly to the redshift drift uncertainty. 
+The differential redshift measurement itself takes only a single night, 
+so the story of the universe may be revealed in 1000 nights and a night 
+\cite{1001}. 
+
+Lensing can affect the image redshifts if the lens is moving 
+\cite{mitrofanov,birkgull}.  From 
+Eq.~(\ref{eq:zgen}) we see this arises because the dot product between 
+the photon four-momentum and the source and observer four-velocities 
+has to go through the intermediate step of the lens plane, where the 
+deflection shifts the angle between the vectors.  The redshift contribution 
+is of order $v\,\delta\alpha$, where $\delta\alpha\sim\psi$ is the 
+deflection angle.  The redshift drift contribution is then 
+$(v\,\delta\alpha)\,\dot{}$, much smaller than a standard peculiar 
+acceleration of the source and so can be neglected. 
+
+Embedded within the image spectra are not only the source redshift, but 
+the redshifts of each Lyman alpha absorber.  Thus in a single night we get 
+not only multiple images with cosmology-provided time delays, but multiple 
+signals within each image spectrum.  The $N_{\rm line,q}$ spectral lines 
+in the quasar, perhaps ${\mathcal O}(10^3)$, help to improve the 
+signal-to-noise by $\sqrt{N_{\rm line,q}}$ but moreover the 
+$N_{\rm line,f}$ lines in the forest, also perhaps ${\mathcal O}(10^3)$, 
+simultaneously applies the redshift drift test at multiple redshifts 
+(with their individual $\dot z(z)$), potentially improving the cosmological 
+model constraints.  We discuss this further in the next section. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Experimental Approaches} \label{sec:tech} 
+
+In this section we turn from theoretical speculation to consideration of 
+innovative experimental approaches, with practical details on how to 
+obtain highly precise redshift measurements, especially through differential 
+observations. 
+
+\eric{Fit this next paragraph in somewhere?} 
+First, a simultaneous differential measurement between time delayed spectra 
+is more robust than individual absolute measurements of redshift.  
+Traditionally, one might wavelength calibrate the spectra with an external 
+standard, such as an iodine cell, and then repeat this one or ten years 
+later with the next redshift measurement of the source.  However, the 
+wavelength calibration is not guaranteed to remain fixed over this long time 
+span; indeed \cite{griest} find it can shift significantly over a single 
+night with changes in temperature, humidity, etc.  These stability issues 
+are removed with a simultaneous differential measurement. 
+
+%Furthermore, by the nature of the strong lensing time delay, the spectra 
+%could even by crosscalibrated in both space and time.  That is, if the time 
+%delay between images A and B is one year, say, then if observing the system 
+%one year later the spectrum of image B should match that of image A from 
+%the previous year.  This ``time anchoring'' may add some robustness to 
+%the spatial anchoring of observing multiple images of the same source 
+%simultaneously.  Recall the images are separated by a few arcseconds, and 
+%so can fit within a single field of view of the spectrograph. 
+
+
+\newcommand{\lnnu}{\ln{\sigma}} 
+\usepackage{url}
+
+\eric{Make transition to this text and following subsections.} 
+
+This is over an order of magnitude improvement
+of the high-precision redshift measurement of  $\sigma_z=6\times 10^{-7}$ obtained
+from the radio absorption line in 3C~286 at $z=0.849$
+\citep{1978ApJ...219....1D}.
+
+\section{[OII] and [OIII] Emission Line Galaxies as Targets}
+Emission line galaxies are excellent candidates for the measurement of precision redshifts.
+The unique signature
+of doublets amidst  other emission lines allows unambiguous identification of the [OII] $\lambda\lambda$3727--3729\AA\ 
+and [OIII]$\lambda\lambda$4959--5007\AA\ doublets.
+Their high line fluxes provide strong signals that suppress statistical Poisson uncertainty.
+Doublets occupy only a narrow bandwidth that spectrographs must span.
+The two lines of a doublet are produced by the same atoms and therefore
+share a common line profile: as the wavelength separation of the two lines is proportional to $(1+z)$, their cross-correlation in log-wavelength
+provides a measure of redshift that is independent of the specific shape of the line profile.
+
+Potential targets are selected from the Sloan Digital Sky Survey data release SDSS3 DR10.  The  Portsmouth Emission-Line Kinematics table \citep{2013MNRAS.431.1383T}  is used to select
+objects 
+with $z>0.08$
+and sharp and bright [OII] and/or [OIII] emission lines.
+The redshifts, velocity dispersions $\Delta v$, line strengths, and host continuum levels for a select set of galaxies are shown in Table~\ref{lines:tab}.
+The two-line average $\Delta v$ for [OII] , and the continua flux for bout doublets  are given.
+Although we use its velocity dispersions, the Portsmouth table  gives ``rest-frame'' fluxes corrected for dust correction;
+the observed fluxes needed to simulate observations are taken from the spZline data model
+\citep{2012AJ....144..144B}.  In some cases only one doublet is visible, for example with high-redshift galaxies where [OIII] features are shifted to the near-infrared and are difficult to access from ground-based observations.
+A representative 
+target, from Plate~\#1268, Fiber~\#318, has its  SDSS spectrum shown in Figure~\ref{shsinput:fig}.
+
+\begin{deluxetable}{cccccccc}
+\tablecaption{Target Line Properties.\label{lines:tab}}
+\tablehead{
+\colhead{} &\colhead{} &\colhead{} &\colhead{}  &\colhead{$\Delta$ v} & \colhead{Flux 1}  & \colhead{Flux 2} & \colhead{Continuum}\\
+\colhead{Plate} & \colhead{Fiber} &\colhead{$z$}&\colhead{Doublet} &\colhead{(km\,s$^{-1}$)}& \colhead{(erg\,s$^{-1}$cm$^{-2}$)}& \colhead{(erg\,s$^{-1}$cm$^{-2}$)}& \colhead{(erg\,s$^{-1}$cm$^{-2}$\AA$^{-1}$)}
+}
+\startdata
+1523 & 602 &  0.089 
+&[OIII]& $ 5.14$ &$7.04\times 10^{-16}$ &$2.13\times 10^{-15}$ &$1.97\times 10^{-17}$ \\ 
+\tableline
+1935 & 204 &  0.098 &[OII] & $10.054$ &$1.06\times 10^{-14}$ &$1.28\times 10^{-14}$ &$2.39\times 10^{-16}$\\
+&&
+&[OIII]& $10.04$ &$1.96\times 10^{-14}$ &$5.93\times 10^{-14}$ &$1.92\times 10^{-16}$ \\ 
+\tableline
+1036 & 584 &  0.108 
+&[OIII]& $ 4.55$ &$3.47\times 10^{-16}$ &$1.05\times 10^{-15}$ &$4.42\times 10^{-17}$ \\ 
+\tableline
+2959 & 354 &  0.120 
+&[OIII]& $ 6.86$ &$1.11\times 10^{-16}$ &$3.36\times 10^{-16}$ &$1.51\times 10^{-18}$ \\ 
+\tableline
+1268 & 318 &  0.126 &[OII] & $10.044$ &$5.89\times 10^{-15}$ &$6.29\times 10^{-15}$ &$1.77\times 10^{-16}$\\
+&&
+&[OIII]& $10.04$ &$1.09\times 10^{-14}$ &$3.32\times 10^{-14}$ &$1.46\times 10^{-16}$ \\ 
+\tableline
+1657 & 483 &  0.221 &[OII] & $10.359$ &$4.69\times 10^{-15}$ &$4.28\times 10^{-15}$ &$1.36\times 10^{-16}$\\
+&&
+&[OIII]& $10.30$ &$6.07\times 10^{-15}$ &$1.84\times 10^{-14}$ &$1.09\times 10^{-16}$ \\ 
+\tableline
+1073 & 225 &  0.272 &[OII] & $84.746$ &$8.38\times 10^{-16}$ &$1.05\times 10^{-15}$ &$3.36\times 10^{-17}$\\
+&&
+&[OIII]& $ 1.43$ &$3.75\times 10^{-16}$ &$1.14\times 10^{-15}$ &$3.89\times 10^{-17}$ \\ 
+\tableline
+1514 & 137 &  0.318 &[OII] & $10.005$ &$1.20\times 10^{-15}$ &$1.74\times 10^{-15}$ &$6.35\times 10^{-17}$\\
+&&
+&[OIII]& $10.01$ &$3.85\times 10^{-16}$ &$1.17\times 10^{-15}$ &$1.07\times 10^{-16}$ \\ 
+\tableline
+4794 & 757 &  0.560 &[OII] & $45.890$ &$2.03\times 10^{-16}$ &$3.18\times 10^{-16}$ &$8.18\times 10^{-18}$\\
+&&
+&[OIII]& $26.45$ &$8.29\times 10^{-17}$ &$2.51\times 10^{-16}$ &$1.51\times 10^{-17}$ \\ 
+\tableline
+1059 & 564 &  0.693 &[OII] & $9.580$ &$1.40\times 10^{-17}$ &$1.94\times 10^{-14}$ &$1.47\times 10^{-17}$\\
+\tableline
+
+\enddata
+\end{deluxetable}
+
+
+\begin{figure}[t]
+   \centering
+    \includegraphics[scale=0.4]{SpecById.pdf} 
+  % \plotone{SpecById.eps} 
+   \caption{Spectrum of SDSS target specified by Plate~\#1268, Fiber~\#318 from the SDSS3 DR10.  \label{shsinput:fig}}
+\end{figure}
+
+The tabulated galaxies are not the product of an exhaustive search and are meant to represent a minimum of what can be available
+as good
+candidates targets.
+Future surveys such as eBOSS, Dark Energy Spectroscopic Instrument, and Euclid will specifically target emission-line
+galaxies from which the best targets can be identified.  In the scenarios considered in this article, redshift precision scales
+with the inverse of line width and the inverse square of line flux.
+
+The spectral regions of interest
+are around each doublet.  In the calculations that follow, these areas are modeled as a function of wavenumber $\sigma$ as
+\begin{equation}
+B(\sigma)=\frac{a_1}{\sqrt{2\pi s_1^2}}\exp{\left[-\frac{\left(\sigma-\sigma_1\right)^2}{2s_1^2}\right]}+\frac{a_2}{\sqrt{2\pi s_2^2}}\exp{\left[-\frac{\left(\sigma-\sigma_2\right)^2}{2s_2^2}\right]}.
+\label{input:eqn}
+\end{equation}
+The two lines have central wavenumbers $\sigma_1$ and $\sigma_2$, and share a common Gaussian profile with width parameterized by velocity dispersion
+such that $s_i=\sigma_i\Delta v/c$. 
+
+\section{Spectrographs Considered For Redshift Measurements}
+The precision with which redshift can be determined depends on the instrument used for the measurement.
+We consider several spectrometers designs, including a ``Conventional'' high-resolution dispersion spectrograph and the
+interferometric instruments ``EDI'',
+``SHS'', and ``ED-SHS''.  Interferometers produce a Fourier transform of a signal, converting sharp
+spectral features into a wave patterns whose frequency is dependent on the feature wavelength.  Interferometers provide
+increased statistical sensitivity to wavelength measurements and potentially have less sensitivity to systematic
+uncertainties.
+
+Some common assumptions are made for the spectrometers.
+The baseline observation is for an 8-hour exposure on a 10-m telescope.
+To allow direct comparison of the 
+designs, all systems are assigned the same total throughput of 70\%.
+The dispersion spectrometer used for Conventional, EDI, and ED-SHS instruments has $R=20000$ with
+point-spread-function dominated by the pixel top-hat function.
+For all cases considered photon noise dominates uncertainties, nevertheless
+we include a detector read noise of $2e^-$, total integrations split into 2-hour exposures, and a dark current of $2e^-$\,s$^{-1}$. 
+Blocking filters remove flux in wavelengths outside the regions
+of interest.  The new moon CTIO sky emission is included and
+is small compared to the galaxy continuum.
+Spatial information is unimportant and the target is considered as point-like: a
+circular aperture of $1\arcsec$ diameter is assumed to cover the full line flux.
+The effective PSF (including pixels and possible subpixel quantum efficiency variation) 
+Nyquist samples the intrinsic line profiles.
+When appropriate, the sampling along the spatial axis is not included explicitly in the
+signal equations for conciseness.
+
+
+Projected redshift precisions are calculated with Fisher matrix analysis with the source
+redshift $z$ as the only free parameter. 
+Precisions scale as the inverse square of exposure time and inverse of telescope aperture. 
+For the SHS and when the  $R=20000$ spectrographs resolve the spectral line, the precision scales inversely
+with the line dispersion velocity.  
+As the measurements
+are source-noise dominated, redshift precisions scale as the inverse square of line flux. 
+
+We are interested in uncertainties in redshift drift.  This is in some ways simpler than measuring absolute redshifts
+because correlated redshift uncertainties cancel each other when measuring drift.
+Instruments contribute sources of measurement uncertainty in redshift drift:  through limitations in the calibration
+of wavelength,  uncertainty in the conversion from pixel counts to physical flux, and uncertainty in the point spread function.
+Each spectrograph type
+has different susceptibilities to  systematic uncertainties.
+
+
+\subsection{Conventional Dispersion Spectrograph} 
+The redshift of a galaxy can be measured from the output of a dispersion spectrograph, such as shown in Figure~\ref{shsinput:fig}.
+For an input spectrum $B(\sigma)$ the expected signal is
+\begin{equation}
+I(\sigma) = \left[B(\sigma)\otimes \mbox{PSF}(\sigma)\right]\Sha\left(\frac{\sigma}{p}\right),
+\label{conventional:eqn}
+\end{equation}
+where $p$ is the spacing of the wavenumber sampling and the Shah function $\Sha$ is the set of delta functions
+that specify the discrete sampling,
+
+The wavelengths of the observed lines are compared to the corresponding known restframe to give
+the redshift.
+\textcolor{red}{Looking into uncertainty of the double wavelengths.
+The [OII] double wavelengths are known to $0.0010$\AA\ \citep{1993JPCRD..22.1179M}.}
+Projected statistical uncertainties from an $R=20000$ spectrograph for the target galaxies are given under
+the ``Conventional'' column of Table~\ref{dz:tab}.  Results from [OII], [OIII], and their combination are listed separately.
+
+
+\begin{deluxetable}{ccccccc}
+\tablecaption{Statistical Uncertainties of Select SDSS Targets With
+an 8 Hour Exposure on a 10-m Telescope For Different Spectrographs. \label{dz:tab}}
+\tablehead{
+\colhead{Plate} &\colhead{Fiber}  &\colhead{Doublet}& \colhead{Conventional} & \colhead{EDI} & \colhead{SHS} &\colhead{ED-SHS}
+}
+\startdata
+1523 & 602 
+& OIII  & $1.7\times 10^{-8}$  & $5.8\times 10^{-9}$  & $2.4\times 10^{-8}$  & $5.9\times 10^{-9}$  \\
+\tableline
+1935 & 204 
+& OII & $1.4\times 10^{-8}$  & $4.4\times 10^{-9}$  & $1.7\times 10^{-8}$  & $4.5\times 10^{-9}$  \\
+& &OIII  & $6.3\times 10^{-9}$  & $2.1\times 10^{-9}$  & $7.9\times 10^{-9}$  & $2.0\times 10^{-9}$  \\
+& &OII\&OIII  & $5.7\times 10^{-9}$  & $1.9\times 10^{-9}$  & $7.2\times 10^{-9}$  & $1.9\times 10^{-9}$  \\
+\tableline
+1036 & 584 
+& OIII  & $2.3\times 10^{-8}$  & $8.8\times 10^{-9}$  & $4.2\times 10^{-8}$  & $7.8\times 10^{-9}$  \\
+\tableline
+2959 & 354 
+& OIII  & $6.0\times 10^{-8}$  & $2.0\times 10^{-8}$  & $9.5\times 10^{-8}$  & $2.1\times 10^{-8}$  \\
+\tableline
+1268 & 318 
+& OII & $1.9\times 10^{-8}$  & $5.7\times 10^{-9}$  & $2.5\times 10^{-8}$  & $6.4\times 10^{-9}$  \\
+& &OIII  & $8.6\times 10^{-9}$  & $2.7\times 10^{-9}$  & $1.1\times 10^{-8}$  & $2.8\times 10^{-9}$  \\
+& &OII\&OIII  & $7.9\times 10^{-9}$  & $2.4\times 10^{-9}$  & $1.0\times 10^{-8}$  & $2.5\times 10^{-9}$  \\
+\tableline
+1657 & 483 
+& OII & $2.4\times 10^{-8}$  & $7.1\times 10^{-9}$  & $3.1\times 10^{-8}$  & $8.0\times 10^{-9}$  \\
+& &OIII  & $1.2\times 10^{-8}$  & $3.9\times 10^{-9}$  & $1.6\times 10^{-8}$  & $4.0\times 10^{-9}$  \\
+& &OII\&OIII  & $1.1\times 10^{-8}$  & $3.4\times 10^{-9}$  & $1.4\times 10^{-8}$  & $3.6\times 10^{-9}$  \\
+\tableline
+1073 & 225 
+& OII & $7.2\times 10^{-7}$  & $2.2\times 10^{-7}$  & $8.7\times 10^{-7}$  & $2.3\times 10^{-7}$  \\
+& &OIII  & $1.2\times 10^{-8}$  & $6.2\times 10^{-9}$  & $1.3\times 10^{-8}$  & $5.1\times 10^{-9}$  \\
+& &OII\&OIII  & $1.2\times 10^{-8}$  & $6.2\times 10^{-9}$  & $1.3\times 10^{-8}$  & $5.1\times 10^{-9}$  \\
+\tableline
+1514 & 137 
+& OII & $4.3\times 10^{-8}$  & $1.4\times 10^{-8}$  & $5.5\times 10^{-8}$  & $1.4\times 10^{-8}$  \\
+& &OIII  & $5.6\times 10^{-8}$  & $1.6\times 10^{-8}$  & $1.3\times 10^{-7}$  & $1.8\times 10^{-8}$  \\
+& &OII\&OIII  & $3.4\times 10^{-8}$  & $1.0\times 10^{-8}$  & $5.1\times 10^{-8}$  & $1.1\times 10^{-8}$  \\
+\tableline
+4794 & 757 
+& OII & $6.2\times 10^{-7}$  & $1.9\times 10^{-7}$  & $6.6\times 10^{-7}$  & $2.0\times 10^{-7}$  \\
+& &OIII  & $4.1\times 10^{-7}$  & $1.3\times 10^{-7}$  & $9.0\times 10^{-7}$  & $1.3\times 10^{-7}$  \\
+& &OII\&OIII  & $3.4\times 10^{-7}$  & $1.1\times 10^{-7}$  & $5.3\times 10^{-7}$  & $1.1\times 10^{-7}$  \\
+\tableline
+1059 & 564 
+& OII & $1.7\times 10^{-8}$  & $5.5\times 10^{-9}$  & $1.6\times 10^{-8}$  & $5.6\times 10^{-9}$  \\
+\tableline
+\enddata
+\end{deluxetable}
+
+Not included in Table~\ref{dz:tab} are sources of instrumental systematics.
+Wavelength calibration is performed through observations of arc lamps emitting lines at known wavelengths.
+The line density is sparse, in that an arc line is not placed on every detector pixel.   If the arc is taken simultaneously
+with the science exposure, a minimum wavelength interpolation distance must be maintained so that the arc does
+not interfere with the doublet.  Otherwise, the arc must be observed in a different exposure. 
+Therefore,  temporal and/or
+wavelength interpolation are applied to calibrate wavelengths.
+
+The small number of pixels measuring line flux places stringent requirements on flatfield calibration.  The FWHM of a 10 km\,s$^{-1}$
+feature is spanned by 3.15 pixels along the dispersion axis, and (for our calculations) 3 pixels along the spatial axis.
+A singe pixel covered by one of the [OIII] lines of the SDSS target specified by Plate~\#1268, Fiber~\#318 has $\sim 10^6$ counts;
+in order for photon noise to dominate over pixel flux uncertainty the calibration must be done to significantly better than 0.1\%.
+
+Uncertainty in the often variable and charge-dependent point spread function can
+bias the determination of the line centroids.  Just as with the flux calibration requirement, sub-per-mil accuracy in predicted pixel counts
+is required.  For redshift drift, these calibration requirements are differential between observations taken
+over the duration of the survey: if absolute calibration is not achieved, instrumental stability is essential.
+
+
+\subsection{Externally Dispersed Interferometer}
+The Externally Dispersed Interferometer \citep[EDI;][]{2003PASP..115..255E} is a candidate instrument with which to measure precision redshifts.
+An EDI is the sequence of a Fourier transform spectrograph (FTS) and a dispersion spectrograph.  The FTS is an interferometer that shifts
+the phase of incoming coherent light
+by an amount dependent on wavelength and a  delay between the two arm lengths.
+The ensuing dispersion spectrograph takes the phased light and separates it into fine wavelength bins.
+For an individual wavelength bin the output signal depends on the phase introduced by the interferometer; multiple
+measurements taken after adjusting the delay  make apparent a modulation in the output signals.
+Therefore, in an EDI the wavelength can be measured using both the calibration methods of a standard dispersion
+spectrograph {\it and} from the modulations of signal apparent when changing the FTS arm-lengths.   As a consequence,
+it was shown by
+\citet{2003PASP..115..255E} that EDI's provide line-velocity measurements that are more precise than with a dispersion spectrograph.
+
+An EDI produces measurements that can be related
+to a conventional spectrum
+\begin{equation}
+I(\sigma) = B(\sigma) \otimes \mbox{PSF}(\sigma),
+\end{equation}
+and an independently measurable whirl
+\begin{equation}
+W(\sigma) = \frac{1}{2}\left[e^{i2\pi\tau_d\sigma}B(\sigma)\right] \otimes \mbox{PSF}(\sigma),
+\end{equation}
+where $B$ is the input spectrum, $\tau_d$ is the interferometer delay, and $\mbox{PSF}$  is the blurring
+response of a pure frequency.
+
+The heterodyning feature of the EDI is seen in the Fourier transforms of the above expressions:
+\begin{align}
+i(\rho) & =b(\rho) \, \mbox{psf}(\rho)\\
+w(\rho -\tau) & =\frac{1}{2} b(\rho) \, \mbox{psf}(\rho-\tau).
+\end{align}
+The EDI whirl has the instrumental frequency response shifted into a new $\rho$ range to allow
+spectral
+resolution on scales tuned by the choice of $\tau$.  In the calculations that follow, the delay is chosen to resolve
+the FWHM of the line with lower wavenumber, $\tau = (2.36s_1)^{-1}$.
+
+An EDI observation is actually a series of measurements
+\begin{equation}
+I(\sigma)_{\Delta\tau} = \left[B(\sigma)\left(1+\cos{\left(2\pi\left(\tau+\Delta \tau\right)\sigma+\phi_y \right)} \right)\otimes \mbox{PSF}(\sigma)\right]\Sha\left(\frac{\sigma}{p}\right),
+\label{edisig:eqn}
+\end{equation}
+where $p$ is the spacing of the wavenumber sampling, $\phi_y$ is the initial phase,
+and $\Delta \tau$ represents the changes in time delay in the series of exposures; for our calculations we choose  $\Delta \tau = (1+0.25n)\tau $ with $n\in\{0,1,2,3\}$
+with the change achieved by adjusting an interferometer arm length.
+The first term represents the signal obtained with a conventional spectrograph while the second cosine term
+introduces a wavelength-dependent phase that provides additional leverage in measuring redshift.
+
+
+The expected signal for one of the [OIII] lines of the SDSS target specified by Plate~\#1268, Fiber~\#318 is shown
+in Figure~\ref{edicounts:fig}.   In this case the nominal delay is $\tau = 3.57$ mm with measurements
+made in steps of 0.892 mm.
+
+\begin{figure}[t]
+   \centering
+   \plotone{edi.pdf} 
+   \caption{The expected EDI signal from the four phase measurements for one of the [OIII] lines of
+   the SDSS target specified by Plate~\#1268, Fiber~\#318.
+   The four phases parameterized by $n$ is defined in Eqn.~\ref{edisig:eqn}.\label{edicounts:fig}}
+\end{figure}
+
+
+The redshift precisions on the target galaxies are given in Table~\ref{dz:tab}, where each of the four phases receives
+a 2-hour exposure.  The EDI performance includes that of the Conventional spectrograph plus
+the additional contribution from the whirl; in total the EDI outperforms the Conventional spectrograph
+in redshift precision by a factor of $\sim 3$.
+
+Separating the EDI information into Conventional and whirl contributions,
+the signal and constraint from the Conventional spectrograph contribution shares those same systematic uncertainties.
+The whirl component is best calibrated using arc lamps in the science exposure.  The arc lines determine the configuration
+of the EDI itself, $\phi_y$ and the $\Delta \tau$'s, and do not have to be close
+to the science lines.  This avoids the temporal and wavelength interpolation needed in conventional spectrographs.
+Wavelength uncertainty would then come from mismeasurement of phase and frequency due to pixels local to the
+science lines. Absolute flux and PSF uncertainties then become irrelevant.
+
+Flux miscalibration still affect the line profiles, resulting in potential bias in effect wavelength similar to
+the Conventional case in scale.  PSF calibration is facilitated with the presence of arc lines from which the
+PSF can be directly determined.
+
+\subsection{Spatial Heterodyne Spectroscopy}
+\label{SHS:sec}
+\subsubsection{Measuring Redshift}
+Redshift can also be measured through the sum and the difference of observed wavenumbers of two lines whose restframe wavenumbers are known:
+\begin{equation}
+(1+z)=\frac{\sigma_{10}+\sigma_{20}}{\sigma_{1}+\sigma_{2}}=\frac{\sigma_{10}-\sigma_{20}}{\sigma_{1}-\sigma_{2}},
+\label{redshift:eqn}
+\end{equation}
+where $\sigma_i$ is the observed and $\sigma_{i0}$ the restframe wavenumber of line $i$.
+At face value, the measurement of $\sigma_1\pm\sigma_2$ should be expected to suffer larger uncertainty than that of the wavenumber
+of a single line.  To counter this expectation, we consider a scenario where the experimental setup has an output that is naturally sensitive
+to $\sigma_1\pm\sigma_2$.  The differential measurement can be immune to certain systematic uncertainties encountered when using dispersion spectrographs.
+Redshifts are measured from the relative shift of a single line profile common to two lines of a doublet with no PSF blurring of the
+line profiles.
+
+
+
+\subsubsection{Signal}
+%Specifically,  when using a single feature to measure redshift the shape of the line profile
+%contributes uncertainty.
+%In contras
+
+We consider Spatial heterodyne spectroscopy (SHS) \citep{1990SPIE.1235..622H}
+as a means to get a direct measurement of  $\sigma_1\pm\sigma_2$.
+Conceptually, the SHS can be understood as an interferometer with the  mirrors replaced by diffraction gratings.
+(Practically we assume an interferometer configuration that  avoids the 50\% light loss inherent to  Michelson interferometers.)
+The gratings have line-spacing $d$ and both are tilted
+by $\theta$ with respect to the optical axis.  The deflected light from each grating exits the interferometer as a plane wave
+propagating with angle $\gamma$ away from the optical axis,  given by the grating equation
+\begin{equation}
+\sigma\left(\sin{\theta}+\sin{\left(\theta-\gamma\right)}\right)=m/d,
+\end{equation}
+where $\sigma$ is the wavenumber and $m$ the diffraction order.
+The angle of the emergent wave can be re-expressed as
+\begin{equation}
+\sin{\gamma}=-\cos{\theta} \left(\frac{m}{d\sigma} - \sin{\theta} \right)+ \sin{\theta}\sqrt{1-\left(\frac{m}{d\sigma} -\sin{\theta} \right)^2},
+\end{equation}
+which is useful in calculations.
+
+The two wavefronts from the two gratings, incident on the detector at angles $-\gamma$ and $\gamma$, interfere to make a fringe
+pattern with  frequency
+\begin{equation}
+f_x=2\sigma\sin{\gamma}.
+\end{equation}
+For an input spectrum of $B(\sigma)$, the intensity seen at the detector at position $x$ is
+\begin{equation}
+I(x)=\frac{1}{\Delta x}\left[\int_{0}^{\infty} B(\sigma)\left(1+\cos{\left(2 \pi x (2\sigma \sin{\gamma})\right)}\right)d\sigma \otimes \mbox{PSF}(x)\right]\Sha\left(\frac{x}{p}\right),
+\end{equation}
+where  $p$ is the spacing of the wavenumber sampling, and for simplicity we assume a square collimated beam that covers
+a range  $\Delta x \gg \left(2\sigma \sin{\gamma}\right)^{-1}$.
+The Littrow wavenumber $\sigma_0$ is defined such that $2\sigma_0\sin{\theta}=m/d$, $\gamma=0$ and no fringe patterns are produced.
+
+\subsubsection{Toy Example}
+\label{toy:sec}
+For illustration, consider a toy example where the input signal consists of two $\delta$-functions with the same intensity
+\begin{equation}
+B(\sigma)=\delta(\sigma_1)+\delta(\sigma_2).
+\end{equation}
+The output signal density in this case is
+\begin{align}
+I(x)&=\frac{1}{\Delta x}\left[2+ \cos{\left(2 \pi (2\sigma_1  \sin{\gamma_1}x \right)}+ \cos{\left(2\pi (2  \sigma_2  \sin{\gamma_2})x \right)}\right]\\
+&=\frac{2}{\Delta x}\left[1+ \cos{\left(2 \pi  (\sigma_1  \sin{\gamma_1}+ \sigma_2  \sin{\gamma_2})x \right)}\times\cos{\left(2\pi  (\sigma_1  \sin{\gamma_1}- \sigma_2  \sin{\gamma_2})x\right)}\right].
+\end{align}
+The two mixing of the sinusoidal outputs of the two lines results in two beat frequencies $(\sigma_1  \sin{\gamma_1}\pm\sigma_2  \sin{\gamma_2})$.
+
+When the SHS is configured such that the Littrow wavenumber is
+very close to $\sigma_1$ and $\sigma_2$ (and hence $\gamma_1$ and $\gamma_2$
+are small),
+\begin{equation}
+\sigma_{1,2}\sin{\gamma_{1,2}} \approx  2(\sigma_{1,2}-\sigma_0) \tan{\theta}
+\end{equation}
+and the beat frequencies can be expressed as
+$2(\sigma_1+\sigma_2-2\sigma_0)\tan{\theta}$ and $2(\sigma_1-\sigma_2)\tan{\theta}$.
+Each beat frequency provides information on either 
+$\sigma_1\pm \sigma_2$, the two quantities that directly lead to redshift.
+
+The ratio $n$ between the beat frequencies can be chosen by adjusting the SHS configuration to give
+\begin{equation}
+\sigma_0=\frac{\sigma_1+\sigma_2}{2}-\frac{\sigma_1-\sigma_2}{2n}.
+\label{littrowchoices:eqn}
+\end{equation}
+For $n=\infty$  the Littrow wavenumber is set to the average of the two lines: $\sigma_0=(\sigma_1+\sigma_2)/2$ and the first beat frequency is zero,
+which in practice is difficult to quantify through measurment.  When $n=1$ the Littrow wavenumber is $\sigma_2$, meaning that line produces a flat signal and the other is the source
+of the oscillations; the value of the two beat frequencies are equal.
+
+
+\subsubsection{Performance on Target Galaxies}
+
+We calculate the expected signal using the first order $m=1$ for a SHS with grating line density $1/d=1200$\,mm$^{-1}$
+and using the more realistic double line model of Eq.~\ref{input:eqn}
+Different configurations of the SHS are achieved by adjusting the grating tilt angle $\theta$, although swapping
+gratings can achieve a similar effect.
+The SHS configuration can then be expressed in terms of the Littrow wavenumber.
+
+For the [OIII] doublet of the
+SDSS target specified by Plate~\#1268, Fiber~\#318 
+the condition for having only one beat frequency occurs when $\sigma_0=\sigma_2=17913$\,cm$^{-1}$ and
+occurs at $\theta=0.341551$.
+Different choices of Littrow wavenumber
+produce different output signals:
+Figure~\ref{shscounts:fig} shows the expected counts adjusting $\sigma_0$ to produce beat frequency ratios
+$n=1/3.5,1/1.05,1,1.05,3.5$ according to Eq.\ \ref{littrowchoices:eqn}.
+The maximum $x$ is chosen to be $(12s_1\tan{\theta})^{-1}$ in order to cover the decay caused by the line-width.
+The effect on the signal
+of the choice of the beat frequency of $2(\sigma_1+\sigma_2-2\sigma_0)\tan{\theta}$ relative to the $2(\sigma_1-\sigma_2)\tan{\theta}$ frequency
+is clearly apparent.
+The precision is insensitive to the choice of $\sigma_0$, except
+for small deviations near $n=1$ and at integer ratios of the beat frequencies; we choose
+the case of $n=1.5$ or $\theta = 0.3421194$ (a change in angle of $1.95 \arcmin$ from the $n=1$ case)
+as a representative example where the pixels resolve the frequencies of interest.
+
+\begin{figure}[t]
+   \centering
+   \plotone{shscounts.pdf} 
+   \caption{The output signal for positive $x$ of the  SHS configurations that give the four different
+   Littrow numbers according to
+   $n=1/3.5,1/1.05,1,1.05,3.5$  in Equation~\ref{littrowchoices:eqn}. Only half the signal is shown: it is
+   symmetric about $x=0$.\label{shscounts:fig}}
+\end{figure}
+
+The redshift precisions on the target galaxies are given in Table~\ref{dz:tab}.  The statistical uncertainties are slightly worse than for
+the Conventional spectrograph and well below EDI.  However, the results have reduced sensitivity to PSF uncertainties.
+
+Wavelength calibration is tied to the determination of the EDI system parameters, the grating density $1/d$ and angle $\theta$.
+Both can be calibrated externally through direct measurements, or arc lamp exposures; including lamp light
+in science exposures is not preferred as all sources of light contribute the noise background.
+Alternatively
+the long exposures can be divided into sub-exposures each with a different SHS configuration, either by changing the
+gratings or by rotating the grating angles by a series of $\delta \theta$.  The data themselves can be then used to fit for
+the hardware parameters.
+
+The line signal is distributed over thousands of pixels reducing the pixel flux requirement to better than 1\%, much less stringent
+than for the the Conventional and EDI spectrographs.
+
+Converting the spectrum to Fourier space transforms the sharp imperfectly-known line profiles into the low-frequency envelope,
+distinct from the high-frequency wiggles characteristic to each configuration that inform the redshift measurement.
+The PSF blurring applies not in wavenumber space where it affects
+line shapes but rather in physical space after the conversion of the lines into cosine functions; the PSF does not directly bias the effective
+wavelength of lines.
+
+\subsection{ED-SHS}
+The two doublet lines combine to produce a mixed signal in an SHS.  Sending SHS light, such as those signals shown
+in  Figure~\ref{shscounts:fig}, into an ensuing dispersion grating
+allows the disentangling of the two signals for an unambiguous measure of the frequency of each.  In this article,
+this scheme is 
+referred to as an External Dispersion SHS (ED-SHS).
+The observed signal is described by
+\begin{equation}
+I(\sigma,x) = \frac{1}{\Delta x}\left[\int^{\sigma \exp{\left(1/2R\right)}}_{\sigma} B(\sigma')\left(1+\cos{\left(2 \pi x (2\sigma' \sin{\gamma})\right)}\right)d\sigma' \otimes \mbox{PSF}(\sigma,x)\right]\Sha\left(\frac{\sigma}{p_\sigma}\right) \Sha\left(\frac{x}{p_x}\right).
+\label{edishssig:eqn}
+\end{equation}
+The similarities between ED-SHS and EDI can be seen in Fig,\ 2 of \citet{2003PASP..115..255E}; both use
+interferometry to create wavelength-dependent modulations in the signal, the distinction between the two coming
+from the functional form of
+the modulation frequency.
+
+
+The signal from two columns of pixels corresponding to the two wavelengths of
+the [OIII] doublet of the
+SDSS target specified by Plate~\#1268, Fiber~\#318 is shown in Figure~\ref{edshs:fig}.
+The Littrow wavelength is set to the average of the two lines  $\sigma_0=(\sigma_1+\sigma_2)/2$.
+In an SHS the output signal would be the sum of these and all other columns in the bandpass.
+
+\begin{figure}[t]
+   \centering
+   \plotone{edshs} 
+   \caption{The output signal for positive $x$ of the  SHS configuration
+    $\sigma_0=(\sigma_1+\sigma_2)/2$. \label{edshs:fig}}
+\end{figure}
+
+The redshift precisions on the target galaxies are given in Table~\ref{dz:tab}.  The statistical uncertainties are improved compared to those of the
+SHS, and are comparable to the performance of the EDI.
+
+Now that the signals from different wavelengths are no longer mixed, calibration arcs can be observed with the science image without increasing
+the photon noise of the doublet lines.  Both wavelength and PSF calibration are simplified as with the EDI.
+In addition, the flux signals are further reduced relative to the SHS relaxing flux calibration requiirements.
+
+\subsection{Misc}
+Maybe these instruments are good for atomic line catalogs.
+
+\eric{Decide on bibstyle and if needed uncomment the next two lines.} 
+%\bibliographystyle{apj}
+%\bibliography{/Users/akim/Documents/alex.bib}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Conclusions} \label{sec:concl} 
+
+\eric{Revise Conclusions once article integrated.} 
+The three cosmic probes of redshift drift described here offer great 
+advantages over the brute force method.  Differential radial baryon acoustic 
+oscillations take advantage of large number statistics, should achieve drBAO 
+accuracy of a couple percent (otherwise requiring 50 years for a redshift 
+sensitivity of $10^{-10}$), and come for free with planned redshift surveys. 
+Cosmic pulsers, for example supermassive black hole binaries rather than 
+pulsars, would be highly robust and leverage multiple signals per source.  
+Again, these will be followed automatically with gravitational wave 
+searches and the concomitant searches for electromagnetic counterparts.  
+Strongly lensed time varying sources, such as quasars, allow for simultaneous 
+differential redshift measurement ``all in one night'', ameliorating 
+systematics and allowing the universe to do the work of providing a long 
+baseline in time.  
+
+Perhaps it is not too much of a dream that upcoming all sky surveys in the 
+time domain could find ``golden'' sources such as a lensed cosmic pulser 
+or $\gtrsim3\,$y time delay strong lens.  These would be extraordinary 
+cosmographic tools. 
+
+In the categorization of \cite{stebbins}, we have here tried to replace 
+patience (of decade time scales) with clever ideas on how to get the 
+universe and astrophysics to work for us.  These methods also have 
+considerable synergy with surveys already planned for different purposes, 
+and so mostly involve only different analysis or minor instrumentation. 
+The surveys, and the universe, provide the ``1000 nights'' and redshift 
+drift cosmologists need only add the ``1 night''. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\acknowledgments 
+
+We are grateful to Jerry Edelstein for useful discussions on EDI.  AGK 
+thanks the Institute for the Early Universe, Korea and EVL thanks the 
+Korea Astronomy and Space Science Institute for hospitality. 
+This work has been supported by DOE grant DE-SC-0007867 and the Director, 
+Office of Science, Office of High Energy Physics, 
+of the U.S.\ Department of Energy under Contract No.\ DE-AC02-05CH11231. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{thebibliography}{99} 
+
+\bibitem{sandage} 
+A. Sandage, ApJ 136, 319 (1962) 
+
+\bibitem{mcvittie} 
+G.C. McVittie, ApJ 136, 334 (1962) 
+
+\bibitem{fpoc} 
+E.V. Linder, {\it First Principles of Cosmology\/}, (Addison-Wesley: London) 
+(1997) 
+
+\bibitem{10044646} 
+E.V Linder, arXiv:1006.4646 
+
+\bibitem{pulsars} 
+D.R. Lorimer, Living Rev. Relativity 11, 8 (2008) 
+
+\bibitem{13071628} 
+D. Thornton et al., Science 341, 53 (2013) [arXiv:1307.1628]  
+
+\bibitem{09122724} 
+N. Yunes, F. Pretorius, D. Spergel, Phys. Rev. D 81, 064018 (2010) 
+[arXiv:0912.2724] 
+
+\bibitem{13061272} 
+T. Treu et al., arXiv:1306.1272 
+
+\bibitem{tewes} 
+M. Tewes, F. Courbin, G. Meylan, Astron. Astroph. 553, A120 (2013) 
+
+\bibitem{hkl} 
+A. Hojjati, A.G. Kim, E.V. Linder, Phys. Rev. D 87, 123512 (2013) 
+
+\bibitem{09100250} 
+M.S. Peeples, D.H. Weinberg, R. Dav{\'e}, M.A. Fardal, N. Katz, 
+MNRAS 404, 1295 (2010) 
+[arXiv:0910.0250] 
+
+\bibitem{cosmograil} 
+COSMOGRAIL: \url{http://www.cosmograil.org} 
+
+\bibitem{strides} 
+STRIDES: ???? 
+
+\bibitem{1001} 
+R. Burton (translator), {\it The Book of the Thousand Nights and a 
+Night\/} (1885) 
+
+\bibitem{mitrofanov} 
+I.G. Mitrofanov, Sov. Ast. Lett. 7, 39 (1981) 
+
+\bibitem{birkgull} 
+M. Birkinshaw, S.F. Gull, Nature 302, 315 (1983) 
+
+\bibitem{stebbins} 
+A. Stebbins, Int. J. Mod. Phys. D 21, 1242017 (2012) [arXiv:1205.4201] 
+
+\end{thebibliography}
+
+
+\end{document}
+
