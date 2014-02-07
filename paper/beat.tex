@@ -1,18 +1,539 @@
-\documentclass[preprint]{aastex}
+\documentclass[article]{aastex}
 \usepackage{amsmath}
-\usepackage{verbatim}
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage{epsfig}
+\usepackage{amssymb,latexsym,mathrsfs}
 \usepackage{graphicx}
 \usepackage{color}
-\newcommand{\lnnu}{\ln{\sigma}} 
+%\usepackage{epstopdf}
+\usepackage{hyperref}
 \usepackage[OT2,T1]{fontenc}
-\usepackage{url}
-
 \DeclareSymbolFont{cyrletters}{OT2}{wncyr}{m}{n}
 \DeclareMathSymbol{\Sha}{\mathalpha}{cyrletters}{"58}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=red,
+    citecolor=blue,
+} 
+
+% Making life easier
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bs}{\begin{split}} 
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+\newcommand{\eric}[1]{\textcolor{blue}{[{\bf EL}: #1]}}
+
+% useful symbols
+\newcommand{\om}{\Omega_m}
+\newcommand{\ode}{\Omega_{de}}
+\newcommand{\Oe}{\Omega_{e}}
+\newcommand{\ob}{\Omega_b h^2}
+\newcommand{\omc}{\Omega_c h^2}
+\newcommand{\lcdm}{$\Lambda$CDM} 
+\newcommand{\neff}{N_{\rm eff}} 
+\newcommand{\tdd}{D_{\Delta t}} 
+
+
 \begin{document}
 
+\title{Beating Down Cosmic Redshift Drift} 
+\author{Alex G.\ Kim, Eric V.\ Linder, \dots} 
 
-\title{Interferometers and Redshift Drift}
+\begin{abstract} 
+Redshift drift provides a direct kinematic measurement of cosmic acceleration 
+but it occurs with a characteristic time scale of a Hubble time.  Thus 
+redshift observations with a challenging precision of $10^{-9}$ require a 
+10 year time span to obtain a signal-to-noise of 1. We discuss theoretical 
+and experimental approaches to address this challenge, potentially requiring 
+less observer time and having greater immunity to common systematics.  On 
+the theoretical side we explore allowing the universe, rather than the 
+observer, to provide long time spans; speculative methods include radial 
+baryon acoustic oscillations, cosmic pulsars, and strongly lensed quasars. 
+On the experimental side, we explore beating down the redshift precision 
+using differential interferometric techniques, including externally 
+dispersed interferometers and spatial heterodyne spectroscopy. Low 
+redshift emission line galaxies are identified as having high cosmology 
+leverage and systematics control, with an 8 hour exposure on a 10-meter 
+telescope (1000 hours of exposure on a 40-meter telescope) potentially 
+capable of measuring redshifts to a precision of $2\times 10^{-9}$ 
+($\sim5\times 10^{-11}$). 
+\end{abstract}
+
+\date{\today} 
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction} \label{Sec:intro} 
+
+Our universe is dynamical, i.e.\ the metric evolves or more simply the 
+scale factor of the universe changes with time, hence $a(t)$.  This 
+kinematic effect 
+gives rise to the cosmic redshift of light from distant sources.  Moreover, 
+since the expansion rate itself evolves, in all but a coasting, Milne 
+universe, the redshift itself will shift.  This redshift drift was 
+introduced by Sandage \cite{sandage} and McVittie \cite{mcvittie} in the 
+early 1960s and revisited in the 1980s and 1990s; see the textbook 
+summary in \cite{fpoc}. 
+
+Just as redshift is direct, kinematical evidence for cosmic expansion, 
+redshift drift is likewise for cosmic acceleration.  This directness is 
+an attractive feature, so even if such a cosmic probe cannot reach the 
+accuracy on cosmological parameter estimation of, say, distance or growth 
+of structure probes, it is worthwhile to explore possibilities to carry 
+it out. 
+
+Conventionally, this is thought of in a brute force approach: stare at an 
+object for a long time and wait to measure the change in its redshift.  
+Since the time scale for an order unity variation is the characteristic 
+time scale of the expansion, the Hubble time of $\sim10^{10}$ y, this 
+requires fantastically precise measurements of redshift stable over the 
+observing period.  Moreover, any other time variation in the metric that 
+is not linear gives a competing effect.  From the Principle of Equivalence, 
+any acceleration of the source or change in gravity along the line of sight 
+acts as a systematic contribution. 
+
+Here we explore two parallel tracks to make this cosmological probe more 
+viable. One is exploring theoretical ideas for letting the universe do the 
+difficult work for us, by taking advantage of source redshifts delivered 
+to us at effectively different epochs and of differential rather than absolute 
+measurements.  The second involves experimental approaches to improve the 
+brute force precision, while again using differential measurements to 
+ameliorate instrumental systematics. As with any probe, systematics are a 
+key concern so any method that may enable better control of them is 
+important to consider. 
+
+In Sec.~\ref{sec:basic} we review the basic redshift drift and the plethora 
+of systematics that confront it, as well as the potential cosmological 
+leverage.  Section~\ref{sec:methods} outlines three theoretical 
+alternatives to the brute force approach, each with their own advantages 
+and speculative aspects. 
+We turn to some innovative experimental approaches in Sec.~\ref{sec:tech}, 
+which may offer improvements in precision and systematics, and conclude in 
+Sec.~\ref{sec:concl}. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Redshift Drift and Systematics} \label{sec:basic} 
+
+In back to back articles published in 1962, McVittie \cite{mcvittie} and 
+Sandage \cite{sandage} laid out the basics of redshift drift.  Since the 
+cosmic redshift $z=a^{-1}-1$, then the dependence $a(t)$ of the source with 
+respect to the observer necessarily implies that $z$ changes with time as 
+well. Following the approach in \cite{fpoc}, we have 
+\bea 
+\frac{dz}{dt_0}&=&\frac{d}{dt_0}\left[\frac{a(t_0)}{a(t_e)}-1\right] 
+=\frac{\dot a(t_0)-\dot a (t_e)}{a(t_e)}\\ 
+&=&(1+z)\,H_0-H(z)\ , 
+\eea 
+where $t_0$ is the observing time, $t_e$ the signal emission time, and 
+$H=\dot a/a$ the Hubble expansion rate.  
+
+The form involving a difference 
+between $\dot a$'s makes clear that this arises from acceleration (positive 
+or negative).  Only a universe where $\dot a=$constant, i.e.\ $a\propto t$, 
+has no redshift drift.  This is a Milne universe, which is conformal to a 
+Minkowski spacetime, and so the Principle of Equivalence assures us that 
+a universe without gravity has no acceleration, and vice versa. 
+We emphasize the kinematic aspect of the redshift drift: its nonzero 
+value directly indicates acceleration, with no need to know the dynamics, 
+i.e.\ the specific functional dependence $a(t)$. Only when we want to compare 
+to a particular model, e.g.\ so much matter density and so much dark energy 
+density with some equation of state, do we need to know $a(t)$. 
+
+At high redshift we expect the universe to be decelerating, and hence 
+the drift should be negative.  When the universe begins to accelerate 
+(speed up) under the influence of dark energy in recent times, however, 
+then the drift will change to positive.  Thus the hope is to map out the 
+influence of dark energy, and its equation of state, by accurate 
+measurements of the redshift drift. 
+
+One fly in the ointment is that in fact the observed redshift 
+$z\ne a^{-1}-1$. The full relativistic expression is 
+\be 
+1+z=\frac{(g_{\mu\nu}k^\mu u^\nu)_e}{(g_{\mu\nu}k^\mu u^\nu)_o}\ , 
+\label{eq:zgen} 
+\ee 
+with the redshift drift obtaining contributions from not only the 
+homogeneous expansion in the metric, but 1) inhomogeneous gravitational 
+potentials, 2) deviations in the photon four-momentum $k^\mu$ due to 
+inhomogeneities, and 3) time variation of the source four-velocity $u^\nu$, 
+i.e.\ peculiar accelerations.  
+
+The full expression for the redshift drift including metric and geodesic 
+effects but not peculiar acceleration is 
+\bea 
+\frac{dz}{dt_o}&=&\frac{\dot a_o-\dot a_e}{a_e}+2[\dot\psi_e-(1+z)\dot\psi_o] 
++\frac{2}{a_e}\partial_1(\psi_e-\psi_o)\nonumber\\ 
+&&-(\dot\psi_e-\dot\phi_e)+(1+z)(\dot\psi_o-\dot\phi_o)\\ 
+&&-H(z)\,(\phi_o-\phi_e)+H_0\,(1+z)[a_o k^0_o]^{(1)}\ ,\nonumber  
+\eea 
+where $\psi$ and $\phi$ are the metric gravitational potentials. 
+These terms are discussed in detail in \cite{10044646}; most are smaller 
+than, though some are comparable to (especially for relativistic systems), 
+peculiar accelerations. 
+
+As for peculiar accelerations, using 
+$\vec\nabla\psi\sim \dot u$, the contribution is 
+\be 
+\dot u \sim \frac{\psi}{L}\sim H\,\frac{H^{-1}}{L}\,\psi\sim H\, 
+\left(\frac{40\,{\rm kpc}}{L}\right)\left(\frac{\psi}{10^{-5}}\right)\ , 
+\ee 
+where $L$ is a characteristic size of the system.  This contribution can be 
+the same order of magnitude as the first, McVittie-Sandage term, and so is 
+not obviously negligible when talking about active galactic nuclei as 
+sources, for example. It is crucial to realize that this should not be 
+interpreted statistically, i.e.\ averaging over sources in low density 
+and high density regions, but treated for an individual line of sight. 
+Similarly it should not be treated as though the source was in the linear 
+density perturbation regime. 
+
+Methods exist for ameliorating these systematics, e.g.\ observing several 
+well separated sources.  However the precision required for measurement of 
+redshift drift at a signal-to-noise of merely unity is 
+$dz\approx 10^{-10}$ over a year (or $10^{-9}$ over 10 years), 
+while a 1\% measurement of the dark energy equation of state (assumed 
+constant) requires $dz\approx 10^{-13}$ over a year.  Systematics would 
+need to be reduced below these levels. 
+
+To see how far we can beat down these challenges we first explore the 
+cosmological sensitivity of the probe, then in the next two sections 
+consider some theoretical and experimental leverages. 
+
+Figure~\ref{fig:sens} shows the sensitivity of the drift $\dot z$ as a 
+function of source redshift to the cosmological parameters of the matter 
+density $\om$ and dark energy equation of state $w(a)=w_0+w_a(1-a)$ where 
+$w_0$ is its present value and $w_a$ a measure of its time variation. The 
+key properties to notice are: 1) The sensitivity curves are different 
+shapes, indicating no strong covariance between the effects of the different 
+parameters, 2) The greatest sensitivity is to the matter density, and this 
+continues to outweigh the equation of state parameters at higher redshifts, 
+by ever increasing factors, and 3) The initial rise of the equation of 
+state sensitivities is sharp, achieving 50\% of the maximum sensitivity 
+at quite low redshifts. These characteristics suggest that low redshift 
+measurements, especially if they have better signal to noise than higher 
+redshift ones, could be valuable for cosmological leverage on dark energy 
+through the redshift drift probe. We will see that this in fact fits in 
+well with the new experimental techniques introduced in Sec.~\ref{sec:tech}. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+\begin{figure}
+   \centering
+   \includegraphics[width=3in]{zdriftd.ps}
+\caption{The dependence of the redshift drift $\dot z$ and the sensitivities 
+$\partial\dot z/\partial p$ to various cosmological parameters $p$ are shown 
+as functions of redshift. All quantities are in units of $H_0$, hence 
+the redshift drift over an observing time $\Delta t$ is 
+$\Delta z\lesssim H_0\Delta t=10^{10}\,h(\Delta t/{\rm yr})$. 
+}
+\label{fig:sens} 
+\end{figure}
+
+
+At low redshift $\dot z\approx -H_0q_0z$ so the cosmological sensitivity 
+initially increases linearly with redshift. If the precision is photon 
+noise limited, then it will go inversely with the luminosity distance. 
+Since luminosity distance grows initially linearly with redshift, then 
+more quickly at higher redshift, this indicates that low redshift may give 
+the strongest cosmological leverage. 
+
+Another consideration is that the low redshift $q_0$ dependence (which 
+accords with redshift drift being a direct probe of acceleration) implies 
+the sensitivity to $\om$ will be a factor $\sim3/2$ better than to $w_0$, 
+in agreement with Fig.~\ref{fig:sens}. The sensitivity to matter density 
+continues to increase with redshift, growing from linear with $z$ to 
+proportional to $z^{3/2}$ at high redshift, swamping the dark energy 
+parameters, whose sensitivities decline at high redshift. These 
+characteristics give merit to further exploration of the use of 
+low redshift sources. 
+
+Figure~\ref{fig:fisher} considers measurements at low, medium, and 
+high redshift ranges and compares the precisions needed on $\dot z$ to 
+give roughly comparable constraints on dark energy equation of state 
+parameters. 
+{\bf More discussion once I've made the plot.} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
+\begin{figure}
+   \centering
+   \includegraphics[width=3in]{zrange.ps}
+\caption{Joint constraints on the dark energy equation of state parameters 
+$w_0$ and $w_a$ are shown at 68\% confidence level. Note that for comparable 
+constraints, less stringent accuracy is needed when using low redshift 
+sources. 
+{\bf Try Fisher contours for measurements over [0.1,0.5], [0.7,1.2], [2.5,3]} 
+}
+\label{fig:fisher} 
+\end{figure}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Theoretical Ideas} \label{sec:methods} 
+
+Since the requirements of measuring $dz$ are so challenging, theoretical 
+concepts for observational probes that inherently use long time scales or 
+multiple measurements in one system would be of particular interest. 
+A long lever arm in time and many measurements could reduce the requirements 
+on individual measurement precision.  The universe itself provides sources 
+at many different epochs, spread out over a Hubble time.  Likewise, 
+individual sources can provide many different signals, e.g.\ spectral lines 
+or wavetrains.  In this section we explore the use of each of these 
+characteristics, and then their combination, in potential probes of 
+acceleration. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\subsection{Many sources: Radial baryon acoustic oscillations} \label{sec:rbao} 
+
+While the light from sources at different redshifts reaches us after 
+being emitted at vastly different times, this does not inform us regarding 
+redshift drift since that involves the change of a given source over time.  
+However, we can think of a statistical ensemble of objects collectively as 
+a source, for example 
+defining a baryon acoustic feature in the density power spectrum.  This 
+encodes a particular comoving scale, roughly the sound horizon $s$ at 
+baryon-photon decoupling.  By measuring it along the line of sight, we 
+are measuring a cosmic length $dr\sim150$ Mpc with endpoints at two 
+different redshifts so $dr=dz/H$.  Since $dz\approx0.05$ then $H$ is 
+fairly constant over this interval and we can simply say we obtain a 
+measurement $H(z_1)$, where $z_1$ is the mean redshift.  This is called a 
+radial baryon acoustic oscillation (BAO) measurement, of the quantity 
+$sH$. 
+
+Carrying this out in a second redshift slice delivers $H(z_2)$.  Propagating 
+the errors from each we can create a differential radial BAO (drBAO) 
+measurement 
+\be 
+R=s\,(H_2-H_1) \ . \label{eq:drbao} 
+\ee 
+For redshift differences not small compared to unity, we measure the 
+Hubble expansion parameter at times separated by a substantial fraction 
+of the Hubble time, $\sim10^{10}$ y.  That is, we have left it to the universe 
+to do the work of providing the long time baseline.  
+
+While drBAO gives the 
+``Hubble drift'' rather than the redshift drift, these two quantities are 
+closely related, and indeed the Hubble drift measurement has some 
+useful differences as shown in Table~\ref{tab:drbao}.  The nuisance 
+parameter for comparing to cosmology theory is $H_0$ for the redshift 
+drift, while it is the much better known sound horizon $s$ for drBAO.  
+While redshift drift has a null at the acceleration-deceleration transition, 
+drBAO has a null at the superacceleration or phantom transition, when the 
+total equation of state of the universe $w_{\rm tot}=-1$.  Finally, 
+spectroscopic galaxy surveys measuring BAO also provide drBAO so no 
+separate instrument or experiment is required. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{table}[!htb]
+\begin{tabular}{l|ccc} 
+Probe \ & \ Quantity \ & Nuisance & \ Sign \ \\ 
+\hline 
+$z$ drift &$\ (1+z)\,H_0-H(z)\ $ & $H_0$ & $w_{\rm tot}<-1/3$ \\ 
+drBAO & $s\,[H(z_2)-H(z_1)]$ & $s$ & $w_{\rm tot}<-1$ \\ 
+\end{tabular} 
+\caption{Redshift drift and differential radial BAO both 
+directly measure the acceleration of the universe, but with different 
+nuisance parameters and observational requirements. 
+}
+\label{tab:drbao}
+\end{table} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\subsection{Many signals: Cosmic pulsars} 
+
+The long time baseline of the drBAO probe ameliorates the redshift 
+precision needed, to simply that needed to measure the radial BAO scale 
+($dz\approx10^{-3}$).  However it does involve the clustering of large scale 
+structure and a statistical measure rather than simply photon propagation 
+from an individual source.  If a single source gave many measurements, 
+i.e.\ emitted many signals each of which could be used to measure redshift 
+drift, then the requirement on the redshift precision can also be 
+ameliorated in this manner.  
+Conventionally this is thought of in terms of many spectral lines; we 
+return to this later but here explore the time domain. 
+
+If the source repeatedly emitted signals, then by measuring $N$ of them 
+we could hope to statistically reduce the uncertainty on the redshift drift.  
+Moreover, if there 
+is a specific pattern to the signals, e.g.\ a periodicity, then further 
+gains can be made.  This is the idea behind the period probe, or cosmic 
+pulsar test; here we follow the textbook treatment of \cite{fpoc}.  The time 
+observed for the arrival of the $N$th pulse with emitted period $P$ is 
+\bea 
+t_N&\equiv& t_o(NP)=NP\,\frac{dt_o}{dt_e}+\frac{1}{2}\,(NP)^2\,\frac{d^2t_o}{dt_e^2}+\dots\\ 
+&=&NP\,(1+z)+\frac{1}{2}\,(NP)^2\,(1+z)\left[(1+z)\,H_0-H(z)\right]\ . 
+\eea 
+The redshift drift (in square brackets) is thus enhanced by $N^2$ and 
+can be specifically fit to the quadratic behavior of the time series, 
+helping to make a clean detection.  There is an extensive literature on 
+pulsar timing and efficient fitting of different contributions 
+\cite{pulsars}. 
+
+While pulsars are fantastically regular clocks, well suited to this probe, 
+we do not currently detect them at cosmological distances in the Hubble 
+flow (but see \cite{13071628}).  The idea behind cosmic pulsars is not 
+restrict to neutron stars, however.  
+One could consider other sources of (quasi-)periodic signals such as 
+gravitational waves from supermassive binary black hole inspirals, which 
+should be detectable 
+at cosmic distances.  An issue here (other than detecting such sources) 
+is that in these systems redshift is not measured separately but is tied 
+into the chirp mass combination with the black hole masses.  Any evolution 
+in the black hole masses -- or Newton's constant -- would be a systematic; 
+see the analysis in Appendix B of \cite{09122724} following a suggestion 
+by Linder.  Finally, any other accelerations, such as the motion of the system 
+through an inhomogeneous gravitational potential or pulsar or gravitational 
+wave kicks, would be a systematic. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\subsection{Multiple sources and signals: Strongly lensed quasars} \label{sec:lens} 
+
+The ideal situation would be to combine the long time baseline provided 
+by cosmological distances as in the drBAO method with the multiple 
+signals per source as in the cosmic pulsar method.  While this cannot be 
+exactly done, some of advantages of each enter in the use of strongly 
+lensed sources, plus the ability to do a differential rather than absolute 
+measurement. 
+
+Strong gravitational lensing produces multiple images of the source, 
+and so in a single system one can measure the redshift along multiple 
+lines of sight.  Gravitational lensing itself is achromatic in the 
+geometric optics regime (wavelength divided by effective lens scale 
+much less than one, an excellent approximation at ultraviolet and optical 
+wavelengths) 
+and so the redshifts will be the same.  If the propagating light is 
+absorbed in the Lyman alpha forest due to neutral hydrogen gas along 
+the path, then many narrow spectral features arise, enabling multiple 
+measurements of the redshift drift. 
+
+Moreover, due to the different light paths there will be time delays 
+between the spectra observed of each image.  This is used in strong 
+lensing as a cosmological distance probe itself (see, e.g., \cite{13061272} 
+and references therein).  Here, however, it provides a time baseline for 
+the redshift drift of the individual source.  If the time delay were of 
+order 10 years (or even better a substantial fraction of the Hubble time) 
+then the required redshift measurement precision would be eased, but 
+observed systems have time delays of days to a year.  Still, the universe 
+is giving us for free a time baseline of a year though the redshift 
+observations may be done in a single night.  
+
+Note that unlike for time delay distances 
+we have no need to model the time delay through knowledge of the lens mass 
+profile, image geometry, etc. -- all we need to do is measure it from 
+monitoring the light curves of the images.  A bright, time varying source 
+such as a quasar is ideal for this, and the time delay is measured from 
+the photometric light curves (see, e.g.\ \cite{tewes,hkl} for statistical 
+techniques for 
+robust estimation).  The Lyman alpha spectral features do not enter in 
+this part.  Since we do not need to model the lens mass profile, we can 
+use cluster lenses, with larger time delays, rather than restricting to 
+galaxy lenses as for the time delay distance technique. 
+
+If the lines of sight are sufficiently close together, then they can be 
+observed simultaneously, allowing a direct differential measurement to give 
+the redshift drift, rather than an absolute one.  Furthermore, this increases 
+the likelihood that the Lyman alpha absorption is coherent between the 
+multiple lines of sight.  The transverse distance at redshift $z$ between 
+lines of sight separated by angle $\Delta\theta$ is 
+\be 
+\Delta r=D_A\,\Delta\theta\approx 
+6\left(\frac{H_0D_A}{0.4}\right)\left(\frac{\Delta\theta}{1''}\right)\, 
+h^{-1}{\rm kpc} \ . 
+\ee 
+Note that for $z=1-3.5$, $H_0D_A$ is almost constant at 0.4 in a 
+cosmology near the concordance model.  Image separations tend to be in 
+the 1--5'' range.  For such transverse separations, much smaller than 
+the gas Jeans scale of $\sim300\,h^{-1}$ kpc, the Lyman alpha lines 
+should be coherent in the multiple images \cite{09100250}.  
+Note that if we wanted to 
+use very long time delay systems (though few are known, none with 
+$\Delta t>3$ y) then these tend to have larger image separations, roughly 
+$\Delta t\sim(\Delta\theta)^2$ and the coherence may be degraded for 
+hypothetical systems with separations greater than tens of arcseconds. 
+
+Wide field surveys such as Dark Energy Survey and LSST will find 
+approximately $10^3$ and $10^4$ strongly lensed quasars, respectively.  
+Monitoring 
+campaigns such as COSMOGRAIL \cite{cosmograil} and STRIDES \cite{strides} 
+obtain long term light curves for their images, measuring the time 
+delays.  Depending on the time delay, photometry quality, and other 
+factors it may take up to 1000 nights to obtain a time delay 
+estimation, though note that the accuracy requirements may be relaxed 
+from the time delay distance case, e.g.\ 5\% accuracy may be sufficient 
+for this not to contribute significantly to the redshift drift uncertainty. 
+The differential redshift measurement itself takes only a single night, 
+so the story of the universe may be revealed in 1000 nights and a night 
+\cite{1001}. 
+
+Lensing can affect the image redshifts if the lens is moving 
+\cite{mitrofanov,birkgull}.  From 
+Eq.~(\ref{eq:zgen}) we see this arises because the dot product between 
+the photon four-momentum and the source and observer four-velocities 
+has to go through the intermediate step of the lens plane, where the 
+deflection shifts the angle between the vectors.  The redshift contribution 
+is of order $v\,\delta\alpha$, where $\delta\alpha\sim\psi$ is the 
+deflection angle.  The redshift drift contribution is then 
+$(v\,\delta\alpha)\,\dot{}$, much smaller than a standard peculiar 
+acceleration of the source and so can be neglected. 
+
+Embedded within the image spectra are not only the source redshift, but 
+the redshifts of each Lyman alpha absorber.  Thus in a single night we get 
+not only multiple images with cosmology-provided time delays, but multiple 
+signals within each image spectrum.  The $N_{\rm line,q}$ spectral lines 
+in the quasar, perhaps ${\mathcal O}(10^3)$, help to improve the 
+signal-to-noise by $\sqrt{N_{\rm line,q}}$ but moreover the 
+$N_{\rm line,f}$ lines in the forest, also perhaps ${\mathcal O}(10^3)$, 
+simultaneously applies the redshift drift test at multiple redshifts 
+(with their individual $\dot z(z)$), potentially improving the cosmological 
+model constraints.  We discuss this further in the next section. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Experimental Approaches} \label{sec:tech} 
+
+In this section we turn from theoretical speculation to consideration of 
+innovative experimental approaches, with practical details on how to 
+obtain highly precise redshift measurements, especially through differential 
+observations. 
+
+\eric{Fit this next paragraph in somewhere?} 
+First, a simultaneous differential measurement between time delayed spectra 
+is more robust than individual absolute measurements of redshift.  
+Traditionally, one might wavelength calibrate the spectra with an external 
+standard, such as an iodine cell, and then repeat this one or ten years 
+later with the next redshift measurement of the source.  However, the 
+wavelength calibration is not guaranteed to remain fixed over this long time 
+span; indeed \cite{griest} find it can shift significantly over a single 
+night with changes in temperature, humidity, etc.  These stability issues 
+are removed with a simultaneous differential measurement. 
+
+%Furthermore, by the nature of the strong lensing time delay, the spectra 
+%could even by crosscalibrated in both space and time.  That is, if the time 
+%delay between images A and B is one year, say, then if observing the system 
+%one year later the spectrum of image B should match that of image A from 
+%the previous year.  This ``time anchoring'' may add some robustness to 
+%the spatial anchoring of observing multiple images of the same source 
+%simultaneously.  Recall the images are separated by a few arcseconds, and 
+%so can fit within a single field of view of the spectrograph. 
+
+
+\newcommand{\lnnu}{\ln{\sigma}} 
+\usepackage{url}
+
+\eric{Make transition to this text and following subsections.} 
+
 This is over an order of magnitude improvement
 of the high-precision redshift measurement of  $\sigma_z=6\times 10^{-7}$ obtained
 from the radio absorption line in 3C~286 at $z=0.849$
@@ -100,7 +621,7 @@ as good
 candidates targets.
 Future surveys such as eBOSS, Dark Energy Spectroscopic Instrument, and Euclid will specifically target emission-line
 galaxies from which the best targets can be identified.  In the scenarios considered in this article, redshift precision scales
-with the inverse of line width and the inverse squared root of line flux.
+with the inverse of line width and the inverse square root of line flux.
 
 The spectral regions of interest
 are around each doublet.  In the calculations that follow, these areas are modeled as a function of wavenumber $\sigma$ as
@@ -141,7 +662,7 @@ signal equations for conciseness.
 
 Projected redshift precisions are calculated with Fisher matrix analysis with the source
 redshift $z$ as the only free parameter. 
-Precisions scale as the inverse squared root of exposure time and inverse of telescope aperture. 
+Precisions scale as the inverse square root of exposure time and inverse of telescope aperture. 
 For the SHS and when the  $R=20000$ spectrographs resolve the spectral line, the precision scales inversely
 with the line dispersion velocity.  
 As the measurements
@@ -501,7 +1022,118 @@ In addition, the flux signals are further reduced relative to the SHS relaxing f
 \subsection{Misc}
 Maybe these instruments are good for atomic line catalogs.
 
-\bibliographystyle{apj}
-\bibliography{alex.bib}
+\eric{Decide on bibstyle and if needed uncomment the next two lines.} 
+%\bibliographystyle{apj}
+%\bibliography{alex.bib}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\section{Conclusions} \label{sec:concl} 
+
+\eric{Revise Conclusions once article integrated.} 
+The three cosmic probes of redshift drift described here offer great 
+advantages over the brute force method.  Differential radial baryon acoustic 
+oscillations take advantage of large number statistics, should achieve drBAO 
+accuracy of a couple percent (otherwise requiring 50 years for a redshift 
+sensitivity of $10^{-10}$), and come for free with planned redshift surveys. 
+Cosmic pulsers, for example supermassive black hole binaries rather than 
+pulsars, would be highly robust and leverage multiple signals per source.  
+Again, these will be followed automatically with gravitational wave 
+searches and the concomitant searches for electromagnetic counterparts.  
+Strongly lensed time varying sources, such as quasars, allow for simultaneous 
+differential redshift measurement ``all in one night'', ameliorating 
+systematics and allowing the universe to do the work of providing a long 
+baseline in time.  
+
+Perhaps it is not too much of a dream that upcoming all sky surveys in the 
+time domain could find ``golden'' sources such as a lensed cosmic pulser 
+or $\gtrsim3\,$y time delay strong lens.  These would be extraordinary 
+cosmographic tools. 
+
+In the categorization of \cite{stebbins}, we have here tried to replace 
+patience (of decade time scales) with clever ideas on how to get the 
+universe and astrophysics to work for us.  These methods also have 
+considerable synergy with surveys already planned for different purposes, 
+and so mostly involve only different analysis or minor instrumentation. 
+The surveys, and the universe, provide the ``1000 nights'' and redshift 
+drift cosmologists need only add the ``1 night''. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\acknowledgments 
+
+We are grateful to Jerry Edelstein for useful discussions on EDI.  AGK 
+thanks the Institute for the Early Universe, Korea and EVL thanks the 
+Korea Astronomy and Space Science Institute for hospitality. 
+This work has been supported by DOE grant DE-SC-0007867 and the Director, 
+Office of Science, Office of High Energy Physics, 
+of the U.S.\ Department of Energy under Contract No.\ DE-AC02-05CH11231. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{thebibliography}{99} 
+
+\bibitem{sandage} 
+A. Sandage, ApJ 136, 319 (1962) 
+
+\bibitem{mcvittie} 
+G.C. McVittie, ApJ 136, 334 (1962) 
+
+\bibitem{fpoc} 
+E.V. Linder, {\it First Principles of Cosmology\/}, (Addison-Wesley: London) 
+(1997) 
+
+\bibitem{10044646} 
+E.V Linder, arXiv:1006.4646 
+
+\bibitem{pulsars} 
+D.R. Lorimer, Living Rev. Relativity 11, 8 (2008) 
+
+\bibitem{13071628} 
+D. Thornton et al., Science 341, 53 (2013) [arXiv:1307.1628]  
+
+\bibitem{09122724} 
+N. Yunes, F. Pretorius, D. Spergel, Phys. Rev. D 81, 064018 (2010) 
+[arXiv:0912.2724] 
+
+\bibitem{13061272} 
+T. Treu et al., arXiv:1306.1272 
+
+\bibitem{tewes} 
+M. Tewes, F. Courbin, G. Meylan, Astron. Astroph. 553, A120 (2013) 
+
+\bibitem{hkl} 
+A. Hojjati, A.G. Kim, E.V. Linder, Phys. Rev. D 87, 123512 (2013) 
+
+\bibitem{09100250} 
+M.S. Peeples, D.H. Weinberg, R. Dav{\'e}, M.A. Fardal, N. Katz, 
+MNRAS 404, 1295 (2010) 
+[arXiv:0910.0250] 
+
+\bibitem{cosmograil} 
+COSMOGRAIL: \url{http://www.cosmograil.org} 
+
+\bibitem{strides} 
+STRIDES: ???? 
+
+\bibitem{1001} 
+R. Burton (translator), {\it The Book of the Thousand Nights and a 
+Night\/} (1885) 
+
+\bibitem{mitrofanov} 
+I.G. Mitrofanov, Sov. Ast. Lett. 7, 39 (1981) 
+
+\bibitem{birkgull} 
+M. Birkinshaw, S.F. Gull, Nature 302, 315 (1983) 
+
+\bibitem{stebbins} 
+A. Stebbins, Int. J. Mod. Phys. D 21, 1242017 (2012) [arXiv:1205.4201] 
+
+\end{thebibliography}
+
 
 \end{document}
+
