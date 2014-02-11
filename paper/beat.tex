@@ -1,4 +1,4 @@
-\documentclass[preprint]{aastex}
+\documentclass[preprint2, 10pt]{aastex}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{bm}
@@ -6,18 +6,11 @@
 \usepackage{amssymb,latexsym,mathrsfs}
 \usepackage{graphicx}
 \usepackage{color}
-%\usepackage{epstopdf}
 \usepackage{hyperref}
 \usepackage{url} 
 \usepackage[OT2,T1]{fontenc}
 \DeclareSymbolFont{cyrletters}{OT2}{wncyr}{m}{n}
 \DeclareMathSymbol{\Sha}{\mathalpha}{cyrletters}{"58}
-
-\hypersetup{
-    colorlinks=true,
-    linkcolor=red,
-    citecolor=blue,
-} 
 
 % Making life easier
 \newcommand{\be}{\begin{equation}}
@@ -27,6 +20,7 @@
 \newcommand{\eea}{\end{eqnarray}}
 
 \newcommand{\eric}[1]{\textcolor{blue}{[{\bf EL}: #1]}}
+\newcommand{\alex}[1]{\textcolor{red}{[{\bf AK}: #1]}}
 
 % useful symbols
 \newcommand{\om}{\Omega_m}
@@ -39,10 +33,25 @@
 \newcommand{\tdd}{D_{\Delta t}} 
 \newcommand{\lnnu}{\ln{\sigma}} 
 
+\slugcomment{\today} 
 
-\begin{document}1
-\title{Beating Down Cosmic Redshift Drift} 
-\author{Alex G.\ Kim, Eric V.\ Linder, \dots} 
+\begin{document}
+\title{Narrowing In On Cosmic Redshift Drift} 
+\author{Alex G.\ Kim\altaffilmark{1}, Eric V.\ Linder\altaffilmark{1,2}, Jerry Edelstein\altaffilmark{2}, David Erskine\altaffilmark{3}}
+\altaffiltext{1}
+{
+Physics Division, Lawrence Berkeley National Laboratory, 1 Cyclotron Road, Berkeley, CA, 94720, USA}
+\altaffiltext{2}
+{
+Space Sciences Laboratory, University of California Berkeley, 7 Gauss Way, Berkeley, CA 94720, USA
+}
+\altaffiltext{3}
+{
+Lawrence Livermore National Laboratory, Livermore,
+CA 94550, USA
+}
+
+
 
 \begin{abstract} 
 Redshift drift provides a direct kinematic measurement of cosmic acceleration 
@@ -64,32 +73,32 @@ capable of measuring redshifts to a precision of $2\times 10^{-9}$
 ($\sim5\times 10^{-11}$). 
 \end{abstract}
 
-\date{\today} 
+\keywords{distance scale}
 
-\maketitle
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction} \label{Sec:intro} 
 
-Our universe is dynamical, i.e.\ the metric evolves or more simply the 
-scale factor of the universe changes with time, hence $a(t)$.  This 
-kinematic effect 
+Our universe is \alex{kinematic}, i.e.\ the metric evolves -- or more simply the 
+scale factor of the universe -- changes with time, hence $a(t)$.  This 
 gives rise to the cosmic redshift of light from distant sources.  Moreover, 
 since the expansion rate itself evolves, in all but a coasting, Milne 
-universe, the redshift itself will shift.  This redshift drift was 
+universe, the redshift \alex{of a fixed comoving coordinate} will shift.  This redshift drift was 
 introduced by Sandage \citep{sandage} and McVittie \citep{mcvittie} in the 
 early 1960s and revisited in the 1980s and 1990s; see the textbook 
 summary in \citet{fpoc}. 
+\alex{Dynamics refer to the rule that describes the time dependence, not the time dependence itself.}
 
 Just as redshift is direct, kinematical evidence for cosmic expansion, 
 redshift drift is likewise for cosmic acceleration.  This directness is 
 an attractive feature, so even if such a cosmic probe cannot reach the 
-accuracy on cosmological parameter estimation of, say, distance or growth 
-of structure probes, it is worthwhile to explore possibilities to carry 
+accuracy \alex{of, say, distance or growth 
+of structure probes on  dynamical cosmological-model parameters}, it is worthwhile \alex{exploring} possibilities to carry 
 it out. 
 
 Conventionally, this is thought of in a brute force approach: stare at an 
-object for a long time and wait to measure the change in its redshift.  
+object for a long time and \alex{} measure the change in its redshift.  
 Since the time scale for an order unity variation is the characteristic 
 time scale of the expansion, the Hubble time of $\sim10^{10}$ y, this 
 requires fantastically precise measurements of redshift stable over the 
@@ -109,8 +118,8 @@ key concern so any method that may enable better control of them is
 important to consider. 
 
 In Sec.~\ref{sec:basic} we review the basic redshift drift and the plethora 
-of systematics that confront it, as well as the potential cosmological 
-leverage.  Section~\ref{sec:methods} outlines three theoretical 
+of systematics that confront it, as well as the potential \alex{leverage on
+dynamical models}.  Section~\ref{sec:methods} outlines three theoretical 
 alternatives to the brute force approach, each with their own advantages 
 and speculative aspects. 
 We turn to some innovative experimental approaches in Sec.~\ref{sec:tech}, 
@@ -121,8 +130,8 @@ Sec.~\ref{sec:concl}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Redshift Drift and Systematics} \label{sec:basic} 
 
-In back to back articles published in 1962, McVittie \citep{mcvittie} and 
-Sandage \citep{sandage} laid out the basics of redshift drift.  Since the 
+In back-to-back articles published in 1962, \citet{mcvittie} and 
+\citet{sandage} laid out the basics of redshift drift.  Since the 
 cosmic redshift $z=a^{-1}-1$, then the dependence $a(t)$ of the source with 
 respect to the observer necessarily implies that $z$ changes with time as 
 well. Following the approach in \citet{fpoc}, we have 
@@ -131,20 +140,26 @@ well. Following the approach in \citet{fpoc}, we have
 =\frac{\dot a(t_0)-\dot a (t_e)}{a(t_e)}\\ 
 &=&(1+z)\,H_0-H(z)\ , 
 \eea 
-where $t_0$ is the observing time, $t_e$ the signal emission time, and 
-$H=\dot a/a$ the Hubble expansion rate.  
+where $t_0$ is the observer time \alex{I think ``time the signal is observed in the observer-frame'' is clearer considering how
+$t_e$ is defined}, $t_e$ the signal emission time, and 
+$H=\dot a/a$ the Hubble expansion rate.
+\alex{The two dots in Eq.~1 are for different time derivatives, one for $t_0$ and the other for $t_e$, so the notation is deceptive.}
 
 The form involving a difference 
 between $\dot a$'s makes clear that this arises from acceleration (positive 
-or negative).  Only a universe where $\dot a=$constant, i.e.\ $a\propto t$, 
+or negative).
+Only a universe where $\dot a=\mbox{constant}$, i.e.\ $a\propto t$, 
 has no redshift drift.  This is a Milne universe, which is conformal to a 
 Minkowski spacetime, and so the Principle of Equivalence assures us that 
 a universe without gravity has no acceleration, and vice versa. 
 We emphasize the kinematic aspect of the redshift drift: its nonzero 
-value directly indicates acceleration, with no need to know the dynamics, 
-i.e.\ the specific functional dependence $a(t)$. Only when we want to compare 
+value directly indicates acceleration, with no need to know \alex{} the specific functional dependence $a(t)$. 
+\alex{This contrasts with distance measurements, where
+acceleration is inferred from the best-fit $a(t)$ of a dynamical model \citep{1998AJ....116.1009R,1999ApJ...517..565P}
+or  regression methods are otherwise necessary to obtain derivatives of the data \citep{2012PhRvD..85l3530S,2012JCAP...06..036S}.
+This text replaces: Only when we want to compare 
 to a particular model, e.g.\ so much matter density and so much dark energy 
-density with some equation of state, do we need to know $a(t)$. 
+density with some equation of state, do we need to know $a(t)$. }
 
 At high redshift we expect the universe to be decelerating, and hence 
 the drift should be negative.  When the universe begins to accelerate 
@@ -152,6 +167,9 @@ the drift should be negative.  When the universe begins to accelerate
 then the drift will change to positive.  Thus the hope is to map out the 
 influence of dark energy, and its equation of state, by accurate 
 measurements of the redshift drift. 
+
+\alex{I suggest we complete the thought on dark energy, so put Figure 1 and associated text to end of section here.
+Then pick up on systematic error discussion.}
 
 One fly in the ointment is that in fact the observed redshift 
 $z\ne a^{-1}-1$. The full relativistic expression is 
@@ -189,8 +207,8 @@ where $L$ is a characteristic size of the system.  This contribution can be
 the same order of magnitude as the first, McVittie-Sandage term, and so is 
 not obviously negligible when talking about active galactic nuclei as 
 sources, for example. It is crucial to realize that this should not be 
-interpreted statistically, i.e.\ averaging over sources in low density 
-and high density regions, but treated for an individual line of sight. 
+interpreted statistically, i.e.\ averaging over sources in low-density 
+and high-density regions, but treated for an individual line of sight. 
 Similarly it should not be treated as though the source was in the linear 
 density perturbation regime. 
 
@@ -202,15 +220,25 @@ while a 1\% measurement of the dark energy equation of state (assumed
 constant) requires $dz\approx 10^{-13}$ over a year.  Systematics would 
 need to be reduced below these levels. 
 
+\alex{I suggest moving text from here to end of section earlier.}
+
 To see how far we can beat down these challenges we first explore the 
 cosmological sensitivity of the probe, then in the next two sections 
 consider some theoretical and experimental leverages. 
 
+\alex{I want to include sensitivity to $H_0$ here so I added some text.}
 Figure~\ref{fig:sens} shows the sensitivity of the drift $\dot z$ as a 
 function of source redshift to the cosmological parameters of the matter 
 density $\om$ and dark energy equation of state $w(a)=w_0+w_a(1-a)$ where 
-$w_0$ is its present value and $w_a$ a measure of its time variation. The 
-key properties to notice are: 1) The sensitivity curves are different 
+$w_0$ is its present value and $w_a$ a measure of its time variation.
+\alex{$\dot{z}$ is given
+in units of $H_0$.  Specify fiducial cosmology used for plot.}
+The 
+key properties to notice are: 
+\alex{0) The derivative of the measurement model with
+respect to $H_0$
+is one trivially.}
+1) The sensitivity curves are different 
 shapes, indicating no strong covariance between the effects of the different 
 parameters, 2) The greatest sensitivity is to the matter density, and this 
 continues to outweigh the equation of state parameters at higher redshifts, 
@@ -244,7 +272,7 @@ Since luminosity distance grows initially linearly with redshift, then
 more quickly at higher redshift, this indicates that low redshift may give 
 the strongest cosmological leverage. 
 
-Another consideration is that the low redshift $q_0$ dependence (which 
+Another consideration is that the low-redshift $q_0$ dependence (which 
 accords with redshift drift being a direct probe of acceleration) implies 
 the sensitivity to $\om$ will be a factor $\sim3/2$ better than to $w_0$, 
 in agreement with Fig.~\ref{fig:sens}. The sensitivity to matter density 
@@ -278,9 +306,10 @@ sources.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Theoretical Ideas} \label{sec:methods} 
+\section{\alex{Conjectured Probes}} \label{sec:methods} 
 
-Since the requirements of measuring $dz$ are so challenging, theoretical 
+Since the requirements of measuring $dz$ are so challenging, \alex{``theoretical'' I don't think
+is the word, speculative or  conjectured is more apt.}
 concepts for observational probes that inherently use long time scales or 
 multiple measurements in one system would be of particular interest. 
 A long lever arm in time and many measurements could reduce the requirements 
@@ -290,6 +319,8 @@ individual sources can provide many different signals, e.g.\ spectral lines
 or wavetrains.  In this section we explore the use of each of these 
 characteristics, and then their combination, in potential probes of 
 acceleration. 
+
+\alex{Should acknowledge Ly$\alpha$ somewhere.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -336,6 +367,7 @@ separate instrument or experiment is required.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \begin{table}[!htb]
+\footnotesize
 \begin{tabular}{l|ccc} 
 Probe \ & \ Quantity \ & Nuisance & \ Sign \ \\ 
 \hline 
@@ -541,7 +573,7 @@ of the high-precision redshift measurement of  $\sigma_z=6\times 10^{-7}$ obtain
 from the radio absorption line in 3C~286 at $z=0.849$
 \citep{1978ApJ...219....1D}.
 
-\section{[OII] and [OIII] Emission Line Galaxies as Targets}
+\subsection{[OII] and [OIII] Emission Line Galaxies as Targets}
 Emission line galaxies are excellent candidates for the measurement of precision redshifts.
 The unique signature
 of doublets amidst  other emission lines allows unambiguous identification of the [OII] $\lambda\lambda$3727--3729\AA\ 
@@ -628,16 +660,17 @@ with the inverse of line width and the inverse square root of line flux.
 
 The spectral regions of interest
 are around each doublet.  In the calculations that follow, these areas are modeled as a function of wavenumber $\sigma$ as
-\begin{equation}
-B(\sigma)=\frac{a_1}{\sqrt{2\pi s_1^2}}\exp{\left[-\frac{\left(\sigma-\sigma_1\right)^2}{2s_1^2}\right]}+\frac{a_2}{\sqrt{2\pi s_2^2}}\exp{\left[-\frac{\left(\sigma-\sigma_2\right)^2}{2s_2^2}\right]}.
+\begin{align}
+B(\sigma)& =\frac{a_1}{\sqrt{2\pi s_1^2}}\exp{\left[-\frac{\left(\sigma-\sigma_1\right)^2}{2s_1^2}\right]} \nonumber\\
+ &\qquad +\frac{a_2}{\sqrt{2\pi s_2^2}}\exp{\left[-\frac{\left(\sigma-\sigma_2\right)^2}{2s_2^2}\right]}.
 \label{input:eqn}
-\end{equation}
+\end{align}
 The two lines have central wavenumbers $\sigma_1$ and $\sigma_2$, and share a common Gaussian profile with width parameterized by velocity dispersion
 such that $s_i=\sigma_i\Delta v/c$. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Spectrographs Considered For Redshift Measurements} 
+\subsection{Spectrographs Considered For Redshift Measurements} 
 
 The precision with which redshift can be determined depends on the instrument used for the measurement.
 We consider several spectrometers designs, including a ``Conventional'' high-resolution dispersion spectrograph and the
@@ -810,10 +843,11 @@ resolution on scales tuned by the choice of $\tau$.  In the calculations that fo
 the FWHM of the line with lower wavenumber, $\tau = (2.36s_1)^{-1}$.
 
 An EDI observation is actually a series of measurements
-\begin{equation}
-I(\sigma)_{\Delta\tau} = \left[B(\sigma)\left(1+\cos{\left(2\pi\left(\tau+\Delta \tau\right)\sigma+\phi_y \right)} \right)\otimes \mbox{PSF}(\sigma)\right]\Sha\left(\frac{\sigma}{p}\right),
+\begin{align}
+I(\sigma)_{\Delta\tau} &= \left[B(\sigma)\left(1+\cos{\left(2\pi\left(\tau+\Delta \tau\right)\sigma+\phi_y \right)} \right) \right. \nonumber\\
+&\qquad \left. \otimes \mbox{PSF}(\sigma)\right]\Sha\left(\frac{\sigma}{p}\right),
 \label{edisig:eqn}
-\end{equation}
+\end{align}
 where $p$ is the spacing of the wavenumber sampling, $\phi_y$ is the initial phase,
 and $\Delta \tau$ represents the changes in time delay in the series of exposures; for our calculations we choose  $\Delta \tau = (1+0.25n)\tau $ with $n\in\{0,1,2,3\}$
 with the change achieved by adjusting an interferometer arm length.
@@ -890,9 +924,10 @@ propagating with angle $\gamma$ away from the optical axis,  given by the gratin
 \end{equation}
 where $\sigma$ is the wavenumber and $m$ the diffraction order.
 The angle of the emergent wave can be re-expressed as
-\begin{equation}
-\sin{\gamma}=-\cos{\theta} \left(\frac{m}{d\sigma} - \sin{\theta} \right)+ \sin{\theta}\sqrt{1-\left(\frac{m}{d\sigma} -\sin{\theta} \right)^2},
-\end{equation}
+\begin{align}
+\sin{\gamma} & =-\cos{\theta} \left(\frac{m}{d\sigma} - \sin{\theta} \right) \nonumber \\
+& \qquad + \sin{\theta}\sqrt{1-\left(\frac{m}{d\sigma} -\sin{\theta} \right)^2},
+\end{align}
 which is useful in calculations.
 
 The two wavefronts from the two gratings, incident on the detector at angles $-\gamma$ and $\gamma$, interfere to make a fringe
@@ -901,9 +936,10 @@ pattern with  frequency
 f_x=2\sigma\sin{\gamma}.
 \end{equation}
 For an input spectrum of $B(\sigma)$, the intensity seen at the detector at position $x$ is
-\begin{equation}
-I(x)=\frac{1}{\Delta x}\left[\int_{0}^{\infty} B(\sigma)\left(1+\cos{\left(2 \pi x (2\sigma \sin{\gamma})\right)}\right)d\sigma \otimes \mbox{PSF}(x)\right]\Sha\left(\frac{x}{p}\right),
-\end{equation}
+\begin{align}
+I(x)& =\frac{1}{\Delta x}\left[\int_{0}^{\infty} B(\sigma)\left(1+\cos{\left(2 \pi x (2\sigma \sin{\gamma})\right)}\right)d\sigma \right. \nonumber \\
+& \qquad \left.\vphantom{\int_{0}^{\infty}} \otimes \mbox{PSF}(x)\right]\Sha\left(\frac{x}{p}\right),
+\end{align}
 where  $p$ is the spacing of the wavenumber sampling, and for simplicity we assume a square collimated beam that covers
 a range  $\Delta x \gg \left(2\sigma \sin{\gamma}\right)^{-1}$.
 The Littrow wavenumber $\sigma_0$ is defined such that $2\sigma_0\sin{\theta}=m/d$, $\gamma=0$ and no fringe patterns are produced.
@@ -917,8 +953,10 @@ B(\sigma)=\delta(\sigma_1)+\delta(\sigma_2).
 \end{equation}
 The output signal density in this case is
 \begin{align}
-I(x)&=\frac{1}{\Delta x}\left[2+ \cos{\left(2 \pi (2\sigma_1  \sin{\gamma_1}x \right)}+ \cos{\left(2\pi (2  \sigma_2  \sin{\gamma_2})x \right)}\right]\\
-&=\frac{2}{\Delta x}\left[1+ \cos{\left(2 \pi  (\sigma_1  \sin{\gamma_1}+ \sigma_2  \sin{\gamma_2})x \right)}\times\cos{\left(2\pi  (\sigma_1  \sin{\gamma_1}- \sigma_2  \sin{\gamma_2})x\right)}\right].
+I(x)&=\frac{1}{\Delta x}\left[2+ \cos{\left(2 \pi (2\sigma_1  \sin{\gamma_1}x \right)} \right. \nonumber \\
+& \qquad \left.+ \cos{\left(2\pi (2  \sigma_2  \sin{\gamma_2})x \right)}\right]\\
+&=\frac{2}{\Delta x}\left[1+ \cos{\left(2 \pi  (\sigma_1  \sin{\gamma_1}+ \sigma_2  \sin{\gamma_2})x \right)}  \right. \nonumber \\
+& \qquad \left. \times\cos{\left(2\pi  (\sigma_1  \sin{\gamma_1}- \sigma_2  \sin{\gamma_2})x\right)}\right].
 \end{align}
 The two mixing of the sinusoidal outputs of the two lines results in two beat frequencies $(\sigma_1  \sin{\gamma_1}\pm\sigma_2  \sin{\gamma_2})$.
 
@@ -1007,10 +1045,11 @@ allows the disentangling of the two signals for an unambiguous measure of the fr
 this scheme is 
 referred to as an External Dispersion SHS (ED-SHS).
 The observed signal is described by
-\begin{equation}
-I(\sigma,x) = \frac{1}{\Delta x}\left[\int^{\sigma \exp{\left(1/2R\right)}}_{\sigma} B(\sigma')\left(1+\cos{\left(2 \pi x (2\sigma' \sin{\gamma})\right)}\right)d\sigma' \otimes \mbox{PSF}(\sigma,x)\right]\Sha\left(\frac{\sigma}{p_\sigma}\right) \Sha\left(\frac{x}{p_x}\right).
+\begin{align}
+I(\sigma,x) &= \frac{1}{\Delta x}\left[\int^{\sigma \exp{\left(1/2R\right)}}_{\sigma} B(\sigma')\left(1+\cos{\left(2 \pi x (2\sigma' \sin{\gamma})\right)}\right)d\sigma'   \right. \nonumber \\
+& \qquad \left.\vphantom{\int^{\sigma \exp{\left(1/2R\right)}}_{\sigma} } \otimes \mbox{PSF}(\sigma,x)\right]\Sha\left(\frac{\sigma}{p_\sigma}\right) \Sha\left(\frac{x}{p_x}\right).
 \label{edishssig:eqn}
-\end{equation}
+\end{align}
 The similarities between ED-SHS and EDI can be seen in Fig,\ 2 of \citet{2003PASP..115..255E}; both use
 interferometry to create wavelength-dependent modulations in the signal, the distinction between the two coming
 from the functional form of
