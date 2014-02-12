@@ -320,15 +320,13 @@ or wavetrains.  In this section we explore the use of each of these
 characteristics, and then their combination, in potential probes of 
 acceleration. 
 
-\alex{Should acknowledge Ly$\alpha$ somewhere.}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \subsection{Many sources: Radial baryon acoustic oscillations} \label{sec:rbao} 
 
 While the light from sources at different redshifts reaches us after 
 being emitted at vastly different times, this does not inform us regarding 
-redshift drift since that involves the change of a given source over time.  
+redshift drift which involves the change of a given source over time.  
 However, we can think of a statistical ensemble of objects collectively as 
 a source, for example 
 defining a baryon acoustic feature in the density power spectrum.  This 
@@ -351,6 +349,9 @@ For redshift differences not small compared to unity, we measure the
 Hubble expansion parameter at times separated by a substantial fraction 
 of the Hubble time, $\sim10^{10}$ y.  That is, we have left it to the universe 
 to do the work of providing the long time baseline.  
+\alex{This probe is now what we are calling drift since
+time or time evolution are not actually measured.  We don't measure
+ $\sim10^{10}$ y, it is inferred from dynamical models.}
 
 While drBAO gives the 
 ``Hubble drift'' rather than the redshift drift, these two quantities are 
@@ -384,6 +385,8 @@ nuisance parameters and observational requirements.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \subsection{Many signals: Cosmic pulsars} 
+\alex{Does this apply to extra-galactic variable stars as well, in which the signal would be
+an evolution in periodicity?}
 
 The long time baseline of the drBAO probe ameliorates the redshift 
 precision needed, to simply that needed to measure the radial BAO scale 
@@ -415,10 +418,20 @@ helping to make a clean detection.  There is an extensive literature on
 pulsar timing and efficient fitting of different contributions 
 \citep{pulsars}. 
 
+
+\alex{I am trying to understand what kind of accuracies this can give.
+Writing out the equation, each time measurement labeled by $N$ gives a measure of redshift drift
+\begin{equation}
+\dot{z}=\frac{t_N}{(1+z)NP(1+\frac{1}{2}NP)}.
+\end{equation}
+So it looks like still the drift is limited by the precision of $z$.  I think $P$ is in
+fact $P_0$ the initial period.  Measuring $P$ is also non-trivial?
+}
+
 While pulsars are fantastically regular clocks, well suited to this probe, 
 we do not currently detect them at cosmological distances in the Hubble 
-flow (but see \citet{13071628}).  The idea behind cosmic pulsars is not 
-restrict to neutron stars, however.  
+flow \citep[but see][]{13071628}.  The idea behind cosmic pulsars is not 
+restricted to neutron stars, however.  
 One could consider other sources of (quasi-)periodic signals such as 
 gravitational waves from supermassive binary black hole inspirals, which 
 should be detectable 
@@ -448,10 +461,7 @@ lines of sight.  Gravitational lensing itself is achromatic in the
 geometric optics regime (wavelength divided by effective lens scale 
 much less than one, an excellent approximation at ultraviolet and optical 
 wavelengths) 
-and so the redshifts will be the same.  If the propagating light is 
-absorbed in the Lyman alpha forest due to neutral hydrogen gas along 
-the path, then many narrow spectral features arise, enabling multiple 
-measurements of the redshift drift. 
+and so the redshifts will be the same. 
 
 Moreover, due to the different light paths there will be time delays 
 between the spectra observed of each image.  This is used in strong 
@@ -460,23 +470,24 @@ and references therein).  Here, however, it provides a time baseline for
 the redshift drift of the individual source.  If the time delay were of 
 order 10 years (or even better a substantial fraction of the Hubble time) 
 then the required redshift measurement precision would be eased, but 
-observed systems have time delays of days to a year.  Still, the universe 
+observed systems have time delays of days to \alex{years
+\citep{2007ApJ...662...62F,2008ApJ...676..761F, 2013ApJ...764..186F}}.  Still, the universe 
 is giving us for free a time baseline of a year though the redshift 
 observations may be done in a single night.  
 
-Note that unlike for time delay distances 
+Note that unlike for time-delay distances 
 we have no need to model the time delay through knowledge of the lens mass 
 profile, image geometry, etc. -- all we need to do is measure it from 
 monitoring the light curves of the images.  A bright, time varying source 
 such as a quasar is ideal for this, and the time delay is measured from 
 the photometric light curves (see, e.g.\ \citet{tewes,hkl} for statistical 
 techniques for 
-robust estimation).  The Lyman alpha spectral features do not enter in 
-this part.  Since we do not need to model the lens mass profile, we can 
+robust estimation).  The Lyman-$\alpha$ spectral features do not enter in 
+this part \alex{??}.  Since we do not need to model the lens mass profile, we can 
 use cluster lenses, with larger time delays, rather than restricting to 
-galaxy lenses as for the time delay distance technique. 
+galaxy lenses as for the time-delay distance technique. 
 
-If the lines of sight are sufficiently close together, then they can be 
+If the lines of sight are \alex{within the telescope field of view}, then they can be 
 observed simultaneously, allowing a direct differential measurement to give 
 the redshift drift, rather than an absolute one.  Furthermore, this increases 
 the likelihood that the Lyman alpha absorption is coherent between the 
@@ -493,7 +504,7 @@ the 1--5'' range.  For such transverse separations, much smaller than
 the gas Jeans scale of $\sim300\,h^{-1}$ kpc, the Lyman alpha lines 
 should be coherent in the multiple images \citep{09100250}.  
 Note that if we wanted to 
-use very long time delay systems (though few are known, none with 
+use very long-time delay systems (though few are known, none with 
 $\Delta t>3$ y) then these tend to have larger image separations, roughly 
 $\Delta t\sim(\Delta\theta)^2$ and the coherence may be degraded for 
 hypothetical systems with separations greater than tens of arcseconds. 
@@ -520,9 +531,13 @@ has to go through the intermediate step of the lens plane, where the
 deflection shifts the angle between the vectors.  The redshift contribution 
 is of order $v\,\delta\alpha$, where $\delta\alpha\sim\psi$ is the 
 deflection angle.  The redshift drift contribution is then 
-$(v\,\delta\alpha)\,\dot{}$, much smaller than a standard peculiar 
+$(v\,\delta\alpha)\,\dot{}$\alex{Something strange with the dot}, much smaller than a standard peculiar 
 acceleration of the source and so can be neglected. 
 
+\alex{I moved this here from earlier place: If the propagating light is 
+absorbed in the Lyman alpha forest due to neutral hydrogen gas along 
+the path, then many narrow spectral features arise, enabling multiple 
+measurements of the redshift drift \citep{2008MNRAS.386.1192L}.}
 Embedded within the image spectra are not only the source redshift, but 
 the redshifts of each Lyman alpha absorber.  Thus in a single night we get 
 not only multiple images with cosmology-provided time delays, but multiple 
