@@ -780,15 +780,13 @@ We are interested in uncertainties in redshift drift.  This is in some ways simp
 because correlated redshift uncertainties cancel each other when measuring drift.
 Instruments contribute sources of measurement uncertainty in redshift drift through limitations in the calibration
 of wavelength,  uncertainty in the conversion from pixel counts to physical flux, and uncertainty in the point spread function. 
-% 
-\eric{Say which are included here.} 
-% 
 Each spectrograph type
 has different susceptibilities to systematic uncertainties.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%% 
 \subsection{Conventional Dispersion Spectrograph} 
+
 The redshift of a galaxy can be measured from the output of a dispersion spectrograph, such as shown in Figure~\ref{shsinput:fig}.
 For an input spectrum $B(\sigma)$ the expected signal is
 \begin{equation}
@@ -808,8 +806,10 @@ the ``Conventional'' column of Table~\ref{dz:tab}.  Results from [OII], [OIII], 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{deluxetable}{ccccccc}
-\tablecaption{Statistical Uncertainties of Select SDSS Targets With
-an 8 Hour Exposure on a 10-m Telescope For Different Spectrographs. \label{dz:tab}}
+\tablecaption{Statistical Redshift Uncertainties of Select SDSS Targets With
+an 8 Hour Exposure on a 10-m Telescope For Different Spectrograph Types. 
+\eric{Center table or otherwise delete extra space} 
+\label{dz:tab}}
 \tablehead{
 \colhead{Plate} &\colhead{Fiber}  &\colhead{Doublet}& \colhead{Conventional} & \colhead{EDI} & \colhead{SHS} &\colhead{ED-SHS}
 }
@@ -859,6 +859,7 @@ an 8 Hour Exposure on a 10-m Telescope For Different Spectrographs. \label{dz:ta
 \enddata
 \end{deluxetable}
 
+
 Not included in Table~\ref{dz:tab} are sources of instrumental systematics.
 Wavelength calibration is performed through observations of arc lamps emitting lines at known wavelengths.
 The line density is sparse, in that an arc line is not placed on every detector pixel.   If the arc is taken simultaneously
@@ -879,8 +880,9 @@ over the duration of the survey: if absolute calibration is not achieved, instru
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\subsection{Externally Dispersed Interferometer}
-The Externally Dispersed Interferometer \citep[EDI;][]{2003PASP..115..255E} is a candidate instrument with which to measure precision redshifts.
+\subsection{Externally Dispersed Interferometer} 
+
+The Externally Dispersed Interferometer \citep[EDI;][]{2003PASP..115..255E} is a candidate instrument to measure precision redshifts. 
 An EDI is the sequence of a Fourier transform spectrograph (FTS) and a dispersion spectrograph.  The FTS is an interferometer that shifts
 the phase of incoming coherent light
 by an amount dependent on wavelength and a  delay between the two arm lengths.
@@ -888,7 +890,7 @@ The ensuing dispersion spectrograph takes the phased light and separates it into
 For an individual wavelength bin the output signal depends on the phase introduced by the interferometer; multiple
 measurements taken after adjusting the delay  make apparent a modulation in the output signals.
 Therefore, in an EDI the wavelength can be measured using both the calibration methods of a standard dispersion
-spectrograph {\it and} from the modulations of signal apparent when changing the FTS arm-lengths.   As a consequence,
+spectrograph {\it and\/} from the modulations of signal apparent when changing the FTS arm-lengths.   As a consequence,
 it was shown by
 \citet{2003PASP..115..255E} that EDI's provide line-velocity measurements that are more precise than with a dispersion spectrograph.
 
@@ -899,20 +901,20 @@ I(\sigma) = B(\sigma) \otimes \mbox{PSF}(\sigma),
 \end{equation}
 and an independently measurable whirl
 \begin{equation}
-W(\sigma) = \frac{1}{2}\left[e^{i2\pi\tau_d\sigma}B(\sigma)\right] \otimes \mbox{PSF}(\sigma),
+W(\sigma) = \frac{1}{2}\left[e^{i2\pi\tau\sigma}B(\sigma)\right] \otimes \mbox{PSF}(\sigma),
 \end{equation}
-where $B$ is the input spectrum, $\tau_d$ is the interferometer delay, and $\mbox{PSF}$  is the blurring
+where $B$ is the input spectrum, $\tau$ is the interferometer delay, and $\mbox{PSF}$  is the blurring
 response of a pure frequency.
 
 The heterodyning feature of the EDI is seen in the Fourier transforms of the above expressions:
 \begin{align}
 i(\rho) & =b(\rho) \, \mbox{psf}(\rho)\\
-w(\rho -\tau) & =\frac{1}{2} b(\rho) \, \mbox{psf}(\rho-\tau).
+w(\rho -\tau) & =\frac{1}{2}\, b(\rho) \, \mbox{psf}(\rho-\tau).
 \end{align}
 The EDI whirl has the instrumental frequency response shifted into a new $\rho$ range to allow
 spectral
 resolution on scales tuned by the choice of $\tau$.  In the calculations that follow, the delay is chosen to resolve
-the FWHM of the line with lower wavenumber, $\tau = (2.36s_1)^{-1}$.
+the FWHM of the line with the lower wavenumber, $\tau = (2.36s_1)^{-1}$.
 
 An EDI observation is actually a series of measurements
 \begin{align}
@@ -921,9 +923,12 @@ I(\sigma)_{\Delta\tau} &= \left[B(\sigma)\left(1+\cos{\left(2\pi\left(\tau+\Delt
 \label{edisig:eqn}
 \end{align}
 where $p$ is the spacing of the wavenumber sampling, $\phi_y$ is the initial phase,
-and $\Delta \tau$ represents the changes in time delay in the series of exposures; for our calculations we choose  $\Delta \tau = (1+0.25n)\tau $ with $n\in\{0,1,2,3\}$
-with the change achieved by adjusting an interferometer arm length.
-The first term represents the signal obtained with a conventional spectrograph while the second cosine term
+and $\Delta \tau$ represents the changes in time delay in the series of exposures; for our calculations we choose  $\Delta \tau = n\tau/4$ with $n\in\{0,1,2,3\}$
+with the change achieved by adjusting an interferometer arm length. 
+% 
+\eric{Check my $\Delta\tau$ correction.} 
+% 
+The first term represents the signal obtained with a conventional spectrograph while the second, cosine term
 introduces a wavelength-dependent phase that provides additional leverage in measuring redshift.
 
 
@@ -938,7 +943,9 @@ made in steps of 0.892 mm.
    \plotone{edi.pdf} 
    \caption{The expected EDI signal from the four phase measurements for one of the [OIII] lines of
    the SDSS target specified by Plate~\#1268, Fiber~\#318.
-   The four phases parameterized by $n$ is defined in Eqn.~\ref{edisig:eqn}.\label{edicounts:fig}}
+\eric{Can delete:   The four phases parameterized by $n$ are defined in Eqn.~\ref{edisig:eqn}.} 
+\eric{Add vertical dotted line showing line wavenumber?} 
+\label{edicounts:fig}}
 \end{figure}
 
 
@@ -953,11 +960,14 @@ The whirl component is best calibrated using arc lamps in the science exposure. 
 of the EDI itself, $\phi_y$ and the $\Delta \tau$'s, and do not have to be close
 to the science lines.  This avoids the temporal and wavelength interpolation needed in conventional spectrographs.
 Wavelength uncertainty would then come from mismeasurement of phase and frequency due to pixels local to the
-science lines. Absolute flux and PSF uncertainties then become irrelevant.
+science lines, so absolute flux and PSF uncertainties become irrelevant. 
 
-Flux miscalibration still affect the line profiles, resulting in potential bias in effect wavelength similar to
+Flux miscalibration still affects the line profiles, resulting in potential bias in effect 
+\eric{What?} 
+wavelength similar to
 the Conventional case in scale.  PSF calibration is facilitated with the presence of arc lines from which the
 PSF can be directly determined.
+\eric{Clarify; I thought arc lines were far from science lines} 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
