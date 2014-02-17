@@ -33,7 +33,7 @@
 \newcommand{\tdd}{D_{\Delta t}} 
 \newcommand{\lnnu}{\ln{\sigma}} 
 
-\slugcomment{\today} 
+%\slugcomment{\today} 
 
 \begin{document}
 \title{Giving Cosmic Redshift Drift a Whirl} 
@@ -49,9 +49,7 @@ Space Sciences Laboratory, University of California Berkeley, 7 Gauss Way, Berke
 {
 Lawrence Livermore National Laboratory, Livermore,
 CA 94550, USA
-}
-
-\date{\today}
+} 
 
 \begin{abstract} 
 Redshift drift provides a direct kinematic measurement of cosmic acceleration 
@@ -75,6 +73,7 @@ capable of measuring redshifts to a precision of $2\times 10^{-9}$
 
 \keywords{cosmological distances; cosmic acceleration; dark energy}
 
+\date{\today} 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -84,7 +83,7 @@ Our universe is dynamic, i.e.\ the metric evolves, or more simply the
 scale factor of the universe changes with time: hence $a(t)$.  This 
 gives rise to the cosmic redshift of light from distant sources.  Moreover, 
 since the expansion rate itself evolves, in all but a coasting, Milne 
-universe, the redshift \alex{of a fixed comoving coordinate} will shift.  This redshift drift was 
+universe, the redshift of an object with fixed comoving coordinate will shift.  This redshift drift was 
 introduced by Sandage \citep{sandage} and McVittie \citep{mcvittie} in the 
 early 1960s and revisited in the 1980s and 1990s; see the textbook 
 summary in \citet{fpoc}. 
@@ -497,8 +496,8 @@ and references therein).  Here, however, it provides a time baseline for
 the redshift drift of the individual source.  If the time delay were of 
 order 10 years (or even better a substantial fraction of the Hubble time) 
 then the required redshift measurement precision would be eased, but 
-observed systems have time delays of days to \alex{years
-\citep{2007ApJ...662...62F,2008ApJ...676..761F, 2013ApJ...764..186F}}.  
+observed systems have time delays of days to years 
+\citep{2007ApJ...662...62F,2008ApJ...676..761F, 2013ApJ...764..186F}.  
 Still, the universe 
 is giving us for free a time baseline of a year though the redshift 
 observations may be done in a single night.  
@@ -977,24 +976,22 @@ PSF can be directly determined.
 \subsubsection{Measuring Redshift}
 Redshift can also be measured through the sum and the difference of observed wavenumbers of two lines whose restframe wavenumbers are known:
 \begin{equation}
-(1+z)=\frac{\sigma_{10}+\sigma_{20}}{\sigma_{1}+\sigma_{2}}=\frac{\sigma_{10}-\sigma_{20}}{\sigma_{1}-\sigma_{2}},
+1+z=\frac{\sigma_{10}+\sigma_{20}}{\sigma_{1}+\sigma_{2}}=\frac{\sigma_{10}-\sigma_{20}}{\sigma_{1}-\sigma_{2}},
 \label{redshift:eqn}
 \end{equation}
 where $\sigma_i$ is the observed and $\sigma_{i0}$ the restframe wavenumber of line $i$.
 At face value, the measurement of $\sigma_1\pm\sigma_2$ should be expected to suffer larger uncertainty than that of the wavenumber
 of a single line.  To counter this expectation, we consider a scenario where the experimental setup has an output that is naturally sensitive
 to $\sigma_1\pm\sigma_2$.  The differential measurement can be immune to certain systematic uncertainties encountered when using dispersion spectrographs.
-Redshifts are measured from the relative shift of a single line profile common to two lines of a doublet with no PSF blurring of the
+Redshifts are measured from the relative shift of two lines of a doublt; 
+the single line profile common to them enables cancellation of the PSF blurring of the
 line profiles.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \subsubsection{Signal}
-%Specifically,  when using a single feature to measure redshift the shape of the line profile
-%contributes uncertainty.
-%In contras
 
-We consider Spatial heterodyne spectroscopy (SHS) \citep{1990SPIE.1235..622H}
+We consider Spatial Heterodyne Spectroscopy (SHS) \citep{1990SPIE.1235..622H}
 as a means to get a direct measurement of  $\sigma_1\pm\sigma_2$.
 Conceptually, the SHS can be understood as an interferometer with the  mirrors replaced by diffraction gratings.
 (Practically we assume an interferometer configuration that  avoids the 50\% light loss inherent to  Michelson interferometers.)
@@ -1017,7 +1014,7 @@ pattern with  frequency
 \begin{equation}
 f_x=2\sigma\sin{\gamma}.
 \end{equation}
-For an input spectrum of $B(\sigma)$, the intensity seen at the detector at position $x$ is
+For an input spectrum $B(\sigma)$, the intensity seen at position $x$ on the detector is
 \begin{align}
 I(x)& =\frac{1}{\Delta x}\left[\int_{0}^{\infty} B(\sigma)\left(1+\cos{\left(2 \pi x (2\sigma \sin{\gamma})\right)}\right)d\sigma \right. \nonumber \\
 & \qquad \left.\vphantom{\int_{0}^{\infty}} \otimes \mbox{PSF}(x)\right]\Sha\left(\frac{x}{p}\right),
@@ -1028,14 +1025,15 @@ The Littrow wavenumber $\sigma_0$ is defined such that $2\sigma_0\sin{\theta}=m/
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \subsubsection{Toy Example}
-\label{toy:sec}
+\label{toy:sec} 
+
 For illustration, consider a toy example where the input signal consists of two $\delta$-functions with the same intensity
 \begin{equation}
 B(\sigma)=\delta(\sigma_1)+\delta(\sigma_2).
 \end{equation}
 The output signal density in this case is
 \begin{align}
-I(x)&=\frac{1}{\Delta x}\left[2+ \cos{\left(2 \pi (2\sigma_1  \sin{\gamma_1}x \right)} \right. \nonumber \\
+I(x)&=\frac{1}{\Delta x}\left[2+ \cos{\left(2 \pi (2\sigma_1  \sin{\gamma_1})x \right)} \right. \nonumber \\
 & \qquad \left.+ \cos{\left(2\pi (2  \sigma_2  \sin{\gamma_2})x \right)}\right]\\
 &=\frac{2}{\Delta x}\left[1+ \cos{\left(2 \pi  (\sigma_1  \sin{\gamma_1}+ \sigma_2  \sin{\gamma_2})x \right)}  \right. \nonumber \\
 & \qquad \left. \times\cos{\left(2\pi  (\sigma_1  \sin{\gamma_1}- \sigma_2  \sin{\gamma_2})x\right)}\right].
@@ -1059,15 +1057,15 @@ The ratio $n$ between the beat frequencies can be chosen by adjusting the SHS co
 \label{littrowchoices:eqn}
 \end{equation}
 For $n=\infty$  the Littrow wavenumber is set to the average of the two lines: $\sigma_0=(\sigma_1+\sigma_2)/2$ and the first beat frequency is zero,
-which in practice is difficult to quantify through measurment.  When $n=1$ the Littrow wavenumber is $\sigma_2$, meaning that line produces a flat signal and the other is the source
-of the oscillations; the value of the two beat frequencies are equal.
+which in practice is difficult to quantify through measurement.  When $n=1$ the Littrow wavenumber is $\sigma_2$, meaning that line produces a flat signal and the other is the source
+of the oscillations; the values of the two beat frequencies are equal.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \subsubsection{Performance on Target Galaxies}
 
 We calculate the expected signal using the first order $m=1$ for a SHS with grating line density $1/d=1200$\,mm$^{-1}$
-and using the more realistic double line model of Eq.~\ref{input:eqn}
+and using the more realistic double line model of Eq.~\ref{input:eqn}. 
 Different configurations of the SHS are achieved by adjusting the grating tilt angle $\theta$, although swapping
 gratings can achieve a similar effect.
 The SHS configuration can then be expressed in terms of the Littrow wavenumber.
@@ -1075,28 +1073,31 @@ The SHS configuration can then be expressed in terms of the Littrow wavenumber.
 For the [OIII] doublet of the
 SDSS target specified by Plate~\#1268, Fiber~\#318 
 the condition for having only one beat frequency occurs when $\sigma_0=\sigma_2=17913$\,cm$^{-1}$ and
-occurs at $\theta=0.341551$.
+occurs at $\theta=0.341551$ radians.
 Different choices of Littrow wavenumber
 produce different output signals:
 Figure~\ref{shscounts:fig} shows the expected counts adjusting $\sigma_0$ to produce beat frequency ratios
-$n=1/3.5,1/1.05,1,1.05,3.5$ according to Eq.\ \ref{littrowchoices:eqn}.
+$n=1/3.5,1/1.05,1,1.05,3.5$ according to Eq.~\ref{littrowchoices:eqn}.
 The maximum $x$ is chosen to be $(12s_1\tan{\theta})^{-1}$ in order to cover the decay caused by the line-width.
 The effect on the signal
 of the choice of the beat frequency of $2(\sigma_1+\sigma_2-2\sigma_0)\tan{\theta}$ relative to the $2(\sigma_1-\sigma_2)\tan{\theta}$ frequency
 is clearly apparent.
 The precision is insensitive to the choice of $\sigma_0$, except
 for small deviations near $n=1$ and at integer ratios of the beat frequencies; we choose
-the case of $n=1.5$ or $\theta = 0.3421194$ (a change in angle of $1.95 \arcmin$ from the $n=1$ case)
+the case of $n=1.5$ or $\theta = 0.3421194$ radians (a change in angle of $1.95 \arcmin$ from the $n=1$ case)
 as a representative example where the pixels resolve the frequencies of interest.
 
 %%%%%%%%%%%%%%%%%%%%%% 
 \begin{figure}[t]
    \centering
    \plotone{shscounts.pdf} 
-   \caption{The output signal for positive $x$ of the  SHS configurations that give the four different
-   Littrow numbers according to
-   $n=1/3.5,1/1.05,1,1.05,3.5$  in Equation~\ref{littrowchoices:eqn}. Only half the signal is shown: it is
-   symmetric about $x=0$.\label{shscounts:fig}}
+   \caption{The output signal for positive $x$ (it is symmetric about 
+$x=0$) of five \eric{Check} SHS configurations giving different
+   Littrow numbers according to 
+   $n=1/3.5, 1/1.05, 1, 1.05, 3.5$  in Eq.~\ref{littrowchoices:eqn}. 
+Note the curves are offset; each has approximately 100000 counts. 
+\eric{Check} 
+   \label{shscounts:fig}}
 \end{figure}
 
 The redshift precisions on the target galaxies are given in Table~\ref{dz:tab}.  The statistical uncertainties are slightly worse than for
@@ -1110,30 +1111,33 @@ the long exposures can be divided into sub-exposures each with a different SHS c
 gratings or by rotating the grating angles by a series of $\delta \theta$.  The data themselves can be then used to fit for
 the hardware parameters.
 
-The line signal is distributed over thousands of pixels reducing the pixel flux requirement to better than 1\%, much less stringent
-than for the the Conventional and EDI spectrographs.
+The line signal is distributed over thousands of pixels, reducing the pixel flux requirement to better than 1\%, much less stringent
+than for the Conventional and EDI spectrographs.
 
-Converting the spectrum to Fourier space transforms the sharp imperfectly-known line profiles into the low-frequency envelope,
+Converting the spectrum to Fourier space transforms the sharp, imperfectly-known line profiles into the low-frequency envelope,
 distinct from the high-frequency wiggles characteristic to each configuration that inform the redshift measurement.
 The PSF blurring applies not in wavenumber space where it affects
-line shapes but rather in physical space after the conversion of the lines into cosine functions; the PSF does not directly bias the effective
-wavelength of lines.
+line shapes but rather in physical space after the conversion of the spectral lines into cosine functions; the PSF does not directly bias the effective
+wavelength of the lines. 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\subsection{ED-SHS}
+\subsection{ED-SHS} 
+
 The two doublet lines combine to produce a mixed signal in an SHS.  Sending SHS light, such as those signals shown
 in  Figure~\ref{shscounts:fig}, into an ensuing dispersion grating
-allows the disentangling of the two signals for an unambiguous measure of the frequency of each.  In this article,
+allows the disentangling of the two signals for an unambiguous measurement of the frequency of each one.  Here, 
 this scheme is 
 referred to as an External Dispersion SHS (ED-SHS).
 The observed signal is described by
 \begin{align}
-I(\sigma,x) &= \frac{1}{\Delta x}\left[\int^{\sigma \exp{\left(1/2R\right)}}_{\sigma} B(\sigma')\left(1+\cos{\left(2 \pi x (2\sigma' \sin{\gamma})\right)}\right)d\sigma'   \right. \nonumber \\
-& \qquad \left.\vphantom{\int^{\sigma \exp{\left(1/2R\right)}}_{\sigma} } \otimes \mbox{PSF}(\sigma,x)\right]\Sha\left(\frac{\sigma}{p_\sigma}\right) \Sha\left(\frac{x}{p_x}\right).
+I(\sigma,x) &= \frac{1}{\Delta x}\left[\int^{\sigma \exp{\left(1/(2R)\right)}}_{\sigma} d\sigma'\,B(\sigma') \right.\nonumber\\ 
+& \quad\qquad \times \left.\vphantom{\int_{0}^{\infty}} \left(1+\cos{\left(2 \pi x (2\sigma' \sin{\gamma})\right)}\right) \right] \nonumber\\ 
+& \quad \otimes \mbox{PSF}(\sigma,x)\, \Sha\left(\frac{\sigma}{p_\sigma}\right) \Sha\left(\frac{x}{p_x}\right).
 \label{edishssig:eqn}
 \end{align}
 The similarities between ED-SHS and EDI can be seen in Fig,\ 2 of \citet{2003PASP..115..255E}; both use
-interferometry to create wavelength-dependent modulations in the signal, the distinction between the two coming
+interferometry to create wavelength-dependent modulations in the signal, with the distinction between the two coming
 from the functional form of
 the modulation frequency.
 
@@ -1149,29 +1153,27 @@ In an SHS the output signal would be the sum of these and all other columns in t
 \begin{figure}[t]
    \centering
    \plotone{edshs} 
-   \caption{The output signal for positive $x$ of the  SHS configuration
-    $\sigma_0=(\sigma_1+\sigma_2)/2$. \label{edshs:fig}}
-\end{figure}
+   \caption{The output signal for positive $x$ (it is symmetric about
+$x=0$) of the ED-SHS \eric{Check} configuration with 
+    $\sigma_0=(\sigma_1+\sigma_2)/2$. 
+Note the curves are offset; each has approximately 40000 \eric{Check} counts. 
+\label{edshs:fig}}
+\end{figure} 
+
 
 The redshift precisions on the target galaxies are given in Table~\ref{dz:tab}.  The statistical uncertainties are improved compared to those of the
 SHS, and are comparable to the performance of the EDI.
 
 Now that the signals from different wavelengths are no longer mixed, calibration arcs can be observed with the science image without increasing
 the photon noise of the doublet lines.  Both wavelength and PSF calibration are simplified as with the EDI.
-In addition, the flux signals are further reduced relative to the SHS relaxing flux calibration requiirements.
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\subsection{Misc}
-Maybe these instruments are good for atomic line catalogs.
-
-
+In addition, the flux signals per pixel \eric{Check} are further reduced relative to the SHS, relaxing flux calibration requiirements. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Conclusions} \label{sec:concl} 
 
-\eric{Revise Conclusions once article integrated.} 
+\eric{Still need to revise Conclusions.} 
+
 The three cosmic probes of redshift drift described here offer great 
 advantages over the brute force method.  Differential radial baryon acoustic 
 oscillations take advantage of large number statistics, should achieve drBAO 
@@ -1199,14 +1201,20 @@ and so mostly involve only different analysis or minor instrumentation.
 The surveys, and the universe, provide the ``1000 nights'' and redshift 
 drift cosmologists need only add the ``1 night''. 
 
+Maybe these instruments are good for atomic line catalogs.
+
+Mention radio lines. 
+
+Mention longer exposures, larger telescopes. 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \acknowledgments 
 
-We are grateful to Jerry Edelstein for useful discussions on EDI.  Thank
-Jeff Newman and Stephen Bailey.  AGK 
-thanks the Institute for the Early Universe, Korea and EVL thanks the 
+%We are grateful to Jerry Edelstein for useful discussions on EDI.  
+AGK thanks the Institute for the Early Universe, Korea and EVL thanks the 
 Korea Astronomy and Space Science Institute for hospitality. 
+We acknowledge helpful discussions with Jeff Newman and Stephen Bailey.  
 This work has been supported by DOE grant DE-SC-0007867 and the Director, 
 Office of Science, Office of High Energy Physics, 
 of the U.S.\ Department of Energy under Contract No.\ DE-AC02-05CH11231. 
