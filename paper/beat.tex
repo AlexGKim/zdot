@@ -79,7 +79,7 @@ capable of measuring redshifts to a precision of $2\times 10^{-9}$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction} \label{Sec:intro} 
 
-Our universe is dynamic, i.e.\ the metric evolves, or more simply the 
+Our universe is dynamic i.e.\ the metric evolves, or more simply the 
 scale factor of the universe changes with time: hence $a(t)$.  This 
 gives rise to the cosmic redshift of light from distant sources.  Moreover, 
 since the expansion rate itself evolves, in all but a coasting, Milne 
@@ -153,10 +153,8 @@ has no redshift drift.  This is a Milne universe, which is conformal to a
 Minkowski spacetime, and so the Principle of Equivalence assures us that 
 a universe without gravity has no acceleration, and vice versa. 
 We emphasize the kinematic aspect of the redshift drift: its nonzero 
-value directly indicates acceleration, with no need to know the dynamics, 
+value \alex{at a single redshift} directly indicates acceleration, with no need to know the dynamics, 
 i.e.\ the specific functional dependence $a(t)$. 
-\eric{Distance measurements are kinematic, so I commented out your text 
-and replaced it with the following} 
 While distance measurments are kinematic, they must be differenced or 
 differentiated to reveal acceleration, or fit to a dynamical model. 
 %This contrasts with distance measurements, where
@@ -164,7 +162,9 @@ differentiated to reveal acceleration, or fit to a dynamical model.
 %or  regression methods are otherwise necessary to obtain derivatives of the data \citep{2012PhRvD..85l3530S,2012JCAP...06..036S}.
 Only when we want to compare 
 to a particular model, e.g.\ so much matter density and so much dark energy 
-density with some equation of state, do we need to know $a(t)$. 
+density with some equation of state, do we need to know $a(t)$.
+\alex{I don't understand this Only when .. do we logic.  $a(t)$ is interesting for cosmologists (LSS) without a need to
+reference a model.}
 
 At high redshift we expect the universe to be decelerating, and hence 
 the drift should be negative.  When the universe begins to accelerate 
@@ -361,6 +361,8 @@ acceleration.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \subsection{Many sources: Radial baryon acoustic oscillations} \label{sec:rbao} 
+
+\alex{How is this drift?}
 
 While the light from sources at different redshifts reaches us after 
 being emitted at vastly different times, this does not inform us regarding 
@@ -592,7 +594,13 @@ model constraints as discussed in Sec.~\ref{sec:basic}.
 
 In this section we turn from theoretical speculation to consideration of 
 innovative experimental approaches, with practical details on how to 
-obtain highly precise redshift measurements. We are guided by two concepts: 
+obtain highly precise redshift measurements. 
+\alex{
+To provide context, the redshift measurement of  $\sigma_z=6\times 10^{-7}$ obtained
+from the radio absorption line in 3C~286 at $z=0.849$
+\citep{1978ApJ...219....1D} is representative of high-precision. 
+} 
+We are guided by two concepts: 
 that low redshift measurements can have significant cosmological leverage, 
 and simultaneous differential measurements can be more robust than 
 individual, absolute measurements of redshift.  
@@ -605,12 +613,7 @@ span; indeed \citet{griest1,griest2} find it can shift significantly over a
 single night with changes in temperature, humidity, etc.  These stability 
 issues can be ameliorated with a simultaneous differential measurement. 
 
-\eric{Did you still want the following text: 
-This is over an order of magnitude improvement
-of the high-precision redshift measurement of  $\sigma_z=6\times 10^{-7}$ obtained
-from the radio absorption line in 3C~286 at $z=0.849$
-\citep{1978ApJ...219....1D}. 
-} 
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%% 
@@ -650,6 +653,8 @@ target, from Plate~\#1268, Fiber~\#318, is shown in Figure~\ref{shsinput:fig}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \begin{deluxetable}{cccccccc}
+\tablecolumns{8} 
+\tablewidth{0pc} 
 \tablecaption{Target Line Properties.\label{lines:tab}}
 \tablehead{
 \colhead{} &\colhead{} &\colhead{} &\colhead{}  &\colhead{$\Delta v$} & \colhead{Flux 1}  & \colhead{Flux 2} & \colhead{Continuum}\\
@@ -805,9 +810,10 @@ the ``Conventional'' column of Table~\ref{dz:tab}.  Results from [OII], [OIII], 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{deluxetable}{ccccccc}
+\tablecolumns{7} 
+\tablewidth{0pc} 
 \tablecaption{Statistical Redshift Uncertainties of Select SDSS Targets With
-an 8 Hour Exposure on a 10-m Telescope For Different Spectrograph Types. 
-\eric{Center table or otherwise delete extra space} 
+an 8 Hour Exposure on a 10-m Telescope For Different Spectrograph Types.
 \label{dz:tab}}
 \tablehead{
 \colhead{Plate} &\colhead{Fiber}  &\colhead{Doublet}& \colhead{Conventional} & \colhead{EDI} & \colhead{SHS} &\colhead{ED-SHS}
