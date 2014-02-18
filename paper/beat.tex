@@ -79,7 +79,7 @@ capable of measuring redshifts to a precision of $2\times 10^{-9}$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction} \label{Sec:intro} 
 
-Our universe is dynamic i.e.\ the metric evolves, or more simply the 
+Our universe is dynamic, i.e.\ the metric evolves, or more simply the 
 scale factor of the universe changes with time: hence $a(t)$.  This 
 gives rise to the cosmic redshift of light from distant sources.  Moreover, 
 since the expansion rate itself evolves, in all but a coasting, Milne 
@@ -179,7 +179,8 @@ function of source redshift to the cosmological parameters of the matter
 density $\om$ and dark energy equation of state $w(a)=w_0+w_a(1-a)$, where 
 $w_0$ is its present value and $w_a$ a measure of its time variation.
 The results use the fiducial values $\om=0.3$, $w_0=-1$, $w_a=0$ and the 
-vertical scale is in units of $H_0$.  In these units, $d\dot z/dH_0$ is 
+vertical scale is in units of $H_0$.  In these units, 
+$\partial\dot z/\partial H_0$ is 
 given by the $\dot z$ curve. The key properties to notice are: 
 1) The sensitivity curves are different 
 shapes, indicating no strong covariance between the effects of the different 
@@ -344,7 +345,7 @@ Systematics would need to be reduced below these levels.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{\alex{Theorizing Hypothetical Observational Probes}} \label{sec:methods} 
+\section{Speculative Short-Time Observational Probes} \label{sec:methods} 
 
 Since the requirements on measuring $dz$ are so challenging, 
 concepts for observational probes that inherently use long time scales or 
@@ -355,18 +356,24 @@ at many different epochs, spread out over a Hubble time.  Likewise,
 individual sources can provide many different signals, e.g.\ spectral lines 
 or wavetrains.  In this section we explore the use of each of these 
 characteristics, and then their combination, in potential probes of 
-acceleration. 
+acceleration. In general these either do not exactly give redshift drift, 
+or are more speculative than established, so after this section we return 
+to the stare-and-wait approach, but they are worth further consideration. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \subsection{Many sources: Radial baryon acoustic oscillations} \label{sec:rbao} 
 
-\alex{How is this drift?}
-
 While the light from sources at different redshifts reaches us after 
 being emitted at vastly different times, this does not inform us regarding 
 redshift drift that involves the change of a given source over time.  
-However, we can think of a statistical ensemble of objects collectively as 
+However, we can still probe cosmic acceleration in a kinematic way through 
+a related quantity, analogously called Hubble drift. This is how the Hubble 
+parameter $H(z)$ changes over redshift, rather than how redshift of a given 
+source changes over time. But it can be measured kinematically and does 
+give information on acceleration. 
+
+We can think of a statistical ensemble of objects collectively as 
 a source, for example 
 defining a baryon acoustic feature in the density power spectrum.  This 
 encodes a particular comoving scale, roughly the sound horizon $s$ at 
@@ -441,7 +448,7 @@ Moreover, if there
 is a specific pattern to the signals, e.g.\ a periodicity, then further 
 gains can be made.  This is the idea behind the period probe, or cosmic 
 pulsar test; here we follow the textbook treatment of \citet{fpoc}.  The time 
-observed for the arrival of the $N$th pulse with \alex{initial} emitted period $P$ is 
+observed for the arrival of the $N$th pulse with initial emitted period $P$ is 
 \bea 
 t_N&\equiv& t_o(NP)\nonumber\\ 
 &=&NP\,\frac{dt_o}{dt_e}+\frac{1}{2}\,(NP)^2\,\frac{d^2t_o}{dt_e^2}+\dots\\ 
@@ -594,11 +601,11 @@ model constraints as discussed in Sec.~\ref{sec:basic}.
 In this section we turn from theoretical speculation to consideration of 
 innovative experimental approaches, with practical details on how to 
 obtain highly precise redshift measurements. 
-\alex{
-To provide context, the redshift measurement of  $\sigma_z=6\times 10^{-7}$ obtained
+To provide context, the redshift measurement with 
+$\sigma_z=6\times 10^{-7}$ obtained
 from the radio absorption line in 3C~286 at $z=0.849$
-\citep{1978ApJ...219....1D} is representative of high-precision. 
-} 
+\citep{1978ApJ...219....1D} is representative of current high-precision 
+work. 
 We are guided by two concepts: 
 that low redshift measurements can have significant cosmological leverage, 
 and simultaneous differential measurements can be more robust than 
@@ -613,8 +620,6 @@ single night with changes in temperature, humidity, etc.  These stability
 issues can be ameliorated with a simultaneous differential measurement. 
 
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%% 
 \subsection{Emission Line Galaxies as Targets} 
 
@@ -625,8 +630,8 @@ The unique signature
 of doublets amidst  other emission lines allows unambiguous identification of the [OII] $\lambda\lambda$3727--3729\AA\ 
 and [OIII]$\lambda\lambda$4959--5007\AA\ doublets.
 Their high line fluxes provide strong signals that suppress statistical Poisson uncertainty.
-Doublets occupy only a narrow bandwidth that spectrographs must span;
-\alex{regions outside the doublet need not be measured.}
+Doublets occupy only a narrow bandwidth that spectrographs must span; 
+regions outside the doublet need not be measured. 
 The two lines composing a doublet are produced by the same atoms and therefore
 share a common line profile: as the wavelength separation of the two lines is proportional to $(1+z)$, their cross-correlation in log-wavelength
 thus provides a measure of redshift that is independent of the specific shape of the line profile.
@@ -709,7 +714,7 @@ as good
 candidate targets.
 Future surveys such as eBOSS, Dark Energy Spectroscopic Instrument, and Euclid will specifically target emission-line
 galaxies from which the best targets can be identified.  In the scenarios considered in this article, redshift precision scales
-with the inverse of
+linearly with the 
 line width and the inverse square root of line flux, so bright, narrow lines 
 are desired. 
 
@@ -759,7 +764,7 @@ Projected redshift precisions are calculated with Fisher matrix analysis with th
 redshift $z$ as the only free parameter. 
 Precisions scale as the inverse square root of exposure time and inverse of telescope aperture. 
 For the SHS, and when the other spectrographs resolve the spectral line, the precision scales 
-inversely
+inversely 
 with the line dispersion velocity.  
 As the measurements
 are source-noise dominated, redshift precisions scale as the inverse square 
@@ -930,7 +935,7 @@ made in steps of 0.892 mm.
    \centering
    \plotone{edi.pdf} 
    \caption{The expected EDI signal from the four phase measurements for one of the [OIII] lines of
-   the SDSS target specified by Plate~\#1268, Fiber~\#318. The four phases parameterized by $n$ are defined in Eqn.~\ref{edisig:eqn}.
+   the SDSS target specified by Plate~\#1268, Fiber~\#318. The four phases parameterized by $n$ are defined in Eq.~\ref{edisig:eqn}.
 \label{edicounts:fig}}
 \end{figure}
 
