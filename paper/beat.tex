@@ -153,7 +153,7 @@ has no redshift drift.  This is a Milne universe, which is conformal to a
 Minkowski spacetime, and so the Principle of Equivalence assures us that 
 a universe without gravity has no acceleration, and vice versa. 
 We emphasize the kinematic aspect of the redshift drift: its nonzero 
-value \alex{at a single redshift} directly indicates acceleration, with no need to know the dynamics, 
+value at any redshift directly indicates acceleration, with no need to know the dynamics, 
 i.e.\ the specific functional dependence $a(t)$. 
 While distance measurments are kinematic, they must be differenced or 
 differentiated to reveal acceleration, or fit to a dynamical model. 
@@ -163,8 +163,7 @@ differentiated to reveal acceleration, or fit to a dynamical model.
 Only when we want to compare 
 to a particular model, e.g.\ so much matter density and so much dark energy 
 density with some equation of state, do we need to know $a(t)$.
-\alex{I don't understand this Only when .. do we logic.  $a(t)$ is interesting for cosmologists (LSS) without a need to
-reference a model.}
+
 
 At high redshift we expect the universe to be decelerating, and hence 
 the drift should be negative.  When the universe begins to accelerate 
@@ -345,7 +344,7 @@ Systematics would need to be reduced below these levels.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Theoretical Speculations} \label{sec:methods} 
+\section{\alex{Theorizing Hypothetical Observational Probes}} \label{sec:methods} 
 
 Since the requirements on measuring $dz$ are so challenging, 
 concepts for observational probes that inherently use long time scales or 
@@ -442,7 +441,7 @@ Moreover, if there
 is a specific pattern to the signals, e.g.\ a periodicity, then further 
 gains can be made.  This is the idea behind the period probe, or cosmic 
 pulsar test; here we follow the textbook treatment of \citet{fpoc}.  The time 
-observed for the arrival of the $N$th pulse with emitted period $P$ is 
+observed for the arrival of the $N$th pulse with \alex{initial} emitted period $P$ is 
 \bea 
 t_N&\equiv& t_o(NP)\nonumber\\ 
 &=&NP\,\frac{dt_o}{dt_e}+\frac{1}{2}\,(NP)^2\,\frac{d^2t_o}{dt_e^2}+\dots\\ 
@@ -626,11 +625,8 @@ The unique signature
 of doublets amidst  other emission lines allows unambiguous identification of the [OII] $\lambda\lambda$3727--3729\AA\ 
 and [OIII]$\lambda\lambda$4959--5007\AA\ doublets.
 Their high line fluxes provide strong signals that suppress statistical Poisson uncertainty.
-Doublets occupy only a narrow bandwidth that spectrographs must span. 
-% 
-\eric{Why must span? Do you want to say that can cut out part of spectrum 
-away from doublet to reduce noise?} 
-%
+Doublets occupy only a narrow bandwidth that spectrographs must span;
+\alex{regions outside the doublet need not be measured.}
 The two lines composing a doublet are produced by the same atoms and therefore
 share a common line profile: as the wavelength separation of the two lines is proportional to $(1+z)$, their cross-correlation in log-wavelength
 thus provides a measure of redshift that is independent of the specific shape of the line profile.
@@ -641,9 +637,6 @@ with $z>0.08$
 and sharp and bright [OII] and/or [OIII] emission lines.
 The redshifts, velocity dispersions $\Delta v$, line strengths, and host continuum levels for a select set of galaxies are shown in Table~\ref{lines:tab}. 
 The two-line average $\Delta v$ for [OII], and the continuum fluxes for both doublets  are given.
-% 
-\eric{Delete?: Although we use its velocity dispersions,} 
-% 
 The Portsmouth table  gives ``rest-frame'' fluxes corrected for dust correction;
 the observed fluxes needed to simulate observations are taken from the spZline data model
 \citep{2012AJ....144..144B}.  In some cases only one doublet is visible, for example with high-redshift galaxies where [OIII] features are shifted to the near-infrared and are difficult to access from ground-based observations.
@@ -716,10 +709,7 @@ as good
 candidate targets.
 Future surveys such as eBOSS, Dark Energy Spectroscopic Instrument, and Euclid will specifically target emission-line
 galaxies from which the best targets can be identified.  In the scenarios considered in this article, redshift precision scales
-with the 
-% 
-\eric{Delete?: inverse of} 
-% 
+with the inverse of
 line width and the inverse square root of line flux, so bright, narrow lines 
 are desired. 
 
@@ -769,15 +759,11 @@ Projected redshift precisions are calculated with Fisher matrix analysis with th
 redshift $z$ as the only free parameter. 
 Precisions scale as the inverse square root of exposure time and inverse of telescope aperture. 
 For the SHS, and when the other spectrographs resolve the spectral line, the precision scales 
-% 
-\eric{Delete:? inversely} 
-% 
+inversely
 with the line dispersion velocity.  
 As the measurements
 are source-noise dominated, redshift precisions scale as the inverse square 
-% 
-\eric{root} 
-% 
+root
 of line flux. 
 
 We are interested in uncertainties in redshift drift.  This is in some ways simpler than measuring absolute redshifts
@@ -930,9 +916,6 @@ I(\sigma)_{\Delta\tau} &= \left[B(\sigma)\left(1+\cos{\left(2\pi\left(\tau+\Delt
 where $p$ is the spacing of the wavenumber sampling, $\phi_y$ is the initial phase,
 and $\Delta \tau$ represents the changes in time delay in the series of exposures; for our calculations we choose  $\Delta \tau = n\tau/4$ with $n\in\{0,1,2,3\}$
 with the change achieved by adjusting an interferometer arm length. 
-% 
-\eric{Check my $\Delta\tau$ correction.} 
-% 
 The first term represents the signal obtained with a conventional spectrograph while the second, cosine term
 introduces a wavelength-dependent phase that provides additional leverage in measuring redshift.
 
@@ -947,9 +930,7 @@ made in steps of 0.892 mm.
    \centering
    \plotone{edi.pdf} 
    \caption{The expected EDI signal from the four phase measurements for one of the [OIII] lines of
-   the SDSS target specified by Plate~\#1268, Fiber~\#318.
-\eric{Can delete:   The four phases parameterized by $n$ are defined in Eqn.~\ref{edisig:eqn}.} 
-\eric{Add vertical dotted line showing line wavenumber?} 
+   the SDSS target specified by Plate~\#1268, Fiber~\#318. The four phases parameterized by $n$ are defined in Eqn.~\ref{edisig:eqn}.
 \label{edicounts:fig}}
 \end{figure}
 
@@ -967,12 +948,10 @@ to the science lines.  This avoids the temporal and wavelength interpolation nee
 Wavelength uncertainty would then come from mismeasurement of phase and frequency due to pixels local to the
 science lines, so absolute flux and PSF uncertainties become irrelevant. 
 
-Flux miscalibration still affects the line profiles, resulting in potential bias in effect 
-\eric{What?} 
+Flux miscalibration still affects the line profiles, resulting in potential bias in effective 
 wavelength similar to
 the Conventional case in scale.  PSF calibration is facilitated with the presence of arc lines from which the
-PSF can be directly determined.
-\eric{Clarify; I thought arc lines were far from science lines} 
+PSF  of the science lines can be interpolated.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -1098,11 +1077,10 @@ as a representative example where the pixels resolve the frequencies of interest
    \centering
    \plotone{shscounts.pdf} 
    \caption{The output signal for positive $x$ (it is symmetric about 
-$x=0$) of five \eric{Check} SHS configurations giving different
+$x=0$) of five SHS configurations giving different
    Littrow numbers according to 
    $n=1/3.5, 1/1.05, 1, 1.05, 3.5$  in Eq.~\ref{littrowchoices:eqn}. 
-Note the curves are offset; each has approximately 100000 counts. 
-\eric{Check} 
+Note the curves are offset; each has approximately 230000 counts. 
    \label{shscounts:fig}}
 \end{figure}
 
@@ -1160,9 +1138,9 @@ In an SHS the output signal would be the sum of these and all other columns in t
    \centering
    \plotone{edshs} 
    \caption{The output signal for positive $x$ (it is symmetric about
-$x=0$) of the ED-SHS \eric{Check} configuration with 
+$x=0$) of the ED-SHS configuration with 
     $\sigma_0=(\sigma_1+\sigma_2)/2$. 
-Note the curves are offset; each has approximately 40000 \eric{Check} counts. 
+Note the curves are offset; each has approximately 85000 \eric{Check} counts. 
 \label{edshs:fig}}
 \end{figure} 
 
@@ -1172,7 +1150,7 @@ SHS, and are comparable to the performance of the EDI.
 
 Now that the signals from different wavelengths are no longer mixed, calibration arcs can be observed with the science image without increasing
 the photon noise of the doublet lines.  Both wavelength and PSF calibration are simplified as with the EDI.
-In addition, the flux signals per pixel \eric{Check} are further reduced relative to the SHS, relaxing flux calibration requiirements. 
+In addition, the flux signals per pixel are further reduced relative to the SHS, relaxing flux calibration requiirements. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
