@@ -589,10 +589,14 @@ def ediplot():
   plt.plot(edi.spectro.sigmas/100,ans[11],label="$n=3$")
   plt.xlabel('Wavenumber (cm$^{-1}$)')
   plt.ylabel('Counts per resolution element')
-  plt.xlim((lines.sigma1*.9998/100,lines.sigma1*1.0002/100))
+  plt.xlim((lines.sigma1*.99985/100,lines.sigma1*1.00015/100))
   plt.ticklabel_format(axis='x', useOffset=False)
   plt.legend()
   plt.savefig("/Users/akim/Work/zdot/paper/edi.pdf")
+
+ediplot()
+
+wef
 
 def edshsplot():
   plate=1268
@@ -631,7 +635,7 @@ def shsplot():
   plt.legend(prop={'size':10})
   plt.savefig('shscounts.pdf')
   
-shsplot()
+#shsplot()
 #edshsplot()
 
 def specplot():
