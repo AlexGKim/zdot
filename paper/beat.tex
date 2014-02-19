@@ -235,8 +235,9 @@ exhibited in Fig.~\ref{fig:sens}.
 
 Figure~\ref{fig:fom} shows the results for the illustrative case of 
 five measurements of $\dot z$ at 1\% precision each, centered on $z$, 
-i.e.\ at redshifts $z-0.2$, $z-0.1$, $z$, $z+0.1$, $z+0.2$. In addition 
-we add a prior of $0.03$ (current precision) on 
+i.e.\ at redshifts $z-0.2$, $z-0.1$, $z$, $z+0.1$, $z+0.2$. We marginalize 
+over $\om$, and over $H_0$ with a 
+prior of $0.03$ (current precision) on 
 $h=H_0/(100\,{\rm km/s/Mpc})$. As expected from our previous discussion, 
 the parameters are best determined from low redshift observations, despite 
 that $\dot z$ itself is largest at high redshift. This is due to a 
@@ -250,7 +251,9 @@ advantageous since the signal-to-noise of the measurements we discuss later
 is much better at low redshifts. 
 
 Figure~\ref{fig:fisher} illustrates the joint dark energy constraints 
-from measurements at low, medium, and high redshift ranges. A further virtue 
+from measurements at low, medium, and high redshift ranges, 
+marginalizing over $\om$, and over $h$ with a prior of $0.03$. 
+A further virtue 
 of the low-redshift redshift drift probe is the positive orientation of 
 the joint confidence contour, highly complementary to the negative orientation 
 of nearly all other cosmological probes such as distances. This 
@@ -1161,40 +1164,68 @@ In addition, the flux signals per pixel are further reduced relative to the SHS,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Conclusions} \label{sec:concl} 
 
-\eric{Still need to revise Conclusions.} 
+Direct kinematic measurements of comsic acceleration can provide valuable, 
+model independent confirmation of dark energy. The accuracy required for 
+detecting redshift drift is challenging, and we have reviewed some of the 
+systematics, presented a series of theoretical speculations for observational 
+methods, and explored various promising improvements to experimental 
+approaches to measuring directly spectral line shifts.  
 
-The three cosmic probes of redshift drift described here offer great 
-advantages over the brute force method.  Differential radial baryon acoustic 
-oscillations take advantage of large number statistics, should achieve drBAO 
-accuracy of a couple percent (otherwise requiring 50 years for a redshift 
-sensitivity of $10^{-10}$), and come for free with planned redshift surveys. 
-Cosmic pulsers, for example supermassive black hole binaries rather than 
-pulsars, would be highly robust and leverage multiple signals per source.  
-Again, these will be followed automatically with gravitational wave 
-searches and the concomitant searches for electromagnetic counterparts.  
-Strongly lensed time varying sources, such as quasars, allow for simultaneous 
-differential redshift measurement ``all in one night'', ameliorating 
-systematics and allowing the universe to do the work of providing a long 
-baseline in time.  
+One surprising result is that the greatest leverage on dark energy properties 
+comes from low redshift observations, due to lesser covariances there with 
+other cosmological parameters. The dark energy figure of merit can exceed 
+100 for a set of five measurements over $z=[0.1-0.5]$, each at 1\% precision 
+(together with current precision on the Hubble constant), i.e.\ determining 
+$w$ to 0.02, $w_0$ to 0.06, $w_a$ to 0.43. Moreover, redshift drift 
+has extraordinary complementarity with other probes, having the opposite 
+degeneracy in the $w_0$-$w_a$ plane from all standard probes. For example, 
+combination of the low redshift drift with Planck CMB data increases 
+the figure of merit by a factor 12, to over 1000. Even a more practical 
+5\% precision on redshift drift gives a FOM of 290 when combined with 
+current Hubble constant and CMB data. Lesser complementarity can be achieved 
+by combining redshift drift and low and high redshifts. 
 
-Perhaps it is not too much of a dream that upcoming all sky surveys in the 
-time domain could find ``golden'' sources such as a lensed cosmic pulser 
-or $\gtrsim3\,$y time delay strong lens.  These would be extraordinary 
-cosmographic tools. 
+Given the potential leverage of redshift drift, and the ability for low 
+redshift measurements to be powerful, we reconsider the ``stare and wait'' 
+method of observing spectral lines from a high redshift source (or a 
+series of sources in the Lyman-$\alpha$ forest) over a time span of decades. 
+We speculate about three different concepts. The first measures Hubble drift 
+rather than redshift drift per se, gives a complementary measure of 
+acceleration, and can be accomplished with normal galaxy redshift survey 
+data using differential radial baryon acoustic oscillations (drBAO). 
+The second would use cosmic ``pulsars'', not yet discovered, but possibly 
+realizable through binary gravitational wave sources. Finally, long time 
+delay strong gravitational lenses, possibly to be detected by future deep 
+time domain surveys, are also considered. We emphasize that these ideas 
+are speculative and need considerable development, but do have considerble 
+synergy with surveys already planned such as DESI, Euclid, and LSST.  They 
+can also replace patience -- of several decade time scales, see the 
+categorization of \citet{stebbins} -- with ideas on how to get the universe 
+and astrophysics to work for us. 
 
-In the categorization of \citet{stebbins}, we have here tried to replace 
-patience (of decade time scales) with clever ideas on how to get the 
-universe and astrophysics to work for us.  These methods also have 
-considerable synergy with surveys already planned for different purposes, 
-and so mostly involve only different analysis or minor instrumentation. 
-The surveys, and the universe, provide the ``1000 nights'' and redshift 
-drift cosmologists need only add the ``1 night''. 
+More practically, we turn to experimental approaches for improving high 
+precision redshift measurements. Given the leverage of low redshift 
+we focus on emission line galaxies as targets. We explore three 
+alternatives to conventional spectrographs and calculate their signal-to-noise 
+and potential redshift precisions. We find that single source redshift 
+measurement precision of few $\times 10^{-9}$ is potentially achievable, 
+with further improvement possible from multiple sources, multinight 
+exposures, and larger telescopes (our numbers are canonically for 8 hours 
+on a 10-m telescope). The instruments 
+such as Externally Dispersed Interferometers and External Dispersion Spatial 
+Heterodyne Spectroscopes can avoid some of the systematics in conventional 
+spectrographs. 
 
-Maybe these instruments are good for atomic line catalogs.
+Other targets, such as radio lines or sequences of lines, should be explored, 
+as should other uses of high precision wavelength measurements, such as for 
+atomic line catalogs. 
 
-Mention radio lines. 
-
-Mention longer exposures, larger telescopes. 
+Cosmic acceleration is a fundamental mystery of physics, and the possibility 
+of adding a new probe of it -- one that is kinematic and does not depend 
+on assumptions of separation of matter and dark energy, or their evolution -- 
+is an exciting prospect. The hardware and systematics will be highly 
+challenging, but success means that we will open up a new time domain: the 
+ability to watch the universe as it evolves in real time. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
