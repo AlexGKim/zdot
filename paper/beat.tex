@@ -238,7 +238,7 @@ five measurements of $\dot z$ at 1\% precision each, centered on $z$,
 i.e.\ at redshifts $z-0.2$, $z-0.1$, $z$, $z+0.1$, $z+0.2$. We marginalize 
 over $\om$, and over $H_0$ with a 
 prior of $0.03$ (current precision) on 
-$h=H_0/(100\,{\rm km/s/Mpc})$. As expected from our previous discussion, 
+$h=H_0/(100\,{\rm km\,s}^{-1}\,{\rm Mpc}^{-1})$. As expected from our previous discussion, 
 the parameters are best determined from low redshift observations, despite 
 that $\dot z$ itself is largest at high redshift. This is due to a 
 combination of dark energy being most prominent at low redshift, and 
@@ -348,7 +348,7 @@ Systematics would need to be reduced below these levels.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Speculative Short-Time Observational Probes} \label{sec:methods} 
+\section{Speculative Short Cuts for the Impatient} \label{sec:methods} 
 
 Since the requirements on measuring $dz$ are so challenging, 
 concepts for observational probes that inherently use long time scales or 
@@ -639,6 +639,16 @@ The two lines composing a doublet are produced by the same atoms and therefore
 share a common line profile: as the wavelength separation of the two lines is proportional to $(1+z)$, their cross-correlation in log-wavelength
 thus provides a measure of redshift that is independent of the specific shape of the line profile.
 
+\alex{
+The true functional forms of the line profiles are a priori unknown, which can lead to redshift uncertainty.  Quoted line effective-wavelength uncertainties
+are generally up to a factor 10 finer than the resolution: for example a line with $\Delta v=3$~km\,s$^{-1}$ is measured to
+precision $\Delta \lambda/\lambda \gtrsim 10^{-6}$.
+However, the redshift drift measurement does not require knowledge of the effective wavelength but rather the wavelength shift
+of the profile.
+As just noted, within a single exposure the cross-correlation of the two doublet lines provides a robust redshift measurement.
+Similarly, cross-correlation of multiple spectra taken at different epochs provides a robust redshift-drift measurement.
+}
+
 We study potential targets from the Sloan Digital Sky Survey data release SDSS3 DR10.  The  Portsmouth Emission-Line Kinematics table \citep{2013MNRAS.431.1383T}  is used to select
 objects 
 with $z>0.08$
@@ -721,6 +731,8 @@ linearly with the
 line width and the inverse square root of line flux, so bright, narrow lines 
 are desired. 
 
+
+
 The spectral regions of interest
 are around each doublet.  In the calculations that follow, these areas are modeled as a function of wavenumber $\sigma$ as
 \begin{align}
@@ -730,6 +742,7 @@ B(\sigma)& =\frac{a_1}{\sqrt{2\pi s_1^2}}\exp{\left[-\frac{\left(\sigma-\sigma_1
 \end{align}
 The two lines have central wavenumbers $\sigma_1$ and $\sigma_2$, and share a common Gaussian profile with width parameterized by velocity dispersion
 such that $s_i=\sigma_i\Delta v/c$. 
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -774,10 +787,16 @@ are source-noise dominated, redshift precisions scale as the inverse square
 root
 of line flux. 
 
-We are interested in uncertainties in redshift drift.  This is in some ways simpler than measuring absolute redshifts
+
+We are interested in uncertainties in redshift drift.
+This is in some ways simpler than measuring absolute redshifts
 because correlated redshift uncertainties cancel each other when measuring drift.
-Instruments contribute sources of measurement uncertainty in redshift drift through limitations in the calibration
-of wavelength,  uncertainty in the conversion from pixel counts to physical flux, and uncertainty in the point spread function. 
+Instruments contribute sources of measurement uncertainty in redshift drift through 
+\alex{uncertainty in the conversion from pixel counts to physical flux, uncertainty in the point spread function,
+and limitations in the calibration
+of wavelength.   These uncertainties distort intrinsic line shapes and so introduce error in the cross-correlation
+of the doublet lines and spectra taken on different dates.
+}
 Each spectrograph type
 has different susceptibilities to systematic uncertainties.
 
@@ -956,9 +975,7 @@ to the science lines.  This avoids the temporal and wavelength interpolation nee
 Wavelength uncertainty would then come from mismeasurement of phase and frequency due to pixels local to the
 science lines, so absolute flux and PSF uncertainties become irrelevant. 
 
-Flux miscalibration still affects the line profiles, resulting in potential bias in effective 
-wavelength similar to
-the Conventional case in scale.  PSF calibration is facilitated with the presence of arc lines from which the
+PSF calibration is facilitated with the presence of arc lines from which the
 PSF  of the science lines can be interpolated.
 
 
@@ -1109,8 +1126,7 @@ than for the Conventional and EDI spectrographs.
 Converting the spectrum to Fourier space transforms the sharp, imperfectly-known line profiles into the low-frequency envelope,
 distinct from the high-frequency wiggles characteristic to each configuration that inform the redshift measurement.
 The PSF blurring applies not in wavenumber space where it affects
-line shapes but rather in physical space after the conversion of the spectral lines into cosine functions; the PSF does not directly bias the effective
-wavelength of the lines. 
+line shapes but rather in physical space after the conversion of the spectral lines into cosine functions. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
