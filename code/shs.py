@@ -594,9 +594,9 @@ def ediplot():
   plt.legend()
   plt.savefig("/Users/akim/Work/zdot/paper/edi.pdf")
 
-ediplot()
+#ediplot()
 
-wef
+
 
 def edshsplot():
   plate=1268
@@ -607,12 +607,29 @@ def edshsplot():
   argmin1=numpy.argmin(numpy.abs(shs.spectro.sigmas-lines.sigma1))
   argmin2=numpy.argmin(numpy.abs(shs.spectro.sigmas-lines.sigma2))
   plt.clf()
+  fig = plt.figure()
+  plt.subplots_adjust(hspace=0.001)
+  ax=[]
+  ax.append(fig.add_subplot(1,1,1))
+  ax[0].spines['top'].set_color('none')
+  ax[0].spines['bottom'].set_color('none')
+  ax[0].spines['left'].set_color('none')
+  ax[0].spines['right'].set_color('none')
+  ax[0].tick_params(labelcolor='w', top='off', bottom='off', left='off', right='off')
+  ax[0].yaxis.set_label_coords(-0.1, 0.5)
+  ax[0].set_ylabel('Counts per resolution element')
+
+  ax.append(fig.add_subplot(2,1,1))
   plt.plot(shs.xs,ans[:,argmin1],label="line 1")
-  plt.plot(shs.xs,ans[:,argmin2] + 1.05*numpy.max(ans[:,argmin1]),label="line 2")
+  plt.legend()
+  ax.append(fig.add_subplot(2,1,2,sharex=ax[1]))
+  plt.plot(shs.xs,ans[:,argmin2],label="line 2")
   plt.xlabel('x')
-  plt.ylabel('Counts per resolution element + offset')
+  plt.setp(ax[1].get_xticklabels(),visible=False)
   plt.ticklabel_format(axis='x', useOffset=False)
   plt.legend()
+
+  
   plt.savefig("/Users/akim/Work/zdot/paper/edshs.pdf")
 
 def shsplot():
@@ -620,24 +637,38 @@ def shsplot():
   fiber=318
   lines=Lines(plate,fiber,'OIII')
   plt.clf()
+  plt.figure(figsize=(8,10))
+  plt.subplots_adjust(hspace=0.001)
   nratios=[1/3.5,1/1.05,1,1.05,3.5]
   nratiostxt=["1/3.5","1/1.05","1","1.05","3.5"]
   #  for nratio in numpy.arange(1.2,12,20):
   ind=0
+  ax=[]
   for nratio in nratios:
     shs=SHS(lines,(nratio,False))
     s1=shs_counts(lines,shs)
-    plt.plot(shs.xs/numpy.max(shs.xs),s1[1,:]/2+ind*numpy.max(s1)/2*1.04,label='n='+nratiostxt[ind])
-    plt.xlabel('x')
-    plt.ylabel('counts per resolution element + offset')
+    if ind==0:
+      ax1=plt.subplot(5,1,ind+1)
+    else:
+      ax1=plt.subplot(5,1,ind+1,sharex=ax[0])
+    ax1.plot(shs.xs/numpy.max(shs.xs),s1[1,:]/2,label='n='+nratiostxt[ind])
+    #ax1.set_xlabel('x')
+    if ind ==2:
+      ax1.set_ylabel('counts per resolution element')
+    ax.append(ax1)
     ind=ind+1
-  plt.legend()
-  plt.legend(prop={'size':10})
+    plt.legend()
+    plt.legend(prop={'size':12})
+  xticklabels=ax[0].get_xticklabels()+ax[1].get_xticklabels()+ax[2].get_xticklabels()+ax[3].get_xticklabels()
+  plt.setp(xticklabels,visible=False)
+  plt.xlabel('x')
+  #plt.ylabel('counts per resolution element')
+
   plt.savefig('shscounts.pdf')
   
-#shsplot()
+shsplot()
 #edshsplot()
-
+sef
 def specplot():
   plate=1268
   fiber=318
