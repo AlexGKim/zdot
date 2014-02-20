@@ -679,15 +679,13 @@ The two lines composing a doublet are produced by the same atoms and therefore
 share a common line profile: as the wavelength separation of the two lines is proportional to $(1+z)$, their cross-correlation in log-wavelength
 thus provides a measure of redshift that is independent of the specific shape of the line profile.
 
-\alex{
 The true functional forms of the line profiles are a priori unknown, which can lead to redshift uncertainty.  Quoted line effective-wavelength uncertainties
 are generally up to a factor 10 finer than the resolution: for example a line with $\Delta v=3$~km\,s$^{-1}$ is measured to
 precision $\Delta \lambda/\lambda \gtrsim 10^{-6}$.
-However, the redshift drift measurement does not require knowledge of the effective wavelength but rather the wavelength shift
-of the profile.
+However, the redshift drift measurement does not require knowledge of the effective wavelength but rather only the wavelength shift
+of the profile, whatever the profile is. 
 As just noted, within a single exposure the cross-correlation of the two doublet lines provides a robust redshift measurement.
-Similarly, cross-correlation of multiple spectra taken at different epochs provides a robust redshift-drift measurement.
-}
+Similarly, cross-correlation of multiple spectra taken at different epochs provides a robust redshift-drift measurement. 
 
 We study potential targets from the Sloan Digital Sky Survey data release SDSS3 DR10.  The  Portsmouth Emission-Line Kinematics table \citep{2013MNRAS.431.1383T}  is used to select
 objects 
@@ -832,11 +830,10 @@ We are interested in uncertainties in redshift drift.
 This is in some ways simpler than measuring absolute redshifts
 because correlated redshift uncertainties cancel each other when measuring drift.
 Instruments contribute sources of measurement uncertainty in redshift drift through 
-\alex{uncertainty in the conversion from pixel counts to physical flux, uncertainty in the point spread function,
+uncertainty in the conversion from pixel counts to physical flux, uncertainty in the point spread function,
 and limitations in the calibration
 of wavelength.   These uncertainties distort intrinsic line shapes and so introduce error in the cross-correlation
-of the doublet lines and spectra taken on different dates.
-}
+of the doublet lines and spectra taken on different dates. 
 Each spectrograph type
 has different susceptibilities to systematic uncertainties.
 
