@@ -925,7 +925,7 @@ wavelength interpolation are applied to calibrate wavelengths.
 
 The small number of pixels measuring line flux places stringent requirements on flatfield calibration.  The FWHM of a 10 km\,s$^{-1}$
 feature is spanned by 3.15 pixels along the dispersion axis, and (for our calculations) 3 pixels along the spatial axis.
-A singe pixel covered by one of the [OIII] lines of the SDSS target specified by Plate~\#1268, Fiber~\#318 has $\sim 10^6$ counts;
+A single pixel covered by one of the [OIII] lines of the SDSS target specified by Plate~\#1268, Fiber~\#318 has $\sim 10^6$ counts;
 in order for photon noise to dominate over pixel flux uncertainty the calibration must be done to significantly better than 0.1\%.
 
 Uncertainty in the often variable and charge-dependent point spread function can
@@ -943,7 +943,7 @@ the phase of incoming coherent light
 by an amount dependent on wavelength and a  delay between the two arm lengths.
 The ensuing dispersion spectrograph takes the phased light and separates it into fine wavelength bins.
 For an individual wavelength bin the output signal depends on the phase introduced by the interferometer; multiple
-measurements taken after adjusting the delay  make apparent a modulation in the output signals.
+measurements taken after dithering the delay  make apparent a modulation in the output signals.
 Therefore, in an EDI the wavelength can be measured using both the calibration methods of a standard dispersion
 spectrograph {\it and\/} from the modulations of signal apparent when changing the FTS arm-lengths.   As a consequence,
 it was shown by
@@ -958,7 +958,8 @@ and an independently measurable whirl
 \begin{equation}
 W(\sigma) = \frac{1}{2}\left[e^{i2\pi\tau\sigma}B(\sigma)\right] \otimes \mbox{PSF}(\sigma),
 \end{equation}
-where $B$ is the input spectrum, $\tau$ is the interferometer delay, and $\mbox{PSF}$  is the blurring
+where $B$ is the input spectrum, $\tau$ is the interferometer delay
+with units of distance, and $\mbox{PSF}$  is the blurring
 response of a pure frequency.
 
 The heterodyning feature of the EDI is seen in the Fourier transforms of the above expressions:
@@ -969,7 +970,8 @@ w(\rho -\tau) & =\frac{1}{2}\, b(\rho) \, \mbox{psf}(\rho-\tau).
 The EDI whirl has the instrumental frequency response shifted into a new $\rho$ range to allow
 spectral
 resolution on scales tuned by the choice of $\tau$.  In the calculations that follow, the delay is chosen to resolve
-the FWHM of the line with the lower wavenumber, $\tau = (2.36s_1)^{-1}$.
+the FWHM of the line with the lower wavenumber, $\tau = (2.36s_1)^{-1}$, where $s_1$ was introduced
+in Eqn.~\ref{input:eqn} as the standard deviation of the first line.
 
 An EDI observation is actually a series of measurements
 \begin{align}
@@ -978,7 +980,7 @@ I(\sigma)_{\Delta\tau} &= \left[B(\sigma)\left(1+\cos{\left(2\pi\left(\tau+\Delt
 \label{edisig:eqn}
 \end{align}
 where $p$ is the spacing of the wavenumber sampling, $\phi_y$ is the initial phase,
-and $\Delta \tau$ represents the changes in time delay in the series of exposures; for our calculations we choose  $\Delta \tau = n\tau/4$ with $n\in\{0,1,2,3\}$
+and $\Delta \tau$ represents the changes in delay in the series of exposures; for our calculations we choose  $\Delta \tau = n\tau/4$ with $n\in\{0,1,2,3\}$
 with the change achieved by adjusting an interferometer arm length. 
 The first term represents the signal obtained with a conventional spectrograph while the second, cosine term
 introduces a wavelength-dependent phase that provides additional leverage in measuring redshift.
