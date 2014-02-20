@@ -67,8 +67,12 @@ dispersed interferometers and spatial heterodyne spectroscopy. Low
 redshift emission line galaxies are identified as having high cosmology 
 leverage and systematics control, with an 8 hour exposure on a 10-meter 
 telescope (1000 hours of exposure on a 40-meter telescope) potentially 
-capable of measuring redshifts to a precision of $2\times 10^{-9}$ 
-($\sim5\times 10^{-11}$). 
+capable of measuring redshifts for a single spectral feature to a precision 
+of $2\times 10^{-9}$ 
+($\sim5\times 10^{-11}$). Low redshift redshift drift also has very strong 
+complementarity with cosmic microwave background measurements, with the 
+combination achieving a dark energy figure of merit of nearly 300 (1400) 
+for 5\% (1\%) precision on drift. 
 \end{abstract}
 
 \keywords{cosmological distances; cosmic acceleration; dark energy}
@@ -153,13 +157,12 @@ has no redshift drift.  This is a Milne universe, which is conformal to a
 Minkowski spacetime, and so the Principle of Equivalence assures us that 
 a universe without gravity has no acceleration, and vice versa. 
 We emphasize the kinematic aspect of the redshift drift: its nonzero 
-value at any redshift directly indicates acceleration, with no need to know the dynamics, 
-i.e.\ the specific functional dependence $a(t)$. 
+value at any redshift directly indicates acceleration, with no need to 
+know the dynamics, i.e.\ the specific functional dependence $a(t)$. 
 While distance measurments are kinematic, they must be differenced or 
-differentiated to reveal acceleration, or fit to a dynamical model. 
-\alex{This contrasts with distance measurements, where
-acceleration is inferred from the best-fit $a(t)$ of a dynamical model \citep{1998AJ....116.1009R,1999ApJ...517..565P}
-or  regression methods are otherwise necessary to obtain derivatives of the data \citep{2012PhRvD..85l3530S,2012JCAP...06..036S}.}
+differentiated to reveal acceleration (ideally through a regression 
+method, e.g.\ \citep{2012PhRvD..85l3530S,2012JCAP...06..036S}), or fit to 
+a dynamical model \citep{1998AJ....116.1009R,1999ApJ...517..565P}. 
 Only when we want to compare 
 to a particular model, e.g.\ so much matter density and so much dark energy 
 density with some equation of state, do we need to know $a(t)$.
@@ -229,7 +232,7 @@ low redshift sources.
 
 We can quantify the redshift range having optimal leverage on dark energy 
 parameters $w_0$ and $w_a$, and their figure of merit (FOM) 
-$[\det C(w_0,w_a)]^{1/2}$ inversely proportional to the area of their joint 
+$[\det Cov(w_0,w_a)]^{-1/2}$ inversely proportional to the area of their joint 
 uncertainty contour, through Fisher analysis using the sensitivities 
 exhibited in Fig.~\ref{fig:sens}. 
 
@@ -261,7 +264,16 @@ complementarity is lost for higher redshifts. However, if feasible, redshift
 drift measurements at high {\it and\/} low redshifts have great synergy. 
 For example, the constraint from adding the $z=2.8$ measurements to the 
 $z=0.3$ measurements yields a figure of merit of 784, about 6.6 times 
-higher than the $z=0.3$ case alone. 
+higher than the $z=0.3$ case alone. Alternatively, if we move away from 
+purely kinematic observations and include measurement of the distance to 
+cosmic microwave background (CMB) last scattering by Planck, then we obtain 
+even greater synergy with low redshift drift observations -- a FOM of 1414, 
+or 12 times higher than the $z=0.3$ case alone (also see the light grey 
+FOM$_{\rm CMB}$ curve in Figure~\ref{fig:fom}). 
+We have also investigated an alternate error model where 
+instead of a constant fractional precision with redshift we have a constant 
+absolute precision. This does not change the key aspect that low 
+redshift still has the greatest leverage. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%  
@@ -293,11 +305,34 @@ redshift $z$.
 \end{figure}
 
 
-The key question, however, is how practical such measurement are, both 
+The key question, however, is how practical such measurements are, both 
 with respect to needed precision and to systematic effects that degrade 
 the accuracy. If the error floor lies at 5\% rather than 1\%, the $z=0.3$ 
-case delivers only a figure of merit of 6.6, though the combined $z=0.3+2.8$ 
-case gives 120, showing the strong redshift complementariy. We now outline 
+case delivers only a figure of merit of 6.6, though the combined $z=0.3$ + 
+CMB case gives 289, showing the strong complementarity. 
+Figure~\ref{fig:fomprec} depicts how the figure of merit depends on the 
+drift measurement precision; it stays above 100 (``stage 3'') out to 10\% 
+precision. We also see that tightening the prior on $h$ helps considerably 
+in the strong precision case, improving FOM by a factor 1.65 to over 2300 
+when the prior goes from 0.03 to 0.01 (but for 5\% precision the factor is 
+1.3). 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+\begin{figure}[!htbp] 
+   \centering
+  \includegraphics[width=\columnwidth]{fomprec.pdf}
+\caption{The dark energy figure of merit is plotted as a function of 
+redshift drift measurement precision, for a combination of five measurements 
+centered at $z=0.3$ plus Planck CMB last scattering distance. The blue 
+dotted curve shows the effect of tightening the Hubble constant prior to 
+0.01. 
+} 
+\label{fig:fomprec} 
+\end{figure}
+
+
+We now outline 
 some of the 
 concerns regarding astrophysical systematic uncertainties. Sec.~\ref{sec:tech} 
 will address improvements in precision and some experimental systematics 
@@ -1214,7 +1249,7 @@ We speculate about three different concepts. The first measures Hubble drift
 rather than redshift drift per se, gives a complementary measure of 
 acceleration, and can be accomplished with normal galaxy redshift survey 
 data using differential radial baryon acoustic oscillations (drBAO). 
-The second would use cosmic ``pulsars'', not yet discovered, but possibly 
+The second would use cosmic ``pulsers'', not yet discovered, but possibly 
 realizable through binary gravitational wave sources. Finally, long time 
 delay strong gravitational lenses, possibly to be detected by future deep 
 time domain surveys, are also considered. We emphasize that these ideas 
@@ -1226,20 +1261,21 @@ and astrophysics to work for us.
 
 More practically, we turn to experimental approaches for improving high 
 precision redshift measurements. Given the leverage of low redshift 
-we focus on emission line galaxies as targets. We explore three 
-alternatives to conventional spectrographs and calculate their signal-to-noise 
+we focus on bright emission line galaxies as targets. We explore three 
+alternatives to conventional spectrographs, involving differential and 
+interferometric methods, and calculate their signal-to-noise 
 and potential redshift precisions. We find that single source redshift 
 measurement precision of few $\times 10^{-9}$ is potentially achievable, 
 with further improvement possible from multiple sources, multinight 
 exposures, and larger telescopes (our numbers are canonically for 8 hours 
-on a 10-m telescope). The instruments 
+on a 10-m telescope). Instruments 
 such as Externally Dispersed Interferometers and External Dispersion Spatial 
 Heterodyne Spectroscopes can avoid some of the systematics in conventional 
 spectrographs. 
 
-Other targets, such as radio lines or sequences of lines, should be explored, 
-as should other uses of high precision wavelength measurements, such as for 
-atomic line catalogs. 
+Other targets, such as narrow radio lines or sequences of lines, should be 
+explored, as should other uses of high precision wavelength measurements, 
+such as for atomic line catalogs. 
 
 Cosmic acceleration is a fundamental mystery of physics, and the possibility 
 of adding a new probe of it -- one that is kinematic and does not depend 
