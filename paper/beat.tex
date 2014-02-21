@@ -63,13 +63,13 @@ observer, to provide long time spans; speculative methods include radial
 baryon acoustic oscillations, cosmic pulsars, and strongly lensed quasars. 
 On the experimental side, we explore beating down the redshift precision 
 using differential interferometric techniques, including externally 
-dispersed interferometers and spatial heterodyne spectroscopy. Low 
-redshift emission line galaxies are identified as having high cosmology 
+dispersed interferometers and spatial heterodyne spectroscopy. Low-redshift
+emission line galaxies are identified as having high cosmology 
 leverage and systematics control, with an 8 hour exposure on a 10-meter 
 telescope (1000 hours of exposure on a 40-meter telescope) potentially 
-capable of measuring redshifts for a single spectral feature to a precision 
+capable of measuring redshifts to a precision 
 of $2\times 10^{-9}$ 
-($\sim5\times 10^{-11}$). Low redshift redshift drift also has very strong 
+($\sim5\times 10^{-11}$). Low-redshift redshift drift also has very strong 
 complementarity with cosmic microwave background measurements, with the 
 combination achieving a dark energy figure of merit of nearly 300 (1400) 
 for 5\% (1\%) precision on drift. 
@@ -192,7 +192,7 @@ parameters, as long as measurements cover a range of redshifts,
 continues to outweigh the equation of state parameters at higher redshifts, 
 by ever increasing factors, and 3) The initial rise of the equation of 
 state sensitivities is sharp, achieving 50\% of the maximum sensitivity 
-at quite low redshifts. These characteristics suggest that low redshift 
+at quite low redshifts. These characteristics suggest that low-redshift 
 measurements, especially if they have better signal to noise than higher 
 redshift ones, could be valuable for cosmological leverage on dark energy 
 through the redshift drift probe. We will see that this in fact fits in 
@@ -228,7 +228,7 @@ continues to increase with redshift, growing from linear with $z$ to
 proportional to $z^{3/2}$ at high redshift, swamping the dark energy 
 parameters, whose sensitivities decline at high redshift. These 
 characteristics give merit to further exploration of the use of 
-low redshift sources. 
+low-redshift sources. 
 
 We can quantify the redshift range having optimal leverage on dark energy 
 parameters $w_0$ and $w_a$, and their figure of merit (FOM) 
@@ -242,14 +242,14 @@ i.e.\ at redshifts $z-0.2$, $z-0.1$, $z$, $z+0.1$, $z+0.2$. We marginalize
 over $\om$, and over $H_0$ with a 
 prior of $0.03$ (current precision) on 
 $h=H_0/(100\,{\rm km\,s}^{-1}\,{\rm Mpc}^{-1})$. As expected from our previous discussion, 
-the parameters are best determined from low redshift observations, despite 
+the parameters are best determined from low-redshift observations, despite 
 that $\dot z$ itself is largest at high redshift. This is due to a 
 combination of dark energy being most prominent at low redshift, and 
 that parameter covariances are smaller at low redshift. Note that near 
 $z=2$, when $\dot z=0$ and so there is also no sensitivity to $H_0$, 
 the leverage temporarily increases due to relief from covariance with 
 $H_0$. However by $z\approx2.4$ the figure of merit has declined by more 
-than a factor 10 from its low redshift peak. This low redshift leverage is 
+than a factor 10 from its low-redshift peak. This low-redshift leverage is 
 advantageous since the signal-to-noise of the measurements we discuss later 
 is much better at low redshifts. 
 
@@ -466,11 +466,12 @@ drBAO & $s\,[H(z_2)-H(z_1)]$ & $s$ & $w_{\rm tot}<-1$ \\
 \caption{Redshift drift and differential radial BAO both 
 directly measure the acceleration of the universe, but with different 
 marginalization parameters and observational requirements. 
-}
-\label{tab:drbao}
+\alex{For the sign maybe$-\mbox{sgn}(1/3+w_{tot})$ is better notation.
+Of sign(+/-) in the column header and  $w_{\rm tot}(</>)-1/3$
+The current notation requires non-standard boolean assignment of False to $-1$
+instead of 0.}
+\label{tab:drbao}}
 \end{table} 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \subsection{Many signals: Cosmic pulsars} 
 
@@ -568,7 +569,7 @@ If the lines of sight are within the spectrograph field of view,
 then they can be 
 observed simultaneously, allowing a direct differential measurement to give 
 the redshift drift, rather than an absolute one.  Furthermore, this increases 
-the likelihood that the Lyman alpha absorption is coherent between the 
+the likelihood that the Lyman-$\alpha$ absorption is coherent between the 
 multiple lines of sight.  The transverse distance at redshift $z$ between 
 lines of sight separated by angle $\Delta\theta$ is 
 \be 
@@ -579,7 +580,7 @@ h^{-1}{\rm kpc} \ .
 Note that for $z=1-3.5$, $H_0D_A$ is almost constant at 0.4 in a 
 cosmology near the concordance model.  Image separations tend to be in 
 the 1--5'' range.  For such transverse separations, much smaller than 
-the gas Jeans scale of $\sim300\,h^{-1}$ kpc, the Lyman alpha lines 
+the gas Jeans scale of $\sim300\,h^{-1}$ kpc, the Lyman-$\alpha$ lines 
 should be coherent in the multiple images \citep{09100250}.  
 Note that if we wanted to 
 use very long time-delay systems (though few are known, none with 
@@ -621,13 +622,13 @@ $d(v\,\delta\alpha)/dt$, much smaller than a standard peculiar
 acceleration of the source and so can be neglected. 
 
 If the propagating light is 
-absorbed in the Lyman alpha forest due to neutral hydrogen gas along 
+absorbed in the Lyman-$\alpha$ forest due to neutral hydrogen gas along 
 the path, then many narrow spectral features arise, enabling multiple 
 measurements of the redshift drift 
 \citep{1998ApJ...499L.111L,2008MNRAS.386.1192L}, 
 also with time delays. 
 Embedded within the image spectra are not only the source redshift but 
-the redshifts of each Lyman alpha absorber.  Thus in a single night we get 
+the redshifts of each Lyman-$\alpha$ absorber.  Thus in a single night we get 
 not only multiple images with cosmology-provided time delays, but multiple 
 signals within each image spectrum.  The $N_{\rm line,q}$ spectral lines 
 in the quasar, perhaps ${\mathcal O}(10^3)$, help to improve the 
@@ -637,9 +638,8 @@ simultaneously applies the redshift drift test at multiple redshifts
 -- with their individual $\dot z(z)$ -- potentially improving the cosmological 
 model constraints as discussed in Sec.~\ref{sec:basic}. 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section{Experimental Approaches} \label{sec:tech} 
+\section{Experimental Approaches \alex{For Measuring Changes in Redshift}} \label{sec:tech} 
 
 In this section we turn from theoretical speculation to consideration of 
 innovative experimental approaches, with practical details on how to 
@@ -650,7 +650,7 @@ from the radio absorption line in 3C~286 at $z=0.849$
 \citep{1978ApJ...219....1D} is representative of current high-precision 
 work. 
 We are guided by two concepts: 
-that low redshift measurements can have significant cosmological leverage, 
+that low-redshift measurements can have significant cosmological leverage, 
 and simultaneous differential measurements can be more robust than 
 individual, absolute measurements of redshift.  
 
@@ -981,7 +981,8 @@ I(\sigma)_{\Delta\tau} &= \left[B(\sigma)\left(1+\cos{\left(2\pi\left(\tau+\Delt
 \end{align}
 where $p$ is the spacing of the wavenumber sampling, $\phi_y$ is the initial phase,
 and $\Delta \tau$ represents the changes in delay in the series of exposures; for our calculations we choose  $\Delta \tau = n/2(\sigma_1+\sigma_2)$ with $n\in\{0,1,2,3\}$
-with the change achieved by adjusting an interferometer arm length by fractions of the inverse average wavenumber. 
+with the change achieved by adjusting an interferometer arm length by fourths of the inverse average wavenumber. 
+\alex{(This choice for the set of  $\Delta \tau$ is made for mathematical convenience and generally does not strongly affect the statistical determination of whirl.)}
 The first term represents the signal obtained with a conventional spectrograph while the second, cosine term
 introduces a wavelength-dependent phase that provides additional leverage in measuring redshift.
 
@@ -1228,14 +1229,14 @@ methods, and explored various promising improvements to experimental
 approaches to measuring directly spectral line shifts.  
 
 One surprising result is that the greatest leverage on dark energy properties 
-comes from low redshift observations, due to lesser covariances there with 
+comes from low-redshift observations, due to lesser covariances there with 
 other cosmological parameters. The dark energy figure of merit can exceed 
 100 for a set of five measurements over $z=[0.1-0.5]$, each at 1\% precision 
 (together with current precision on the Hubble constant), i.e.\ determining 
 $w$ to 0.02, $w_0$ to 0.06, $w_a$ to 0.43. Moreover, redshift drift 
 has extraordinary complementarity with other probes, having the opposite 
 degeneracy in the $w_0$-$w_a$ plane from all standard probes. For example, 
-combination of the low redshift drift with Planck CMB data increases 
+combination of the low-redshift drift with Planck CMB data increases 
 the figure of merit by a factor 12, to over 1000. Even a more practical 
 5\% precision on redshift drift gives a FOM of 290 when combined with 
 current Hubble constant and CMB data. Lesser complementarity can be achieved 
@@ -1250,8 +1251,8 @@ rather than redshift drift per se, gives a complementary measure of
 acceleration, and can be accomplished with normal galaxy redshift survey 
 data using differential radial baryon acoustic oscillations (drBAO). 
 The second would use cosmic ``pulsers'', not yet discovered, but possibly 
-realizable through binary gravitational wave sources. Finally, long time 
-delay strong gravitational lenses, possibly to be detected by future deep 
+realizable through binary gravitational wave sources. Finally, long time-delay
+strong gravitational lenses, possibly to be detected by future deep 
 time domain surveys, are also considered. We emphasize that these ideas 
 are speculative and need considerable development, but do have considerble 
 synergy with surveys already planned such as DESI, Euclid, and LSST.  They 
@@ -1268,13 +1269,20 @@ and potential redshift precisions. We find that single source redshift
 measurement precision of few $\times 10^{-9}$ is potentially achievable, 
 with further improvement possible from multiple sources, multinight 
 exposures, and larger telescopes (our numbers are canonically for 8 hours 
-on a 10-m telescope). Instruments 
+on a 10-m telescope). \alex{``Gold'' targets, with brighter and narrow doublet
+emission than the galaxies considered in this article, may yet be discovered
+in upcoming spectroscopic surveys and provide a speedier path toward
+detecting redshift drift.}
+Instruments 
 such as Externally Dispersed Interferometers and External Dispersion Spatial 
 Heterodyne Spectroscopes can avoid some of the systematics in conventional 
 spectrographs. 
+\alex{It is of interest to test whether the stability and/or calibration precision
+possible on these instruments can satisfy the requirements imposed by the science.}
+
 
 Other targets, such as narrow radio lines or sequences of lines, should be 
-explored, as should other uses of high precision wavelength measurements, 
+explored, as should other uses of high-precision wavelength measurements, 
 such as for atomic line catalogs. 
 
 Cosmic acceleration is a fundamental mystery of physics, and the possibility 
