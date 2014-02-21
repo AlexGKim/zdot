@@ -107,8 +107,10 @@ def edi_counts(_lines,edi):
   kernel=numpy.zeros(edi.spectro.subres)+1
   sw=numpy.zeros((4*npix,len(edi.spectro.sigmas)))
   ind=0
-  for phi in numpy.arange(1,2,.25):
-    ans=.25*s0*(1+numpy.cos(2*numpy.pi*(tau*phi)*edi.spectro.finesigmas))
+  shift = 2./(_lines.sigma1+_lines.sigma2)/4
+  print shift
+  for phi in numpy.arange(0,4):
+    ans=.25*s0*(1+numpy.cos(2*numpy.pi*(tau + phi*shift)*edi.spectro.finesigmas))
     ans=numpy.convolve(ans,kernel,mode='same')
     ans=ans[edi.spectro.subres::edi.spectro.subres]
     for np in xrange(npix):
@@ -594,9 +596,9 @@ def ediplot():
   plt.legend()
   plt.savefig("/Users/akim/Work/zdot/paper/edi.pdf")
 
-#ediplot()
+ediplot()
 
-
+efw
 
 def edshsplot():
   plate=1268
@@ -666,9 +668,9 @@ def shsplot():
 
   plt.savefig('shscounts.pdf')
   
-shsplot()
+#shsplot()
 #edshsplot()
-sef
+#sef
 def specplot():
   plate=1268
   fiber=318
@@ -684,8 +686,8 @@ def specplot():
   plt.legend()
   plt.savefig("/Users/akim/Work/zdot/paper/spec.pdf")
 
-  #gendata()
-  #table()
+gendata()
+table()
   #ediplot()
 #specplot()
 #linetable()
