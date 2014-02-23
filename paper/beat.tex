@@ -159,7 +159,7 @@ a universe without gravity has no acceleration, and vice versa.
 We emphasize the kinematic aspect of the redshift drift: its nonzero 
 value at any redshift directly indicates acceleration, with no need to 
 know the dynamics, i.e.\ the specific functional dependence $a(t)$. 
-While distance measurments are kinematic, they must be differenced or 
+While distance measurements are kinematic, they must be differenced or 
 differentiated to reveal acceleration (ideally through a regression 
 method, e.g.\ \citep{2012PhRvD..85l3530S,2012JCAP...06..036S}), or fit to 
 a dynamical model \citep{1998AJ....116.1009R,1999ApJ...517..565P}. 
@@ -693,7 +693,7 @@ The two-line average $\Delta v$ for [OII], and the continuum fluxes for both dou
 The Portsmouth table  gives ``rest-frame'' fluxes corrected for dust correction;
 the observed fluxes needed to simulate observations are taken from the spZline data model
 \citep{2012AJ....144..144B}.  In some cases only one doublet is visible, for example with high-redshift galaxies where [OIII] features are shifted to the near-infrared and are difficult to access from ground-based observations.
-THe SDSS spectrum from a representative 
+The SDSS spectrum from a representative 
 target, from Plate~\#1268, Fiber~\#318, is shown in Figure~\ref{shsinput:fig}. 
 
 
@@ -775,7 +775,7 @@ B(\sigma)& =\frac{a_1}{\sqrt{2\pi s_1^2}}\exp{\left[-\frac{\left(\sigma-\sigma_1
  &\qquad +\frac{a_2}{\sqrt{2\pi s_2^2}}\exp{\left[-\frac{\left(\sigma-\sigma_2\right)^2}{2s_2^2}\right]}.
 \label{input:eqn}
 \end{align}
-The two lines have central wavenumbers $\sigma_1$ and $\sigma_2$, and share a common Gaussian profile with width parameterized by velocity dispersion
+The two lines have central wavenumbers $\sigma_1$ and $\sigma_2$, and share a common Gaussian profile with width parametrized by velocity dispersion
 such that $s_i=\sigma_i\Delta v/c$. 
 
 
@@ -968,7 +968,7 @@ The EDI whirl has the instrumental frequency response shifted into a new $\rho$ 
 spectral
 resolution on scales tuned by the choice of $\tau$.  In the calculations that follow, the delay is chosen to resolve
 the FWHM of the line with the lower wavenumber, $\tau = (2.36s_1)^{-1}$, where $s_1$ was introduced
-in Eq.~\ref{input:eqn} as the standard deviation of the first line.
+in Eq.~\ref{input:eqn} as the standard deviation width of the first line.
 
 An EDI observation is actually a series of measurements
 \begin{align}
@@ -977,8 +977,8 @@ I(\sigma)_{\Delta\tau} &= \left[B(\sigma)\left(1+\cos{\left(2\pi\left(\tau+\Delt
 \label{edisig:eqn}
 \end{align}
 where $p$ is the spacing of the wavenumber sampling, $\phi_y$ is the initial phase,
-and $\Delta \tau$ represents the changes in delay in the series of exposures; for our calculations we choose  $\Delta \tau = n/2(\sigma_1+\sigma_2)$ with $n\in\{0,1,2,3\}$
-with the change achieved by adjusting an interferometer arm length by quarters 
+and $\Delta \tau$ represents the changes in delay in the series of exposures; for our calculations we choose  $\Delta \tau = (n/4)[2/(\sigma_1+\sigma_2)]$ with $n\in\{0,1,2,3\}$, 
+achieved by adjusting an interferometer arm length by quarters 
 of the inverse average wavenumber. 
 (This choice for the set of  $\Delta \tau$ is made for mathematical convenience and generally does not strongly affect the statistical determination of whirl.) 
 The first term represents the signal obtained with a conventional spectrograph while the second, cosine term
@@ -995,7 +995,7 @@ made in steps of 0.14 $\mu$m.
    \centering
    \plotone{edi.pdf} 
    \caption{The expected EDI signal from the four phase measurements for one of the [OIII] lines of
-   the SDSS target specified by Plate~\#1268, Fiber~\#318. The four phases parameterized by $n$ are defined in Eq.~\ref{edisig:eqn}.
+   the SDSS target specified by Plate~\#1268, Fiber~\#318. The four phases parametrized by $n$ are defined in Eq.~\ref{edisig:eqn}.
 \label{edicounts:fig}}
 \end{figure}
 
@@ -1031,7 +1031,7 @@ where $\sigma_i$ is the observed and $\sigma_{i0}$ the restframe wavenumber of l
 At face value, the measurement of $\sigma_1\pm\sigma_2$ should be expected to suffer larger uncertainty than that of the wavenumber
 of a single line.  To counter this expectation, we consider a scenario where the experimental setup has an output that is naturally sensitive
 to $\sigma_1\pm\sigma_2$.  The differential measurement can be immune to certain systematic uncertainties encountered when using dispersion spectrographs.
-Redshifts are measured from the relative shift of two lines of a doublt; 
+Redshifts are measured from the relative shift of two lines of a doublet; 
 the single line profile common to them enables cancellation of the PSF blurring of the
 line profiles.
 
@@ -1213,13 +1213,13 @@ SHS, and are comparable to the performance of the EDI.
 
 Now that the signals from different wavelengths are no longer mixed, calibration arcs can be observed with the science image without increasing
 the photon noise of the doublet lines.  Both wavelength and PSF calibration are simplified as with the EDI.
-In addition, the flux signals per pixel are further reduced relative to the SHS, relaxing flux calibration requiirements. 
+In addition, the flux signals per pixel are further reduced relative to the SHS, relaxing flux calibration requirements. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Conclusions} \label{sec:concl} 
 
-Direct kinematic measurements of comsic acceleration can provide valuable, 
+Direct kinematic measurements of cosmic acceleration can provide valuable, 
 model independent confirmation of dark energy. The accuracy required for 
 detecting redshift drift is challenging, and we have reviewed some of the 
 systematics, presented a series of theoretical speculations for observational 
@@ -1252,7 +1252,7 @@ The second would use cosmic ``pulsers'', not yet discovered, but possibly
 realizable through binary gravitational wave sources. Finally, long time-delay
 strong gravitational lenses, possibly to be detected by future deep 
 time domain surveys, are also considered. We emphasize that these ideas 
-are speculative and need considerable development, but do have considerble 
+are speculative and need considerable development, but do have considerable 
 synergy with surveys already planned such as DESI, Euclid, and LSST.  They 
 can also replace patience -- of several decade time scales, see the 
 categorization of \citet{stebbins} -- with ideas on how to get the universe 
