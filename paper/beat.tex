@@ -8,9 +8,16 @@
 \usepackage{color}
 \usepackage{hyperref}
 \usepackage{url} 
+
 \usepackage[OT2,T1]{fontenc}
 \DeclareSymbolFont{cyrletters}{OT2}{wncyr}{m}{n}
 \DeclareMathSymbol{\Sha}{\mathalpha}{cyrletters}{"58}
+
+\newcommand{\eprint}[1]{\href{http://arxiv.org/abs/#1}{#1}} 
+\newcommand{\ISBN}[1]{\href{http://cosmologist.info/ISBN/#1}{ISBN: #1}} 
+\newcommand{\adsurl}[1]{\href{#1}{ADS}} 
+\providecommand{\url}[1]{\href{#1}{#1}} 
+\providecommand{\newblock}{}
 
 % Making life easier
 \newcommand{\be}{\begin{equation}}
@@ -776,7 +783,7 @@ B(\sigma)& =\frac{a_1}{\sqrt{2\pi s_1^2}}\exp{\left[-\frac{\left(\sigma-\sigma_1
 \label{input:eqn}
 \end{align}
 The two lines have central wavenumbers $\sigma_1$ and $\sigma_2$, and share a common Gaussian profile with width parametrized by velocity dispersion
-such that $s_i=\sigma_i\Delta v/c$. 
+such that $s_i=\sigma_i\Delta v/c$ and $\Delta v$ is fixed for each galaxy. 
 
 
 
@@ -1302,7 +1309,7 @@ Office of Science, Office of High Energy Physics,
 of the U.S.\ Department of Energy under Contract No.\ DE-AC02-05CH11231. 
 
 
-\bibliographystyle{apj}
+\bibliographystyle{hapj}
 \bibliography{alex.bib}
 
 
