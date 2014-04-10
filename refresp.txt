@@ -1,0 +1,587 @@
+Reviewer #1: General comments
+-----------------
+
+This paper considers, at a conceptual level, a number of different
+ways in which the expansion history of the Universe could be measured,
+and discusses a number of observational techniques that could be
+employed in measuring the so-called "redshift drift".
+
+The discovery that the expansion of the Universe is accelerating has
+prompted many investigations into various methods of measuring the
+expansion history. One relatively exotic method is to measure the
+so-called redshift drift, i.e. the change of the redshifts of
+cosmologically distant sources as a function of time. This is a tiny
+effect and hence a very difficult measurement, which is beyond current
+facilities.
+
+In the present paper the authors present a number of conceptual
+variants of the redshift drift, which at least in principle may be
+easier to implement, and discuss observational techniques with which
+the observational challenges of a redshift drift measurement might be
+overcome. In particular this second part highlights some interesting
+ideas, and I think these would definitely represent quite a useful
+contribution to the literature. Hence I recommend publication of this
+paper. However, I have a fairly large number of comments which I would 
+ask the authors to consider before the paper is published. Apologies
+for the length of this report and its lateness.
+
+EL: Since he does recommend publication, we shouldn't be too hard on him/her! 
+
+Detailed comments
+-----------------
+
+Section 1
+
+- page 1, right column, lines 43-47
+"So even if..."
+This sentence sounds (at least to me) as if there were some
+fundamental reason why the redshift drift method cannot possibly
+constrain cosmology as well as distances or growth of structure. I am
+not aware of any such reason. Given enough S/N and/or patience the
+constraints from the redshift drift can be made arbitrarily tight. But
+perhaps I am misinterpreting this sentence? 
+
+EL: no fundamental reason, just that the accuracy needed is challenging 
+so we don't know how well it will actually work. Rephrase as 
+"This directness mean that even if.. of more established probes such as 
+distance... out." 
+
+- p 1, r, 54
+"fantastically precise"
+This sentence evokes the notion that a "classical" redshift drift
+experiment requires hugely precise measurements of the redshifts of
+individual objects or spectral features. That is not necessarily
+correct. Using the Ly-alpha forest (as suggested by Loeb 1998) does
+not require extremely high precision in the redshift measurement of
+individual absorption lines. The extremely high *overall* precision of
+the experiment is achieved by (in a sense) summing over many lines,
+each of which is measured at much lower precision. In fact, a detailed
+(although unpublished) analysis of this version of the redshift drift
+experiment has revealed that one only needs a radial velocity
+precision of ~70 cm/s, which is not outrageously difficult to achieve,
+although with a long-term stability of ~1 cm/s, which is indeed
+somewhat harder to achieve. So, at least for this version of the
+experiment we do indeed need long-term stability, but not incredibly
+high precision.
+
+EL: I still call 3e-9 high precision, but rephrase as "requires highly 
+precise measurements (at least in aggregate) stable..." 
+
+Section 2
+
+- p 2, l, 60
+"We emphasize..." - end of paragraph
+I found this an imprecise description. First of all, a non-zero value
+of dz/dt does *not* directly indicate acceleration, only a *positive*
+value indicates acceleration. Secondly, I don't understand the
+reference to the "specific functional dependence of a(t)". The point
+is that a measurement of dz/dt at various redshifts allows one to
+directly reconstruct a(t) without the assumption of a cosmological
+model (or even a theory of gravity): dz/dt(a) provides
+da/dt(z). Together with a(z) one can thus reconstruct a(t).
+
+EL: As mentioned at the beginning of this paragraph, acceleration as a 
+physics word means positive or negative second time derivative. Regarding 
+the functional dependence, we rephrase to clarify that it does not need 
+to be *assumed*, but as the referee says it can be derived. Rephrase: 
+"indicates acceleration (positive or negative), with no need to assume 
+a priori the dynamics... dependence a(t) on matter density etc." 
+
+- p 2, r, para beginning line 21
+"At high redshift..."
+Again this description is imprecise. dz/dt does not change sign at the
+redshift at which DE begins to dominate over matter. The former occurs
+at z ~ 2, the latter at z ~ 0.7. Whether an emitter's dz/dt is
+positive or negative depends on whether the universe is mostly
+decelerating or accelerating during the photon travel time from the
+emitter to the observer. That's why the change of sign in dz/dt occurs
+at much higher redshift than the Omega_L-Omega_M cross-over (see
+e.g. Gudmundsson & Bjoernsson 2002).
+
+EL: We never claim dz/dt changes sign when DE begins to dominate. We 
+clarify this by rephrase: "change to positive (see Eq. 2 for the exact 
+condition)." 
+
+- p 2, r, para beginning line 32 
+It might be worth pointing out explicitly that a flat cosmology is
+being assumed here. 
+
+EL: rephrase "The results use a flat universe with the fiducial..." 
+
+- Fig. 1 has no y-axis label. Suggestion: dzdot/dp 
+
+EL: Fig. 1 curves show different quantities, e.g. zdot as well as dzdot/dw0. 
+There we labeled the curves individually for clarity. 
+
+- In Fig.1 I would label the lines slightly differently:
+dzdot/dw_a --> dzdot/dw_a/H_0
+same for w_0 and Omega_M
+zdot --> dzdot/dH_0 
+
+EL: We state in both the text and caption that "All quantities are in units 
+of H_0". We looked at writing dzdot/dw_a/dH_0 in the curve labels and found 
+it more confusing. 
+
+- p 2, r, line 42
+"The sensitivity curves..."
+It is a little difficult to verify this statement because Fig. 1 does
+not show dzdot/dOmega_m beyond z=0.3.
+
+EL: Two paragraphs later we discuss the matter density curve in more 
+detail, giving its redshift dependence, and in particular that it is 
+monotonic unlike the other curves. So its shape is very different. 
+We have rephrased: "shapes, hinting at no strong covariance". 
+
+- p 2, r, 54
+"especially if they have better S/N"
+This statement sort of implies that this would indeed be the case, but
+it is far from clear whether this is true.
+
+EL: In the next paragraph we justify it but showing that higher redshift 
+sources (of the same luminosity) become fainter more rapidly and so if we 
+are photon noise limited we expect low redshift sources to be better. 
+This is not a proof, as the referee says, and we carefully say "low 
+redshift may give the strongest leverage". 
+/
+- p 3, l, 36
+"In the precision..."
+This is a very naive analysis as it ignores luminosity and number
+density evolution, as well as k-corrections.
+
+EL: We carefully use the word "if" and the phrase "may give". We are giving 
+the reader initial motivation to consider low redshift, and then we present 
+robust quantification in Figures 2 and 3. 
+
+- p 3
+The authors use an entire page (plus Figs.1-3) to convince their
+readers that a zdot measurement should be performed at low redshift
+rather than at high redshift. They do this apparently in order to
+justify their investigation of using low-redshift emission line
+galaxies as targets in Section 4. I found this not hugely convincing
+and in any case a little misguided. 
+
+EL: In fact this occurred in the opposite sense. We discovered that low 
+redshift could be powerful, and then look for what sources would be suitable. 
+It is a bonus that well studied low redshift galaxies are possibilities. 
+So Figures 1-3 really did lead the way. 
+
+First of all, I did not find this part very convincing because their
+analysis leading to Figs. 2 and 3 is incomplete: 
+1. They assume that their zdot measurements are distributed over a
+range in redshift of 0.4. Why this value? Why not not 2? Why not make
+this a free parameter? My point is that the best constraints will come
+from a combination of low and high redshift measurements (as
+acknowledged by the authors at line 40, right column). 
+
+EL: The redshift range is unimportant. In fitting for 4 free cosmological 
+parameters one needs at least 4 measurements at different redshifts. We 
+spread them by 0.4 so as to keep them as localized as possible, so that 
+we could see the sensitivity at effectively each redshift. If we had spread 
+them over a redshift range of 2, then one could not interpret the leverage 
+as being from a particular redshift. One should simply think of them as 
+measurements in a narrow band around a redshift z. The combination of low 
+and high redshift measurements then get added to this sensitivity afterward, 
+as in Fig. 3. 
+
+2. The analysis takes no account of the observational effort required
+to achieve a certain zdot measurement. Essentially, the authors are
+answering the question "What constraints on cosmological parameters
+can we achieve with a zdot measurement?". The much more relevant
+question is, however, what constraints can be achieved *for a fixed
+amount of observing time* (or money or some other metric of
+effort/resources). (This is of course a much more difficult analysis,
+in particular when covering a wide redshift range, as it presumably
+would involve multiple different techniques.) 
+
+EL: As we emphasize throughout the article, we are pointing out interesting 
+new aspects of this probe. First we need to know the redshift range, then 
+we identify possible sources, then we calculate the observing time needed, 
+in successive sections of the article. 
+
+Secondly, while reading this part I could not help but thinking that
+the authors were barking up the wrong tree. Accelerated expansion is
+of sufficient interest, and the redshift drift method of sufficient
+immaturity that such a detailed motivation for exploring ways of
+performing a low-z zdot measurement is not required. 
+
+EL: Redshift drift has previously been thought of as a high redshift 
+measurement, so the motivation of low redshift is worth discussing in 
+some detail. We then quantify this in Figures 2 and 3 to show how much 
+advantage it can bring, if practical. We also show that to combine with 
+low redshift zdot, CMB gives better leverage (and is "for free") than 
+high redshift zdot. 
+
+If I had written this part, I would have structured it around the
+following points:
+
+1. Demonstrate that *in principle* low-z measurements have some
+desirable features (reasonable sensitivity to DE parameters (Fig. 1),
+orientation of error ellipse (Fig. 3)).
+2. Make it clear that that covering a very wide range of redshifts
+would likely provide the best leverage on cosmological parameters, and
+that in any case one would want to use different techniques (different
+systematics).
+3. Acknowledge that the immaturity of the field does not yet allow a
+proper cost-benefit analysis, i.e. an analysis of how to best
+distribute resources among different techniques, redshift ranges, etc.
+
+- p 5 left column
+The entire part on astrophysical systematics is quite weak. This part
+does not add anything new at all. First, the authors just repeat
+equation (4) from Linder (2010) (without properly explaining all of
+the quantities), and just point to that paper for an explanation. The
+discussion of peculiar accelerations is also not very illuminating.
+The authors completely ignore all of the previous literature on this
+subject (e.g. Lake (1982), Phillipps (1982), Amendola et al. (2008),
+Liske et al. (2008), Uzan et al. (2008)). Furthermore, I did not
+understand the paragraph following equation (5). I am not aware of
+anyone ever having suggested using AGN as targets for a redshift drift
+measurement, and I do not understand why peculiar accelerations should
+not be "interpreted statistically", or what they mean by "it" in the
+last sentence of this paragraph.  Finally, the very last paragraph of
+this section does not state anything beyond the obvious (and manages
+to do this in a confusing way).
+
+EL: Eq. 4 puts all the terms together, whereas people often only consider 
+subsets. All variables are defined, with the clarification rephrase: 
+"potentials, with a subscript e denoting emitter and o denoting observer." 
+Peculiar accelerations also are often treated statistically, through the 
+power spectrum of density perturbations, while Eq. 5 makes clear that one 
+cares about an individual system. For example the density perturbations 
+are linear on average but we often care about nonlinear systems. The last 
+paragraph reminds the reader of the level of challenge faced; it is useful 
+to show these numbers explicitly. We have rephrased: "separated sources 
+with statistically independent peculiar accelerations. To be explicit, 
+we recall that the precision required..." 
+
+Section 3
+
+- Section 3.1 
+I am sure I have missed something important but I am completely
+baffled by the entire Section 3.1. It is already very well known that
+the expansion history (i.e. H) can be measured using radial BAO. This
+is not new. This method has nothing in common with the redshift drift
+in terms of technique. There is not even a qualitative discussion of
+the pros and cons of radial BAO vs redshift drift. I simply do not
+understand what we are supposed to learn from this section or why it
+is even here. I would advocate its removal.
+
+- Section 3.2
+This section I found much more relevant, but unfortunately again not
+very illuminating. The idea of using the drift of a pulsar's period in
+itself is not new (although perhaps not widely known in this context).
+I would have expected to read about the latest estimates of our
+prospects to detect cosmological pulsars (SKA). Instead the authors
+superficially discuss even more remote possibilities like using
+gravitational waves. Also, I found the reference to Thornton et
+al. (2013) misplaced. This paper deals with radio *transients*, not
+periodic sources. I would advocate to either add more content to this
+section or else to remove it.
+
+- Section 3.3 
+Again this section is very relevant, but again poorly executed.
+
+1. The authors fail to explain clearly the idea of this experiment
+(i.e. to simultaneously measure the redshifts of the images of a
+strongly gravitationally lensed source) and what is being measured
+(dz/dt = -H(z) which is considerably larger than in the "normal" case).
+2. The authors fail to explain clearly the implementation they have in
+mind. They mention quasars, then Lyman alpha absorption, and at the
+end of this section they again refer to the Ly-a forest in quasar
+spectra, but it would be nice to explain clearly what they have in
+mind near the start of this section.
+3. The authors fail to properly discuss the pros and cons with respect
+to the "classical" redshift measurement. The pros are that the signal
+is larger and that (at least superficially) one might think that it is
+easier to reach a certain precision in delta_z when measuring it
+simultaneously on two images, as opposed to on the same image
+separated by several years. The downside is of course that delta_t is
+fixed and cannot be arbitrarily extended (i.e. one cannot just wait
+for the S/N of the measurement to improve, as in the "classical" case).
+Furthermore, it is not at all clear why it should be that much easier
+to measure delta_z from two widely separated positions on the detector
+compared to from two widely separated positions in time. These two
+things actually have a lot in common, but none of this is discussed.
+
+- p 7, l, 26
+"...and so the redshifts will be the same."
+Given the context, this is a somewhat confusing statement. I
+understand what the authors are trying to say, but it needs to be
+clarified. After all, the whole point of this section is that the
+different images of a strongly lensed source do *not* have the same
+redshift.
+
+- p 7, l, 36
+"...the required precision could be eased."
+Compared to what?
+The point is that lenses may be able to give us a similar time delay
+as what is being considered for the "classical" case (i.e. a decade)
+but that the systematics may be easier to beat (but see my
+reservations about that above).
+
+- p 7, l, para beginning line 43
+When discussing time delays, it might be useful to know what kind of
+experiment the authors have in mind. For example, the time delay that
+is measured from the photometric time variability of a quasar is not
+the time delay that applies to a Lyman-alpha absorption system seen in
+the foreground.
+
+- p 7, r, 25 
+"Note that if..."
+The same issue also affects the ability to simultaneously observe the
+two images. For example, the 2-yr time delay lens of Fohlmeister et
+al. (2013) has an image separation of 22 arcsec, which is already
+challenging for a high-resolution spectrograph. For longer time delays
+it may be impossible to simultaneously observe the two images. On the
+other hand, this could be easily solved by having two telescopes feed
+the same spectrograph (see the example of ESPRESSO in the incoherent
+combined focus of the VLT).
+
+- p 7, r, 56
+"...spectrum of image B should match..."
+I disagree. The redshifts of these two spectra should differ by 
+(1+z)*H_0*delta_t.
+
+- p 8, l, 31
+"The N_line,q spectral lines in the quasar, perhaps O(10^3)..."
+A quasar (not counting the intervening IGM lines) does not display of
+order 1000 spectral lines. More like O(10). And many of these (the
+broad ones) would not be particularly suited to a zdot measurement.
+Also the IGM lines are more like ~200 in number than 1000.
+
+
+Section 4
+
+- p 8, l, 50
+The work of Davis & May (1978!!!) is *not* representative of current
+high-precision work. First of all, one has to differentiate between
+the radio and optical regimes. Secondly, if interested in the radio
+regime, the authors may wish to consult Darling (2012).
+
+- p 8, l, 54
+"...and simultaneous differential measurements..."
+First of all, I do not understand what this "guiding concept" has to
+do with this section. All of the techniques explored in this section
+still require multiple measurements taken at different times. The
+increased redshift precision may reduce the time span between the
+measurements, but certainly not to the point of "simultaneous"
+measurements.
+Secondly, even if the statement were relevant here, I'm not convinced
+it's actually true (see above).
+
+- p 8, l, para beginning line 58
+Nobody would seriously even consider a redshift drift measurement with
+classical wavelength calibration methods (comparison spectra from arc
+lamps, iodine cell). Technology has already moved on: a laser
+frequency comb (LFC) provides a closely-spaced *absolute* wavelength
+reference with almost arbitrary precision, see e.g. Murphy et
+al. (2007), Steinmetz et al. (2008), Wilken et al. (2012).
+
+
+Section 4.1
+
+- p 8, r, 28
+"...narrow bandwidth that spectrographs must span"
+True, except that one would want to cover at least some redshift range.
+
+- p 8, r para beginning line 37
+This paragraph (and the preceding sentence) are slightly confusing
+because two issues are intermingled. Yes, one can measure redshift
+from the observed doublet separation which is therefore not sensitive
+to line shape distortions. However, since we are only interested in
+differential measurements, line profile uncertainties are not an issue
+anyway (unless line profiles change on the timescale of a few years),
+even when not using the doublet separation but the individual line
+positions.
+
+- Table 2 
+The values for the velocity dispersions in Table 2 are frequently ~10
+km/s and go as low as 1.43 km/s. May I remind the authors that SDSS
+spectra have a resolution of ~2000, i.e. of ~150 km/s. I find it hard
+to believe that an intrinsic line width of 1.43 km/s or even of 10
+km/s can be reliably retrieved from these spectra, despite the high
+S/N of the emission lines. At the very least this would require
+accurate knowledge of the actual spectral resolution at the observed
+wavelength of the emission line. Thomas et al. (2013) do not mention
+any efforts in this direction but they may have just omitted this. In
+any case, values of 1 or even 5 km/s are even unphysically low. Even
+in the case of a face-on disk one would expect higher values.
+
+What is puzzling about these values is that they have relatively small
+errors (I checked in the SDSS DR10 database for a few cases). It may
+be advisable for the authors to contact the Portsmouth group to obtain
+advice on how to select a trustworthy sample of galaxies with narrow
+emission lines.
+
+In any case, I am highly suspicious of almost all of the velocity
+dispersion values in Table 2. Consequently, I am also highly
+suspicious of the *absolute* values in Table 3. The relative values
+(i.e. the improvement in radial velocity precision afforded by the
+alternative techniques relative to the "Conventional" one) are
+probably ok.
+
+- p 9, l, 37
+"...are difficult to access..."
+Observations up to 15 micron are quite routine from ground-based
+observatories. The authors probably mean to say that the NIR cannot be
+accessed with the SDSS spectrographs.
+
+- p 9, l, 44
+"Future surveys..."
+Given the low spectral resolution of these future surveys, we will be
+able to select target *candidates* from these surveys. However, their
+suitability (i.e. the width of their emission lines) will have to be
+confirmed at higher spectral resolution.
+
+-p 9, l, 51
+"...redshift precision scales..."
+The authors have it backwards. The precision scales with the *inverse*
+of the line width and with the square root of the line flux (as correctly
+stated on p 10, lines 41 and 45).
+
+- p 9, equation 10
+I am puzzled by why the authors allow different line widths for the
+two lines of a doublet.
+
+- p 9, r, 44
+"..throughput of 70%."
+Considering that this is the total system throughput, including
+atmosphere, telescope, entrance aperture losses, instrument and
+detector, this is a very high number. Current high-resolution
+spectrographs achieve ~20%. 30% would be great, but 70% is simply
+unfeasible.
+
+Also, I understand that the authors use the same throughput for all
+spectrograph designs to highlight the improvements due to technique,
+but they should at least mention that this assumption is of course
+entirely unrealistic.
+
+-p 9, r, 46
+"R = 20,000"
+Do the authors mean 200,000? 20,000 corresponds to a velocity
+resolution of 15 km/s. This would leave most of the lines in Table 2
+unresolved (but see above), which would be a very strange thing to
+do. Furthermore, at least for a conventional spectrograph one want to
+work at something like R = 100,000 just for the purpose of wavelength
+calibration, if nothing else.
+
+- p 9, r, 47
+"...dominated by the pixel top-hat function."
+I don't understand what this means. The key thing is whether the PSF
+is Nyquist sampled or not.
+
+- p 9, r, 48
+If object photon noise is dominant error source then all of the
+details described here (readout noise, dark current, no of exposures
+background model, etc) are irrelevant and only serve to confuse. (Note
+that a dark current of 2 e-/s is enormous. I presume the authors
+meant 2 e-/h.)
+
+- line 52
+Why are blocking filters relevant?
+
+- line 58
+Under the assumptions used here it is irrelevant whether the target is
+considered point-like etc. Any aperture entrance losses should be
+included in the throughput defined above.
+
+- line 59
+"The effective PSF..."
+I am baffled by this sentence. First of all, it makes no sense to me
+to say that the "PSF Nyquist samples" the intrinsic line profile.
+Secondly, given the line widths in Table 2 and R=20,000 the lines are
+unresolved, so the intrinsic line widths are certainly not Nyquist
+samples, in any sense.
+
+- p 10, l, line 35 
+"When appropriate..."  
+Under the assumption of being object flux limited, it is completely
+irrelevant over how many pixels the flux is distributed.
+
+- para beginning line 39
+After having provided a large amount of detail in the previous
+paragraph which appears to be entirely irrelevant to the numerical
+experiment about to follow, the authors are then extremely concise
+regarding the thing that actually matters, namely their derivation of
+the numbers in Table 3. They simply refer to a Fisher matrix analysis
+with no further explanation.
+
+The entire section 4.2 needs some attention. I was not able to
+understand what the authors have actually done to derive the numbers
+in Table 3.
+
+
+Section 4.3
+
+- p 12, l, 10
+"...every detector pixel."
+This would be physically impossible unless the PSF were under-sampled,
+which would make no sense.  For a properly (i.e. Nyquist) sampled PSF
+one can at most have one line per resolution element.
+I note that this is precisely what a laser frequency comb delivers.
+
+- p 12, l, lines 11-17 
+One can also record wavelength calibration lines next to the science
+spectrum. In this case one has to interpolate neither over time not
+wavelength, but over detector space.
+
+- p 12, l, para beginning line 18
+Flat-fielding is not the only issue. The background will also vary, as
+will the scattered light, possibly even the source (at least when
+quasars are used as targets). Quite generally the problem is that one
+needs to extract the redshift drift signal in the presence of varying
+additive and multiplicative factors.
+
+Small movements of the source during observations due to imperfect
+telescope tracking, and the the associated varying illumination of the
+slit are also a problem, which can however, be mitigated using light
+scrambling devices (i.e. devices that have an output light
+distribution hat is independent of the input light distribution.
+
+
+Section 4.4
+
+Very interesting concept. However, as far as I can see, the main
+advantage of an EDI is its capability to boost the resolution of a
+conventional spectrograph. This is not really an issue in the context
+of the redshift drift. Indeed the authors assume that the spectrograph
+behind the interferometer is the same as that in Section 4.3. In this
+case the advantage of using the EDI is "just" the additional,
+apparently independent, signal contaned in the "whirl". However, as
+pointed out above already, the authors should at least point out that
+the downside is the loss of photons in the interferometer. So the
+"conventional" contribution to the signal will in reality not be the
+same as that in Section 4.3. It's fine to estimate the redshift
+precision of the EDI without including this effect (as the authors
+have done) in order to see the effect of the additional
+signal. However, for a fair comparison, the authors should also
+estimate the redshift precision including the loss of photons in the
+inteferometer.
+
+- p 13, l, 59
+I am not sure that the issue of PSF variations is any different in
+this case from the "conventional" case. In the latter case arc lines
+can also be used for PSF calibration.
+
+
+Section 4.6
+
+I am not sure I understand the advantages of ED-SHS over EDI. As the
+authors point out, these concepts are very similar, except for the
+functional form of the modulation. Could the authors elaborate on the
+pros and cons of EDI vs ED-SHS?
+
+
+Section 5
+
+- p 16, r, 52
+"...brighter and narrow(er?) lines."
+Unlikely. As already pointed out above, the line widths considered
+Table 2 are already unphysically low.
+
+- p 17, l, para beginning line 11
+In this context the author may wish to refer to 
+2008PhLB..660...81A
+2008MNRAS.391.1308Q
+2012PhR...521...95Q
+
