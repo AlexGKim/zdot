@@ -67,6 +67,9 @@ high precision.
 EL: I still call 3e-9 high precision, but rephrase as "requires highly 
 precise measurements (at least in aggregate) stable..." 
 
+AK: If we replace “precision” with “accuracy” this should more
+accurately convey our meaning.
+
 Section 2
 
 - p 2, l, 60
@@ -86,6 +89,11 @@ the functional dependence, we rephrase to clarify that it does not need
 to be *assumed*, but as the referee says it can be derived. Rephrase: 
 "indicates acceleration (positive or negative), with no need to assume 
 a priori the dynamics... dependence a(t) on matter density etc." 
+
+AK: I suggest “We emphasize that redshift drift, with prior knowledge
+of the Hubble constant, is a direct measurement of $H(z)\def
+\dot{a}/a$: its value at any redshift … without the need to make
+dynamical assumptions about $a(t)$.”
 
 - p 2, r, para beginning line 21
 "At high redshift..."
@@ -142,7 +150,10 @@ sources (of the same luminosity) become fainter more rapidly and so if we
 are photon noise limited we expect low redshift sources to be better. 
 This is not a proof, as the referee says, and we carefully say "low 
 redshift may give the strongest leverage". 
-/
+
+AK: “especially if, being closer and thus appearing brighter, are more
+easily observed to high S/N”
+
 - p 3, l, 36
 "In the precision..."
 This is a very naive analysis as it ignores luminosity and number
@@ -151,6 +162,9 @@ density evolution, as well as k-corrections.
 EL: We carefully use the word "if" and the phrase "may give". We are giving 
 the reader initial motivation to consider low redshift, and then we present 
 robust quantification in Figures 2 and 3. 
+
+AK: This is meant to be a simple first-order argument for scaling
+relations at low redshift.
 
 - p 3
 The authors use an entire page (plus Figs.1-3) to convince their
@@ -164,6 +178,22 @@ EL: In fact this occurred in the opposite sense. We discovered that low
 redshift could be powerful, and then look for what sources would be suitable. 
 It is a bonus that well studied low redshift galaxies are possibilities. 
 So Figures 1-3 really did lead the way. 
+
+AK: I think that there are two responses we can make to this long
+comment.
+
+The first is to take the referee head on. “We make no claim that the
+observing strategies considered in this section are optimal.  Our
+motivation is to consider the leverage provided in the redshift-local
+slopes of the d\dot/dP curves in Figure 1.”
+
+The second, which I think will make the paper better, is to take our
+analysis a step further.  We have made plots of FOM as a function of
+number of supernovae uniformly distributed to fixed a maximum
+redshift, and we have made plots of FOM as a function of maximum
+redshift for a fixed number of supernovae.  We could do the same for
+redshift drift, where each ELG has some nominal measurement
+uncertainty.
 
 First of all, I did not find this part very convincing because their
 analysis leading to Figs. 2 and 3 is incomplete: 
@@ -254,6 +284,24 @@ to show these numbers explicitly. We have rephrased: "separated sources
 with statistically independent peculiar accelerations. To be explicit, 
 we recall that the precision required..." 
 
+AK: This section would benefit from a paragraph on expected peculiar
+acceleration on galactic and cluster scales, beyond the scaling
+relation in equation 5.  In this context, Amendola et al. (2008)
+should be cited.
+
+I am not parsimonious with respect to references. I don't see any harm
+in adding references to Lake (1981) and Phillips (1982) as historical
+work in peculiar acceleration to satisfy the referee.  Uzan,
+Bernadreau and Mellier (2008) also looks relevant.  We can cite Liske
+et al. as an example where peculiar accelerations of Ly-alpha
+absorbing gas has been calculated.
+
+For "should not be interpreted statistically", I agree with the
+referee that this is confusing.  For the sort of experiment we
+discuss, peculiar accelerations of a random ensemble of ELGs should
+average to zero.  The current sentence makes it seem like you can't
+average.
+
 Section 3
 
 - Section 3.1 
@@ -265,6 +313,9 @@ in terms of technique. There is not even a qualitative discussion of
 the pros and cons of radial BAO vs redshift drift. I simply do not
 understand what we are supposed to learn from this section or why it
 is even here. I would advocate its removal.
+
+AK: Ha Eric, the referee agrees with me!  I also don't think this
+belongs in the paper.
 
 - Section 3.2
 This section I found much more relevant, but unfortunately again not
@@ -303,6 +354,39 @@ to measure delta_z from two widely separated positions on the detector
 compared to from two widely separated positions in time. These two
 things actually have a lot in common, but none of this is discussed.
 
+AK: At the beginning of the section we add paragraphs to distinguish
+the ideas of this section, and jiggle text within the section so that
+the connection to the first paragraph is clear.
+
+Strong gravitational lens images can offer an observer distinct
+benefits as a probe of redshift drift $dz/dt$. The light from
+different images travel to us on different geodesics with different
+times of flight.  The light that arrives at the same time at the
+telescope was emitted at different redshifts, the time delay is
+already built into the system.  Multiple images can be observed within
+a single exposure of the spectrograph, say by the use of fibers that
+do not produce wavelength shifts.  Light emitted at different cosmic
+times are measured under the same observing conditions to remove
+absolute (as opposed to relative) wavelength calibration as a source
+of uncertainty. 
+
+In order to measure the time delay the source should be variable
+sources, quasars and active galactic nucleii are natural targets.  The
+use of the Lyman-\alpha forest is constrained to systems with <5"
+image separations (up to week time delays), to ensure that the
+geodesics pass through the same absorbing clouds.
+
+Observation systems with a sufficiently long time delays to allow a
+high signal-to-noise measurement of $\dot{z}$ in a single night would
+be fantastic.  The time delays measured to date range from days to
+years (Fohlmeister et al.) and so have images with redshift
+differences that are too small to detect with current technologies.
+Until long-delay systems are identified, shorter-delay systems would
+have to be monitored over a sufficiently long time baseline.  Either
+way, multiple observaitions with different instrumental configurations
+and observing conditions are essential to reduce systematic
+uncertainties.
+
 - p 7, l, 26
 "...and so the redshifts will be the same."
 Given the context, this is a somewhat confusing statement. I
@@ -311,6 +395,9 @@ clarified. After all, the whole point of this section is that the
 different images of a strongly lensed source do *not* have the same
 redshift.
 
+AK: We change the text to "the redshifts for a geodesic will be
+wavelength-independent."
+
 - p 7, l, 36
 "...the required precision could be eased."
 Compared to what?
@@ -318,6 +405,9 @@ The point is that lenses may be able to give us a similar time delay
 as what is being considered for the "classical" case (i.e. a decade)
 but that the systematics may be easier to beat (but see my
 reservations about that above).
+
+AK: The entire sentence is corrupted.  It is stricken.
+
 
 - p 7, l, para beginning line 43
 When discussing time delays, it might be useful to know what kind of
