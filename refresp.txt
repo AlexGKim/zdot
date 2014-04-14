@@ -211,7 +211,9 @@ them over a redshift range of 2, then one could not interpret the leverage
 as being from a particular redshift. One should simply think of them as 
 measurements in a narrow band around a redshift z. The combination of low 
 and high redshift measurements then get added to this sensitivity afterward, 
-as in Fig. 3. 
+as in Fig. 3. Rephrase: "z+0.2 (the multiple measurements slightly spread 
+in redshift are needed to allow fits of multiple cosmology parameters, 
+while still concentrating the sensitivity at a particular redshift z)." 
 
 2. The analysis takes no account of the observational effort required
 to achieve a certain zdot measurement. Essentially, the authors are
@@ -273,11 +275,12 @@ this section does not state anything beyond the obvious (and manages
 to do this in a confusing way).
 
 EL: Eq. 4 puts all the terms together, whereas people often only consider 
-subsets. All variables are defined, with the clarification rephrase: 
+subsets. All variables are currently defined, with the clarification rephrase: 
 "potentials, with a subscript e denoting emitter and o denoting observer." 
-Peculiar accelerations also are often treated statistically, through the 
+Peculiar accelerations are often treated statistically, through the 
 power spectrum of density perturbations, while Eq. 5 makes clear that one 
-cares about an individual system. For example the density perturbations 
+cares about an individual system, i.e. that type of object may be a high 
+fluctuation. For example the density perturbations 
 are linear on average but we often care about nonlinear systems. The last 
 paragraph reminds the reader of the level of challenge faced; it is useful 
 to show these numbers explicitly. We have rephrased: "separated sources 
@@ -304,6 +307,11 @@ average.
 
 Section 3
 
+EL: We have emphasized explicitly, starting in the title of the overall 
+section, that these are speculations that may stimulate further thought 
+in the reader. We view this as valuable, though none of the techniques 
+are "ready for prime time". 
+
 - Section 3.1 
 I am sure I have missed something important but I am completely
 baffled by the entire Section 3.1. It is already very well known that
@@ -314,8 +322,14 @@ the pros and cons of radial BAO vs redshift drift. I simply do not
 understand what we are supposed to learn from this section or why it
 is even here. I would advocate its removal.
 
-AK: Ha Eric, the referee agrees with me!  I also don't think this
-belongs in the paper.
+EL: The Hubble drift gives substantially related information to redshift 
+drift, but comes "for free" with spectroscopic galaxy clustering surveys 
+and so is important to emphasize. Differences and pros/cons are discussed 
+in the text and explicitly shown in Table 1. To clarify the distinction 
+we rephrase the introductory paragraph of the subsection: "a related, 
+though distinct quantity". "on acceleration. We highlight here how the 
+familiar concept of radial baryon acoustic oscillations can be compared 
+with redshift drift as discussed in the rest of this article." 
 
 - Section 3.2
 This section I found much more relevant, but unfortunately again not
@@ -328,6 +342,14 @@ gravitational waves. Also, I found the reference to Thornton et
 al. (2013) misplaced. This paper deals with radio *transients*, not
 periodic sources. I would advocate to either add more content to this
 section or else to remove it.
+
+EL: As stated, we believe that these concepts are useful for stimulating 
+further, perhaps more practical ideas. There is considerable excitement in the 
+gravitational wave community about testing fundamental physics, as indicated 
+in the Yunes et al paper. The Thornton et al reference is in a parenthetical 
+"but", and indicates the advances in sensitivity and the possibility of 
+new discoveries, although as the referee says these detected sources were 
+not periodic. 
 
 - Section 3.3 
 Again this section is very relevant, but again poorly executed.
@@ -387,6 +409,17 @@ way, multiple observaitions with different instrumental configurations
 and observing conditions are essential to reduce systematic
 uncertainties.
 
+EL: As explained at the beginning of Sec. 3, all subsections speculate 
+about a different path to get around the "stare and wait" approach. 
+We first discuss using multiple sources, then multiple signals from a 
+single source, then both together along with an intrinsic delay. The 
+specific implementations of these characteristics in terms of pulsars 
+or strong lenses is secondary, and as we state very far from mature. 
+This is still of use to the readers who might want to push their own 
+ideas further. As stated, a differential measurement at one time by one 
+instrument can be valuable in reducing systematics; this is what the 
+multiple images of the strong lens provide. 
+
 - p 7, l, 26
 "...and so the redshifts will be the same."
 Given the context, this is a somewhat confusing statement. I
@@ -397,6 +430,9 @@ redshift.
 
 AK: We change the text to "the redshifts for a geodesic will be
 wavelength-independent."
+
+EL: good point, rephrase: "and so the redshifts will only reflect the 
+expansion factor at the respective times of emission." 
 
 - p 7, l, 36
 "...the required precision could be eased."
@@ -409,6 +445,8 @@ reservations about that above).
 AK: The entire sentence is corrupted.  It is stricken.
 
 
+EL: rephrase: "could be eased relative to a shorter time baseline," 
+
 - p 7, l, para beginning line 43
 When discussing time delays, it might be useful to know what kind of
 experiment the authors have in mind. For example, the time delay that
@@ -419,6 +457,12 @@ the foreground.
 AK: I was wondering about this myself.  It seems that to use lensed
 quasars you have to model the geodesics to get a time delay for each
 absorption system.  Can this work?
+
+EL: We had moved a paragraph and so this indeed needs to be clarified. 
+Rephrase: "absolute one. Absorption in the spectra of the lensed quasar 
+images, such as by Lyman-alpha along the line of sight at different 
+redshifts, will also exhibit redshift drift. This absorption will be 
+coherent if the lines of sight are sufficiently close. The transverse..." 
 
 - p 7, r, 25 
 "Note that if..."
@@ -434,6 +478,9 @@ combined focus of the VLT).
 AK: A fiber-fed spectrograph could do this.  Perhaps Jerry could write
 text on this.
 
+EL: rephrase: "and the images may not fall in the field of view of a 
+single spectroscopic telescope, and the lines-of-sight coherence may..." 
+
 - p 7, r, 56
 "...spectrum of image B should match..."
 I disagree. The redshifts of these two spectra should differ by 
@@ -443,6 +490,11 @@ AK: I think the referee is wrong on this, except maybe due to
 differential redshift due to the mass perturbation.  The sentence
 begins with saying that the time delay is one year so be definition
 the spectra of the two images will have a 1-year lag.
+
+EL: We thank the referee for this point. We were concentrating on 
+the emissions occurring at the same time, but indeed the observation 
+times are different and so there is a drift. We have removed the whole 
+paragraph. Rephrase: remove whole paragraph. 
 
 - p 8, l, 31
 "The N_line,q spectral lines in the quasar, perhaps O(10^3)..."
@@ -454,6 +506,8 @@ Also the IGM lines are more like ~200 in number than 1000.
 AK: Liske et al. use ~500 metal absorption lines to calculate their
 standard deviation in peculiar velocity in Equation 16.  We should
 reword our text to be more precise.
+EL: Alex, he's right. Nathalie says O(10) quasar lines that are broad, 
+though O(10^3) forest lines. 
 
 Section 4
 
