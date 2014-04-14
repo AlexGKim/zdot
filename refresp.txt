@@ -416,6 +416,10 @@ is measured from the photometric time variability of a quasar is not
 the time delay that applies to a Lyman-alpha absorption system seen in
 the foreground.
 
+AK: I was wondering about this myself.  It seems that to use lensed
+quasars you have to model the geodesics to get a time delay for each
+absorption system.  Can this work?
+
 - p 7, r, 25 
 "Note that if..."
 The same issue also affects the ability to simultaneously observe the
@@ -427,10 +431,18 @@ other hand, this could be easily solved by having two telescopes feed
 the same spectrograph (see the example of ESPRESSO in the incoherent
 combined focus of the VLT).
 
+AK: A fiber-fed spectrograph could do this.  Perhaps Jerry could write
+text on this.
+
 - p 7, r, 56
 "...spectrum of image B should match..."
 I disagree. The redshifts of these two spectra should differ by 
 (1+z)*H_0*delta_t.
+
+AK: I think the referee is wrong on this, except maybe due to
+differential redshift due to the mass perturbation.  The sentence
+begins with saying that the time delay is one year so be definition
+the spectra of the two images will have a 1-year lag.
 
 - p 8, l, 31
 "The N_line,q spectral lines in the quasar, perhaps O(10^3)..."
@@ -439,6 +451,9 @@ order 1000 spectral lines. More like O(10). And many of these (the
 broad ones) would not be particularly suited to a zdot measurement.
 Also the IGM lines are more like ~200 in number than 1000.
 
+AK: Liske et al. use ~500 metal absorption lines to calculate their
+standard deviation in peculiar velocity in Equation 16.  We should
+reword our text to be more precise.
 
 Section 4
 
@@ -447,6 +462,13 @@ The work of Davis & May (1978!!!) is *not* representative of current
 high-precision work. First of all, one has to differentiate between
 the radio and optical regimes. Secondly, if interested in the radio
 regime, the authors may wish to consult Darling (2012).
+
+AK: Darling's (2012) most accurate redshifts have similar
+uncertainties as Davis & May (1978).  We add the reference.  Dave and
+Jerry, do you happen to know what the best accuracies are in the
+optical for galaxy redshifts?  I have spent time searching but haven't
+found any good references.
+
 
 - p 8, l, 54
 "...and simultaneous differential measurements..."
@@ -459,6 +481,10 @@ measurements.
 Secondly, even if the statement were relevant here, I'm not convinced
 it's actually true (see above).
 
+AK: The referee did not get our intended meaning.  The text has been
+changed to "differential, rather than absolute wavelength measurements
+to get redshift can be more robust."
+
 - p 8, l, para beginning line 58
 Nobody would seriously even consider a redshift drift measurement with
 classical wavelength calibration methods (comparison spectra from arc
@@ -467,12 +493,18 @@ frequency comb (LFC) provides a closely-spaced *absolute* wavelength
 reference with almost arbitrary precision, see e.g. Murphy et
 al. (2007), Steinmetz et al. (2008), Wilken et al. (2012).
 
+AK: I suggest we replace text with referee's recommended references.
+Murphy, M. T. (2007) and other references.
 
 Section 4.1
 
 - p 8, r, 28
 "...narrow bandwidth that spectrographs must span"
-True, except that one would want to cover at least some redshift range.
+True, except that one would want to cover at least some redshift
+range.
+
+AK: Objects at different redshifts may be observed with different
+spectrographs or gratings.
 
 - p 8, r para beginning line 37
 This paragraph (and the preceding sentence) are slightly confusing
@@ -483,6 +515,10 @@ differential measurements, line profile uncertainties are not an issue
 anyway (unless line profiles change on the timescale of a few years),
 even when not using the doublet separation but the individual line
 positions.
+
+AK: We reorganize the last sentence of the preceding paragraph and the
+paragraph to distinguish discussion on redshift accuracy and redshift
+drift accuracy.
 
 - Table 2 
 The values for the velocity dispersions in Table 2 are frequently ~10
@@ -510,11 +546,21 @@ suspicious of the *absolute* values in Table 3. The relative values
 alternative techniques relative to the "Conventional" one) are
 probably ok.
 
+AK: I sent Daniel Thomas (Portsmouth), whom I know marginally, an
+e-mail inquiring how we should represent his work.
+
+An implementation of an experiment that we outline could benefit from
+an integral field unit, in part to resolve differt emission regions
+within the galaxy.
+
 - p 9, l, 37
 "...are difficult to access..."
 Observations up to 15 micron are quite routine from ground-based
 observatories. The authors probably mean to say that the NIR cannot be
 accessed with the SDSS spectrographs.
+
+AK: It is not the NIR, but rather the [OIII} features shifted into the
+NIR that are difficult to access.
 
 - p 9, l, 44
 "Future surveys..."
@@ -523,15 +569,26 @@ able to select target *candidates* from these surveys. However, their
 suitability (i.e. the width of their emission lines) will have to be
 confirmed at higher spectral resolution.
 
+AK: We modify the text to read
+
+"best targets can be identified for further screening with
+higher-resolution spectrographs."
+
 -p 9, l, 51
 "...redshift precision scales..."
 The authors have it backwards. The precision scales with the *inverse*
 of the line width and with the square root of the line flux (as correctly
 stated on p 10, lines 41 and 45).
 
+AK: We correct this mistake.
+
 - p 9, equation 10
 I am puzzled by why the authors allow different line widths for the
 two lines of a doublet.
+
+AK: We wrote the equation to provide generality for systems with close
+line pairs that are not doublets.  We add text afterward emphasizing
+that the velocity dispersion is the same in the case of doublets.
 
 - p 9, r, 44
 "..throughput of 70%."
@@ -541,10 +598,15 @@ detector, this is a very high number. Current high-resolution
 spectrographs achieve ~20%. 30% would be great, but 70% is simply
 unfeasible.
 
+AK: The 70% is feasible, a number I got from Jerry based on priveleged
+information.  Is there something public we can reference?
+
 Also, I understand that the authors use the same throughput for all
 spectrograph designs to highlight the improvements due to technique,
 but they should at least mention that this assumption is of course
 entirely unrealistic.
+
+AK: We add the "unrealistic" caveat to the text.
 
 -p 9, r, 46
 "R = 20,000"
@@ -555,10 +617,17 @@ do. Furthermore, at least for a conventional spectrograph one want to
 work at something like R = 100,000 just for the purpose of wavelength
 calibration, if nothing else.
 
+AK: Maybe simplest for me to rerun the calculations for R=100,000
+unless there is a reason not to.  Shouldn't make much of a
+difference.  Or R=100000 only for the conventional spectrograph.
+
 - p 9, r, 47
 "...dominated by the pixel top-hat function."
 I don't understand what this means. The key thing is whether the PSF
 is Nyquist sampled or not.
+
+AK: We are noting that we include the contribution of the pixel to the
+effective PSF.
 
 - p 9, r, 48
 If object photon noise is dominant error source then all of the
@@ -567,8 +636,17 @@ background model, etc) are irrelevant and only serve to confuse. (Note
 that a dark current of 2 e-/s is enormous. I presume the authors
 meant 2 e-/h.)
 
+AK: It is worth noting that the code does include detector noise
+because it does affect the lowest-precision digits in our tables.
+This could confuse those trying to reproduce our results.
+
+Yes, we meant 2e-/h.
+
 - line 52
 Why are blocking filters relevant?
+
+AK: Blocking filters are relevent for the SHS, where light from the
+full bandpass becomes background noise.
 
 - line 58
 Under the assumptions used here it is irrelevant whether the target is
@@ -583,10 +661,15 @@ Secondly, given the line widths in Table 2 and R=20,000 the lines are
 unresolved, so the intrinsic line widths are certainly not Nyquist
 samples, in any sense.
 
+AK: Indeed lines 58 and 59 don't make any sense and are removed.
+
 - p 10, l, line 35 
 "When appropriate..."  
 Under the assumption of being object flux limited, it is completely
 irrelevant over how many pixels the flux is distributed.
+
+AK: The text is reworked, see below.
+
 
 - para beginning line 39
 After having provided a large amount of detail in the previous
@@ -600,6 +683,15 @@ The entire section 4.2 needs some attention. I was not able to
 understand what the authors have actually done to derive the numbers
 in Table 3.
 
+AK: We rewrite the end of the second paragraph and the beginning of
+the third to clarify what is done.
+
+"Projected redshift precisions are calculated with a Fisher matrix
+analyses with the source redshift $z$ as the only free parameter.  The
+equation for the predicted signal is give for each spectrograph type.
+For conciseness, trivial behavior along the spatial axis are not given
+explicitly in these equation.  Measurement uncertainties come from
+photon and detector noise."
 
 Section 4.3
 
@@ -610,10 +702,16 @@ which would make no sense.  For a properly (i.e. Nyquist) sampled PSF
 one can at most have one line per resolution element.
 I note that this is precisely what a laser frequency comb delivers.
 
+AK: Yes that it doesn't make sense is the point.  In the text we add
+laser frequency comb lasers as another calibration source.
+
 - p 12, l, lines 11-17 
 One can also record wavelength calibration lines next to the science
 spectrum. In this case one has to interpolate neither over time not
 wavelength, but over detector space.
+
+AK: For Jerry and Dave, is it obvious how you do this within a single
+exposure?
 
 - p 12, l, para beginning line 18
 Flat-fielding is not the only issue. The background will also vary, as
@@ -621,6 +719,10 @@ will the scattered light, possibly even the source (at least when
 quasars are used as targets). Quite generally the problem is that one
 needs to extract the redshift drift signal in the presence of varying
 additive and multiplicative factors.
+
+AK: Yes, the flatfield is just one of a slew of issues such as
+scattered light, ghosts, non-uniform pixel sizes, etc.  In the text we
+replace "flatfield" with the generic "imager flux calibration".
 
 Small movements of the source during observations due to imperfect
 telescope tracking, and the the associated varying illumination of the
@@ -648,11 +750,17 @@ signal. However, for a fair comparison, the authors should also
 estimate the redshift precision including the loss of photons in the
 inteferometer.
 
+AK: Overall, we could include estimates of the throughput of the
+interometric components of the EDI and SHS.
+
 - p 13, l, 59
 I am not sure that the issue of PSF variations is any different in
 this case from the "conventional" case. In the latter case arc lines
 can also be used for PSF calibration.
 
+AK: Same as earlier question of how realisitic it is to have
+calibration lines on a science exposure without contaminating source
+signal.
 
 Section 4.6
 
@@ -660,6 +768,10 @@ I am not sure I understand the advantages of ED-SHS over EDI. As the
 authors point out, these concepts are very similar, except for the
 functional form of the modulation. Could the authors elaborate on the
 pros and cons of EDI vs ED-SHS?
+
+AK: We add a paragraph describing the difference.  Dave, you sent me a
+slide with the little movie that shows the difference between EDI and
+SHS, do you have a text version of that we can refer to?
 
 
 Section 5
