@@ -655,6 +655,11 @@ unfeasible.
 AK: The 70% is feasible, a number I got from Jerry based on priveleged
 information.  Is there something public we can reference?
 
+DE: 70% does sound high, especially if it includes the telescope, but
+i will defer to Jerry as to what number to use.  How about the halving
+it to %35.  We would just boost all the noises by sqrt(2), and then it
+would satisfy the reviewer.
+
 Also, I understand that the authors use the same throughput for all
 spectrograph designs to highlight the improvements due to technique,
 but they should at least mention that this assumption is of course
@@ -674,6 +679,8 @@ calibration, if nothing else.
 AK: Maybe simplest for me to rerun the calculations for R=100,000
 unless there is a reason not to.  Shouldn't make much of a
 difference.  Or R=100000 only for the conventional spectrograph.
+
+DE: The whole point of EDI is that it allows you to use a lower resolution spectrograph (much cheaper and easier to make thermally stable), such as R=20,000, that does not resolve the lines, to achieve reasonably high Doppler precisions.  It is not necessary to resolve the lines by the dispersive spectrograph component to measure a precise Doppler velocity, because it is the interferometer component which measures the Doppler velocity.  The sinusoidal interferometer comb provides the steeply sloped PSF that responds sensitively to changes in line position.  The sinusoid period is chosen so that the sinusoidal absorption valley fits the stellar linewidth.  The PSF of the net instrument (dispersive*interferometer) can be thought of as a corrugated bell curve.  The corrugations are provided by the interferometer and are much steeper than the walls of the bell curve which are provided by the low resolution dispersive spectrograph.  The steep slope of the corrugations provides the high sensitivity to Doppler shift, not the bell curve of the low res dispersive spectrograph.
 
 - p 9, r, 47
 "...dominated by the pixel top-hat function."
@@ -767,6 +774,10 @@ wavelength, but over detector space.
 AK: For Jerry and Dave, is it obvious how you do this within a single
 exposure?
 
+DE: I suppose you would treat the row that contains the science light as whirl1, and the row (say 2 pixels below it) that contains the calibration light as whirl2, and process both by the same algorithm, in parallel.  Since the fine wavelength information is being provided by the interferometer, not the horizontal or vertical position of the pixel, that should work.  My gut instinct though, is to send the calibration light through the same optical system as the science, so they are affected by the same instrument response including any unanticipated ones.  So that could be done by temporal interpolation as you say in the text.
+
+
+
 - p 12, l, para beginning line 18
 Flat-fielding is not the only issue. The background will also vary, as
 will the scattered light, possibly even the source (at least when
@@ -807,6 +818,10 @@ inteferometer.
 AK: Overall, we could include estimates of the throughput of the
 interometric components of the EDI and SHS.
 
+DE: EDI's capability to "boost the resolution of a conventional spectrograph" also means we can use a smaller resolution spectrograph to achieve reasonably high Doppler precisions normally achieved only by high resolution spectrographs.  It is always beneficial (spectroscopically) to use the highest resolution spectrograph one can afford, and has physical space to mount and thermomechanically isolate.  Often they are prohibitively expensive, so we analyze the case for a R=20,000 spectrograph because they are so much more affordable.  Secondly, smaller resolution means smaller physical size for spectrograph, which makes it much easier to thermomechanically protect and isolate it from drifts. 
+
+
+
 - p 13, l, 59
 I am not sure that the issue of PSF variations is any different in
 this case from the "conventional" case. In the latter case arc lines
@@ -826,6 +841,11 @@ pros and cons of EDI vs ED-SHS?
 AK: We add a paragraph describing the difference.  Dave, you sent me a
 slide with the little movie that shows the difference between EDI and
 SHS, do you have a text version of that we can refer to?
+
+DE: <below equation 27 you could replace the text with this:>
+The similarities between ED-SHS and EDI can be seen in Fig. 2 of Erskine (2003); both use interferometry to create wavelength-dependent modulations in the signal,
+with the distinction being that the EDI creates a uniform spatial frequency for all wavelengths and thus has an extremely wide bandwidth, whereas the ED-SHS creates a diamond-like fringe pattern whose spatial frequency varies rapidly around specific wavelength limiting the practical bandwidth significantly.
+
 
 
 Section 5
