@@ -850,6 +850,7 @@ interometric components of the EDI and SHS.
 
 DE: EDI's capability to "boost the resolution of a conventional spectrograph" also means we can use a smaller resolution spectrograph to achieve reasonably high Doppler precisions normally achieved only by high resolution spectrographs.  It is always beneficial (spectroscopically) to use the highest resolution spectrograph one can afford, and has physical space to mount and thermomechanically isolate.  Often they are prohibitively expensive, so we analyze the case for a R=20,000 spectrograph because they are so much more affordable.  Secondly, smaller resolution means smaller physical size for spectrograph, which makes it much easier to thermomechanically protect and isolate it from drifts. 
 
+DE: If we use both of two complementary interferometer outputs, then through conservation of energy for ideal optics there is no loss in the interferometer (summing the two outputs).  So then the only interferometer loss is due to parasitic losses because beam passes through or reflects from extra optics.  With a well designed instrument and good AR coatings this could be minimized.  Perhaps a 15% loss.
 
 
 - p 13, l, 59
