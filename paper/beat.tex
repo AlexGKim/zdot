@@ -103,16 +103,19 @@ Just as redshift is direct, kinematical evidence for cosmic expansion,
 redshift drift is likewise for cosmic acceleration.  This directness is 
 an attractive feature as it does not depends on dynamics, i.e.\ the equations 
 of motion (and separation of matter and dark energy density). 
-So even if such a cosmic probe cannot reach the 
-accuracy of, say, distance or growth of structure probes on dynamical 
-cosmological-model parameters, it is worthwhile exploring possibilities 
+\textcolor{red}
+{
+This directness means that even if such a cosmic probe cannot practically reach the 
+accuracy on dynamical cosmological-model parameters compared to the more established
+distance or growth of structure probes,  it is worthwhile exploring possibilities 
 for carrying it out. 
+}
 
 Conventionally, this is thought of in a brute force approach: stare at an 
 object for a long time and measure the change in its redshift.  
 Since the time scale for an order unity variation is the characteristic 
 time scale of the expansion, the Hubble time of $\sim10^{10}$ y, this 
-requires fantastically precise measurements of redshift stable over the 
+requires fantastically \textcolor{red}{accurate} measurements of redshift stable over the 
 observing period.  Moreover, any other time variation in the metric that 
 is not linear gives a competing effect.  From the Principle of Equivalence, 
 any acceleration of the source or change in gravity along the line of sight 
@@ -149,7 +152,7 @@ well. Following the approach in \citet{fpoc}, we have
 \bea 
 \frac{dz}{dt_0}&=&\frac{d}{dt_0}\left[\frac{a(t_0)}{a(t_e)}-1\right] 
 =\frac{\dot a(t_0)-\dot a (t_e)}{a(t_e)}\\ 
-&=&(1+z)\,H_0-H(z)\ , 
+&=&(1+z)\,H_0-H(z)\ , \label{zdot:eqn}
 \eea 
 where $t_0$ is the time the signal is observed in the observer-frame, 
 $t_e$ the signal emission time, and $H=\dot a/a$ the Hubble expansion rate. 
@@ -163,9 +166,14 @@ Only a universe where $\dot a=\mbox{constant}$, i.e.\ $a\propto t$,
 has no redshift drift.  This is a Milne universe, which is conformal to a 
 Minkowski spacetime, and so the Principle of Equivalence assures us that 
 a universe without gravity has no acceleration, and vice versa. 
-We emphasize the kinematic aspect of the redshift drift: its nonzero 
-value at any redshift directly indicates acceleration, with no need to 
-know the dynamics, i.e.\ the specific functional dependence $a(t)$. 
+We emphasize the kinematic aspect of the redshift drift:
+\textcolor{red}{
+its nonzero 
+value at any redshift directly indicates,
+with no further assumptions about $a(t)$,
+that the value of $\dot{a}$ differs at two different times and hence that there was an acceleration
+(positive or negative).
+} 
 While distance measurements are kinematic, they must be differenced or 
 differentiated to reveal acceleration (ideally through a regression 
 method, e.g.\ \citet{2012PhRvD..85l3530S,2012JCAP...06..036S}), or fit to 
@@ -178,7 +186,9 @@ density with some equation of state, do we need to know $a(t)$.
 At high redshift we expect the universe to be decelerating, and hence 
 the drift should be negative.  When the universe begins to accelerate 
 (speed up) under the influence of dark energy in recent times, however, 
-then the drift will change to positive.  Thus the hope is to map out the 
+then the drift will change to positive
+\textcolor{red}{
+see Eqn.~\ref{zdot:eqn} for the exact condition)}.  Thus the hope is to map out the 
 influence of dark energy, and its equation of state, by accurate 
 measurements of the redshift drift (in addition to establishing directly 
 the mere presence of positive acceleration). 
@@ -188,7 +198,10 @@ Figure~\ref{fig:sens} shows the sensitivity of the drift $\dot z$ as a
 function of source redshift to the cosmological parameters of the matter 
 density $\om$ and dark energy equation of state $w(a)=w_0+w_a(1-a)$, where 
 $w_0$ is its present value and $w_a$ a measure of its time variation.
-The results use the fiducial values $\om=0.3$, $w_0=-1$, $w_a=0$ and the 
+The results
+\textcolor{red}{assume
+a flat universe with}
+the fiducial values $\om=0.3$, $w_0=-1$, $w_a=0$ and the 
 vertical scale is in units of $H_0$.  In these units, 
 $\partial\dot z/\partial H_0$ is 
 given by the $\dot z$ curve. The key properties to notice are: 
@@ -200,8 +213,11 @@ continues to outweigh the equation of state parameters at higher redshifts,
 by ever increasing factors, and 3) The initial rise of the equation of 
 state sensitivities is sharp, achieving 50\% of the maximum sensitivity 
 at quite low redshifts. These characteristics suggest that low-redshift 
-measurements, especially if they have better signal to noise than higher 
-redshift ones, could be valuable for cosmological leverage on dark energy 
+measurements, 
+\textcolor{red}
+{especially if, being closer and thus appearing brighter, they are more
+easily observed to high signal-to-noise,}
+could be valuable for cosmological leverage on dark energy 
 through the redshift drift probe. We will see that this in fact fits in 
 well with the new experimental techniques introduced in Sec.~\ref{sec:tech}. 
 
@@ -219,8 +235,9 @@ $\Delta z\lesssim H_0\Delta t=10^{-10}\,h(\Delta t/{\rm y})$.
 \label{fig:sens} 
 \end{figure}
 
-
-At low redshift $\dot z\approx -H_0q_0z$ so the cosmological sensitivity 
+\textcolor{red}
+{To first order, at}
+low redshift $\dot z\approx -H_0q_0z$ so the cosmological sensitivity 
 initially increases linearly with redshift. If the precision is photon 
 noise limited, then it will go inversely with the luminosity distance. 
 Since luminosity distance grows initially linearly with redshift, then 
@@ -512,8 +529,13 @@ pulsar timing and efficient fitting of different contributions
 
 While pulsars are fantastically regular clocks, well suited to this probe, 
 we do not currently detect them at cosmological distances in the Hubble 
-flow \citep[but see][]{13071628}.  The idea behind cosmic pulsars is not 
-restricted to neutron stars, however.  
+flow \citep[but see][]{13071628};
+\textcolor{red}{
+while this is for a transient, 
+not periodic, source, an exciting prospect is that upcoming time domain surveys 
+such as LSST may find new classes of sources that could be used)}
+The idea behind cosmic pulsars is not 
+restricted to neutron stars.  
 One could consider other sources of (quasi-)periodic signals such as 
 gravitational waves from supermassive binary black hole inspirals, which 
 should be detectable 
@@ -529,6 +551,46 @@ wave kicks, would be a systematic.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \subsection{Multiple sources and signals: Strongly lensed quasars} \label{sec:lens} 
+\textcolor{red}{
+Strong gravitational lens images can offer an observer distinct
+benefits as a probe of redshift drift $dz/dt$. The light from
+different images travel to us on different geodesics with different
+times of flight.  The light that arrives at the same time at the
+telescope was emitted at different redshifts, the time delay is
+already built into the system.  Multiple images can be observed within
+a single exposure of the spectrograph, say by the use of fibers that
+do not produce wavelength shifts.  Light emitted at different cosmic
+times are measured under the same observing conditions to remove
+absolute (as opposed to relative) wavelength calibration as a source
+of uncertainty. }
+
+\textcolor{red}{
+In order to measure the time delay the source should be variable
+sources, quasars and active galactic nuclei are natural targets.  The
+use of the Lyman-$\alpha$ forest is constrained to systems with $<5\arcsec$ 
+image separations (up to week time delays), to ensure that the
+geodesics pass through the same absorbing clouds.
+}
+
+
+\textcolor{red}{
+Observation systems with a sufficiently long time delays to allow a
+high signal-to-noise measurement of $\dot{z}$ in a single night would
+be fantastic.  The time delays measured to date range from days to
+years \citep{2007ApJ...662...62F,2008ApJ...676..761F, 2013ApJ...764..186F}
+and so have images with redshift
+differences that are too small to detect with current technologies.
+Until long-delay systems are identified, shorter-delay systems would
+have to be monitored over a sufficiently long time baseline.  Either
+way, multiple observaitions with different instrumental configurations
+and observing conditions are essential to reduce systematic
+uncertainties. }
+
+\textcolor{red}{
+Field of view and fibers?
+}
+
+
 
 The ideal situation would be to combine the long time baseline provided 
 by cosmological distances as in the drBAO method with the multiple 
@@ -543,20 +605,20 @@ lines of sight.  Gravitational lensing itself is achromatic in the
 geometric optics regime (wavelength divided by effective lens scale 
 much less than one, an excellent approximation at ultraviolet and optical 
 wavelengths) 
-and so the redshifts will be the same. 
+and so the redshifts
+\textcolor{red}{
+for a geodesic will be
+wavelength-independent.
+}
 
 Moreover, due to the different light paths there will be time delays 
 between the spectra observed of each image.  This is used in strong 
 lensing as a cosmological distance probe itself (see, e.g., \citet{13061272} 
-and references therein).  Here, however, it provides a time baseline for 
-the redshift drift of the individual source.  If the time delay were of 
-order 10 years (or even better a substantial fraction of the Hubble time) 
-then the required redshift measurement precision would be eased, but 
-observed systems have time delays of days to years 
-\citep{2007ApJ...662...62F,2008ApJ...676..761F, 2013ApJ...764..186F}.  
-Still, the universe 
-is giving us for free a time baseline of a year though the redshift 
-observations may be done in a single night.  
+and references therein).  Here, however, 
+\textcolor{red}{
+the Universe is giving us for free a time baseline for 
+the redshift drift of the individual source. 
+}
 
 Note that unlike for time-delay distances 
 we have no need to model the time delay through knowledge of the lens mass 
@@ -629,13 +691,20 @@ If the propagating light is
 absorbed in the Lyman-$\alpha$ forest due to neutral hydrogen gas along 
 the path, then many narrow spectral features arise, enabling multiple 
 measurements of the redshift drift 
-\citep{1998ApJ...499L.111L,2008MNRAS.386.1192L}, 
-also with time delays. 
+\citep{1998ApJ...499L.111L,2008MNRAS.386.1192L}.
+\textcolor{red}{
+Although the time delay for each gas cloud will not be directly measured, they
+can be constrained using the delay
+of the background quasar and the model geodesics of a lens  in a
+Robertson-Walker metric, Friedmann cosmology.
+} 
 Embedded within the image spectra are not only the source redshift but 
 the redshifts of each Lyman-$\alpha$ absorber.  Thus in a single night we get 
 not only multiple images with cosmology-provided time delays, but multiple 
-signals within each image spectrum.  The $N_{\rm line,q}$ spectral lines 
-in the quasar, perhaps ${\mathcal O}(10^3)$, help to improve the 
+signals within each image spectrum.
+\textcolor{red}{
+The $N_{\rm line,q} \approx 500$ metallic spectral lines 
+in the quasar \citep{2008MNRAS.386.1192L}} help to improve the 
 signal-to-noise by $\sqrt{N_{\rm line,q}}$ but moreover the 
 $N_{\rm line,f}$ lines in the forest, also perhaps ${\mathcal O}(10^3)$, 
 simultaneously applies the redshift drift test at multiple redshifts 
