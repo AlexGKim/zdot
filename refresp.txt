@@ -46,6 +46,18 @@ so we don't know how well it will actually work. Rephrase as
 "This directness mean that even if.. of more established probes such as 
 distance... out." 
 
+**
+There is no fundamental reason that redshift drift is less
+constraining than other probes.  Achieving the accuracy needed is
+practically challenging so we don't know how well it will actually
+work.  We have reworded the text as follows:
+
+"This directness means that even if such a cosmic probe cannot
+practically reach the accuracy on dynamical cosmological-model
+parameters compared to the more established distance or growth of
+structure probes, it is worthwhile exploring possibilities for
+carrying it out."
+
 - p 1, r, 54
 "fantastically precise"
 This sentence evokes the notion that a "classical" redshift drift
@@ -64,12 +76,9 @@ somewhat harder to achieve. So, at least for this version of the
 experiment we do indeed need long-term stability, but not incredibly
 high precision.
 
-EL: I still call 3e-9 high precision, but rephrase as "requires highly 
-precise measurements (at least in aggregate) stable..." 
-
-AK: If we replace “precision” with “accuracy” this should more
-accurately convey our meaning. 
-EL: ok
+**
+We have replaced with word "precise" with "accurate", which more
+accurately conveys our intended meaning.
 
 Section 2
 
@@ -96,6 +105,23 @@ of the Hubble constant, is a direct measurement of $H(z)\def
 \dot{a}/a$: its value at any redshift … without the need to make
 dynamical assumptions about $a(t)$.” 
 EL: I like mine better. People will say H(z) is not acceleration. 
+AK: I propose a very different response that follows.
+
+**
+As mentioned at the beginning of this paragraph, acceleration as a
+physics word means positive or negative second time
+derivative. Regarding the functional dependence, the point in this
+paragraph is not that the measurement of dz/dt at various redshifts
+allows one to directly reconstruct a(t) without the assumption of a
+cosmological model.  Rather that a non-zero dz/dt indicates
+acceleration without having to make assumptions on a(t).
+
+The text has been rewritten as
+
+"its nonzero value at any redshift directly indicates, with no further
+assumptions about $a(t)$, that the value of $\dot{a}$ differs at two
+different times and hence that there was an acceleration (positive or
+negative)."
 
 - p 2, r, para beginning line 21
 "At high redshift..."
@@ -108,29 +134,32 @@ emitter to the observer. That's why the change of sign in dz/dt occurs
 at much higher redshift than the Omega_L-Omega_M cross-over (see
 e.g. Gudmundsson & Bjoernsson 2002).
 
-EL: We never claim dz/dt changes sign when DE begins to dominate. We 
-clarify this by rephrase: "change to positive (see Eq. 2 for the exact 
-condition)." 
+**
+We never claim dz/dt changes sign when DE begins to dominate. We
+clarify this by rephrase: "change to positive (see Eq. 2 for the exact
+condition)."
 
 - p 2, r, para beginning line 32 
 It might be worth pointing out explicitly that a flat cosmology is
 being assumed here. 
 
-EL: rephrase "The results use a flat universe with the fiducial..." 
+**
+Rephrase  to "The results assume a flat universe with the fiducial..." 
 
 - Fig. 1 has no y-axis label. Suggestion: dzdot/dp 
 
-EL: Fig. 1 curves show different quantities, e.g. zdot as well as dzdot/dw0. 
-There we labeled the curves individually for clarity. 
+** 
+Fig. 1 curves show different quantities, e.g. zdot as well as
+dzdot/dw0.  There we labeled the curves individually for clarity.
 
 - In Fig.1 I would label the lines slightly differently:
 dzdot/dw_a --> dzdot/dw_a/H_0
 same for w_0 and Omega_M
 zdot --> dzdot/dH_0 
 
-EL: We state in both the text and caption that "All quantities are in units 
-of H_0". We looked at writing dzdot/dw_a/dH_0 in the curve labels and found 
-it more confusing. 
+**
+We state in both the text and caption that "All quantities are in units 
+of H_0".
 
 - p 2, r, line 42
 "The sensitivity curves..."
@@ -142,33 +171,42 @@ detail, giving its redshift dependence, and in particular that it is
 monotonic unlike the other curves. So its shape is very different. 
 We have rephrased: "shapes, hinting at no strong covariance". 
 
+AK: Eric, how far do you have to plot down in order to get dz/dOmega
+to show its different shape?  If it is ridiculously low could you plot
+"dz/dOmega * 1e-2" or something of that sort?  This is a case where I
+also thought of this before the referee commented.
+
+**
+??????
+
 - p 2, r, 54
 "especially if they have better S/N"
 This statement sort of implies that this would indeed be the case, but
 it is far from clear whether this is true.
 
-EL: In the next paragraph we justify it but showing that higher redshift 
+**
+In the next paragraph we justify it but showing that higher redshift 
 sources (of the same luminosity) become fainter more rapidly and so if we 
 are photon noise limited we expect low redshift sources to be better. 
-This is not a proof, as the referee says, and we carefully say "low 
-redshift may give the strongest leverage". 
+This is not a proof, as the referee says, and we rewrite
 
-AK: “especially if, being closer and thus appearing brighter, are more
-easily observed to high S/N” 
-EL: ok, but “they are more” 
+"especially if, being closer and thus appearing brighter, they are
+more easily observed to high signal-to-noise"
+
 
 - p 3, l, 36
 "In the precision..."
 This is a very naive analysis as it ignores luminosity and number
 density evolution, as well as k-corrections.
 
-EL: We carefully use the word "if" and the phrase "may give". We are giving 
-the reader initial motivation to consider low redshift, and then we present 
-robust quantification in Figures 2 and 3. 
+**
 
-AK: This is meant to be a simple first-order argument for scaling
-relations at low redshift. 
-EL: say both of these responses 
+This is meant to be a simple first-order argument for scaling
+relations at low redshift.  We carefully use the word "if" and the
+phrase "may give". We are giving the reader initial motivation to
+consider low redshift, and then we present robust quantification in
+Figures 2 and 3.  We add the text "To first order,".
+
 
 - p 3
 The authors use an entire page (plus Figs.1-3) to convince their
@@ -204,6 +242,12 @@ sensitivity standpoint, without attempting an detailed observational
 strategy, we can quantify the redshift sensitivity. We carry out Fisher… 
 Fig. 1 to explore the leverage on dark… contour.” 
 [I think the referee was thrown by the phrase “redshift range” so I avoid it.] 
+
+AK: I understand what the referee is saying, it is not a case where
+the referee was thrown by the phrase "redshift range".  A couple of
+new plots may not only appease the referee but more importantly make
+the article significantly better.  The new plots I suggest are not
+hard to make, should I do so?
 
 First of all, I did not find this part very convincing because their
 analysis leading to Figs. 2 and 3 is incomplete: 
@@ -268,6 +312,9 @@ systematics).
 proper cost-benefit analysis, i.e. an analysis of how to best
 distribute resources among different techniques, redshift ranges, etc.
 
+**
+????
+
 - p 5 left column
 The entire part on astrophysical systematics is quite weak. This part
 does not add anything new at all. First, the authors just repeat
@@ -319,9 +366,19 @@ discuss, peculiar accelerations of a random ensemble of ELGs should
 average to zero.  The current sentence makes it seem like you can't
 average.
 
+
+AK: Leave this for Eric to edit since he understands this all better than
+me.  In particular, if the requested references are not included in
+the text I suggest that this be explicitly explained in the response.
+
+**
+???
+
+
 Section 3
 
-EL: We have emphasized explicitly, starting in the title of the overall 
+**
+We have emphasized explicitly, starting in the title of the overall 
 section, that these are speculations that may stimulate further thought 
 in the reader. In seminars we have given based on this paper, 
 this section has given rise to considerable discussion and interactions, 
@@ -346,6 +403,21 @@ we rephrase the introductory paragraph of the subsection: "a related,
 though distinct quantity". "on acceleration. We highlight here how the 
 familiar concept of radial baryon acoustic oscillations can be compared 
 with redshift drift as discussed in the rest of this article." 
+
+AK: Eric, how about a first paragraph like this?  I think the
+referee's objection is the same that I had and maybe this would
+satisfy him/her.  I check with you that this conveys the correct
+meaning and motivation for this section.
+
+"The measurement of redshifts of a single source emitted at different
+times provides the difference in $\dot{a}$ at those times and hence a
+direct probe of acceleration.  Similarly the measurement of the Hubble
+parameter $\dot{a}/{a]$ at different times provides alternative access
+to acceleration.  Indeed, this is what is obtained from the radial
+(redshift) extent of the BAO feature at different redshifts."
+
+**
+??
 
 - Section 3.2
 This section I found much more relevant, but unfortunately again not
@@ -394,51 +466,10 @@ to measure delta_z from two widely separated positions on the detector
 compared to from two widely separated positions in time. These two
 things actually have a lot in common, but none of this is discussed.
 
-AK: At the beginning of the section we add paragraphs to distinguish
-the ideas of this section, and jiggle text within the section so that
-the connection to the first paragraph is clear.
 
-Strong gravitational lens images can offer an observer distinct
-benefits as a probe of redshift drift $dz/dt$. The light from
-different images travel to us on different geodesics with different
-times of flight.  The light that arrives at the same time at the
-telescope was emitted at different redshifts, the time delay is
-already built into the system.  Multiple images can be observed within
-a single exposure of the spectrograph, say by the use of fibers that
-do not produce wavelength shifts.  Light emitted at different cosmic
-times are measured under the same observing conditions to remove
-absolute (as opposed to relative) wavelength calibration as a source
-of uncertainty. 
-
-In order to measure the time delay the source should be variable
-sources, quasars and active galactic nucleii are natural targets.  The
-use of the Lyman-\alpha forest is constrained to systems with <5"
-image separations (up to week time delays), to ensure that the
-geodesics pass through the same absorbing clouds.
-
-Observation systems with a sufficiently long time delays to allow a
-high signal-to-noise measurement of $\dot{z}$ in a single night would
-be fantastic.  The time delays measured to date range from days to
-years (Fohlmeister et al.) and so have images with redshift
-differences that are too small to detect with current technologies.
-Until long-delay systems are identified, shorter-delay systems would
-have to be monitored over a sufficiently long time baseline.  Either
-way, multiple observaitions with different instrumental configurations
-and observing conditions are essential to reduce systematic
-uncertainties. 
-EL: ok, but nucleii —> nuclei 
-If you want you can neglect my response below. 
-
-EL: As explained at the beginning of Sec. 3, all subsections speculate 
-about a different path to get around the "stare and wait" approach. 
-We first discuss using multiple sources, then multiple signals from a 
-single source, then both together along with an intrinsic delay. The 
-specific implementations of these characteristics in terms of pulsars 
-or strong lenses is secondary, and as we state very far from mature. 
-This is still of use to the readers who might want to push their own 
-ideas further. As stated, a differential measurement at one time by one 
-instrument can be valuable in reducing systematics; this is what the 
-multiple images of the strong lens provide. 
+**
+This section has been significantly rewritten, we refer the referee to
+the latest draft.
 
 - p 7, l, 26
 "...and so the redshifts will be the same."
@@ -448,12 +479,10 @@ clarified. After all, the whole point of this section is that the
 different images of a strongly lensed source do *not* have the same
 redshift.
 
-AK: We change the text to "the redshifts for a geodesic will be
-wavelength-independent." 
-EL: ok, can use instead of mine below. 
+**
+We change the text to "the redshifts for a geodesic will be
+wavelength-independent."
 
-EL: good point, rephrase: "and so the redshifts will only reflect the 
-expansion factor at the respective times of emission." 
 
 - p 7, l, 36
 "...the required precision could be eased."
@@ -463,11 +492,9 @@ as what is being considered for the "classical" case (i.e. a decade)
 but that the systematics may be easier to beat (but see my
 reservations about that above).
 
-AK: The entire sentence is corrupted.  It is stricken. 
-EL: ok, but keep Fohlmeister mention of currently observed time delays 
-somewhere. 
+**
+The entire sentence is corrupted.  It is stricken. 
 
-EL: rephrase: "could be eased relative to a shorter time baseline," 
 
 - p 7, l, para beginning line 43
 When discussing time delays, it might be useful to know what kind of
@@ -490,6 +517,16 @@ images, such as by Lyman-alpha along the line of sight at different
 redshifts, will also exhibit redshift drift. This absorption will be 
 coherent if the lines of sight are sufficiently close. The transverse..." 
 
+AK: How about this as washy?
+
+"Although the time delay for each gas cloud will not be directly
+measured, they can be constrained using the delay of the background
+quasar and the model geodesics of a lens in a Robertson-Walker metric,
+Friedmann cosmology."
+
+**
+??
+
 - p 7, r, 25 
 "Note that if..."
 The same issue also affects the ability to simultaneously observe the
@@ -508,6 +545,9 @@ EL: your recent rephrase is ok.
 EL: rephrase: "and the images may not fall in the field of view of a 
 single spectroscopic telescope, and the lines-of-sight coherence may..." 
 
+**
+???
+
 - p 7, r, 56
 "...spectrum of image B should match..."
 I disagree. The redshifts of these two spectra should differ by 
@@ -523,7 +563,14 @@ the emissions occurring at the same time, but indeed the observation
 times are different and so there is a drift. We have removed the whole 
 paragraph. Rephrase: remove whole paragraph. 
 
-EL: I think your recent rephrase is ok - let’s see it in the full response. 
+EL: I think your recent rephrase is ok - let’s see it in the full
+response. 
+
+AK: Which rephrase?  I looked back at my old e-mail and didn't find
+anything I wrote that is profound.
+
+**
+??
 
 - p 8, l, 31
 "The N_line,q spectral lines in the quasar, perhaps O(10^3)..."
@@ -532,12 +579,10 @@ order 1000 spectral lines. More like O(10). And many of these (the
 broad ones) would not be particularly suited to a zdot measurement.
 Also the IGM lines are more like ~200 in number than 1000.
 
-AK: Liske et al. use ~500 metal absorption lines to calculate their
-standard deviation in peculiar velocity in Equation 16.  We should
-reword our text to be more precise.
-EL: Alex, he's right. Nathalie says O(10) quasar lines that are broad, 
-though O(10^3) forest lines. 
-EL: cite the 500. 
+**
+Liske et al. use ~500 metal absorption lines to calculate their
+standard deviation in peculiar velocity in Equation 16: we change the
+text to use that number and cite Liske et al.
 
 Section 4
 
