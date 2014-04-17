@@ -68,7 +68,8 @@ EL: I still call 3e-9 high precision, but rephrase as "requires highly
 precise measurements (at least in aggregate) stable..." 
 
 AK: If we replace “precision” with “accuracy” this should more
-accurately convey our meaning.
+accurately convey our meaning. 
+EL: ok
 
 Section 2
 
@@ -93,7 +94,8 @@ a priori the dynamics... dependence a(t) on matter density etc."
 AK: I suggest “We emphasize that redshift drift, with prior knowledge
 of the Hubble constant, is a direct measurement of $H(z)\def
 \dot{a}/a$: its value at any redshift … without the need to make
-dynamical assumptions about $a(t)$.”
+dynamical assumptions about $a(t)$.” 
+EL: I like mine better. People will say H(z) is not acceleration. 
 
 - p 2, r, para beginning line 21
 "At high redshift..."
@@ -152,7 +154,8 @@ This is not a proof, as the referee says, and we carefully say "low
 redshift may give the strongest leverage". 
 
 AK: “especially if, being closer and thus appearing brighter, are more
-easily observed to high S/N”
+easily observed to high S/N” 
+EL: ok, but “they are more” 
 
 - p 3, l, 36
 "In the precision..."
@@ -164,7 +167,8 @@ the reader initial motivation to consider low redshift, and then we present
 robust quantification in Figures 2 and 3. 
 
 AK: This is meant to be a simple first-order argument for scaling
-relations at low redshift.
+relations at low redshift. 
+EL: say both of these responses 
 
 - p 3
 The authors use an entire page (plus Figs.1-3) to convince their
@@ -193,7 +197,13 @@ number of supernovae uniformly distributed to fixed a maximum
 redshift, and we have made plots of FOM as a function of maximum
 redshift for a fixed number of supernovae.  We could do the same for
 redshift drift, where each ELG has some nominal measurement
-uncertainty.
+uncertainty. 
+EL: I don’t think either of these is needed as such. Let’s instead say 
+as the beginning of the “We can quantify” paragraph: “From a theoretical 
+sensitivity standpoint, without attempting an detailed observational 
+strategy, we can quantify the redshift sensitivity. We carry out Fisher… 
+Fig. 1 to explore the leverage on dark… contour.” 
+[I think the referee was thrown by the phrase “redshift range” so I avoid it.] 
 
 First of all, I did not find this part very convincing because their
 analysis leading to Figs. 2 and 3 is incomplete: 
@@ -203,10 +213,10 @@ this a free parameter? My point is that the best constraints will come
 from a combination of low and high redshift measurements (as
 acknowledged by the authors at line 40, right column). 
 
-EL: The redshift range is unimportant. In fitting for 4 free cosmological 
-parameters one needs at least 4 measurements at different redshifts. We 
-spread them by 0.4 so as to keep them as localized as possible, so that 
-we could see the sensitivity at effectively each redshift. If we had spread 
+EL: We have removed the misleading phrase “redshift range”; what we 
+calculate is sensitivity at a given redshift. Since to fit 4 free cosmological 
+parameters one needs at least 4 measurements at slightly different redshifts, we 
+spread them by 0.4 so as to keep them as localized as possible. If we had spread 
 them over a redshift range of 2, then one could not interpret the leverage 
 as being from a particular redshift. One should simply think of them as 
 measurements in a narrow band around a redshift z. The combination of low 
@@ -238,10 +248,11 @@ performing a low-z zdot measurement is not required.
 
 EL: Redshift drift has previously been thought of as a high redshift 
 measurement, so the motivation of low redshift is worth discussing in 
-some detail. We then quantify this in Figures 2 and 3 to show how much 
-advantage it can bring, if practical. We also show that to combine with 
-low redshift zdot, CMB gives better leverage (and is "for free") than 
-high redshift zdot. 
+some detail. Figures 2 and 3 quantify the leverage of a given redshift; 
+they could have shown the initial motivation for low redshift measurements 
+was wrong, but instead showed how much advantage it can bring, if practical. 
+We also show that to combine with low redshift zdot, CMB gives better 
+leverage (and is "for free") than high redshift zdot. 
 
 If I had written this part, I would have structured it around the
 following points:
@@ -297,7 +308,10 @@ in adding references to Lake (1981) and Phillips (1982) as historical
 work in peculiar acceleration to satisfy the referee.  Uzan,
 Bernadreau and Mellier (2008) also looks relevant.  We can cite Liske
 et al. as an example where peculiar accelerations of Ly-alpha
-absorbing gas has been calculated.
+absorbing gas has been calculated. 
+EL: I agree of citing Amendola+ and Uzan+ (see my point about Eq. 4). 
+Liske+ examines a very different scenario (linear vs nonlinear structure) 
+so if you do want to cite it, you should make this point. 
 
 For "should not be interpreted statistically", I agree with the
 referee that this is confusing.  For the sort of experiment we
@@ -309,8 +323,10 @@ Section 3
 
 EL: We have emphasized explicitly, starting in the title of the overall 
 section, that these are speculations that may stimulate further thought 
-in the reader. We view this as valuable, though none of the techniques 
-are "ready for prime time". 
+in the reader. In seminars we have given based on this paper, 
+this section has given rise to considerable discussion and interactions, 
+with much interesting brainstorming. We view this as valuable, though 
+none of the techniques are "ready for prime time". 
 
 - Section 3.1 
 I am sure I have missed something important but I am completely
@@ -349,7 +365,9 @@ gravitational wave community about testing fundamental physics, as indicated
 in the Yunes et al paper. The Thornton et al reference is in a parenthetical 
 "but", and indicates the advances in sensitivity and the possibility of 
 new discoveries, although as the referee says these detected sources were 
-not periodic. 
+not periodic. Rephrase: “but see Thornton+ 2013; while this is for a transient, 
+not periodic, source, an exciting prospect is that upcoming time domain surveys 
+such as LSST \cite{lsst} may find new classes of sources that could be used)”. 
 
 - Section 3.3 
 Again this section is very relevant, but again poorly executed.
@@ -407,7 +425,9 @@ Until long-delay systems are identified, shorter-delay systems would
 have to be monitored over a sufficiently long time baseline.  Either
 way, multiple observaitions with different instrumental configurations
 and observing conditions are essential to reduce systematic
-uncertainties.
+uncertainties. 
+EL: ok, but nucleii —> nuclei 
+If you want you can neglect my response below. 
 
 EL: As explained at the beginning of Sec. 3, all subsections speculate 
 about a different path to get around the "stare and wait" approach. 
@@ -429,7 +449,8 @@ different images of a strongly lensed source do *not* have the same
 redshift.
 
 AK: We change the text to "the redshifts for a geodesic will be
-wavelength-independent."
+wavelength-independent." 
+EL: ok, can use instead of mine below. 
 
 EL: good point, rephrase: "and so the redshifts will only reflect the 
 expansion factor at the respective times of emission." 
@@ -442,8 +463,9 @@ as what is being considered for the "classical" case (i.e. a decade)
 but that the systematics may be easier to beat (but see my
 reservations about that above).
 
-AK: The entire sentence is corrupted.  It is stricken.
-
+AK: The entire sentence is corrupted.  It is stricken. 
+EL: ok, but keep Fohlmeister mention of currently observed time delays 
+somewhere. 
 
 EL: rephrase: "could be eased relative to a shorter time baseline," 
 
@@ -456,7 +478,11 @@ the foreground.
 
 AK: I was wondering about this myself.  It seems that to use lensed
 quasars you have to model the geodesics to get a time delay for each
-absorption system.  Can this work?
+absorption system.  Can this work? 
+EL: see my email about LyA. We may just want to say something washy 
+like “it may be possible to use LyA absorption along the lines of sight 
+as additional indicators of redshift drift, although the time delays 
+will not be quite those measured from the quasar.” 
 
 EL: We had moved a paragraph and so this indeed needs to be clarified. 
 Rephrase: "absolute one. Absorption in the spectra of the lensed quasar 
@@ -476,7 +502,8 @@ the same spectrograph (see the example of ESPRESSO in the incoherent
 combined focus of the VLT).
 
 AK: A fiber-fed spectrograph could do this.  Perhaps Jerry could write
-text on this.
+text on this. 
+EL: your recent rephrase is ok. 
 
 EL: rephrase: "and the images may not fall in the field of view of a 
 single spectroscopic telescope, and the lines-of-sight coherence may..." 
@@ -496,6 +523,8 @@ the emissions occurring at the same time, but indeed the observation
 times are different and so there is a drift. We have removed the whole 
 paragraph. Rephrase: remove whole paragraph. 
 
+EL: I think your recent rephrase is ok - let’s see it in the full response. 
+
 - p 8, l, 31
 "The N_line,q spectral lines in the quasar, perhaps O(10^3)..."
 A quasar (not counting the intervening IGM lines) does not display of
@@ -508,6 +537,7 @@ standard deviation in peculiar velocity in Equation 16.  We should
 reword our text to be more precise.
 EL: Alex, he's right. Nathalie says O(10) quasar lines that are broad, 
 though O(10^3) forest lines. 
+EL: cite the 500. 
 
 Section 4
 
