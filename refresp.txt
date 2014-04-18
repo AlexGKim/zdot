@@ -166,18 +166,10 @@ of H_0".
 It is a little difficult to verify this statement because Fig. 1 does
 not show dzdot/dOmega_m beyond z=0.3.
 
-EL: Two paragraphs later we discuss the matter density curve in more 
-detail, giving its redshift dependence, and in particular that it is 
-monotonic unlike the other curves. So its shape is very different. 
-We have rephrased: "shapes, hinting at no strong covariance". 
-
-AK: Eric, how far do you have to plot down in order to get dz/dOmega
-to show its different shape?  If it is ridiculously low could you plot
-"dz/dOmega * 1e-2" or something of that sort?  This is a case where I
-also thought of this before the referee commented.
-
 **
-??????
+We have modified the plot to show the dzdot/dOmega scaled by a factor
+20 so that it can be viewed over the full redshift range, and not so
+in the text.
 
 - p 2, r, 54
 "especially if they have better S/N"
@@ -480,8 +472,7 @@ different images of a strongly lensed source do *not* have the same
 redshift.
 
 **
-We change the text to "the redshifts for a geodesic will be
-wavelength-independent."
+This text has disappeared in the rewrite.
 
 
 - p 7, l, 36
@@ -493,7 +484,7 @@ but that the systematics may be easier to beat (but see my
 reservations about that above).
 
 **
-The entire sentence is corrupted.  It is stricken. 
+This text has disappeared in the rewrite.
 
 
 - p 7, l, para beginning line 43
@@ -503,29 +494,13 @@ is measured from the photometric time variability of a quasar is not
 the time delay that applies to a Lyman-alpha absorption system seen in
 the foreground.
 
-AK: I was wondering about this myself.  It seems that to use lensed
-quasars you have to model the geodesics to get a time delay for each
-absorption system.  Can this work? 
-EL: see my email about LyA. We may just want to say something washy 
-like “it may be possible to use LyA absorption along the lines of sight 
-as additional indicators of redshift drift, although the time delays 
-will not be quite those measured from the quasar.” 
-
-EL: We had moved a paragraph and so this indeed needs to be clarified. 
-Rephrase: "absolute one. Absorption in the spectra of the lensed quasar 
-images, such as by Lyman-alpha along the line of sight at different 
-redshifts, will also exhibit redshift drift. This absorption will be 
-coherent if the lines of sight are sufficiently close. The transverse..." 
-
-AK: How about this as washy?
-
-"Although the time delay for each gas cloud will not be directly
-measured, they can be constrained using the delay of the background
-quasar and the model geodesics of a lens in a Robertson-Walker metric,
-Friedmann cosmology."
-
 **
-??
+The new text includes the following"
+
+"The time delay for each gas cloud will not be directly measured, however they
+can be (at least approximately) constrained using the delay
+of the background quasar and the model geodesics of a lens  in a
+Robertson-Walker metric, Friedmann cosmology."
 
 - p 7, r, 25 
 "Note that if..."
@@ -553,24 +528,10 @@ single spectroscopic telescope, and the lines-of-sight coherence may..."
 I disagree. The redshifts of these two spectra should differ by 
 (1+z)*H_0*delta_t.
 
-AK: I think the referee is wrong on this, except maybe due to
-differential redshift due to the mass perturbation.  The sentence
-begins with saying that the time delay is one year so be definition
-the spectra of the two images will have a 1-year lag.
-
-EL: We thank the referee for this point. We were concentrating on 
-the emissions occurring at the same time, but indeed the observation 
-times are different and so there is a drift. We have removed the whole 
-paragraph. Rephrase: remove whole paragraph. 
-
-EL: I think your recent rephrase is ok - let’s see it in the full
-response. 
-
-AK: Which rephrase?  I looked back at my old e-mail and didn't find
-anything I wrote that is profound.
-
 **
-??
+The sentence begins with saying that the time delay is one year so be
+definition the spectra of the two images will have a 1-year lag. ??
+
 
 - p 8, l, 31
 "The N_line,q spectral lines in the quasar, perhaps O(10^3)..."
