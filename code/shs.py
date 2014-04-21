@@ -668,9 +668,9 @@ def shsplot():
 
   plt.savefig('shscounts.pdf')
 
-ediplot()
-shsplot()
-edshsplot()
+#ediplot()
+#shsplot()
+#edshsplot()
 
 def specplot():
   plate=1268
@@ -687,11 +687,11 @@ def specplot():
   plt.legend()
   plt.savefig("/Users/akim/Work/zdot/paper/spec.pdf")
 
-gendata()
+#gendata()
 
-#table()
+table()
   #ediplot()
-specplot()
+#specplot()
 #linetable()
 
 def plotvelocity():

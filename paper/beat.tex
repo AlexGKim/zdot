@@ -745,16 +745,22 @@ Their high line fluxes provide strong signals that suppress statistical Poisson 
 Doublets occupy only a narrow bandwidth that spectrographs must span; 
 regions outside the doublet need not be measured. 
 The two lines composing a doublet are produced by the same atoms and therefore
-share a common line profile: as the wavelength separation of the two lines is proportional to $(1+z)$, their cross-correlation in log-wavelength
-thus provides a measure of redshift that is independent of the specific shape of the line profile.
+share a common line profile.
 
+\textcolor{red}{
+The wavelength separation of the doublet lines is proportional to $(1+z)$, their cross-correlation in log-wavelength
+thus provides a measure of redshift that is independent of the specific shape of the line profile.
 The true functional forms of the line profiles are a priori unknown, which can lead to redshift uncertainty.  Quoted line effective-wavelength uncertainties
 are generally up to a factor 10 finer than the resolution: for example a line with $\Delta v=3$~km\,s$^{-1}$ is measured to
 precision $\Delta \lambda/\lambda \gtrsim 10^{-6}$.
-However, the redshift drift measurement does not require knowledge of the effective wavelength but rather only the wavelength shift
+}
+
+\textcolor{red}{
+The redshift drift measurement does not require knowledge of the effective wavelength but rather only the wavelength shift
 of the profile, whatever the profile is. 
 As just noted, within a single exposure the cross-correlation of the two doublet lines provides a robust redshift measurement.
 Similarly, cross-correlation of multiple spectra taken at different epochs provides a robust redshift-drift measurement. 
+}
 
 We study potential targets from the Sloan Digital Sky Survey data release SDSS3 DR10.  The  Portsmouth Emission-Line Kinematics table \citep{2013MNRAS.431.1383T}  is used to select
 objects 
@@ -833,22 +839,34 @@ The tabulated galaxies are not the product of an exhaustive search and are meant
 as good
 candidate targets.
 Future surveys such as eBOSS, Dark Energy Spectroscopic Instrument, and Euclid will specifically target emission-line
-galaxies from which the best targets can be identified. (Also, emission line galaxies occur more in the field than in clusters, potentially ameliorating peculiar accelerations.)  In the scenarios considered in this article, redshift precision scales
-linearly with the 
-line width and the inverse square root of line flux, so bright, narrow lines 
+galaxies from which the best targets can be identified
+\textcolor{red}{
+for further screening with
+higher-resolution spectrographs.}
+(Also, emission line galaxies occur more in the field than in clusters, potentially ameliorating peculiar accelerations.)  In the scenarios considered in this article, redshift precision scales
+with the
+\textcolor{red}{
+inverse of the} 
+line width and the square root of line flux, so bright, narrow lines 
 are desired. 
 
 
 
 The spectral regions of interest
-are around each doublet.  In the calculations that follow, these areas are modeled as a function of wavenumber $\sigma$ as
+are around each doublet.  In the calculations that follow,
+\textcolor{red}{
+the area around two emission lines
+}
+are modeled as a function of wavenumber $\sigma$ as
 \begin{align}
 B(\sigma)& =\frac{a_1}{\sqrt{2\pi s_1^2}}\exp{\left[-\frac{\left(\sigma-\sigma_1\right)^2}{2s_1^2}\right]} \nonumber\\
  &\qquad +\frac{a_2}{\sqrt{2\pi s_2^2}}\exp{\left[-\frac{\left(\sigma-\sigma_2\right)^2}{2s_2^2}\right]}.
 \label{input:eqn}
 \end{align}
 The two lines have central wavenumbers $\sigma_1$ and $\sigma_2$, and share a common Gaussian profile with width parametrized by velocity dispersion
-such that $s_i=\sigma_i\Delta v/c$ and $\Delta v$ is fixed for each galaxy. 
+such that $s_i=\sigma_i\Delta v/c$.
+\textcolor{red}{The value of 
+$\Delta v$ is the same for the lines of a doublet.} 
 
 
 
@@ -867,24 +885,36 @@ Some common assumptions are made for our analysis of spectrometer
 measurements. 
 The baseline observation is for an 8-hour exposure on a 10-m telescope.
 To allow direct comparison of the 
-designs, all systems are assigned the same total throughput of 70\%.
-The dispersion spectrometer used for Conventional, EDI, and ED-SHS instruments is taken to have resolution $R=20000$ with a 
-point-spread-function dominated by the pixel top-hat function.
-For all cases considered the photon noise will dominate uncertainties; nevertheless
-we include a detector read noise of $2e^-$, total integrations split into 2-hour exposures, and a dark current of $2e^-$\,s$^{-1}$. 
+designs, all systems are assigned the same total throughput of
+\textcolor{red}{ 35\%.
+The interferometer optics and fringe visibility has a $\approx 75\%$ efficiency, so the Conventional spectrograph
+will have a third better throughput relative to the other systems.}
+
+\textcolor{red}{
+The dispersion spectrometer used for Conventional spectrograph has a two-pixel resolution $R=50{,}000$
+whereas the EDI, and ED-SHS instruments is taken to have resolution $R=20{,}000$.  The
+effective point-spread-function dominated by the pixel top-hat function.
+The resolution of the Conventional spectrograph is chosen in order to sample the features.
+EDI and ED-SHS allow the use of lower resolution spectrographs (much cheaper and easier to make thermally stable)
+because it is the interferometer component which measures the velocity.}
+
+\textcolor{red}{
+For all cases considered the photon noise dominate uncertainties;
+we include a detector read noise of $2e^-$, total integrations split into 2-hour exposures, and a dark current of $2e^-$\,s$^{-1}$,
+which affect the calculated signal-to-noise at the least significant quoted digit.} 
 Blocking filters remove flux in wavelengths outside the regions
 of interest.  The new moon CTIO sky emission is included and
 is small compared to the galaxy continuum.
-Spatial information is unimportant and the target is considered as point-like: a
-circular aperture of $1\arcsec$ diameter is assumed to cover the full line flux.
-The effective PSF (including pixels and possible subpixel quantum efficiency variation) 
-Nyquist samples the intrinsic line profiles.
-When appropriate, the sampling along the spatial axis is not included explicitly in the
-signal equations for conciseness.
 
 
-Projected redshift precisions are calculated with Fisher matrix analysis with the source
-redshift $z$ as the only free parameter. 
+\textcolor{red}{
+Projected redshift precisions are calculated with a Fisher matrix
+analyses with the source redshift $z$ as the only free parameter.  The
+equation for the predicted signal is give for each spectrograph type.
+For conciseness, trivial behavior along the spatial axis are not given
+explicitly in these equation.  Measurement uncertainties come from
+photon and detector noise.
+}
 Precisions scale as the inverse square root of exposure time and inverse of telescope aperture. 
 For the SHS, and when the other spectrographs resolve the spectral line, the precision scales 
 inversely 
@@ -939,60 +969,62 @@ an 8 Hour Exposure on a 10-m Telescope For Different Spectrograph Types.
 }
 \startdata
 1523 & 602 
- &OIII  & $1.7\times10^{-8}$  & $5.8\times10^{-9}$  & $2.4\times10^{-8}$  & $5.9\times10^{-9}$  \\
+& OIII  & $2.4\times10^{-8}$  & $8.2\times10^{-9}$  & $3.4\times10^{-8}$  & $8.4\times10^{-9}$  \\
 \tableline
 1935 & 204 
-& OII & $1.4\times10^{-8}$  & $4.4\times10^{-9}$  & $1.7\times10^{-8}$  & $4.5\times10^{-9}$  \\
-& &OIII  & $6.3\times10^{-9}$  & $2.0\times10^{-9}$  & $7.9\times10^{-9}$  & $2.0\times10^{-9}$  \\
-& &OII\&OIII  & $5.7\times10^{-9}$  & $1.9\times10^{-9}$  & $7.2\times10^{-9}$  & $1.9\times10^{-9}$  \\
+& OII & $1.9\times10^{-8}$  & $6.3\times10^{-9}$  & $2.5\times10^{-8}$  & $6.4\times10^{-9}$  \\
+& &OIII  & $8.9\times10^{-9}$  & $2.9\times10^{-9}$  & $1.1\times10^{-8}$  & $2.9\times10^{-9}$  \\
+& &OII\&OIII  & $8.1\times10^{-9}$  & $2.6\times10^{-9}$  & $1.0\times10^{-8}$  & $2.6\times10^{-9}$  \\
 \tableline
 1036 & 584 
- &OIII  & $2.3\times10^{-8}$  & $7.7\times10^{-9}$  & $4.2\times10^{-8}$  & $7.8\times10^{-9}$  \\
+&OIII  & $3.2\times10^{-8}$  & $1.1\times10^{-8}$  & $6.0\times10^{-8}$  & $1.1\times10^{-8}$  \\
 \tableline
 2959 & 354 
- &OIII  & $6.0\times10^{-8}$  & $2.0\times10^{-8}$  & $9.5\times10^{-8}$  & $2.1\times10^{-8}$  \\
+&OIII  & $8.5\times10^{-8}$  & $2.8\times10^{-8}$  & $1.4\times10^{-7}$  & $3.0\times10^{-8}$  \\
 \tableline
 1268 & 318 
-& OII & $1.9\times10^{-8}$  & $6.3\times10^{-9}$  & $2.5\times10^{-8}$  & $6.4\times10^{-9}$  \\
-& &OIII  & $8.6\times10^{-9}$  & $2.8\times10^{-9}$  & $1.1\times10^{-8}$  & $2.8\times10^{-9}$  \\
-& &OII\&OIII  & $7.9\times10^{-9}$  & $2.5\times10^{-9}$  & $1.0\times10^{-8}$  & $2.5\times10^{-9}$  \\
-\tableline
-1657 & 483 
-& OII & $2.4\times10^{-8}$  & $7.9\times10^{-9}$  & $3.1\times10^{-8}$  & $8.0\times10^{-9}$  \\
-& &OIII  & $1.2\times10^{-8}$  & $4.0\times10^{-9}$  & $1.6\times10^{-8}$  & $4.0\times10^{-9}$  \\
+& OII & $2.7\times10^{-8}$  & $8.8\times10^{-9}$  & $3.5\times10^{-8}$  & $9.1\times10^{-9}$  \\
+& &OIII  & $1.2\times10^{-8}$  & $3.9\times10^{-9}$  & $1.6\times10^{-8}$  & $3.9\times10^{-9}$  \\
 & &OII\&OIII  & $1.1\times10^{-8}$  & $3.6\times10^{-9}$  & $1.4\times10^{-8}$  & $3.6\times10^{-9}$  \\
 \tableline
+1657 & 483 
+& OII & $3.4\times10^{-8}$  & $1.1\times10^{-8}$  & $4.4\times10^{-8}$  & $1.1\times10^{-8}$  \\
+& &OIII  & $1.8\times10^{-8}$  & $5.7\times10^{-9}$  & $2.3\times10^{-8}$  & $5.7\times10^{-9}$  \\
+& &OII\&OIII  & $1.6\times10^{-8}$  & $5.0\times10^{-9}$  & $2.0\times10^{-8}$  & $5.1\times10^{-9}$  \\
+\tableline
 1073 & 225 
-& OII & $7.2\times10^{-7}$  & $2.3\times10^{-7}$  & $8.7\times10^{-7}$  & $2.3\times10^{-7}$  \\
-& &OIII  & $1.2\times10^{-8}$  & $4.4\times10^{-9}$  & $1.3\times10^{-8}$  & $5.1\times10^{-9}$  \\
-& &OII\&OIII  & $1.2\times10^{-8}$  & $4.4\times10^{-9}$  & $1.3\times10^{-8}$  & $5.1\times10^{-9}$  \\
+& OII & $1.0\times10^{-6}$  & $3.2\times10^{-7}$  & $1.2\times10^{-6}$  & $3.5\times10^{-7}$  \\
+& &OIII  & $1.7\times10^{-8}$  & $6.2\times10^{-9}$  & $1.9\times10^{-8}$  & $7.3\times10^{-9}$  \\
+& &OII\&OIII  & $1.7\times10^{-8}$  & $6.2\times10^{-9}$  & $1.9\times10^{-8}$  & $7.3\times10^{-9}$  \\
 \tableline
 1514 & 137 
-& OII & $4.3\times10^{-8}$  & $1.4\times10^{-8}$  & $5.5\times10^{-8}$  & $1.4\times10^{-8}$  \\
-& &OIII  & $5.6\times10^{-8}$  & $1.8\times10^{-8}$  & $1.3\times10^{-7}$  & $1.8\times10^{-8}$  \\
-& &OII\&OIII  & $3.4\times10^{-8}$  & $1.1\times10^{-8}$  & $5.1\times10^{-8}$  & $1.1\times10^{-8}$  \\
+& OII & $6.1\times10^{-8}$  & $2.0\times10^{-8}$  & $7.8\times10^{-8}$  & $2.1\times10^{-8}$  \\
+& &OIII  & $7.9\times10^{-8}$  & $2.6\times10^{-8}$  & $1.9\times10^{-7}$  & $2.6\times10^{-8}$  \\
+& &OII\&OIII  & $4.9\times10^{-8}$  & $1.6\times10^{-8}$  & $7.2\times10^{-8}$  & $1.6\times10^{-8}$  \\
 \tableline
 4794 & 757 
-& OII & $6.2\times10^{-7}$  & $1.9\times10^{-7}$  & $6.6\times10^{-7}$  & $2.0\times10^{-7}$  \\
-& &OIII  & $4.1\times10^{-7}$  & $1.3\times10^{-7}$  & $9.0\times10^{-7}$  & $1.3\times10^{-7}$  \\
-& &OII\&OIII  & $3.4\times10^{-7}$  & $1.1\times10^{-7}$  & $5.3\times10^{-7}$  & $1.1\times10^{-7}$  \\
+& OII & $8.8\times10^{-7}$  & $2.8\times10^{-7}$  & $9.4\times10^{-7}$  & $3.1\times10^{-7}$  \\
+& &OIII  & $5.8\times10^{-7}$  & $1.8\times10^{-7}$  & $1.3\times10^{-6}$  & $1.9\times10^{-7}$  \\
+& &OII\&OIII  & $4.8\times10^{-7}$  & $1.5\times10^{-7}$  & $7.6\times10^{-7}$  & $1.6\times10^{-7}$  \\
 \tableline
 1059 & 564 
-& OII & $1.7\times10^{-8}$  & $5.6\times10^{-9}$  & $1.6\times10^{-8}$  & $5.6\times10^{-9}$  \\
+& OII & $2.5\times10^{-8}$  & $7.9\times10^{-9}$  & $2.3\times10^{-8}$  & $8.0\times10^{-9}$  \\
 \tableline
 \enddata
 \end{deluxetable}
 
 
 Not included in Table~\ref{dz:tab} are sources of instrumental systematics.
-Wavelength calibration is performed through observations of arc lamps emitting lines at known wavelengths.
+Wavelength calibration is performed through observations of arc lamps \textcolor{red}{or laser frequency combs}
+emitting lines at known wavelengths.
 The line density is sparse, in that an arc line is not placed on every detector pixel.   If the arc is taken simultaneously
 with the science exposure, a minimum wavelength interpolation distance must be maintained so that the arc does
-not interfere with the doublet.  Otherwise, the arc must be observed in a different exposure. 
-Therefore,  temporal and/or
+not interfere with the doublet.  Otherwise, the arc must be observed \textcolor{red}{
+spatially offset from the science signal on the detector} or in a different exposure.
+Therefore,  temporal, \textcolor{red}{spatial,} and/or
 wavelength interpolation are applied to calibrate wavelengths.
 
-The small number of pixels measuring line flux places stringent requirements on flatfield calibration.  The FWHM of a 10 km\,s$^{-1}$
+The small number of pixels measuring line flux places stringent requirements on \textcolor{red}{imager flux} calibration.  The FWHM of a 10 km\,s$^{-1}$
 feature is spanned by 3.15 pixels along the dispersion axis, and (for our calculations) 3 pixels along the spatial axis.
 A single pixel covered by one of the [OIII] lines of the SDSS target specified by Plate~\#1268, Fiber~\#318 has $\sim 10^6$ counts;
 in order for photon noise to dominate over pixel flux uncertainty the calibration must be done to significantly better than 0.1\%.
@@ -1257,9 +1289,10 @@ I(\sigma,x) &= \frac{1}{\Delta x}\left[\int^{\sigma \exp{\left(1/(2R)\right)}}_{
 \label{edishssig:eqn}
 \end{align}
 The similarities between ED-SHS and EDI can be seen in Fig,\ 2 of \citet{2003PASP..115..255E}; both use
-interferometry to create wavelength-dependent modulations in the signal, with the distinction between the two coming
-from the functional form of
-the modulation frequency.
+interferometry to create wavelength-dependent modulations in the signal, with the distinction
+\textcolor{red}
+{being that the EDI creates a uniform spatial frequency for all wavelengths and thus has an extremely wide bandwidth, whereas the ED-SHS creates a diamond-like fringe pattern whose spatial frequency varies rapidly around specific wavelength limiting the practical bandwidth significantly.
+}.
 
 
 The signal from two columns of pixels corresponding to the two wavelengths of
@@ -1343,6 +1376,10 @@ on a 10-m telescope). ``Gold'' targets, with brighter and narrow doublet
 emission than the galaxies considered in this article, may yet be discovered
 in upcoming spectroscopic surveys and provide a speedier path toward
 detecting redshift drift. 
+\textcolor{red}{
+Spatial resolution of the galaxy, say with an integral field unit, may isolate
+subregions with finer emission than that of the combined whole.
+}
 Instruments 
 such as Externally Dispersed Interferometers and External Dispersion Spatial 
 Heterodyne Spectroscopes can avoid some of the systematics in conventional 
@@ -1356,7 +1393,9 @@ from peculiar acceleration maps, e.g. of the local Universe.
 Other targets, such as narrow radio lines or sequences of lines
 from masers and molecular emission, should be 
 explored, as should other uses of high-precision wavelength measurements, 
-such as for atomic line catalogs. 
+such as for atomic line catalogs \citep{2008PhLB..660...81A,
+2008MNRAS.391.1308Q,
+2012PhR...521...95Q}. 
 
 Cosmic acceleration is a fundamental mystery of physics, and the possibility 
 of adding a new probe of it -- one that is kinematic and does not depend on 
