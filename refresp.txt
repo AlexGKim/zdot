@@ -530,7 +530,7 @@ I disagree. The redshifts of these two spectra should differ by
 
 **
 The sentence begins with saying that the time delay is one year so be
-definition the spectra of the two images will have a 1-year lag. ??
+definition the spectra of the two images will have a 1-year lag. ???
 
 
 - p 8, l, 31
@@ -553,12 +553,15 @@ high-precision work. First of all, one has to differentiate between
 the radio and optical regimes. Secondly, if interested in the radio
 regime, the authors may wish to consult Darling (2012).
 
-AK: Darling's (2012) most accurate redshifts have similar
-uncertainties as Davis & May (1978).  We add the reference.  Dave and
-Jerry, do you happen to know what the best accuracies are in the
-optical for galaxy redshifts?  I have spent time searching but haven't
-found any good references.
+**
+For redshift drift we are interested in the most accurate redshift
+measurement independent of wavelength. We have replaced the reference
+and results with those of Darling (2012) and specifiy this is a radio measurement.  
 
+To provide context, the radio redshift measurement as low as 
+$\sigma_z=2\times 10^{-8}$ for the absorption line system 0738+313A at $z=0.091$
+\citep{2012ApJ...761L..26D} represents current high-precision 
+work.
 
 - p 8, l, 54
 "...and simultaneous differential measurements..."
@@ -571,8 +574,11 @@ measurements.
 Secondly, even if the statement were relevant here, I'm not convinced
 it's actually true (see above).
 
-AK: The referee did not get our intended meaning.  The text has been
-changed to "differential, rather than absolute wavelength measurements
+**
+The text did not properly convey our intended meaning.  It has been
+modified to read:
+
+"differential, rather than absolute wavelength measurements
 to get redshift can be more robust."
 
 - p 8, l, para beginning line 58
@@ -583,8 +589,9 @@ frequency comb (LFC) provides a closely-spaced *absolute* wavelength
 reference with almost arbitrary precision, see e.g. Murphy et
 al. (2007), Steinmetz et al. (2008), Wilken et al. (2012).
 
-AK: I suggest we replace text with referee's recommended references.
-Murphy, M. T. (2007) and other references.
+**
+We now refer to LFCs as the standard for accurate wavelength
+calibraions and added the suggested references.
 
 Section 4.1
 
@@ -593,8 +600,10 @@ Section 4.1
 True, except that one would want to cover at least some redshift
 range.
 
-AK: Objects at different redshifts may be observed with different
-spectrographs or gratings.
+**
+Objects at different redshifts may be observed with different
+spectrographs or gratings.  This is an implementation decision that
+doesn't have to be specified for the purposes of this article.
 
 - p 8, r para beginning line 37
 This paragraph (and the preceding sentence) are slightly confusing

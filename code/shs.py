@@ -108,7 +108,7 @@ def edi_counts(_lines,edi):
   sw=numpy.zeros((4*npix,len(edi.spectro.sigmas)))
   ind=0
   shift = 2./(_lines.sigma1+_lines.sigma2)/4
-  print shift
+  #print shift
   for phi in numpy.arange(0,4):
     ans=.25*s0*(1+numpy.cos(2*numpy.pi*(tau + phi*shift)*edi.spectro.finesigmas))
     ans=numpy.convolve(ans,kernel,mode='same')
@@ -394,8 +394,9 @@ class SHS(object):
     self.xs=numpy.arange(0*xrange,1*xrange,self.deltax)
 
 class EDI(object):
-  def __init__(self,_lines,dum=None):
+  def __init__(self,_lines,res):
     self.spectro = Spectrograph(_lines)
+    self.spectro.r=res
     self.ccd=CCD()
     #mnsigma=(1/_lines.lambda1_0+1/_lines.lambda2_0)/2
     #dsigma=mnsigma*(1/(1+_lines.z)-1/(1+_lines.z+dz))    
@@ -473,7 +474,7 @@ def gendata():
   names=['Convetional','EDI','SHS','EDSHS']
   insts=[EDI,EDI,SHS,SHS]
   counts=[spec_counts,edi_counts,shs_counts,edshs_counts]
-  _args=[False,False,(1.5,False),(1.5,False)]
+  _args=[100000,40000,(1.5,False),(1.5,False)]
 
   gals=[(1523,602),(1935,204),(1036,584),(2959,354),(1268,318),(1657,483),(1073,225),(1514,137),(4794,757),(1059,564)]
   ans=dict()
@@ -596,9 +597,8 @@ def ediplot():
   plt.legend()
   plt.savefig("/Users/akim/Work/zdot/paper/edi.pdf")
 
-ediplot()
 
-efw
+
 
 def edshsplot():
   plate=1268
@@ -667,10 +667,11 @@ def shsplot():
   #plt.ylabel('counts per resolution element')
 
   plt.savefig('shscounts.pdf')
-  
+
+#ediplot()
 #shsplot()
 #edshsplot()
-#sef
+
 def specplot():
   plate=1268
   fiber=318
@@ -686,7 +687,8 @@ def specplot():
   plt.legend()
   plt.savefig("/Users/akim/Work/zdot/paper/spec.pdf")
 
-gendata()
+#gendata()
+
 table()
   #ediplot()
 #specplot()
