@@ -25,8 +25,6 @@ paper. However, I have a fairly large number of comments which I would
 ask the authors to consider before the paper is published. Apologies
 for the length of this report and its lateness.
 
-EL: Since he does recommend publication, we shouldn't be too hard on him/her! 
-
 Detailed comments
 -----------------
 
