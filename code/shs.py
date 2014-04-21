@@ -387,14 +387,14 @@ class SHS(object):
     self.aperture=numpy.pi*(10e2/2)**2 
     self.etime=3600.*8
     self.nexp=1
-    self.eff=.7
+    self.eff=.35
 
   def setXRange(self,xrange):
     self.deltax=1.00*xrange/self.npt
     self.xs=numpy.arange(0*xrange,1*xrange,self.deltax)
 
 class EDI(object):
-  def __init__(self,_lines,res):
+  def __init__(self,_lines,res=40000):
     self.spectro = Spectrograph(_lines)
     self.spectro.r=res
     self.ccd=CCD()
@@ -405,7 +405,7 @@ class EDI(object):
     self.aperture=numpy.pi*(10e2/2)**2 
     self.etime=3600.*8
     self.nexp=4
-    self.eff=.7
+    self.eff=.35
 
 class Spectrograph(object):
   def __init__(self,_lines):
@@ -668,9 +668,9 @@ def shsplot():
 
   plt.savefig('shscounts.pdf')
 
-#ediplot()
-#shsplot()
-#edshsplot()
+ediplot()
+shsplot()
+edshsplot()
 
 def specplot():
   plate=1268
@@ -687,11 +687,11 @@ def specplot():
   plt.legend()
   plt.savefig("/Users/akim/Work/zdot/paper/spec.pdf")
 
-#gendata()
+gendata()
 
-table()
+#table()
   #ediplot()
-#specplot()
+specplot()
 #linetable()
 
 def plotvelocity():
