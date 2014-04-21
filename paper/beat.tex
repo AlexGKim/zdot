@@ -104,7 +104,7 @@ redshift drift is likewise for cosmic acceleration.  This directness is
 an attractive feature as it does not depends on dynamics, i.e.\ the equations 
 of motion (and separation of matter and dark energy density). 
 \eric{Therefore, 
-even if such a cosmic probe might not practically reach the same 
+even if such a cosmic probe happens not practically reach the same 
 accuracy on dynamical cosmological-model parameters as more established
 distance or growth of structure probes,  it is worthwhile exploring possibilities 
 for carrying it out. 
@@ -259,18 +259,23 @@ parameters, whose sensitivities decline at high redshift. These
 characteristics give merit to further exploration of the use of 
 low-redshift sources. 
 
-We can quantify the redshift range having optimal leverage on dark energy 
+\eric{From a theoretical 
+sensitivity standpoint, without attempting an detailed observational 
+strategy, we can quantify the redshift sensitivity. We carry out Fisher 
+analysis using the sensitivities exhibited in Fig.~\ref{fig:sens} to 
+explore the 
+leverage on dark energy 
 parameters $w_0$ and $w_a$, and their figure of merit (FOM) 
 $[\det Cov(w_0,w_a)]^{-1/2}$ inversely proportional to the area of their joint 
-uncertainty contour, through Fisher analysis using the sensitivities 
-exhibited in Fig.~\ref{fig:sens}. 
+uncertainty contour.} 
 
 Figure~\ref{fig:fom} shows the results for the illustrative case of 
 five measurements of $\dot z$ at 1\% precision each, centered on $z$, 
 i.e.\ at redshifts $z-0.2$, $z-0.1$, $z$, $z+0.1$, $z+0.2$ 
 \eric{(the multiple measurements slightly spread 
 in redshift are needed to allow fits of multiple cosmology parameters, 
-while still focusing the sensitivity at a particular redshift z)}. We marginalize 
+while still focusing the sensitivity at a particular redshift z; see below 
+for consideration of combining measurements at significantly different redshifts)}. We marginalize 
 over $\om$, and over $H_0$ with a 
 prior of $0.03$ (current precision) on 
 $h=H_0/(100\,{\rm km\,s}^{-1}\,{\rm Mpc}^{-1})$. As expected from our previous discussion, 
@@ -296,7 +301,12 @@ complementarity is lost for higher redshifts. However, if feasible, redshift
 drift measurements at high {\it and\/} low redshifts have great synergy. 
 For example, the constraint from adding the $z=2.8$ measurements to the 
 $z=0.3$ measurements yields a figure of merit of 784, about 6.6 times 
-higher than the $z=0.3$ case alone. Alternatively, if we move away from 
+higher than the $z=0.3$ case alone. 
+\eric{Optimization of survey redshift range, 
+taking into account observation time constraints, is beyond the scope of 
+this article, and is left for future work.} 
+
+Alternatively, if we move away from 
 purely kinematic observations and include measurement of the distance to 
 cosmic microwave background (CMB) last scattering by Planck, then we obtain 
 even greater synergy with low redshift drift observations -- a FOM of 1414, 
@@ -391,7 +401,8 @@ effects but not peculiar acceleration is
 &&-(\dot\psi_e-\dot\phi_e)+(1+z)(\dot\psi_o-\dot\phi_o)\nonumber\\ 
 &&-H(z)\,(\phi_o-\phi_e)+H_0\,(1+z)[a_o k^0_o]^{(1)}\ ,\nonumber  
 \eea 
-where $\psi$ and $\phi$ are the metric gravitational potentials. 
+where $\psi$ and $\phi$ are the metric gravitational potentials, 
+with a subscript e denoting emitter and o denoting observer. 
 These terms are discussed in detail in \citet{10044646}; most are smaller 
 than, though some are comparable to (especially for relativistic systems), 
 peculiar accelerations. 
@@ -414,7 +425,10 @@ Similarly it should not be treated as though the source was in the linear
 density perturbation regime. 
 
 Methods exist for ameliorating these systematics, e.g.\ observing several 
-well separated sources.  However the precision required for measurement of 
+well separated sources 
+\eric{with statistically independent peculiar accelerations. 
+To be explicit, 
+we recall that the precision required} for measurement of 
 redshift drift at a signal-to-noise of merely unity is 
 $dz\approx 10^{-10}$ over a year (or $10^{-9}$ over 10 years), 
 so a 1\% measurement would require $dz\approx 10^{-12}$ over a year.  
@@ -445,10 +459,13 @@ While the light from sources at different redshifts reaches us after
 being emitted at vastly different times, this does not inform us regarding 
 redshift drift that involves the change of a given source over time.  
 However, we can still probe cosmic acceleration in a kinematic way through 
-a related quantity, analogously called Hubble drift. This is how the Hubble 
+a related though distinct quantity, analogously called Hubble drift. This is how the Hubble 
 parameter $H(z)$ changes over redshift, rather than how redshift of a given 
 source changes over time. But it can be measured kinematically and does 
 give information on acceleration. 
+\eric{We highlight here how the 
+familiar concept of radial baryon acoustic oscillations can be compared 
+with redshift drift as discussed in the rest of this article.} 
 
 We can think of a statistical ensemble of objects collectively as 
 a source, for example 
@@ -636,10 +653,11 @@ with observations of a single image
 over an extended time period
 \citep{1998ApJ...499L.111L,2008MNRAS.386.1192L}.}
 
+\eric{It may be possible to use 
+foreground Lyman-$\alpha$ absorption along the lines of sight to the multiple images 
+of a strongly lensed quasar as additional indicators of redshift drift, 
+but this entails certain complications.} 
 \textcolor{red}{
-Measuring redshift drift from the foreground Lyman-$\alpha$ absorbers of the multiple images
-of a strongly lensed quasar with known time delay
-may be possible but entails certain complications. 
 The geodesics may not pass through the same gas clouds.
 The transverse distance at redshift $z$ between 
 lines of sight separated by angle $\Delta\theta$ is 
@@ -1361,7 +1379,7 @@ of the U.S.\ Department of Energy under Contract No.\ DE-AC02-05CH11231.
 
 
 \bibliographystyle{hapj}
-\bibliography{alex.bib}
+\bibliography{alex.bib} 
 
 
 
