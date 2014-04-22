@@ -385,26 +385,16 @@ the pros and cons of radial BAO vs redshift drift. I simply do not
 understand what we are supposed to learn from this section or why it
 is even here. I would advocate its removal.
 
-EL: The Hubble drift gives substantially related information to redshift 
+ELnew: The Hubble drift gives substantially related information to redshift 
 drift, but comes "for free" with spectroscopic galaxy clustering surveys 
 and so is important to emphasize. Differences and pros/cons are discussed 
 in the text and explicitly shown in Table 1. To clarify the distinction 
-we rephrase the introductory paragraph of the subsection: "a related, 
-though distinct quantity". "on acceleration. We highlight here how the 
-familiar concept of radial baryon acoustic oscillations can be compared 
+and indicate we are making a comparison rather than inventing a new probe, 
+we rephrase the introductory paragraph of the subsection and explicitly 
+state: 
+"Here we briefly compare this Hubble drift from the 
+familiar concept of radial baryon acoustic oscillations 
 with redshift drift as discussed in the rest of this article." 
-
-AK: Eric, how about a first paragraph like this?  I think the
-referee's objection is the same that I had and maybe this would
-satisfy him/her.  I check with you that this conveys the correct
-meaning and motivation for this section.
-
-"The measurement of redshifts of a single source emitted at different
-times provides the difference in $\dot{a}$ at those times and hence a
-direct probe of acceleration.  Similarly the measurement of the Hubble
-parameter $\dot{a}/{a]$ at different times provides alternative access
-to acceleration.  Indeed, this is what is obtained from the radial
-(redshift) extent of the BAO feature at different redshifts."
 
 **
 ??
