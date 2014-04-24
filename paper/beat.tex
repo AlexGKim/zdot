@@ -600,7 +600,7 @@ lines of sight, each having its own distinct time of photon flight (itself
 a cosmological distance probe, see, e.g., \citet{13061272} 
 and references therein).
 The Universe gives us for free a time baseline for measuring
-redshift drift of the individual source in a single moment of time.
+redshift drift of the individual source in a single moment of observer time.
 }
 
 
@@ -613,8 +613,8 @@ To date, the time delays measured range from days to
 years \citep{2007ApJ...662...62F,2008ApJ...676..761F, 2013ApJ...764..186F}
 and so have images with redshift
 differences that are too small to detect in a single measurement with current methods.
-Until longer-delay systems are identified, currently identified systems would
-have to be monitored over a sufficiently long time baseline.}
+Until longer-delay systems are identified, systems would
+have to be monitored over a sufficiently long time observer baseline.}
 
 
 
@@ -629,12 +629,14 @@ of uncertainty.}
 \textcolor{blue}{Text from Jerry about how to do a simultaneous observation with fibers with
 no wavelength shift, to address referee's comments.} 
 
-
-\textcolor{red}{Multiple observations under different instrumental configurations
-and observing conditions provide an important path toward reducing systematic
-uncertainties. By the nature of the strong lensing time delay, it may be possible 
+\eric{I commented out the instrument/observing conditions sentence since 
+it conflicts with our concerns about long term stability.} 
+%\textcolor{red}{Multiple observations under different instrumental configurations
+%and observing conditions provide an important path toward reducing systematic
+%uncertainties. 
+\textcolor{red}{By the nature of the strong lensing time delay, it may be possible 
 to cross-calibrate the spectra in both space and time.  That is, if the time 
-delay between images A and B is one year, say, then if observing the system 
+delay between images A and B is one year, say, then when observing the system 
 one year later the spectrum of image B should match that of image A from 
 the previous year (modulo the redshift drift itself).  This ``time anchoring'' adds robustness to 
 the spatial anchoring of observing multiple images of the same source 
@@ -647,7 +649,7 @@ A strongly lensed variable source is used to get the time delay. A bright, time 
 such as an active galactic nucleus or quasar is ideal for this, and the time delay is measured from 
 the photometric light curves (see, e.g.\ \citet{tewes,hkl} for statistical 
 techniques for robust estimation).
-Unlike for its use in time-delay distances, 
+Unlike for its use to obtain time-delay distances, 
 we have no need to model the time delay through knowledge of the lens mass 
 profile, image geometry, etc.
 Since we do not need to model the lens mass profile, we can 
@@ -658,9 +660,12 @@ galaxy lenses as for the time-delay distance technique. }
 \textcolor{red}{
 We now consider the case of a strongly lensed quasar.  The time delay can
 be measured as lags in the image light curves.  The quasar itself has
-$N_{\rm line,q} \approx 500$ metallic spectral lines 
+$N_{\rm line,q} \approx 500$ narrow metallic spectral lines 
 \citep{2008MNRAS.386.1192L} that combined are used to measure the quasar
-redshift.  Embedded within the image spectra are not only the quasar redshift but 
+redshift.} 
+\eric{Where does 500 come from? The most I see in Liske is 225 for one 
+system.} 
+\textcolor{red}{  Embedded within the image spectra are not only the quasar redshift but 
 the redshifts of individual Lyman-$\alpha$ absorbers along the line of sight; the redshift drift for each can
 be measured 
 with observations of a single image
@@ -696,9 +701,9 @@ Wide field surveys such as Dark Energy Survey and LSST will find
 approximately $10^3$ and $10^4$ strongly lensed quasars, respectively.  
 Monitoring 
 campaigns such as COSMOGRAIL \citep{cosmograil} and STRIDES \citep{strides} 
-obtain long term light curves for their images, measuring the time 
+obtain long term light curves for the images, measuring the time 
 delays.  Depending on the time delay, photometry quality, and other 
-factors it may take up to 1000 nights to obtain a time delay 
+factors it may take $\sim$1000 nights to obtain a time delay 
 estimation, though note that the accuracy requirements may be relaxed 
 from the time delay distance case, e.g.\ 5\% accuracy may be sufficient 
 for this not to contribute significantly to the redshift drift uncertainty. 
