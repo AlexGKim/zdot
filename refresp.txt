@@ -579,7 +579,8 @@ al. (2007), Steinmetz et al. (2008), Wilken et al. (2012).
 
 **
 We now refer to LFCs as the standard for accurate wavelength
-calibraions and added the suggested references.
+calibraions and added the suggested references.  We remove
+some of the references to the older calibration methods.
 
 Section 4.1
 
@@ -661,8 +662,14 @@ suitability (i.e. the width of their emission lines) will have to be
 confirmed at higher spectral resolution.
 
 **
-"best targets can be identified for further screening with
+We have added a new paragraph:
+
+"SDSS3 (just as the aforementioned future surveys) has a spectrograph that does
+not resolve lines as fine as those quoted in the Table~\ref{lines:tab} and velocity dispersions come
+from a model fit that may produce underestimated uncertainties:
+targets initially identified with $R\lesssim 2000$ spectrographs need subsequent screening with
 higher-resolution spectrographs."
+
 
 -p 9, l, 51
 "...redshift precision scales..."
