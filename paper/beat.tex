@@ -727,18 +727,20 @@ In this section we turn from theoretical speculation to consideration of
 innovative experimental approaches, with practical details on how to 
 obtain highly precise redshift measurements. 
 \textcolor{red}{
-To provide context, the radio redshift measurement as low as 
-$\sigma_z=2\times 10^{-8}$ for the absorption line system 0738+313A at $z=0.091$
+To provide context, the redshift measurement as low as 
+$\sigma_z=2\times 10^{-8}$ for the radio absorption line system 0738+313A at $z=0.091$
 \citep{2012ApJ...761L..26D} represents current high-precision 
 work.}
 We are guided by two concepts: 
 that low-redshift measurements can have significant cosmological leverage, 
 and simultaneous
 \textcolor{red}
-{differential, rather than absolute wavelength measurements
-to get redshift can be more robust.}
+{differential, rather than absolute, wavelength measurements
+to obtain the redshift can be more robust.}
 
-Traditionally, one might wavelength calibrate a spectrum with an external 
+An important point is not just precision but instrumental accuracy, 
+e.g.\ stable calibration. 
+Traditionally, for redshift drift one might wavelength calibrate a spectrum with an external 
 standard, such as an iodine cell, and then repeat this ten or so years 
 later with the next redshift measurement of the source.  However, the 
 wavelength calibration is not guaranteed to remain fixed over this long time 
@@ -756,7 +758,7 @@ precision redshifts. The best sources involve bright, narrow lines that
 are clearly identifiable. 
 The unique signature
 of doublets amidst  other emission lines allows unambiguous identification of the [OII] $\lambda\lambda$3727--3729\AA\ 
-and [OIII]$\lambda\lambda$4959--5007\AA\ doublets.
+and [OIII] $\lambda\lambda$4959--5007\AA\ doublets.
 Their high line fluxes provide strong signals that suppress statistical Poisson uncertainty.
 Doublets occupy only a narrow bandwidth that spectrographs must span; 
 regions outside the doublet need not be measured. 
@@ -764,9 +766,11 @@ The two lines composing a doublet are produced by the same atoms and therefore
 share a common line profile.
 
 \textcolor{red}{
-The wavelength separation of the doublet lines is proportional to $(1+z)$, their cross-correlation in log-wavelength
+The wavelength separation of the doublet lines is proportional to $(1+z)$, 
+so their cross-correlation in log-wavelength
 thus provides a measure of redshift that is independent of the specific shape of the line profile.
-The true functional forms of the line profiles are a priori unknown, which can lead to redshift uncertainty.  Quoted line effective-wavelength uncertainties
+The true functional forms of the line profiles are a priori unknown, which 
+could otherwise lead to redshift uncertainty.  Quoted line effective-wavelength uncertainties
 are generally up to a factor 10 finer than the resolution: for example a line with $\Delta v=3$~km\,s$^{-1}$ is measured to
 precision $\Delta \lambda/\lambda \gtrsim 10^{-6}$.
 }
@@ -857,15 +861,14 @@ candidate targets.
 Future surveys such as eBOSS, Dark Energy Spectroscopic Instrument, and Euclid will specifically target emission-line
 galaxies from which the best targets can be identified.
 (Also, emission line galaxies occur more in the field than in clusters, potentially ameliorating peculiar accelerations.)  In the scenarios considered in this article, redshift precision scales
-with the
-\textcolor{red}{
-inverse of the} 
-line width and the square root of line flux, so bright, narrow lines 
+with the 
+line width and the inverse square root of line flux; smaller numbers 
+for the precision are better so bright, narrow lines 
 are desired. 
 
 \textcolor{red}{
 SDSS3 (just as the aforementioned future surveys) has a spectrograph that does
-not resolve lines as fine as those quoted in the Table~\ref{lines:tab} and velocity dispersions come
+not resolve lines as fine as those quoted in Table~\ref{lines:tab}. Velocity dispersions come
 from a model fit that may produce underestimated uncertainties:
 targets initially identified with $R\lesssim 2000$ spectrographs need subsequent screening with
 higher-resolution spectrographs.}
@@ -876,7 +879,7 @@ are around each doublet.  In the calculations that follow,
 \textcolor{red}{
 the area around two emission lines
 }
-are modeled as a function of wavenumber $\sigma$ as
+is modeled as a function of wavenumber $\sigma$ as
 \begin{align}
 B(\sigma)& =\frac{a_1}{\sqrt{2\pi s_1^2}}\exp{\left[-\frac{\left(\sigma-\sigma_1\right)^2}{2s_1^2}\right]} \nonumber\\
  &\qquad +\frac{a_2}{\sqrt{2\pi s_2^2}}\exp{\left[-\frac{\left(\sigma-\sigma_2\right)^2}{2s_2^2}\right]}.
@@ -906,22 +909,22 @@ The baseline observation is for an 8-hour exposure on a 10-m telescope.
 To allow direct comparison of the 
 designs, all systems are assigned the same total throughput of
 \textcolor{red}{ 35\%.
-The interferometer optics and fringe visibility has a $\approx 75\%$ efficiency, so the Conventional spectrograph
+The interferometer optics and fringe visibility has a $\sim 75\%$ efficiency, so the Conventional spectrograph
 will have a third better throughput relative to the other systems.}
 
 \textcolor{red}{
 The dispersion spectrometer used for Conventional spectrograph has a two-pixel resolution $R=50{,}000$
 whereas the EDI, and ED-SHS instruments is taken to have resolution $R=20{,}000$.  The
-effective point-spread-function dominated by the pixel top-hat function.
+effective point-spread-function is dominated by the pixel top-hat function.
 The resolution of the Conventional spectrograph is chosen in order to sample the features.
 EDI and ED-SHS allow the use of lower resolution spectrographs (much cheaper and easier to make thermally stable)
 because it is the interferometer component which measures the velocity.}
 
 \textcolor{red}{
 For all cases considered the photon noise dominate uncertainties;
-we include a detector read noise of $2e^-$, total integrations split into 2-hour exposures, and a dark current of $2e^-$\,s$^{-1}$,
+we include a detector read noise of $2e^-$, total integrations split into 2-hour exposures, and a dark current of $2e^-$\,h$^{-1}$,
 which affect the calculated signal-to-noise at the least significant quoted digit.} 
-Blocking filters remove flux in wavelengths outside the regions
+Blocking filters remove flux (and hence noise) in wavelengths outside the regions
 of interest.  The new moon CTIO sky emission is included and
 is small compared to the galaxy continuum.
 
@@ -929,9 +932,9 @@ is small compared to the galaxy continuum.
 \textcolor{red}{
 Projected redshift precisions are calculated with a Fisher matrix
 analyses with the source redshift $z$ as the only free parameter.  The
-equation for the predicted signal is give for each spectrograph type.
-For conciseness, trivial behavior along the spatial axis are not given
-explicitly in these equation.  Measurement uncertainties come from
+equation for the predicted signal is given for each spectrograph type.
+For conciseness, trivial behavior along the spatial axis is not given
+explicitly in these equations.  Measurement uncertainties come from
 photon and detector noise.
 }
 Precisions scale as the inverse square root of exposure time and inverse of telescope aperture. 
@@ -957,7 +960,7 @@ has different susceptibilities to systematic uncertainties.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%% 
-\subsection{Conventional Dispersion Spectrograph} 
+\subsection{Conventional Dispersion Spectrograph} \label{sec:dispspec} 
 
 The redshift of a galaxy can be measured from the output of a dispersion spectrograph, such as shown in Figure~\ref{shsinput:fig}.
 For an input spectrum $B(\sigma)$ the expected signal is
@@ -968,12 +971,13 @@ I(\sigma) = \left[B(\sigma)\otimes \mbox{PSF}(\sigma)\right]\Sha\left(\frac{\sig
 where $p$ is the spacing of the wavenumber sampling and the Shah function $\Sha$ is the set of delta functions
 that specify the discrete sampling,
 
-The wavelengths of the observed lines are compared to the corresponding known restframe to give
+The wavelengths of the observed lines are compared to the corresponding known restframe wavelengths to give
 the redshift.
 %\textcolor{red}{Looking into uncertainty of the double wavelengths.
 %The [OII] double wavelengths are known to $0.0010$\AA\ \citep{1993JPCRD..22.1179M}.}
-Projected statistical uncertainties from an $R=20000$ spectrograph for the target galaxies are given under
-the ``Conventional'' column of Table~\ref{dz:tab}.  Results from [OII], [OIII], and their combination are listed separately.
+Projected statistical uncertainties from an $R=50000$ spectrograph for the target galaxies are given under
+the ``Conventional'' column of Table~\ref{dz:tab}.  Results from [OII], [OIII], and their combination are listed separately. 
+\eric{Check is indeed supposed to be R=50000} 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1033,7 +1037,7 @@ an 8 Hour Exposure on a 10-m Telescope For Different Spectrograph Types.
 \end{deluxetable}
 
 
-Not included in Table~\ref{dz:tab} are sources of instrumental systematics.
+Not included in Table~\ref{dz:tab} are sources of the instrumental systematics.
 Wavelength calibration is performed through observations of arc lamps \textcolor{red}{or laser frequency combs}
 emitting lines at known wavelengths.
 The line density is sparse, in that an arc line is not placed on every detector pixel.   If the arc is taken simultaneously
@@ -1067,7 +1071,12 @@ measurements taken after dithering the delay  make apparent a modulation in the 
 Therefore, in an EDI the wavelength can be measured using both the calibration methods of a standard dispersion
 spectrograph {\it and\/} from the modulations of signal apparent when changing the FTS arm-lengths.   As a consequence,
 it was shown by
-\citet{2003PASP..115..255E} that EDI's provide line-velocity measurements that are more precise than with a dispersion spectrograph.
+\citet{2003PASP..115..255E} that EDI's provide line-velocity measurements that are more precise than with a dispersion spectrograph. 
+\textcolor{blue}{Basically, the sinusoidal interferometer modulations 
+provide a steeply sloped PSF that responds sensitively to changes in 
+line position. This steep slope improves the effective resolution and gives 
+higher sensitivity in redshift measurement.} 
+\eric{This is from Dave's email of 4/15. Do we want to include the figure Dave sent on 4/16?} 
 
 An EDI produces measurements that can be related
 to a conventional spectrum
@@ -1090,8 +1099,9 @@ w(\rho -\tau) & =\frac{1}{2}\, b(\rho) \, \mbox{psf}(\rho-\tau).
 The EDI whirl has the instrumental frequency response shifted into a new $\rho$ range to allow
 spectral
 resolution on scales tuned by the choice of $\tau$.  In the calculations that follow, the delay is chosen to resolve
-the FWHM of the line with the lower wavenumber, $\tau = (2.36s_1)^{-1}$, where $s_1$ was introduced
-in Eq.~\ref{input:eqn} as the standard deviation width of the first line.
+the FWHM of the line with the lower wavenumber, $\tau = (2.36s_1)^{-1}$, where $s_1$ 
+is the standard deviation width of the first line as 
+in Eq.~(\ref{input:eqn}). 
 
 An EDI observation is actually a series of measurements
 \begin{align}
@@ -1104,7 +1114,7 @@ and $\Delta \tau$ represents the changes in delay in the series of exposures; fo
 achieved by adjusting an interferometer arm length by quarters 
 of the inverse average wavenumber. 
 (This choice for the set of  $\Delta \tau$ is made for mathematical convenience and generally does not strongly affect the statistical determination of whirl.) 
-The first term represents the signal obtained with a conventional spectrograph while the second, cosine term
+The first term in Eq.~(\ref{edisig:eqn}) represents the signal obtained with a conventional spectrograph while the second, cosine term
 introduces a wavelength-dependent phase that provides additional leverage in measuring redshift.
 
 
@@ -1125,12 +1135,15 @@ made in steps of 0.14 $\mu$m.
 
 The redshift precisions on the target galaxies are given in Table~\ref{dz:tab}, where each of the four phases receives
 a 2-hour exposure.  The EDI performance includes that of the Conventional spectrograph plus
-the additional contribution from the whirl; in total the EDI outperforms the Conventional spectrograph
-in redshift precision by a factor of $\sim 3$.
+the additional contribution from the whirl; in total the EDI (at $R=20,000$) outperforms the Conventional spectrograph (at $R=50,000$) 
+in redshift precision by a factor of $\sim 3$. 
+\eric{Check my added R's} 
 
 Separating the EDI information into Conventional and whirl contributions,
-the signal and constraint from the Conventional spectrograph contribution shares those same systematic uncertainties.
-The whirl component is best calibrated using arc lamps in the science exposure.  The arc lines determine the configuration
+the signal and constraint from the Conventional spectrograph contribution shares the same systematic uncertainties as in Sec.~\ref{sec:dispspec}. 
+The whirl component is best calibrated using arc lamps in the science exposure.  
+\eric{Mention laser combs again?} 
+The arc lines determine the configuration
 of the EDI itself, $\phi_y$ and the $\Delta \tau$'s, and do not have to be close
 to the science lines.  This avoids the temporal and wavelength interpolation needed in conventional spectrographs.
 Wavelength uncertainty would then come from mismeasurement of phase and frequency due to pixels local to the
