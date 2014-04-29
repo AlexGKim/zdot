@@ -114,9 +114,11 @@ at much higher redshift than the Omega_L-Omega_M cross-over (see
 e.g. Gudmundsson & Bjoernsson 2002).
 
 **
-We never claim dz/dt changes sign when DE begins to dominate. We
-clarify this by rephrase: "change to positive (see Eq. 2 for the exact
-condition)."
+We do not mean to claim dz/dt changes sign when DE begins to dominate. We
+clarify this by rephrase: "When the universe begins to accelerate (speed 
+up) under the influence of dark energy in recent times, however, then the 
+drift will be positive (see Eq. 2 for the exact condtion for the change of 
+sign)." 
 
 - p 2, r, para beginning line 32 
 It might be worth pointing out explicitly that a flat cosmology is
@@ -187,38 +189,20 @@ justify their investigation of using low-redshift emission line
 galaxies as targets in Section 4. I found this not hugely convincing
 and in any case a little misguided. 
 
-EL: In fact this occurred in the opposite sense. We discovered that low 
-redshift could be powerful, and then look for what sources would be suitable. 
+** 
+In fact this occurred in the opposite sense. We discovered that low 
+redshift could be powerful, and then looked for what sources would be suitable. 
 It is a bonus that well studied low redshift galaxies are possibilities. 
 So Figures 1-3 really did lead the way. 
 
-AK: I think that there are two responses we can make to this long
-comment.
+We also make explicit "Optimization of survey redshift range, taking 
+into account observation time constraints, is beyond the scope of this 
+article, and is left for future work." We do show, however, that low redshift 
+observations can be very interesting to consider further: "From a theoretical 
+sensitivity standpoint, without attempting a detailed observational strategy, 
+we can quantify the redshift sensitivity. We carry out Fisher analysis using 
+the sensitivities in Fig. 1..." 
 
-The first is to take the referee head on. “We make no claim that the
-observing strategies considered in this section are optimal.  Our
-motivation is to consider the leverage provided in the redshift-local
-slopes of the d\dot/dP curves in Figure 1.”
-
-The second, which I think will make the paper better, is to take our
-analysis a step further.  We have made plots of FOM as a function of
-number of supernovae uniformly distributed to fixed a maximum
-redshift, and we have made plots of FOM as a function of maximum
-redshift for a fixed number of supernovae.  We could do the same for
-redshift drift, where each ELG has some nominal measurement
-uncertainty. 
-EL: I don’t think either of these is needed as such. Let’s instead say 
-as the beginning of the “We can quantify” paragraph: “From a theoretical 
-sensitivity standpoint, without attempting an detailed observational 
-strategy, we can quantify the redshift sensitivity. We carry out Fisher… 
-Fig. 1 to explore the leverage on dark… contour.” 
-[I think the referee was thrown by the phrase “redshift range” so I avoid it.] 
-
-AK: I understand what the referee is saying, it is not a case where
-the referee was thrown by the phrase "redshift range".  A couple of
-new plots may not only appease the referee but more importantly make
-the article significantly better.  The new plots I suggest are not
-hard to make, should I do so?
 
 First of all, I did not find this part very convincing because their
 analysis leading to Figs. 2 and 3 is incomplete: 
@@ -229,17 +213,18 @@ from a combination of low and high redshift measurements (as
 acknowledged by the authors at line 40, right column). 
 
 **
-We have removed the misleading phrase “redshift range”; what we 
-calculate is sensitivity at a given redshift. Since to fit 4 free cosmological 
+We have removed the misleading phrase “redshift range”; what Fig. 1 shows 
+is sensitivity at a given redshift. Then, since to fit 4 free cosmological 
 parameters one needs at least 4 measurements at slightly different redshifts, we 
 spread them by 0.4 so as to keep them as localized as possible. If we had spread 
 them over a redshift range of 2, then one could not interpret the leverage 
 as being from a particular redshift. One should simply think of them as 
-measurements in a narrow band around a redshift z. The combination of low 
-and high redshift measurements then get added to this sensitivity afterward, 
-as in Fig. 3. Rephrase: "z+0.2 (the multiple measurements slightly spread 
-in redshift are needed to allow fits of multiple cosmology parameters, 
-while still concentrating the sensitivity at a particular redshift z)." 
+measurements in a narrow band around a redshift z. We state this as 
+"the multiple measurements slightly spread in redshift are needed to allow 
+fits of multiple cosmology parameters, while still focusing the sensitivity 
+at a particular redshift z; we use z-0.2, z-0.1, z, z+0.1, z+0.2, while 
+see belowfor consideration of combining measurements at significantly 
+different redshifts." 
 
 2. The analysis takes no account of the observational effort required
 to achieve a certain zdot measurement. Essentially, the authors are
@@ -251,10 +236,11 @@ effort/resources). (This is of course a much more difficult analysis,
 in particular when covering a wide redshift range, as it presumably
 would involve multiple different techniques.) 
 
-EL: As we emphasize throughout the article, we are pointing out interesting 
-new aspects of this probe. First we need to know the redshift range, then 
-we identify possible sources, then we calculate the observing time needed, 
-in successive sections of the article. 
+** 
+As we emphasize throughout the article, we are pointing out interesting 
+new aspects of this probe. First we need to know the redshift sensitivity, 
+then we identify possible sources, then we calculate the observing time 
+needed, in successive sections of the article. 
 
 Secondly, while reading this part I could not help but thinking that
 the authors were barking up the wrong tree. Accelerated expansion is
@@ -262,7 +248,8 @@ of sufficient interest, and the redshift drift method of sufficient
 immaturity that such a detailed motivation for exploring ways of
 performing a low-z zdot measurement is not required. 
 
-EL: Redshift drift has previously been thought of as a high redshift 
+** 
+Redshift drift has previously been thought of as a high redshift 
 measurement, so the motivation of low redshift is worth discussing in 
 some detail. Figures 2 and 3 quantify the leverage of a given redshift; 
 they could have shown the initial motivation for low redshift measurements 
@@ -285,7 +272,7 @@ proper cost-benefit analysis, i.e. an analysis of how to best
 distribute resources among different techniques, redshift ranges, etc.
 
 **
-????
+The changes mentioned above to the text address each of these points. 
 
 - p 5 left column
 The entire part on astrophysical systematics is quite weak. This part
@@ -304,11 +291,14 @@ last sentence of this paragraph.  Finally, the very last paragraph of
 this section does not state anything beyond the obvious (and manages
 to do this in a confusing way).
 
-EL: Eq. 4 puts all the terms together, whereas people often only consider 
-subsets. All variables are currently defined, with the clarification rephrase: 
+** 
+We have added more explanation in the text, and more references. 
+All variables are currently defined, with the clarification rephrase: 
 "potentials, with a subscript e denoting emitter and o denoting observer." 
-Peculiar accelerations are often treated statistically, through the 
-power spectrum of density perturbations, while Eq. 5 makes clear that one 
+Eq. 4 puts all the terms together, whereas people have often only considered 
+subsets. We clarify that by treating peculiar accelerations statistically, 
+we mean through the power spectrum of density perturbations, which averages 
+over low and high density regions, while Eq. 5 makes clear that one 
 cares about an individual system, i.e. that type of object may be a high 
 fluctuation. For example the density perturbations 
 are linear on average but we often care about nonlinear systems. The last 
@@ -316,35 +306,6 @@ paragraph reminds the reader of the level of challenge faced; it is useful
 to show these numbers explicitly. We have rephrased: "separated sources 
 with statistically independent peculiar accelerations. To be explicit, 
 we recall that the precision required..." 
-
-AK: This section would benefit from a paragraph on expected peculiar
-acceleration on galactic and cluster scales, beyond the scaling
-relation in equation 5.  In this context, Amendola et al. (2008)
-should be cited.
-
-I am not parsimonious with respect to references. I don't see any harm
-in adding references to Lake (1981) and Phillips (1982) as historical
-work in peculiar acceleration to satisfy the referee.  Uzan,
-Bernadreau and Mellier (2008) also looks relevant.  We can cite Liske
-et al. as an example where peculiar accelerations of Ly-alpha
-absorbing gas has been calculated. 
-EL: I agree of citing Amendola+ and Uzan+ (see my point about Eq. 4). 
-Liske+ examines a very different scenario (linear vs nonlinear structure) 
-so if you do want to cite it, you should make this point. 
-
-For "should not be interpreted statistically", I agree with the
-referee that this is confusing.  For the sort of experiment we
-discuss, peculiar accelerations of a random ensemble of ELGs should
-average to zero.  The current sentence makes it seem like you can't
-average.
-
-
-AK: Leave this for Eric to edit since he understands this all better than
-me.  In particular, if the requested references are not included in
-the text I suggest that this be explicitly explained in the response.
-
-**
-???
 
 
 Section 3
@@ -397,15 +358,15 @@ al. (2013) misplaced. This paper deals with radio *transients*, not
 periodic sources. I would advocate to either add more content to this
 section or else to remove it.
 
-EL: As stated, we believe that these concepts are useful for stimulating 
+** 
+As stated, we believe that these concepts are useful for stimulating 
 further, perhaps more practical ideas. There is considerable excitement in the 
 gravitational wave community about testing fundamental physics, as indicated 
 in the Yunes et al paper. The Thornton et al reference is in a parenthetical 
-"but", and indicates the advances in sensitivity and the possibility of 
-new discoveries, although as the referee says these detected sources were 
-not periodic. Rephrase: “but see Thornton+ 2013; while this is for a transient, 
+"but", and we clarify the text and emphasize the possibility of new 
+discoveries by “but see Thornton+ 2013; while this is for a transient, 
 not periodic, source, an exciting prospect is that upcoming time domain surveys 
-such as LSST \cite{lsst} may find new classes of sources that could be used)”. 
+such as LSST or SKA may find new classes of sources that could be used”. 
 
 - Section 3.3 
 Again this section is very relevant, but again poorly executed.
@@ -434,11 +395,11 @@ things actually have a lot in common, but none of this is discussed.
 
 
 **
-This section has been significantly rewritten, we refer the referee to
-the latest draft.  There is no single implementation that we have in
-mind, however: the implementation depends on the geometry of the arc
-system and the type of source being lensed.  The rewrite should make
-this and the other things the referee points out clearer.
+This section has been significantly rewritten. There is no single 
+implementation that we have in mind, however: the implementation depends 
+on the geometry of the multiple image system and the type of source being 
+lensed.  Ongoing and future time domain surveys should clarify the 
+possibilities. 
 
 - p 7, l, 26
 "...and so the redshifts will be the same."
@@ -472,7 +433,7 @@ the time delay that applies to a Lyman-alpha absorption system seen in
 the foreground.
 
 **
-The new text includes the following"
+The new text includes the following 
 
 "The time delay for each gas cloud will not be directly measured, however they
 can be (at least approximately) constrained using the delay
@@ -492,8 +453,6 @@ combined focus of the VLT).
 
 AK: A fiber-fed spectrograph could do this.  Perhaps Jerry could write
 text on this. 
-EL: your recent rephrase is ok. 
-
 EL: rephrase: "and the images may not fall in the field of view of a 
 single spectroscopic telescope, and the lines-of-sight coherence may..." 
 
@@ -530,14 +489,10 @@ the radio and optical regimes. Secondly, if interested in the radio
 regime, the authors may wish to consult Darling (2012).
 
 **
-For redshift drift we are interested in the most accurate redshift
-measurement independent of wavelength. We have replaced the reference
-and results with those of Darling (2012) and specify this is a radio measurement.  
-
-To provide context, the radio redshift measurement as low as 
-$\sigma_z=2\times 10^{-8}$ for the absorption line system 0738+313A at $z=0.091$
-\citep{2012ApJ...761L..26D} represents current high-precision 
-work.
+We have replaced the reference and results with those of Darling (2012) 
+and specify this is a radio measurement.  For redshift drift we are 
+interested in the most accurate redshift measurement independent of 
+wavelength. 
 
 - p 8, l, 54
 "...and simultaneous differential measurements..."
