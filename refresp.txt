@@ -39,11 +39,6 @@ not aware of any such reason. Given enough S/N and/or patience the
 constraints from the redshift drift can be made arbitrarily tight. But
 perhaps I am misinterpreting this sentence? 
 
-EL: no fundamental reason, just that the accuracy needed is challenging 
-so we don't know how well it will actually work. Rephrase as 
-"This directness mean that even if.. of more established probes such as 
-distance... out." 
-
 **
 There is no fundamental reason that redshift drift is less
 constraining than other probes.  Achieving the accuracy needed is
@@ -90,20 +85,6 @@ is that a measurement of dz/dt at various redshifts allows one to
 directly reconstruct a(t) without the assumption of a cosmological
 model (or even a theory of gravity): dz/dt(a) provides
 da/dt(z). Together with a(z) one can thus reconstruct a(t).
-
-EL: As mentioned at the beginning of this paragraph, acceleration as a 
-physics word means positive or negative second time derivative. Regarding 
-the functional dependence, we rephrase to clarify that it does not need 
-to be *assumed*, but as the referee says it can be derived. Rephrase: 
-"indicates acceleration (positive or negative), with no need to assume 
-a priori the dynamics... dependence a(t) on matter density etc." 
-
-AK: I suggest “We emphasize that redshift drift, with prior knowledge
-of the Hubble constant, is a direct measurement of $H(z)\def
-\dot{a}/a$: its value at any redshift … without the need to make
-dynamical assumptions about $a(t)$.” 
-EL: I like mine better. People will say H(z) is not acceleration. 
-AK: I propose a very different response that follows.
 
 **
 As mentioned at the beginning of this paragraph, acceleration as a
@@ -247,7 +228,8 @@ this a free parameter? My point is that the best constraints will come
 from a combination of low and high redshift measurements (as
 acknowledged by the authors at line 40, right column). 
 
-EL: We have removed the misleading phrase “redshift range”; what we 
+**
+We have removed the misleading phrase “redshift range”; what we 
 calculate is sensitivity at a given redshift. Since to fit 4 free cosmological 
 parameters one needs at least 4 measurements at slightly different redshifts, we 
 spread them by 0.4 so as to keep them as localized as possible. If we had spread 
@@ -385,19 +367,23 @@ the pros and cons of radial BAO vs redshift drift. I simply do not
 understand what we are supposed to learn from this section or why it
 is even here. I would advocate its removal.
 
-ELnew: The Hubble drift gives substantially related information to redshift 
+**
+We rewrite the introductory paragraph to show the logical
+association of redshift drift and Hubble constant drift and
+acceleration.  
+
+The Hubble drift gives substantially related information to redshift 
 drift, but comes "for free" with spectroscopic galaxy clustering surveys 
 and so is important to emphasize. Differences and pros/cons are discussed 
 in the text and explicitly shown in Table 1. To clarify the distinction 
 and indicate we are making a comparison rather than inventing a new probe, 
 we rephrase the introductory paragraph of the subsection and explicitly 
 state: 
+
 "Here we briefly compare this Hubble drift from the 
 familiar concept of radial baryon acoustic oscillations 
 with redshift drift as discussed in the rest of this article." 
 
-**
-??
 
 - Section 3.2
 This section I found much more relevant, but unfortunately again not
@@ -449,7 +435,10 @@ things actually have a lot in common, but none of this is discussed.
 
 **
 This section has been significantly rewritten, we refer the referee to
-the latest draft.
+the latest draft.  There is no single implementation that we have in
+mind, however: the implementation depends on the geometry of the arc
+system and the type of source being lensed.  The rewrite should make
+this and the other things the referee points out clearer.
 
 - p 7, l, 26
 "...and so the redshifts will be the same."
@@ -529,8 +518,7 @@ broad ones) would not be particularly suited to a zdot measurement.
 Also the IGM lines are more like ~200 in number than 1000.
 
 **
-Liske et al. use ~500 metal absorption lines to calculate their
-standard deviation in peculiar velocity in Equation 16: we change the
+Liske et al. cite 225 metal absorption lines for Q1101-264; we change the
 text to use that number and cite Liske et al.
 
 Section 4
@@ -544,7 +532,7 @@ regime, the authors may wish to consult Darling (2012).
 **
 For redshift drift we are interested in the most accurate redshift
 measurement independent of wavelength. We have replaced the reference
-and results with those of Darling (2012) and specifiy this is a radio measurement.  
+and results with those of Darling (2012) and specify this is a radio measurement.  
 
 To provide context, the radio redshift measurement as low as 
 $\sigma_z=2\times 10^{-8}$ for the absorption line system 0738+313A at $z=0.091$
@@ -579,7 +567,7 @@ al. (2007), Steinmetz et al. (2008), Wilken et al. (2012).
 
 **
 We now refer to LFCs as the standard for accurate wavelength
-calibraions and added the suggested references.  We remove
+calibrations and added the suggested references.  We remove
 some of the references to the older calibration methods.
 
 Section 4.1
@@ -635,14 +623,27 @@ suspicious of the *absolute* values in Table 3. The relative values
 alternative techniques relative to the "Conventional" one) are
 probably ok.
 
-AK: I sent Daniel Thomas (Portsmouth), whom I know marginally, an
-e-mail inquiring how we should represent his work.
-
-An implementation of an experiment that we outline could benefit from
-an integral field unit, in part to resolve differt emission regions
-within the galaxy.
-
 **
+
+Indeed some of the velocity dispersions are low.  As an alternative
+extractor of line velocities, we examined the SDSS DR7 catalog made by
+the MPA-Garching group.  Their catalog contains dispersions as low as
+12 km/s.
+
+We have asked Daniel Thomas (Portsmouth) specifically on the velocity
+numbers and unreported systematic uncertainties but have not heard
+back from him. We take the SDSS DR10 database results at face value
+but do consider a range of line velocities as broad as Plate 4749
+Fiber 757, which is safely non-controversial.  As we note shortly, we
+now mention the need for higher-resolution spectroscopy for additional
+target screening.
+
+Solar-type stars can have a rotationally-caused dispersion of about 8
+km/s.  In recognition of the sensitivity of the result to pointing and
+unresolved spatial structure that contribute to the lines, we now
+mention the benefit from an integral field unit, in part to resolve
+different emission regions within the galaxy.
+
 
 - p 9, l, 37
 "...are difficult to access..."
@@ -792,7 +793,7 @@ Yes, we meant 2e-/h.
 Why are blocking filters relevant?
 
 **
-Blocking filters are relevent for the SHS, where light from the full
+Blocking filters are relevant for the SHS, where light from the full
 bandpass becomes background noise.
 
 - line 58
@@ -913,7 +914,7 @@ inteferometer.
 **
 
 As mentioned before, the text now gives an estimate of the throughput
-of the interferometer and the relative throughput with the convetional
+of the interferometer and the relative throughput with the conventional
 spectrograph.
 
 EDI's capability to "boost the resolution of a conventional
