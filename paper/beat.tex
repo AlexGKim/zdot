@@ -1165,7 +1165,9 @@ Redshift can also be measured through the sum and the difference of observed wav
 \end{equation}
 where $\sigma_i$ is the observed and $\sigma_{i0}$ the restframe wavenumber of line $i$.
 At face value, the measurement of $\sigma_1\pm\sigma_2$ should be expected to suffer larger uncertainty than that of the wavenumber
-of a single line.  To counter this expectation, we consider a scenario where the experimental setup has an output that is naturally sensitive
+of a single line.  
+\eric{Say ``larger ($\sqrt{2}$) uncertainty''?} 
+To counter this expectation, we consider a scenario where the experimental setup has an output that is naturally sensitive
 to $\sigma_1\pm\sigma_2$.  The differential measurement can be immune to certain systematic uncertainties encountered when using dispersion spectrographs.
 Redshifts are measured from the relative shift of two lines of a doublet; 
 the single line profile common to them enables cancellation of the PSF blurring of the
@@ -1259,8 +1261,8 @@ The SHS configuration can then be expressed in terms of the Littrow wavenumber.
 
 For the [OIII] doublet of the
 SDSS target specified by Plate~\#1268, Fiber~\#318 
-the condition for having only one beat frequency occurs when $\sigma_0=\sigma_2=17913$\,cm$^{-1}$ and
-occurs at $\theta=0.341551$ radians.
+the condition for having only one beat frequency occurs when $\sigma_0=\sigma_2=17913$\,cm$^{-1}$, for 
+$\theta=0.341551$ radians.
 Different choices of Littrow wavenumber
 produce different output signals:
 Figure~\ref{shscounts:fig} shows the expected counts adjusting $\sigma_0$ to produce beat frequency ratios
@@ -1302,8 +1304,7 @@ than for the Conventional and EDI spectrographs.
 Converting the spectrum to Fourier space transforms the sharp, imperfectly-known line profiles into the low-frequency envelope,
 distinct from the high-frequency wiggles characteristic to each configuration that inform the redshift measurement.
 The PSF blurring applies not in wavenumber space where it affects
-line shapes but rather in physical space after the conversion of the spectral lines into cosine functions. 
-
+line shapes but rather in physical space after the conversion of the spectral lines into cosine modulations. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \subsection{ED-SHS} 
@@ -1320,15 +1321,16 @@ I(\sigma,x) &= \frac{1}{\Delta x}\left[\int^{\sigma \exp{\left(1/(2R)\right)}}_{
 & \quad \otimes \mbox{PSF}(\sigma,x)\, \Sha\left(\frac{\sigma}{p_\sigma}\right) \Sha\left(\frac{x}{p_x}\right).
 \label{edishssig:eqn}
 \end{align}
-The similarities between ED-SHS and EDI can be seen in Fig,\ 2 of \citet{2003PASP..115..255E}; both use
+The similarities between ED-SHS and EDI can be seen in Fig.~2 of \citet{2003PASP..115..255E}; both use
 interferometry to create wavelength-dependent modulations in the signal, with the distinction
 \textcolor{red}
-{being that the EDI creates a uniform spatial frequency for all wavelengths and thus has an extremely wide bandwidth, whereas the ED-SHS creates a diamond-like fringe pattern whose spatial frequency varies rapidly around specific wavelength limiting the practical bandwidth significantly.}
+{being that the EDI creates a uniform spatial frequency for all wavelengths and thus has an extremely wide bandwidth, whereas the ED-SHS creates a diamond-like fringe pattern whose spatial frequency varies rapidly around a specific 
+wavelength, limiting the practical bandwidth significantly.}
 
 
 The signal from two columns of pixels corresponding to the two wavelengths of
 the [OIII] doublet of the
-SDSS target specified by Plate~\#1268, Fiber~\#318 is shown in Figure~\ref{edshs:fig}.
+SDSS target specified by Plate~\#1268, Fiber~\#318 is shown in Fig.~\ref{edshs:fig}.
 The Littrow wavelength is set to the average of the two lines  $\sigma_0=(\sigma_1+\sigma_2)/2$.
 In an SHS the output signal would be the sum of these and all other columns in the bandpass.
 
