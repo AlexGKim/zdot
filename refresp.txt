@@ -620,11 +620,13 @@ confirmed at higher spectral resolution.
 **
 We have added a new paragraph:
 
-"SDSS3 (just as the aforementioned future surveys) has a spectrograph that does
-not resolve lines as fine as those quoted in the Table~\ref{lines:tab} and velocity dispersions come
-from a model fit that may produce underestimated uncertainties:
-targets initially identified with $R\lesssim 2000$ spectrographs need subsequent screening with
-higher-resolution spectrographs."
+SDSS3 (just as the aforementioned future surveys) has a spectrograph that does
+not resolve lines as fine as those quoted in Table~\ref{lines:tab}.  Velocity dispersions come
+from a model fit and the uncertainties given in DR10 are underestimated for low dispersions (Thomas 2014). 
+Therefore, targets initially identified with $R\lesssim 2000$ spectrographs need subsequent screening with
+integral-field-unit (for spatial resolution),
+high spectral-resolution  spectrographs: the resulting minimum dispersion may be expected to be higher
+than found listed in Table~\ref{lines:tab}.
 
 
 -p 9, l, 51
