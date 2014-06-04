@@ -451,13 +451,17 @@ other hand, this could be easily solved by having two telescopes feed
 the same spectrograph (see the example of ESPRESSO in the incoherent
 combined focus of the VLT).
 
-AK: A fiber-fed spectrograph could do this.  Perhaps Jerry could write
-text on this. 
-EL: rephrase: "and the images may not fall in the field of view of a 
-single spectroscopic telescope, and the lines-of-sight coherence may..." 
-
 **
-???
+
+Fiber fed spectrographs on a single telescope can be (and are today)
+used to obtain simultaneous observations of objects that have larger
+angular separations than a spectrograph’s instantaneous field of
+view. The fiber are positioned on the sky to collect the flux of each
+object and be arranged at the spectrograph’s entrance slit. Techniques
+are in existence that mitigate fiber effect = on the apparent
+wavelength. For example, the HARPS instruments (Cosentino et al. 2012
+SPIE, Vol 8446) achieve velocity resolutions of 10’s of cm/s using
+four fibers simultaneously feeding a spectrograph.
 
 - p 7, r, 56
 "...spectrum of image B should match..."
@@ -466,7 +470,7 @@ I disagree. The redshifts of these two spectra should differ by
 
 **
 The sentence begins with saying that the time delay is one year so be
-definition the spectra of the two images will have a 1-year lag. ???
+definition the spectra of the two images will have a 1-year lag.
 
 
 - p 8, l, 31
@@ -847,7 +851,8 @@ scrambling devices (i.e. devices that have an output light
 distribution hat is independent of the input light distribution.
 
 **
-???
+Yes, we now cite HARPS-N, an instrument that uses light scrambling to
+measure precision wavelengths.
 
 Section 4.4
 
