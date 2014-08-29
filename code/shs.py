@@ -8,6 +8,9 @@ from scipy.interpolate import interp1d
 from astropy.cosmology import FlatLambdaCDM
 import pprint
 
+gals=[(2510,560),(1314,303),(594,516),(2872,468)]
+gals=[(2510,560)]
+
 def skyflux(_in):
   mag=numpy.array([22.08,22.81,21.79,21.19,19.85])
   wavelength=numpy.array([3650,4450,5510,6580,8080])*1e-10
@@ -108,6 +111,7 @@ def edi_counts(_lines,edi):
   sw=numpy.zeros((4*npix,len(edi.spectro.sigmas)))
   ind=0
   shift = 2./(_lines.sigma1+_lines.sigma2)/4
+  #print tau, shift
   #print shift
   for phi in numpy.arange(0,4):
     ans=.25*s0*(1+numpy.cos(2*numpy.pi*(tau + phi*shift)*edi.spectro.finesigmas))
@@ -184,18 +188,24 @@ class Lines(object):
         self.deltav=10.03548/3e5
         self.a1_0=3315.32e-17 #3438.711e-17
         self.a2_0=1094.53e-17 #1203.549e-17
+        self.amp_flux1=1170.508/3438.711
+        self.amp_flux2=409.6776/1203.549
         self.gal=(14.7624+14.3708)/2*1e-17
       elif (plate == 1935	 and fiber == 204):
         self.z=0.09838755
         self.deltav=10.03865/3e5
         self.a1_0=5934.72e-17 #3547.454e-17
         self.a2_0=1959.3e-17 #1241.609e-17
+        self.amp_flux1=1238.031/3547.454
+        self.amp_flux2=433.311/1241.609
         self.gal=(19.3408+19.0352)/2*1e-17
       elif (plate == 1657	 and fiber == 483):
         self.z=0.2213398
         self.deltav=10.30226/3e5
         self.a1_0=1839.82e-17 #1699.26e-17
         self.a2_0=607.401e-17 # 594.7409e-17
+        self.amp_flux1=532.8035/1699.26
+        self.amp_flux2=186.4812/594.7409
         self.gal=(11.0375+10.6736)/2*1e-17
       elif (plate == 4794	 and fiber == 757):
         self.z=0.5601137
@@ -208,6 +218,8 @@ class Lines(object):
         self.deltav=10.00679/3e5
         self.a1_0=116.704e-17#55.258061e-17
         self.a2_0=38.5289e-17#19.34032e-17
+        self.amp_flux1=49.13626/125.847
+        self.amp_flux2=45.14767/115.5477
         self.gal=(10.9357+10.4893)/2*1e-17
       elif (plate == 1036 and fiber == 584):
         self.mjd=52562
@@ -215,6 +227,8 @@ class Lines(object):
         self.deltav=4.545177/3e5
         self.a1_0=105.064e-17
         self.a2_0=34.6861e-17
+        self.amp_flux1=51.88377/148.4566
+        self.amp_flux2=18.15932/51.95982
         self.gal=(4.7564+4.08471)/2*1e-17
       elif (plate == 1073 and fiber == 225):
         self.mjd=52649
@@ -222,6 +236,8 @@ class Lines(object):
         self.deltav=1.428721/3e5
         self.a1_0=113.574e-17
         self.a2_0=37.4957e-17
+        self.amp_flux1=15795.14/51747.61
+        self.amp_flux2=5528.3/18111.66
         self.gal=(3.88981+3.88917)/2*1e-17
       elif (plate == 1523 and fiber == 602):
         self.mjd=52937
@@ -229,6 +245,8 @@ class Lines(object):
         self.deltav=5.1353/3e5
         self.a1_0=213.148e-17
         self.a2_0=70.3692e-17
+        self.amp_flux1=74.38035/209.3949
+        self.amp_flux2=26.03312/73.2882
         self.gal=(1.875331+2.05596)/2*1e-17
       elif (plate == 2959 and fiber == 354):
         self.mjd=54537
@@ -236,7 +254,39 @@ class Lines(object):
         self.deltav=6.857259/3e5
         self.a1_0=33.6067e-17
         self.a2_0=11.095e-17
+        self.amp_flux1=126.9352/368.369
+        self.amp_flux2=44.42734/128.9291
         self.gal=(0.165449+0.137032)/2*1e-17
+
+
+      #data from spZline
+      elif (plate == 2510 and fiber == 560):
+        self.z=0.045
+        self.mjd=53877
+        self.deltav=75.51/3e5
+        self.a1_0=6915.8e-17
+        self.a2_0=20947.95e-17
+        self.amp_flux1= -1. #51.31144/213.2651
+        self.amp_flux2=-1. # 34.33864/142.3279
+        self.gal=(22.36+22.19)/2*1E-17
+      elif (plate == 1314 and fiber == 303):
+        self.z=0.15
+        self.mjd=52792
+        self.deltav=36.94/3e5
+        self.a1_0=255.07e-17
+        self.a2_0=772.61e-17
+        self.amp_flux1=0
+        self.amp_flux2=0
+        self.gal=(8.31+8.42)/2*1E-17
+      elif (plate == 594 and fiber == 516):
+        self.z=0.21
+        self.mjd=52027
+        self.deltav=93.64/3e5
+        self.a1_0=1084.21e-17
+        self.a2_0=3284.07e-17
+        self.amp_flux1=0
+        self.amp_flux2=0
+        self.gal=(3.39+3.5)/2*1E-17
       else:
         raise NameError('bad name')
     #[OII] http://arxiv.org/pdf/1310.0615.pdf
@@ -285,19 +335,25 @@ class Lines(object):
         self.deltav=(10.0547+10.03259)/2/3e5
         self.a1_0=629.109e-17 #686.3459e-17
         self.a2_0=589.096e-17 # 609.7103e-17
-        self.gal=(17.6749+17.7632)/2*1E-17 
+        self.amp_flux1=278.6776/609.7103
+        self.amp_flux2=313.9144/686.3459
+        self.gal=(17.6749+17.7632)/2*1E-17
       elif (plate == 1935 and fiber == 204):
         self.z=0.09838755	
         self.deltav=10.05437/3e5
         self.a1_0=1276.21e-17 #1515.795e-17
         self.a2_0=1055.79e-17 #786.8914e-17
-        self.gal=(23.8402+23.9842)/2*1E-17 
+        self.amp_flux1=710.1373/1515.795
+        self.amp_flux2=368.9975/786.8914
+        self.gal=(23.8402+23.9842)/2*1E-17
       elif (plate == 1657 and fiber == 483):
         self.z=0.2213398	
         self.deltav=(10.35904+10.35904)/2/3e5
         self.a1_0=427.779e-17 #459.011e-17
         self.a2_0=469.207e-17 #476.065e-17
-        self.gal=(13.5476+13.5792)/2*1E-17 
+        self.amp_flux1=193.2774/459.011
+        self.amp_flux2=200.5485/476.065
+        self.gal=(13.5476+13.5792)/2*1E-17
       elif (plate == 4794 and fiber == 757):
         self.z=0.5601137		
         self.deltav=(49.60205+42.17744)/2/3e5
@@ -309,21 +365,63 @@ class Lines(object):
         self.deltav=(10.00539+10.0053)/2/3e5
         self.a1_0=173.733e-17 #125.847e-17
         self.a2_0=120.246e-17 #115.5477e-17
-        self.gal=(6.33959+6.35175)/2*1E-17 
+        self.amp_flux1=49.13626/125.847
+        self.amp_flux2=45.14767/115.5477
+        self.gal=(6.33959+6.35175)/2*1E-17
       elif (plate == 1059 and fiber == 564):
         self.z=0.693329
-	self.mjd=52592
+        self.mjd=52592
         self.deltav=(9.460785+9.699522)/2/3e5
         self.a1_0=1943.71e-17
         self.a2_0=1.39517e-17
         self.gal=(1.46043+1.47121)/2*1E-17 
       elif (plate == 1073 and fiber == 225):
         self.z=0.2716023
-	self.mjd=52649
+        self.mjd=52649
         self.deltav=(84.61399+84.87743)/2/3e5
         self.a1_0=104.709e-17
         self.a2_0=83.7931e-17
+        self.amp_flux1=51.31144/213.2651
+        self.amp_flux2=34.33864/142.3279
         self.gal=(3.33375+3.39536)/2*1E-17
+
+      #data from spZline
+      elif (plate == 2510 and fiber == 560):
+        self.z=0.045
+        self.mjd=53877
+        self.deltav=75.51/3e5
+        self.a1_0=2145.05e-17
+        self.a2_0=2009.97e-17
+        self.amp_flux1=0 
+        self.amp_flux2=0 
+        self.gal=(43.89+43.84)/2*1E-17      
+      elif (plate == 1314 and fiber == 303):
+        self.z=0.15
+        self.mjd=52792
+        self.deltav=36.94/3e5
+        self.a1_0=6.17e-17
+        self.a2_0=3.51e-17
+        self.amp_flux1=0
+        self.amp_flux2=0
+        self.gal=(5.29+4.88)/2*1E-17
+      elif (plate == 594 and fiber == 516):
+        self.z=0.21
+        self.mjd=52027
+        self.deltav=93.64/3e5
+        self.a1_0=452.28e-17
+        self.a2_0=440.74e-17
+        self.amp_flux1=0
+        self.amp_flux2=0
+        self.gal=(5.95+5.98)/2*1E-17
+      elif (plate == 2872 and fiber == 468):
+        self.z=0.68
+        self.mjd=54468
+        self.deltav=42.47/3e5
+        self.a1_0=357.69e-17
+        self.a2_0=3.44e-17
+        self.amp_flux1=0
+        self.amp_flux2=0
+        self.gal=(11.84+11.83)/2*1E-17
       else:
         raise NameError('bad name')
     seeing = 1.
@@ -401,7 +499,6 @@ class EDI(object):
     #mnsigma=(1/_lines.lambda1_0+1/_lines.lambda2_0)/2
     #dsigma=mnsigma*(1/(1+_lines.z)-1/(1+_lines.z+dz))    
     self.tau=1/(2.36*numpy.sqrt(_lines.l12)*2)
-    
     self.aperture=numpy.pi*(10e2/2)**2 
     self.etime=3600.*8
     self.nexp=4
@@ -476,7 +573,7 @@ def gendata():
   counts=[spec_counts,edi_counts,shs_counts,edshs_counts]
   _args=[100000,40000,(1.5,False),(1.5,False)]
 
-  gals=[(1523,602),(1935,204),(1036,584),(2959,354),(1268,318),(1657,483),(1073,225),(1514,137),(4794,757),(1059,564)]
+#  gals=[(1523,602),(1935,204),(1036,584),(2959,354),(1268,318),(1657,483),(1073,225),(1514,137),(4794,757),(1059,564)]
   ans=dict()
   ind=0
   for name,inst,_counts,args in zip(names,insts,counts,_args):
@@ -555,32 +652,36 @@ def widthplot():
   #widthplot()
 
 def linetable():
-  gals=[(1523,602),(1935,204),(1036,584),(2959,354),(1268,318),(1657,483),(1073,225),(1514,137),(4794,757),(1059,564)]
+#  gals=[(1523,602),(1935,204),(1036,584),(2959,354),(1268,318),(1657,483),(1073,225),(1514,137),(4794,757),(1059,564)]
   for plate,fiber in gals:
-    print "{} & {} &".format(plate,fiber),
     try:
       lines=Lines(plate,fiber,'OII')
       z=lines.z
+      deltav=lines.deltav
+      mjd=lines.mjd
     except NameError:
       lines=Lines(plate,fiber,'OIII')
       z=lines.z
-    print "{:6.3f}".format(z),
+      deltav=lines.deltav
+      mjd=lines.mjd
+    print "{} & {} & {} &".format(plate,mjd, fiber),
+    print "{:6.3f} & {:5.3f}".format(z, deltav*3e5),
     try:
       lines=Lines(plate,fiber,'OII')
-      print "&[OII] & ${:5.3f}$ &${:5.2e}}}$ &${:5.2e}}}$ &${:5.2e}}}$\\\\".format(lines.deltav*3e5, lines.a2_0, lines.a1_0, lines.gal)
-      print "&&"
+      print "&[OII] &${:5.2e}}}$ &${:5.2e}}}$ &${:5.2e}}}$\\\\".format( lines.a2_0, lines.a1_0, lines.gal)
+      print "&&&&"
     except NameError:
       print ""
     try:
       lines=Lines(plate,fiber,'OIII')
-      print "&[OIII]& ${:5.2f}$ &${:5.2e}}}$ &${:5.2e}}}$ &${:5.2e}}}$ \\\\ ".format(lines.deltav*3e5, lines.a2_0, lines.a1_0, lines.gal)
+      print "&[OIII] &${:5.2e}}}$ &${:5.2e}}}$ &${:5.2e}}}$ \\\\ ".format( lines.a2_0, lines.a1_0, lines.gal)
       print "\\tableline"
     except NameError:
       print "\\tableline"
 
 def ediplot():
-  plate=1268
-  fiber=318
+  plate=2510
+  fiber=560
   lines=Lines(plate,fiber,'OIII')
   edi=EDI(lines)
   print edi.tau
@@ -592,17 +693,16 @@ def ediplot():
   plt.plot(edi.spectro.sigmas/100,ans[11],label="$n=3$")
   plt.xlabel('Wavenumber (cm$^{-1}$)')
   plt.ylabel('Counts per resolution element')
-  plt.xlim((lines.sigma1*.99985/100,lines.sigma1*1.00015/100))
+  plt.xlim((lines.sigma1*.999/100,lines.sigma1*1.001/100))
   plt.ticklabel_format(axis='x', useOffset=False)
+  plt.ylim((0,1000000))
   plt.legend()
   plt.savefig("/Users/akim/Work/zdot/paper/edi.pdf")
 
 
-
-
 def edshsplot():
-  plate=1268
-  fiber=318
+  plate=2510
+  fiber=560
   lines=Lines(plate,fiber,'OIII')
   shs=SHS(lines,(1e4, False))
   ans=edshs_counts(lines,shs)
@@ -635,8 +735,8 @@ def edshsplot():
   plt.savefig("/Users/akim/Work/zdot/paper/edshs.pdf")
 
 def shsplot():
-  plate=1268
-  fiber=318
+  plate=2510
+  fiber=560
   lines=Lines(plate,fiber,'OIII')
   plt.clf()
   plt.figure(figsize=(8,10))
@@ -668,13 +768,29 @@ def shsplot():
 
   plt.savefig('shscounts.pdf')
 
-#ediplot()
-#shsplot()
-#edshsplot()
+
+def amp_flux():
+#    gals=[(1523,602),(1935,204),(1036,584),(2959,354),(1268,318),(1657,483),(1073,225),(1514,137),(4794,757),(1059,564)]
+    for plate,fiber in gals:
+        print "{} & {} &".format(plate,fiber),
+        try:
+            lines=Lines(plate,fiber,'OII')
+            print "&[OII] & ${:5.3f}$ & ${:5.3f}$ \\\\".format(lines.amp_flux1, lines.amp_flux2)
+            print "&&"
+        except NameError:
+            print ""
+        try:
+            lines=Lines(plate,fiber,'OIII')
+            print "&[OII] & ${:5.3f}$ & ${:5.3f}$ \\\\".format(lines.amp_flux1, lines.amp_flux2)
+            print "\\tableline"
+        except NameError:
+            print "\\tableline"
+
+#amp_flux()
 
 def specplot():
-  plate=1268
-  fiber=318
+  plate=2510
+  fiber=560
   lines=Lines(plate,fiber,'OIII')
   edi=EDI(lines)
   ans=spec_counts(lines,edi)
@@ -687,12 +803,16 @@ def specplot():
   plt.legend()
   plt.savefig("/Users/akim/Work/zdot/paper/spec.pdf")
 
-#gendata()
+gendata()
 
-table()
-  #ediplot()
+#table()
+#ediplot()
 #specplot()
-#linetable()
+#shsplot()
+#edshsplot()
+
+linetable()
+shit
 
 def plotvelocity():
   plate=1268

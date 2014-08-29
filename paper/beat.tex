@@ -422,13 +422,17 @@ larger than the first, McVittie-Sandage term, and so must be reduced through
 the use of many independent sources, or sources in particularly ``quiet'' 
 (smooth gravitational potential) regions.
 See \citet{2008PhLB..660...81A,2008PhRvD..77b1301U} for 
-more detailed calculations. It is important to realize that estimates of 
-an individual peculiar acceleration should not be statistically averaged 
-over sources in 
-low-density and high-density regions (as in a power spectrum approach), 
-but treated for an individual line of sight. 
-Similarly it should not be treated as though the source was in the linear 
-density perturbation regime. 
+more detailed calculations.
+Note that when calculating the expected peculiar accelerations of astronomical sources one must recognize that those sources
+preferentially occur in high-density regions, so that improper assumptions of the linearity of density perturbations or spatial averaging over the
+power spectrum will generally underestimate peculiar accelerations.
+%. It is important to realize that estimates of 
+%an individual peculiar acceleration should not be statistically averaged 
+%over sources in 
+%low-density and high-density regions (as in a power spectrum approach), 
+%but treated for an individual line of sight. 
+%Similarly it should not be treated as though the source was in the linear 
+%density perturbation regime. 
 
 Methods exist for ameliorating these systematics, e.g.\ observing several 
 well separated sources 
@@ -683,7 +687,7 @@ The time delay for each gas cloud will not be directly measured, however they
 can be (at least approximately) constrained using the delay
 of the background quasar and the Friedmann-Robertson-Walker geometry. 
 
-Wide field surveys such as Dark Energy Survey and LSST will find 
+Wide-field surveys such as Dark Energy Survey and that planned for LSST will find 
 approximately $10^3$ and $10^4$ strongly lensed quasars, respectively.  
 Monitoring 
 campaigns such as COSMOGRAIL \citep{cosmograil} and STRIDES \citep{strides} 
@@ -768,65 +772,43 @@ As just noted, within a single exposure the cross-correlation of the two doublet
 Similarly, cross-correlation of multiple spectra taken at different epochs provides a robust redshift-drift measurement. 
 
 
-We study potential targets from the Sloan Digital Sky Survey data release SDSS3 DR10.  The  Portsmouth Emission-Line Kinematics table \citep{2013MNRAS.431.1383T}  is used to select
+We study potential targets from the Sloan Digital Sky Survey data release SDSS3 DR10. 
+The ``spZline'' emission-line fits to the spectra are used to select
 objects 
-with $z>0.08$
-and sharp and bright [OII] and/or [OIII] emission lines.
+with sharp and bright [OII] and/or [OIII] emission lines.
 The redshifts, velocity dispersions $\Delta v$, line strengths, and host continuum levels for a select set of galaxies are shown in Table~\ref{lines:tab}. 
-The two-line average $\Delta v$ for [OII], and the continuum fluxes for both doublets  are given.
-The Portsmouth table  gives ``rest-frame'' fluxes corrected for dust correction;
-the observed fluxes needed to simulate observations are taken from the spZline data model
-\citep{2012AJ....144..144B}.  In some cases only one doublet is visible, for example with high-redshift galaxies where [OIII] features are shifted to the near-infrared and are difficult to access from ground-based observations.
+spZline fits a common $\Delta v$ for all forbidden lines while the average continuum fluxes for both doublets  are given.
+For target Plate~\#2872, Fiber~\#468, at $z=0.680$, the [OIII] features are shifted to the near-infrared and are difficult to access from ground-based observations.
 The SDSS spectrum from a representative 
-target, from Plate~\#1268, Fiber~\#318, is shown in Figure~\ref{shsinput:fig}. 
+target, from Plate~\#2510, Fiber~\#560, is shown in Figure~\ref{shsinput:fig}. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\begin{deluxetable}{cccccccc}
-\tablecolumns{8} 
+\begin{deluxetable}{ccccccccc}
+\tablecolumns{9} 
+\tabletypesize{\small}
 \tablewidth{0pc} 
 \tablecaption{Target Line Properties.\label{lines:tab}}
 \tablehead{
-\colhead{} &\colhead{} &\colhead{} &\colhead{}  &\colhead{$\Delta v$} & \colhead{Flux 1}  & \colhead{Flux 2} & \colhead{Continuum}\\
-\colhead{Plate} & \colhead{Fiber} &\colhead{$z$}&\colhead{Doublet} &\colhead{(km\,s$^{-1}$)}& \colhead{(erg\,s$^{-1}$cm$^{-2}$)}& \colhead{(erg\,s$^{-1}$cm$^{-2}$)}& \colhead{(erg\,s$^{-1}$cm$^{-2}$\AA$^{-1}$)}
+\colhead{} &\colhead{} &\colhead{}&\colhead{} &\colhead{$\Delta v$}&\colhead{}   & \colhead{Flux 1}  & \colhead{Flux 2} & \colhead{Continuum}\\
+\colhead{Plate} & \colhead{MJD} & \colhead{Fiber} &\colhead{$z$}&\colhead{(km\,s$^{-1}$)}&\colhead{Doublet} & \colhead{(erg\,s$^{-1}$cm$^{-2}$)}& \colhead{(erg\,s$^{-1}$cm$^{-2}$)}& \colhead{(erg\,s$^{-1}$cm$^{-2}$\AA$^{-1}$)}
 }
 \startdata
-1523 & 602 &  0.089 
-&[OIII]& $ 5.14$ &$7.04\times 10^{-16}$ &$2.13\times 10^{-15}$ &$1.97\times 10^{-17}$ \\ 
 \tableline
-1935 & 204 &  0.098 &[OII] & $10.054$ &$1.06\times 10^{-14}$ &$1.28\times 10^{-14}$ &$2.39\times 10^{-16}$\\
-&&
-&[OIII]& $10.04$ &$1.96\times 10^{-14}$ &$5.93\times 10^{-14}$ &$1.92\times 10^{-16}$ \\ 
+2510 & 53877 & 560 &  0.045 & 75.510 &[OII] &$2.01\times10^{-14}$ &$2.15\times10^{-14}$ &$4.39\times10^{-16}$\\
+&&&&
+&[OIII] &$2.09\times10^{-13}$ &$6.92\times10^{-14}$ &$2.23\times10^{-16}$ \\ 
 \tableline
-1036 & 584 &  0.108 
-&[OIII]& $ 4.55$ &$3.47\times 10^{-16}$ &$1.05\times 10^{-15}$ &$4.42\times 10^{-17}$ \\ 
+1314 & 52792 & 303 &  0.150 & 36.940 &[OII] &$3.51\times10^{-17}$ &$6.17\times10^{-17}$ &$5.09\times10^{-17}$\\
+&&&&
+&[OIII] &$7.73\times10^{-15}$ &$2.55\times10^{-15}$ &$8.37\times10^{-17}$ \\ 
 \tableline
-2959 & 354 &  0.120 
-&[OIII]& $ 6.86$ &$1.11\times 10^{-16}$ &$3.36\times 10^{-16}$ &$1.51\times 10^{-18}$ \\ 
+594 & 52027 & 516 &  0.210 & 93.640 &[OII] &$4.41\times10^{-15}$ &$4.52\times10^{-15}$ &$5.97\times10^{-17}$\\
+&&&&
+&[OIII] &$3.28\times10^{-14}$ &$1.08\times10^{-14}$ &$3.45\times10^{-17}$ \\ 
 \tableline
-1268 & 318 &  0.126 &[OII] & $10.044$ &$5.89\times 10^{-15}$ &$6.29\times 10^{-15}$ &$1.77\times 10^{-16}$\\
-&&
-&[OIII]& $10.04$ &$1.09\times 10^{-14}$ &$3.32\times 10^{-14}$ &$1.46\times 10^{-16}$ \\ 
+2872 & 54468 & 468 &  0.680 & 42.470 &[OII] &$3.44\times10^{-17}$ &$3.58\times10^{-15}$ &$1.18\times10^{-16}$\\
 \tableline
-1657 & 483 &  0.221 &[OII] & $10.359$ &$4.69\times 10^{-15}$ &$4.28\times 10^{-15}$ &$1.36\times 10^{-16}$\\
-&&
-&[OIII]& $10.30$ &$6.07\times 10^{-15}$ &$1.84\times 10^{-14}$ &$1.09\times 10^{-16}$ \\ 
-\tableline
-1073 & 225 &  0.272 &[OII] & $84.746$ &$8.38\times 10^{-16}$ &$1.05\times 10^{-15}$ &$3.36\times 10^{-17}$\\
-&&
-&[OIII]& $ 1.43$ &$3.75\times 10^{-16}$ &$1.14\times 10^{-15}$ &$3.89\times 10^{-17}$ \\ 
-\tableline
-1514 & 137 &  0.318 &[OII] & $10.005$ &$1.20\times 10^{-15}$ &$1.74\times 10^{-15}$ &$6.35\times 10^{-17}$\\
-&&
-&[OIII]& $10.01$ &$3.85\times 10^{-16}$ &$1.17\times 10^{-15}$ &$1.07\times 10^{-16}$ \\ 
-\tableline
-4794 & 757 &  0.560 &[OII] & $45.890$ &$2.03\times 10^{-16}$ &$3.18\times 10^{-16}$ &$8.18\times 10^{-18}$\\
-&&
-&[OIII]& $26.45$ &$8.29\times 10^{-17}$ &$2.51\times 10^{-16}$ &$1.51\times 10^{-17}$ \\ 
-\tableline
-1059 & 564 &  0.693 &[OII] & $9.580$ &$1.40\times 10^{-17}$ &$1.94\times 10^{-14}$ &$1.47\times 10^{-17}$\\
-\tableline
-
 \enddata
 \end{deluxetable}
 
@@ -835,9 +817,9 @@ target, from Plate~\#1268, Fiber~\#318, is shown in Figure~\ref{shsinput:fig}.
 \begin{figure}[t]
    \centering
 %    \includegraphics[scale=0.4]{SpecById.pdf} 
-    \includegraphics[width=\columnwidth]{SpecById.pdf} 
+    \includegraphics[width=\columnwidth]{2510_560.pdf} 
   % \plotone{SpecById.eps} 
-   \caption{Spectrum of SDSS target specified by Plate~\#1268, Fiber~\#318 from the SDSS3 DR10.  \label{shsinput:fig}}
+   \caption{Spectrum of SDSS target specified by Plate~\#2510, Fiber~\#560 from the SDSS3 DR10.    \label{shsinput:fig}}
 \end{figure}
 
 
@@ -973,48 +955,26 @@ an 8 Hour Exposure on a 10-m Telescope For Different Spectrograph Types.
 \colhead{Plate} &\colhead{Fiber}  &\colhead{Doublet}& \colhead{Conventional} & \colhead{EDI} & \colhead{SHS} &\colhead{ED-SHS}
 }
 \startdata
-1523 & 602 
-& OIII  & $2.4\times10^{-8}$  & $8.2\times10^{-9}$  & $3.4\times10^{-8}$  & $8.4\times10^{-9}$  \\
 \tableline
-1935 & 204 
-& OII & $1.9\times10^{-8}$  & $6.3\times10^{-9}$  & $2.5\times10^{-8}$  & $6.4\times10^{-9}$  \\
-& &OIII  & $8.9\times10^{-9}$  & $2.9\times10^{-9}$  & $1.1\times10^{-8}$  & $2.9\times10^{-9}$  \\
-& &OII\&OIII  & $8.1\times10^{-9}$  & $2.6\times10^{-9}$  & $1.0\times10^{-8}$  & $2.6\times10^{-9}$  \\
+2510 & 560 
+& OII & $1.5\times10^{-7}$  & $4.9\times10^{-8}$  & $1.7\times10^{-7}$  & $4.8\times10^{-8}$  \\
+& &OIII  & $3.5\times10^{-8}$  & $1.1\times10^{-8}$  & $4.3\times10^{-8}$  & $1.1\times10^{-8}$  \\
+& &OII\&OIII  & $3.4\times10^{-8}$  & $1.1\times10^{-8}$  & $4.2\times10^{-8}$  & $1.1\times10^{-8}$  \\
 \tableline
-1036 & 584 
-&OIII  & $3.2\times10^{-8}$  & $1.1\times10^{-8}$  & $6.0\times10^{-8}$  & $1.1\times10^{-8}$  \\
+1314 & 303 
+& OII & $2.5\times10^{-6}$  & $7.6\times10^{-7}$  & $2.8\times10^{-6}$  & $8.5\times10^{-7}$  \\
+& &OIII  & $1.0\times10^{-7}$  & $3.2\times10^{-8}$  & $1.4\times10^{-7}$  & $3.2\times10^{-8}$  \\
+& &OII\&OIII  & $1.0\times10^{-7}$  & $3.2\times10^{-8}$  & $1.4\times10^{-7}$  & $3.2\times10^{-8}$  \\
 \tableline
-2959 & 354 
-&OIII  & $8.5\times10^{-8}$  & $2.8\times10^{-8}$  & $1.4\times10^{-7}$  & $3.0\times10^{-8}$  \\
+594 & 516 
+& OII & $4.6\times10^{-7}$  & $1.5\times10^{-7}$  & $7.2\times10^{-7}$  & $1.5\times10^{-7}$  \\
+& &OIII  & $1.2\times10^{-7}$  & $3.8\times10^{-8}$  & $1.4\times10^{-7}$  & $3.8\times10^{-8}$  \\
+& &OII\&OIII  & $1.2\times10^{-7}$  & $3.7\times10^{-8}$  & $1.4\times10^{-7}$  & $3.7\times10^{-8}$  \\
 \tableline
-1268 & 318 
-& OII & $2.7\times10^{-8}$  & $8.8\times10^{-9}$  & $3.5\times10^{-8}$  & $9.1\times10^{-9}$  \\
-& &OIII  & $1.2\times10^{-8}$  & $3.9\times10^{-9}$  & $1.6\times10^{-8}$  & $3.9\times10^{-9}$  \\
-& &OII\&OIII  & $1.1\times10^{-8}$  & $3.6\times10^{-9}$  & $1.4\times10^{-8}$  & $3.6\times10^{-9}$  \\
+2872 & 468 
+& OII & $2.9\times10^{-7}$  & $9.2\times10^{-8}$  & $2.7\times10^{-7}$  & $9.3\times10^{-8}$  \\
 \tableline
-1657 & 483 
-& OII & $3.4\times10^{-8}$  & $1.1\times10^{-8}$  & $4.4\times10^{-8}$  & $1.1\times10^{-8}$  \\
-& &OIII  & $1.8\times10^{-8}$  & $5.7\times10^{-9}$  & $2.3\times10^{-8}$  & $5.7\times10^{-9}$  \\
-& &OII\&OIII  & $1.6\times10^{-8}$  & $5.0\times10^{-9}$  & $2.0\times10^{-8}$  & $5.1\times10^{-9}$  \\
-\tableline
-1073 & 225 
-& OII & $1.0\times10^{-6}$  & $3.2\times10^{-7}$  & $1.2\times10^{-6}$  & $3.5\times10^{-7}$  \\
-& &OIII  & $1.7\times10^{-8}$  & $6.2\times10^{-9}$  & $1.9\times10^{-8}$  & $7.3\times10^{-9}$  \\
-& &OII\&OIII  & $1.7\times10^{-8}$  & $6.2\times10^{-9}$  & $1.9\times10^{-8}$  & $7.3\times10^{-9}$  \\
-\tableline
-1514 & 137 
-& OII & $6.1\times10^{-8}$  & $2.0\times10^{-8}$  & $7.8\times10^{-8}$  & $2.1\times10^{-8}$  \\
-& &OIII  & $7.9\times10^{-8}$  & $2.6\times10^{-8}$  & $1.9\times10^{-7}$  & $2.6\times10^{-8}$  \\
-& &OII\&OIII  & $4.9\times10^{-8}$  & $1.6\times10^{-8}$  & $7.2\times10^{-8}$  & $1.6\times10^{-8}$  \\
-\tableline
-4794 & 757 
-& OII & $8.8\times10^{-7}$  & $2.8\times10^{-7}$  & $9.4\times10^{-7}$  & $3.1\times10^{-7}$  \\
-& &OIII  & $5.8\times10^{-7}$  & $1.8\times10^{-7}$  & $1.3\times10^{-6}$  & $1.9\times10^{-7}$  \\
-& &OII\&OIII  & $4.8\times10^{-7}$  & $1.5\times10^{-7}$  & $7.6\times10^{-7}$  & $1.6\times10^{-7}$  \\
-\tableline
-1059 & 564 
-& OII & $2.5\times10^{-8}$  & $7.9\times10^{-9}$  & $2.3\times10^{-8}$  & $8.0\times10^{-9}$  \\
-\tableline
+
 \enddata
 \end{deluxetable}
 
@@ -1029,10 +989,10 @@ spatially offset from the science signal on the detector or in a different expos
 Therefore,  temporal, spatial, and/or
 wavelength interpolation are applied to calibrate wavelengths.
 
-The small number of pixels measuring line flux places stringent requirements on imager flux calibration.  The FWHM of a 10 km\,s$^{-1}$
-feature is spanned by 3.15 pixels along the dispersion axis, and (for our calculations) 3 pixels along the spatial axis.
-A single pixel covered by one of the [OIII] lines of the SDSS target specified by Plate~\#1268, Fiber~\#318 has $\sim 10^6$ counts;
-in order for photon noise to dominate over pixel flux uncertainty the calibration must be done to significantly better than 0.1\%.
+%The small number of pixels measuring line flux places stringent requirements on imager flux calibration.  The FWHM of a 10 km\,s$^{-1}$
+%feature is spanned by 3.15 pixels along the dispersion axis, and (for our calculations) 3 pixels along the spatial axis.
+%A single pixel covered by one of the [OIII] lines of the SDSS target specified by Plate~\#1268, Fiber~\#318 has $\sim 10^6$ counts;
+%in order for photon noise to dominate over pixel flux uncertainty the calibration must be done to significantly better than 0.1\%.
 
 Uncertainty in the often variable and charge-dependent point spread function can
 bias the determination of the line centroids.  Just as with the flux calibration requirement, sub-per-mil accuracy in predicted pixel counts
@@ -1111,9 +1071,9 @@ The first term in Eq.~(\ref{edisig:eqn}) represents the signal obtained with a c
 introduces a wavelength-dependent phase that provides additional leverage in measuring redshift.
 
 
-The expected signal for one of the [OIII] lines of the SDSS target specified by Plate~\#1268, Fiber~\#318 is shown
-in Figure~\ref{edicounts:fig}.   In this case the nominal delay is $\tau = 3.57$ mm with measurements
-made in steps of 0.14 $\mu$m.
+The expected signal for one of the [OIII] lines of the SDSS target specified by Plate~\#2510, Fiber~\#560 is shown
+in Figure~\ref{edicounts:fig}.   In this case the nominal delay is $\tau = 0.44$ mm with measurements
+made in steps of 0.13 $\mu$m.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%% 
@@ -1121,7 +1081,7 @@ made in steps of 0.14 $\mu$m.
    \centering
    \plotone{edi.pdf} 
    \caption{The expected EDI signal from the four phase measurements for one of the [OIII] lines of
-   the SDSS target specified by Plate~\#1268, Fiber~\#318. The four phases parametrized by $n$ are defined in Eq.~\ref{edisig:eqn}.
+   the SDSS target specified by Plate~\#2510, Fiber~\#560. The four phases parametrized by $n$ are defined in Eq.~\ref{edisig:eqn}.
 \label{edicounts:fig}}
 \end{figure}
 
@@ -1250,7 +1210,7 @@ gratings can achieve a similar effect.
 The SHS configuration can then be expressed in terms of the Littrow wavenumber.
 
 For the [OIII] doublet of the
-SDSS target specified by Plate~\#1268, Fiber~\#318 
+SDSS target specified by ???? Plate~\#25, Fiber~\#318 
 the condition for having only one beat frequency occurs when $\sigma_0=\sigma_2=17913$\,cm$^{-1}$, for 
 $\theta=0.341551$ radians.
 Different choices of Littrow wavenumber
@@ -1319,7 +1279,7 @@ wavelength, limiting the practical bandwidth significantly.
 
 The signal from two columns of pixels corresponding to the two wavelengths of
 the [OIII] doublet of the
-SDSS target specified by Plate~\#1268, Fiber~\#318 is shown in Fig.~\ref{edshs:fig}.
+SDSS target specified by Plate~\#2510, Fiber~\#560 is shown in Fig.~\ref{edshs:fig}.
 The Littrow wavelength is set to the average of the two lines  $\sigma_0=(\sigma_1+\sigma_2)/2$.
 In an SHS the output signal would be the sum of these and all other columns in the bandpass.
 
@@ -1436,6 +1396,9 @@ by LLNL under Contract DE-AC52-07NA27344, and the Director,
 Office of Science, Office of High Energy Physics, 
 of the U.S.\ Department of Energy under Contract No.\ DE-AC02-05CH11231. 
 
+Funding for SDSS-III has been provided by the Alfred P. Sloan Foundation, the Participating Institutions, the National Science Foundation, and the U.S. Department of Energy Office of Science. The SDSS-III web site is http://www.sdss3.org/.
+
+SDSS-III is managed by the Astrophysical Research Consortium for the Participating Institutions of the SDSS-III Collaboration including the University of Arizona, the Brazilian Participation Group, Brookhaven National Laboratory, Carnegie Mellon University, University of Florida, the French Participation Group, the German Participation Group, Harvard University, the Instituto de Astrofisica de Canarias, the Michigan State/Notre Dame/JINA Participation Group, Johns Hopkins University, Lawrence Berkeley National Laboratory, Max Planck Institute for Astrophysics, Max Planck Institute for Extraterrestrial Physics, New Mexico State University, New York University, Ohio State University, Pennsylvania State University, University of Portsmouth, Princeton University, the Spanish Participation Group, University of Tokyo, University of Utah, Vanderbilt University, University of Virginia, University of Washington, and Yale University.
 
 \bibliographystyle{hapj}
 \bibliography{alex.bib} 
