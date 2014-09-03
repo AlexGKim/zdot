@@ -26,13 +26,28 @@ literature: Phillipps (1982), Darling (2012), Balcerzak & Dabrowski
 discussed in the context of ALMA and the SKA.
 
 RESPONSE
+********
+This is a response to our initial response to the first report.  Here
+is a snippet of the relevant section:
 
-We are unsure what the referee is referring to with "Redshift drift
-has previously been thought of as a high redshift measurement..."?
-There is no such statment in the text.  In the conclusions we say "One
-surprising result is that the greatest leverage on dark energy
-properties comes from low-redshift observations" but that has a
-different sense than the first statement.
+Secondly, while reading this part I could not help but thinking that
+the authors were barking up the wrong tree. Accelerated expansion is
+of sufficient interest, and the redshift drift method of sufficient
+immaturity that such a detailed motivation for exploring ways of
+performing a low-z zdot measurement is not required. 
+
+** Response to reviewer comment
+ 
+Redshift drift has previously been thought of as a high redshift 
+measurement, so the motivation of low redshift is worth discussing in 
+some detail. Figures 2 and 3 quantify the leverage of a given redshift; 
+they could have shown the initial motivation for low redshift measurements 
+was wrong, but instead showed how much advantage it can bring, if practical. 
+We also show that to combine with low redshift zdot, CMB gives better 
+leverage (and is "for free") than high redshift zdot. 
+
+
+
 
 - p 2, right, line 23
 'We do not mean to claim dz/dt changes sign when DE begins to
@@ -113,7 +128,15 @@ thick, but if I don't understand this, chances are that many other
 readers won't either.
 
 RESPONSE
-Eric...
+
+We have changed to text to better convey the point we are making.
+
+"Note that when calculating the expected peculiar accelerations of
+astronomical sources one must recognize that those sources
+preferentially occur in high-density regions, so that improper
+assumptions of the linearity of density perturbations or spatial
+averaging over the power spectrum will generally underestimate
+peculiar accelerations."
 
 - Section 3.1
 
@@ -396,6 +419,21 @@ Resolving a galaxy into individual emission line regions would come at
 the cost of significantly reducing the line flux and hence the S/N.
 This should be mentioned.
 
+RESPONSE
+
+We now select galaxies from the "spZline" 1-d spectral analysis code
+described in Bolton et al. (2012). The line velocities appear more
+consistent with the observed spectra than those from the Portsmouth
+catalog, and the line velocities are significantly higher.  For new
+galaxies identified from this catalog also have higher line fluxes
+than those used previously, partially compensating for the reduced
+signal-to-noise from the broader lines.
+
+There is very little reduction in the signal to noise due to light
+loss when spatially resoloving the line emission.  All the emission
+light is used to determine a common velocity change.
+
+
 - p 9, l, line 55
 "It the text it is stated that it is not the NIR, but rather the
 [OIII} features shifted into the NIR that are difficult to access."
@@ -407,6 +445,10 @@ life harder but we're talking about extremely bright galaxy emission
 lines. And in any case, one can always work between the OH lines (for
 R > ~3000).
 
+RESPONSE
+
+This statement is removed.
+
 - p 9, r, line 37
 "...redshift precision scales with the line width..."
 No, the authors are confusing the terms "precision" and "measurement
@@ -415,6 +457,10 @@ increases). So the precision scales inversely with line
 width. Similarly, as the flux goes up, the precision increases (the
 error decreases), so it scales with the square root of the flux, not
 its inverse.
+
+RESPONSE
+
+This has been corrected.
 
 
 - Section 4.2
@@ -432,9 +478,19 @@ is not affected by the sampling. So the line-spread function cannot
 both be "dominated by the pixel top-hat function" *and* be Nyquist
 sampled.
 
+RESPONSE
+
+We have kept the same resolution spectrographs while targeting
+galaxies with broarder features.  The contribution of the pixel to the
+ePSF is now irrelevent and removed from the discussion.
+
+
 - p 11, l, line 27 and 33
 Confusion between "precision" and "measurement error" again.
 
+RESPONSE
+
+This has been corrected.
 
 - Section 4.3
 
@@ -445,10 +501,20 @@ previously, one can at most get one line per resolution element,
 ie. every two pixel. However, calling this line density "sparse" is
 ridiculous.
 
+RESPONSE
+
+Thie sentence is removed.
+
 - p 11, r, line 35
 "imager flux calibration"
 I strongly suggest to delete the word "imager", and replace it with
 "pixel-to-pixel".
+
+RESPONSE
+
+This discussion is removed as this uncertainty is less important for
+the broader line-widths of tha galaxies now being considered.
+
 
 "Yes, we now cite HARPS-N, an instrument that uses light scrambling to
 measure precision wavelengths."
@@ -457,6 +523,11 @@ based on the original HARPS instrument (which also uses a scrambler)
 it would be a bit odd to mention cite HARPS-N in this context, but not
 HARPS.
 
+RESPONSE
+
+Some of the references did not appear in the draft you received.
+Cosentino et al. 2012 is cited in the third paragraph of Section 3.3.
+We have added a reference to HARPS as well.
 
 - Section 5
 
@@ -465,6 +536,10 @@ HARPS.
 Frankly, this result was not very surprising. Since Dark Energy only
 begins to dominate at low redshift, it should not be surprising that
 it is best constrained with low-redshift observations.
+
+RESPONSE
+
+We remove the word "surprising".
 
 - p 17, r, line 44
 "redshift measurement precision of few x 10^-9"
@@ -480,10 +555,24 @@ spectroscopic surveys are also low-resolution surveys and are just as
 incapable as the SDSS of discovering extremely narrow emission
 lines. At most one can select candidates from these surveys.
 
+RESPONSE
+
+Upcoming surveys can find gold targets, which would be identified as
+being gold through subsequent observations with higher redsolution
+instruments.  This is discussed in the article.
+
 - p 17, r, line 52
-"Spatial resolution of the galaxy..."
+"Spatial resolution of the galaxy...
 Poor English. Better:
 "Spatially resolving a galaxy..."
 
+RESPONSE
+
+Fixed.
+
 - p 18, l, line 18
+
+RESPONSE
+
+Fixed.
 Again, references show up as "??".

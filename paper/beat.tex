@@ -76,8 +76,8 @@ leverage and systematics control, with an 8 hour exposure on a 10-meter
 telescope (1000 hours of exposure on a 40-meter telescope) potentially 
 capable of measuring the redshift of a galaxy to a precision 
 of 
-few$\times 10^{-9}$ 
-($\sim 10^{-10}$). Low-redshift redshift drift also has very strong 
+$10^{-8}$ 
+(few $\times 10^{-10}$). Low-redshift redshift drift also has very strong 
 complementarity with cosmic microwave background measurements, with the 
 combination achieving a dark energy figure of merit of nearly 300 (1400) 
 for 5\% (1\%) precision on drift. 
@@ -627,7 +627,7 @@ for the lines of sight cancel to reduce the contribution of wavelength
 calibration as a source of uncertainty in the measurement of
 wavelength differences.
 For widely separated images, optical fibers can collect radiation from multiple images
-and present them to the spectrograph for simultaneous exposures to obtain high velocity precision \citep{2012SPIE.8446E..1VC}.
+and present them to the spectrograph for simultaneous exposures to obtain high velocity precision \citep{2000SPIE.4008..582P,2012SPIE.8446E..1VC}.
 
 Multiple observations under different instrumental configurations
 and observing conditions provide an important path toward reducing systematic
@@ -756,6 +756,7 @@ Doublets occupy only a narrow bandwidth that spectrographs must span;
 regions outside the doublet need not be measured. 
 The two lines composing a doublet are produced by the same atoms and therefore
 share a common line profile.
+Also, emission line galaxies occur more in the field than in clusters, potentially ameliorating peculiar accelerations.
 
 The wavelength separation of the doublet lines is proportional to $(1+z)$, 
 so their cross-correlation in log-wavelength
@@ -773,12 +774,12 @@ Similarly, cross-correlation of multiple spectra taken at different epochs provi
 
 
 We study potential targets from the Sloan Digital Sky Survey data release SDSS3 DR10. 
-The ``spZline'' emission-line fits to the spectra are used to select
+The emission-line fits to the spectra described in \citet{2012AJ....144..144B} are used to select
 objects 
 with sharp and bright [OII] and/or [OIII] emission lines.
 The redshifts, velocity dispersions $\Delta v$, line strengths, and host continuum levels for a select set of galaxies are shown in Table~\ref{lines:tab}. 
-spZline fits a common $\Delta v$ for all forbidden lines while the average continuum fluxes for both doublets  are given.
-For target Plate~\#2872, Fiber~\#468, at $z=0.680$, the [OIII] features are shifted to the near-infrared and are difficult to access from ground-based observations.
+The best-fit forbidden line $\Delta v$ and the average continuum flux for each doublet  are given.
+For target Plate~\#2872, Fiber~\#468, at $z=0.680$, the catalog does not provide significant measurements of [OIII] features.
 The SDSS spectrum from a representative 
 target, from Plate~\#2510, Fiber~\#560, is shown in Figure~\ref{shsinput:fig}. 
 
@@ -828,20 +829,17 @@ as good
 candidate targets.
 Future surveys such as eBOSS, Dark Energy Spectroscopic Instrument, and Euclid will specifically target emission-line
 galaxies from which the best targets can be identified.
-(Also, emission line galaxies occur more in the field than in clusters, potentially ameliorating peculiar accelerations.)  In the scenarios considered in this article, redshift precision scales
+In the scenarios considered in this article, redshift uncertainty scales
 with the 
 line width and the inverse square root of line flux; smaller numbers 
 for the precision are better so bright, narrow lines 
 are desired. 
 
-
-SDSS3 (just as the aforementioned future surveys) has a spectrograph that does
-not resolve lines as fine as those quoted in Table~\ref{lines:tab}.  Velocity dispersions come
-from a model fit and the uncertainties given in DR10 are underestimated for low dispersions (Thomas 2014). 
-Therefore, targets initially identified with $R\lesssim 2000$ spectrographs need subsequent screening with
-integral-field-unit (for spatial resolution),
-high spectral-resolution  spectrographs: the resulting minimum dispersion may be expected to be higher
-than found listed in Table~\ref{lines:tab}.
+The Sloan spectrograph has only moderate resolution, which sets a floor on the
+sharpness of the lines it can measure and the precision of the $\Delta v$ estimates.
+Therefore, targets initially identified with $R\lesssim 2000$ spectrographs would benefit from subsequent screening with
+high spectral-resolution, preferably integral field unit, spectrographs, in order to accurately determine which candidates
+are best to pursue.
 
 
 The spectral regions of interest
@@ -881,9 +879,7 @@ The interferometer optics and fringe visibility has a $\sim 75\%$ efficiency, so
 will have a third better throughput relative to the other systems.
 
 The dispersion spectrometer used for Conventional spectrograph has a two-pixel resolution $R=50{,}000$
-whereas the EDI, and ED-SHS instruments is taken to have resolution $R=20{,}000$.  The
-effective point-spread-function is dominated by the pixel top-hat function.
-The resolution of the Conventional spectrograph is chosen in order to sample the features.
+whereas the EDI, and ED-SHS instruments is taken to have resolution $R=20{,}000$.  The resolution of the Conventional spectrograph is chosen in order to sample the features.
 EDI and ED-SHS allow the use of lower resolution spectrographs (much cheaper and easier to make thermally stable)
 because it is the interferometer component which measures the velocity.
 
@@ -902,7 +898,7 @@ equation for the predicted signal is given for each spectrograph type.
 For conciseness, trivial behavior along the spatial axis is not given
 explicitly in these equations.  Measurement uncertainties come from
 photon and detector noise.
-Precisions scale as the inverse square root of exposure time and inverse of telescope aperture. 
+Uncertainties scale as the inverse square root of exposure time and inverse of telescope aperture. 
 For the SHS, and when the other spectrographs resolve the spectral line, the precision scales 
 inversely 
 with the line dispersion velocity.  
@@ -982,7 +978,7 @@ an 8 Hour Exposure on a 10-m Telescope For Different Spectrograph Types.
 Not included in Table~\ref{dz:tab} are sources of the instrumental systematics.
 Wavelength calibration is performed through observations of arc lamps or laser frequency combs
 emitting lines at known wavelengths.
-The line density is sparse, in that an arc line is not placed on every detector pixel.   If the arc is taken simultaneously
+ If the arc is taken simultaneously
 with the science exposure, a minimum wavelength interpolation distance must be maintained so that the arc does
 not interfere with the doublet.  Otherwise, the arc must be observed
 spatially offset from the science signal on the detector or in a different exposure.
@@ -1210,9 +1206,9 @@ gratings can achieve a similar effect.
 The SHS configuration can then be expressed in terms of the Littrow wavenumber.
 
 For the [OIII] doublet of the
-SDSS target specified by ???? Plate~\#25, Fiber~\#318 
-the condition for having only one beat frequency occurs when $\sigma_0=\sigma_2=17913$\,cm$^{-1}$, for 
-$\theta=0.341551$ radians.
+SDSS target specified by Plate~\#2510, Fiber~\#560 
+the condition for having only one beat frequency occurs when $\sigma_0=\sigma_2=25675$\,cm$^{-1}$, for 
+$\theta=0.235870$  radians.
 Different choices of Littrow wavenumber
 produce different output signals:
 Figure~\ref{shscounts:fig} shows the expected counts adjusting $\sigma_0$ to produce beat frequency ratios
@@ -1223,7 +1219,7 @@ of the choice of the beat frequency of $2(\sigma_1+\sigma_2-2\sigma_0)\tan{\thet
 is clearly apparent.
 The precision is insensitive to the choice of $\sigma_0$, except
 for small deviations near $n=1$ and at integer ratios of the beat frequencies; we choose
-the case of $n=1.5$ or $\theta = 0.3421194$ radians (a change in angle of $1.95 \arcmin$ from the $n=1$ case)
+the case of $n=1.5$ or $\theta = 0.235900$  radians (a change in angle of $6.17 \arcsec$ from the $n=1$ case)
 as a representative example where the pixels resolve the frequencies of interest.
 
 %%%%%%%%%%%%%%%%%%%%%% 
@@ -1313,7 +1309,7 @@ systematics, presented a series of theoretical speculations for observational
 probes, and explored various promising improvements to experimental 
 approaches to measuring directly spectral line shifts with high accuracy.  
 
-One surprising result is that the greatest leverage on dark energy properties 
+One result is that the greatest leverage on dark energy properties 
 comes from low-redshift observations, due to lesser covariances there with 
 other cosmological parameters. The dark energy figure of merit can exceed 
 100 for a set of five measurements over $z=[0.1-0.5]$, each at 1\% precision 
@@ -1351,15 +1347,16 @@ we focus on bright emission line galaxies as targets. We explore three
 alternatives to conventional spectrographs, involving differential and 
 interferometric methods, and calculate their signal-to-noise 
 and potential redshift precisions. We find that single source redshift 
-measurement precision of few $\times 10^{-9}$ is potentially achievable, 
+measurement precision of $10^{-8}$ is potentially achievable, 
 with further improvement possible from multiple sources, multinight 
 exposures, and larger telescopes (our numbers are canonically for 8 hours 
 on a 10-m telescope). ``Gold'' targets, with brighter and narrower doublet
 emission than the galaxies considered in this article, may yet be discovered
 in upcoming spectroscopic surveys and provide a speedier path toward
 detecting redshift drift. 
-Spatial resolution of the galaxy, say with an integral field unit, may isolate
-subregions with finer emission than that of the combined whole.
+Spatially resolving the galaxy, say with an integral field unit, may isolate
+subregions with finer emission than that of the combined whole
+\citep{2014arXiv1408.5765G}.
 Instruments 
 such as Externally Dispersed Interferometers and External Dispersion Spatial 
 Heterodyne Spectroscopes can avoid some of the systematics in conventional 
