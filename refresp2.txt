@@ -26,36 +26,15 @@ literature: Phillipps (1982), Darling (2012), Balcerzak & Dabrowski
 discussed in the context of ALMA and the SKA.
 
 RESPONSE
-Eric...
-********
-This is a response to our initial response to the first report.  Here
-is a snippet of the relevant section:
 
-Secondly, while reading this part I could not help but thinking that
-the authors were barking up the wrong tree. Accelerated expansion is
-of sufficient interest, and the redshift drift method of sufficient
-immaturity that such a detailed motivation for exploring ways of
-performing a low-z zdot measurement is not required. 
-
-** Response to reviewer comment
- 
-Redshift drift has previously been thought of as a high redshift 
-measurement, so the motivation of low redshift is worth discussing in 
-some detail. Figures 2 and 3 quantify the leverage of a given redshift; 
-they could have shown the initial motivation for low redshift measurements 
-was wrong, but instead showed how much advantage it can bring, if practical. 
-We also show that to combine with low redshift zdot, CMB gives better 
-leverage (and is "for free") than high redshift zdot. 
-
-
-
+We have made sure that that statement does not appear in the text. 
 
 - p 2, right, line 23
-'We do not mean to claim dz/dt changes sign when DE begins to
-dominate. We clarify this by rephrase: "When the universe begins to
-accelerate (speed up) under the influence of dark energy in recent
-times, however, then the drift will be positive (see Eq. 2 for the
-exact condtion for the change of sign)."'
+"We do not mean to claim dz/dt changes sign when DE begins to dominate. We
+clarify this by rephrase: 'When the universe begins to accelerate (speed 
+up) under the influence of dark energy in recent times, however, then the 
+drift will be positive (see Eq. 2 for the exact condtion for the change of 
+sign).' " 
 
 This is only a minor issue, but I disagree that this has been
 clarified: "When the universe begins to accelerate ... then the drift
@@ -65,9 +44,15 @@ little to correct this impression.
 
 RESPONSE
 
-We replace the text with "At lower redshift, when the expansion rate
-is lower than today and thus universe has experience acceleration, the
-drift will be positive.", which is more precise.
+We replace the text with 
+“When the universe begins to decelerate less strongly and eventually 
+accelerate (speed up) under the influence of dark energy, then the 
+drift will be positive (see Eq. 2 for the exact condition for the change 
+of sign)." 
+%%"At lower redshift, when the expansion rate
+%%is lower than today and thus universe has experience acceleration, the
+%%drift will be positive.", which is more precise.
+ALEX: correct in .tex 
 
 - p 2, r, line 57
 'In the next paragraph we justify it but showing that higher redshift
@@ -106,7 +91,12 @@ Does this statement depend on the assumption of a flat universe? If
 so, then I think it should be mentioned here.
 
 RESPONSE
-Eric...
+
+We now explicitly state in Sec. 2 (in the paragraph "Figure 1 shows") 
+that "The results assume a flat universe..." 
+
+ALEX: change paragraph "Figure 2 shows" to say "redshift $z$; specifically, 
+we use" 
 
 - Part on astrophysical uncertainties
 I maintain that this section does not seem to add anything new. Yes,
@@ -169,7 +159,10 @@ are being built for large telescopes anyway.
 
 RESPONSE
 
-Eric...
+This section, and table, has received good response and discussion when 
+presented in seminars. Analyzing the data to be interpreted in terms of 
+Hubble drift comes for free in the sense of requiring no new hardware or 
+survey strategy over the redshift surveys already planned. 
 
 - Section 3.2
 
@@ -181,7 +174,11 @@ is very superficial and light on content.
 
 RESPONSE
 
-Eric...
+We regard it as useful to bring to the community's notice farther 
+future applications such as the use of gravitational wave inspiral signals 
+as cosmic clocks. We have also amended the text to read 
+"an exciting prospect is that upcoming time domain surveys such as from 
+LSST or SKA..." 
 
 - Section 3.3
 
@@ -260,6 +257,7 @@ Instead of a reference only a "?" is shown.
 RESPONSE
 
 *We need to check that the journal build picks up the reference.*
+ALEX: JCAP takes directly from arXiv so it should be automatic. 
 
 - p 7, r, para beginning line 26
 I did not really express this in my first report, but I do not really
