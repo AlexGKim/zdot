@@ -120,7 +120,8 @@ readers won't either.
 
 RESPONSE
 
-We have changed to text to better convey the point we are making.
+%%We have changed to text to better convey the point we are making.
+We have changed the text to better convey the point we are making.
 
 "Note that when calculating the expected peculiar accelerations of
 astronomical sources one must recognize that those sources
@@ -159,7 +160,7 @@ are being built for large telescopes anyway.
 
 RESPONSE
 
-This section, and table, has received good response and discussion when 
+This section, and table, have received good response and discussion when 
 presented in seminars. Analyzing the data to be interpreted in terms of 
 Hubble drift comes for free in the sense of requiring no new hardware or 
 survey strategy over the redshift surveys already planned. 
@@ -231,12 +232,12 @@ RESPONSE
 
 The optical systems (from the top of the atmosphere through to the
 detector) experienced by two neighboring lines of sight in a single
-exposure are more similar than the optical systemts experienced by two
-nieghboring lines of sight taken in separate exposures.  In the former
+exposure are more similar than the optical systems experienced by two
+neighboring lines of sight taken in separate exposures.  In the former
 case the light paths experience the same telescope configuration,
 strongly correlated atmosphere, experience the same CCD readout, and
 are calibrated with the same images.  The reduced number of degrees of
-freedom that can affect wavelength calibration is diminished.  Common
+freedom that can affect wavelength calibration is beneficial.  Common
 modes of wavelength calibration uncertainty cancel each other out when
 measuring wavelength differences.
 
@@ -288,7 +289,7 @@ RESPONSE
 
 The text was in the wrong place and poorly written.  Here is the new version.
 
-"The spectra from two images of the same variable source observed on
+"The spectra from two time-delayed images of the same variable source observed on
 the same date is not expected to be the same, complicating a direct
 redshift-drift measurement.  By the nature of the strong lensing time
 delay, it may be possible to cross-calibrate the spectra in both space
@@ -315,7 +316,8 @@ many of these are broad lines.
 RESPONSE
 
 *The referee is right, we have to look at these paragraphs closely and
-decide if they are salvagable.*
+decide if they are salvagable.* 
+ALEX: I see that currently it still says 225. 
 
 Section 4
 
@@ -337,7 +339,8 @@ a "?".
 
 RESPONSE
 
-Fixed.
+Fixed. 
+ALEX: Was it actually fixed or it always showed the reference in our version? 
 
 - p 8, r, line 35
 'The text did not properly convey our intended meaning. It has been
@@ -363,7 +366,9 @@ RESPONSE
 We change the text based on the referee's suggestion.
 
 "the measurement of a single-epoch redshift from the wavelength separation
-of line doublets can be more accurate than a measurement based on a single line."
+of line doublets can be more accurate than a measurement based on a single line." 
+ALEX: I still think we should have the word “differential” in there (and 
+the referee was ok with that). I.e. “the differential measurement of a”. 
 
 - p 8, r, line 52
 References to the laser frequency comb again shown as "??".
@@ -424,12 +429,13 @@ We now select galaxies from the "spZline" 1-d spectral analysis code
 described in Bolton et al. (2012). The line velocities appear more
 consistent with the observed spectra than those from the Portsmouth
 catalog, and the line velocities are significantly higher.  For new
-galaxies identified from this catalog also have higher line fluxes
+galaxies identified from this catalog they also have higher line fluxes
 than those used previously, partially compensating for the reduced
-signal-to-noise from the broader lines.
+signal-to-noise from the broader lines. 
+ALEX: check my addition of “they”. 
 
 There is very little reduction in the signal to noise due to light
-loss when spatially resoloving the line emission.  All the emission
+loss when spatially resolving the line emission.  All the emission
 light is used to determine a common velocity change.
 
 
@@ -459,7 +465,12 @@ its inverse.
 
 RESPONSE
 
-This has been corrected.
+The phrasing has been clarified. 
+ALEX: we should rationalize the use of “precision” everywhere. 
+page 3, left, par “To first order” should say 
+“precision of a class of sources will improve inversely”. 
+page 11, left, par 0: do we mean “precision scales linearly with the 
+line dispersion velocity” (i.e. smaller is better)? [See below about p 11] 
 
 
 - Section 4.2
@@ -480,8 +491,9 @@ sampled.
 RESPONSE
 
 We have kept the same resolution spectrographs while targeting
-galaxies with broarder features.  The contribution of the pixel to the
-ePSF is now irrelevent and removed from the discussion.
+galaxies with broader features.  The contribution of the pixel to the
+ePSF is now irrelevant and removed from the text discussion. 
+ALEX: check my addition of the word “text”. 
 
 
 - p 11, l, line 27 and 33
@@ -489,7 +501,11 @@ Confusion between "precision" and "measurement error" again.
 
 RESPONSE
 
-This has been corrected.
+This has been corrected. 
+ALEX: On p.9 we state we use precision to mean smaller is better, and 
+we have kept on p.11 that precision scales as inverse square root of line 
+flux, bearing this out. So p.11 should also have “precision scales linearly 
+with the linear dispersion velocity”. 
 
 - Section 4.3
 
@@ -502,7 +518,7 @@ ridiculous.
 
 RESPONSE
 
-Thie sentence is removed.
+The sentence is removed.
 
 - p 11, r, line 35
 "imager flux calibration"
@@ -512,7 +528,7 @@ I strongly suggest to delete the word "imager", and replace it with
 RESPONSE
 
 This discussion is removed as this uncertainty is less important for
-the broader line-widths of tha galaxies now being considered.
+the broader line-widths of the galaxies now being considered.
 
 
 "Yes, we now cite HARPS-N, an instrument that uses light scrambling to
@@ -557,7 +573,7 @@ lines. At most one can select candidates from these surveys.
 RESPONSE
 
 Upcoming surveys can find gold targets, which would be identified as
-being gold through subsequent observations with higher redsolution
+being gold through subsequent observations with higher resolution
 instruments.  This is discussed in the article.
 
 - p 17, r, line 52
