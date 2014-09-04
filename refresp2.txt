@@ -52,7 +52,8 @@ of sign)."
 %%"At lower redshift, when the expansion rate
 %%is lower than today and thus universe has experience acceleration, the
 %%drift will be positive.", which is more precise.
-ALEX: correct in .tex 
+ERIC: I like my version better.  The problem with the current text is
+the word "when", which I remove.
 
 - p 2, r, line 57
 'In the next paragraph we justify it but showing that higher redshift
@@ -95,9 +96,6 @@ RESPONSE
 We now explicitly state in Sec. 2 (in the paragraph "Figure 1 shows") 
 that "The results assume a flat universe..." 
 
-ALEX: change paragraph "Figure 2 shows" to say "redshift $z$; specifically, 
-we use" 
-
 - Part on astrophysical uncertainties
 I maintain that this section does not seem to add anything new. Yes,
 equation 4 is valuable, but it is not new (it's from Linder 2010). The
@@ -120,7 +118,6 @@ readers won't either.
 
 RESPONSE
 
-%%We have changed to text to better convey the point we are making.
 We have changed the text to better convey the point we are making.
 
 "Note that when calculating the expected peculiar accelerations of
@@ -259,6 +256,7 @@ RESPONSE
 
 *We need to check that the journal build picks up the reference.*
 ALEX: JCAP takes directly from arXiv so it should be automatic. 
+ERIC: We submitted to ASTROPARTICLE PHYSICS
 
 - p 7, r, para beginning line 26
 I did not really express this in my first report, but I do not really
@@ -315,9 +313,14 @@ many of these are broad lines.
 
 RESPONSE
 
-*The referee is right, we have to look at these paragraphs closely and
-decide if they are salvagable.* 
-ALEX: I see that currently it still says 225. 
+ERIC:
+
+The referee is correct.  The text has been changed to the following:
+
+"The quasar Q1101-264 has embedded within its observed spectrum the
+redshifts of individual Lyman-$\alpha$ absorbers and $N_{\rm line,q}
+=225$ narrow spectral lines of metal absorbers along the light of
+sight"
 
 Section 4
 
@@ -340,7 +343,10 @@ a "?".
 RESPONSE
 
 Fixed. 
-ALEX: Was it actually fixed or it always showed the reference in our version? 
+ALEX: Was it actually fixed or it always showed the reference in our
+version?
+ERIC: Our version always had the references.  Probably the
+bibliography I uploaded to the journal was incomplete. 
 
 - p 8, r, line 35
 'The text did not properly convey our intended meaning. It has been
@@ -365,10 +371,9 @@ RESPONSE
 
 We change the text based on the referee's suggestion.
 
-"the measurement of a single-epoch redshift from the wavelength separation
-of line doublets can be more accurate than a measurement based on a single line." 
-ALEX: I still think we should have the word “differential” in there (and 
-the referee was ok with that). I.e. “the differential measurement of a”. 
+"the differential measurement of a single-epoch redshift from the
+wavelength separation of line doublets can be more accurate than a
+measurement based on a single line."
 
 - p 8, r, line 52
 References to the laser frequency comb again shown as "??".
@@ -432,7 +437,6 @@ catalog, and the line velocities are significantly higher.  For new
 galaxies identified from this catalog they also have higher line fluxes
 than those used previously, partially compensating for the reduced
 signal-to-noise from the broader lines. 
-ALEX: check my addition of “they”. 
 
 There is very little reduction in the signal to noise due to light
 loss when spatially resolving the line emission.  All the emission
@@ -465,13 +469,13 @@ its inverse.
 
 RESPONSE
 
-The phrasing has been clarified. 
+The phrasing has been clarified by using the word uncertainty.
 ALEX: we should rationalize the use of “precision” everywhere. 
 page 3, left, par “To first order” should say 
 “precision of a class of sources will improve inversely”. 
 page 11, left, par 0: do we mean “precision scales linearly with the 
 line dispersion velocity” (i.e. smaller is better)? [See below about p 11] 
-
+ERIC: I solved this by using the word "uncertainty". 
 
 - Section 4.2
 
@@ -493,7 +497,6 @@ RESPONSE
 We have kept the same resolution spectrographs while targeting
 galaxies with broader features.  The contribution of the pixel to the
 ePSF is now irrelevant and removed from the text discussion. 
-ALEX: check my addition of the word “text”. 
 
 
 - p 11, l, line 27 and 33
@@ -506,6 +509,7 @@ ALEX: On p.9 we state we use precision to mean smaller is better, and
 we have kept on p.11 that precision scales as inverse square root of line 
 flux, bearing this out. So p.11 should also have “precision scales linearly 
 with the linear dispersion velocity”. 
+ERIC: Replaced precision with uncertainty.
 
 - Section 4.3
 
