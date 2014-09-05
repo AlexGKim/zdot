@@ -27,7 +27,8 @@ discussed in the context of ALMA and the SKA.
 
 RESPONSE
 
-We have made sure that that statement does not appear in the text. 
+We have made sure that that statement does not appear in the text of
+the article.
 
 - p 2, right, line 23
 "We do not mean to claim dz/dt changes sign when DE begins to dominate. We
@@ -281,14 +282,14 @@ RESPONSE
 
 The text was in the wrong place and poorly written.  Here is the new version.
 
-"The spectra from two time-delayed images of the same variable source observed on
-the same date is not expected to be the same, complicating a direct
-redshift-drift measurement.  By the nature of the strong lensing time
-delay, it may be possible to cross-calibrate the spectra in both space
-and time.  That is, if the time delay between images A and B is one
-year, say, then when observing the system one year later the spectrum
-of image B should match that of image A from the previous year (modulo
-the redshift drift itself)."
+"The spectra from two time-delayed images of the same variable source
+observed on the same date is not expected to be the same, complicating
+a direct redshift-drift measurement.  By the nature of the strong
+lensing time delay, it may be possible to cross-calibrate the spectra
+in both space and time.  That is, if the time delay between images A
+and B is one year, say, then when observing the system one year later
+the spectrum of image B should match that of image A from the previous
+year (modulo the redshift drift itself)."
 
 - p 7, r, line 58
 "Liske et al. cite 225 metal absorption lines for Q1101-264; we change the
@@ -456,7 +457,8 @@ its inverse.
 
 RESPONSE
 
-The phrasing has been clarified by using the word uncertainty.
+The phrasing has been clarified by using the word "uncertainty" rather
+than "precision".
 
 - Section 4.2
 
@@ -567,7 +569,8 @@ Fixed.
 
 - p 18, l, line 18
 
+Again, references show up as "??".
+ 
 RESPONSE
 
 Fixed.
-Again, references show up as "??".
