@@ -812,7 +812,6 @@ gendata()
 #edshsplot()
 
 linetable()
-shit
 
 def plotvelocity():
   plate=1268
@@ -841,7 +840,7 @@ def plotvelocity():
   plt.savefig('vdependence.pdf')
 
   #plotvelocity()
-  #shit
+  
 
 def plotflux():
   plate=1268
@@ -873,23 +872,23 @@ def plotflux():
 
 #shs=SHS(lines,1.5)
 #print shs.theta, shs.littrow, lines.sigma1,lines.sigma2
-#print shit
+#print svar
 #plotspectrum(lines)
-#print shit
+#print svar
 
 #plotcounts(lines)
-#print shit
+#print svar
 #uncertaintyvsnratio(lines)
-#print shit
+#print svar
 
 def plotspectrum(_lines):
   sigmas=numpy.arange(_lines.sigma1-5*numpy.sqrt(_lines.l12),_lines.sigma2+5*numpy.sqrt(_lines.l22),1)
-  shit=[]
+  svar=[]
   for sig in sigmas:
-    shit.append(line(sig,_lines.sigma1,_lines.a1,_lines.l12)+line(sig,_lines.sigma2,_lines.a2,_lines.l22))
-  shit=numpy.array(shit)
+    svar.append(line(sig,_lines.sigma1,_lines.a1,_lines.l12)+line(sig,_lines.sigma2,_lines.a2,_lines.l22))
+  svar=numpy.array(svar)
   plt.clf()
-  plt.plot(sigmas/100,shit)
+  plt.plot(sigmas/100,svar)
   plt.xlabel('wavenumber (cm$^{-1}$)')
   plt.ylabel('Flux')
   plt.savefig('shsinput.eps')
